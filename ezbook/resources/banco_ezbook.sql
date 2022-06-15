@@ -19,7 +19,7 @@ USE `ezbook` ;
 -- Table `ezbook`.`Usuario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ezbook`.`Usuario` (
-  `idCliente` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(20) NULL,
   `sobrenome` VARCHAR(20) NULL,
   `cpf` VARCHAR(11) NULL,
