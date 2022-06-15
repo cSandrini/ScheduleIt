@@ -16,9 +16,9 @@ CREATE SCHEMA IF NOT EXISTS `ezbook` DEFAULT CHARACTER SET utf8 ;
 USE `ezbook` ;
 
 -- -----------------------------------------------------
--- Table `ezbook`.`Usuario`
+-- Table `ezbook`.`usuarios`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ezbook`.`Usuario` (
+CREATE TABLE IF NOT EXISTS `ezbook`.`usuarios` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(20) NULL,
   `sobrenome` VARCHAR(20) NULL,
@@ -26,9 +26,11 @@ CREATE TABLE IF NOT EXISTS `ezbook`.`Usuario` (
   `numero` VARCHAR(11) NULL,
   `email` VARCHAR(100) NULL,
   `senha` VARCHAR(50) NULL,
-  PRIMARY KEY (`idCliente`)
+  PRIMARY KEY (`id`)
   )
 ENGINE = InnoDB;
+
+INSERT INTO ezbook.usuarios (id, nome, sobrenome, cpf, numero, email, senha) VALUES (1, 'Admin', NULL, NULL, NULL, 'admin', '123');
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

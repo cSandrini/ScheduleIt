@@ -27,10 +27,10 @@ if(isset($_POST['email']) || isset($_POST['senha'])) {
             $_SESSION['id'] = $usuario['id'];
             $_SESSION['nome'] = $usuario['nome'];
 
-            header("Location: painel.php?".$_SESSION['id']);
+            header('Location: painel.php?');
 
         } else {
-            echo "Falha ao logar! E-mail ou senha incorretos";
+          $mensagem = "Dados inválidos.";
         }
 
     }
@@ -56,7 +56,7 @@ if(isset($_POST['email']) || isset($_POST['senha'])) {
     <link href="cover.css" rel="stylesheet">
   </head>
   <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-    <header class="masthead mb-auto">
+    <header class="masthead">
       <div class="inner">
         <h3 class="masthead-brand">EzBook</h3>
         <nav class="nav nav-masthead justify-content-center">
@@ -70,20 +70,27 @@ if(isset($_POST['email']) || isset($_POST['senha'])) {
     <div class="container">
       <main>
         <div class="py-5 text-center">
-          <h1>EzBook</h1><br>
           <h2>Login</h2>
         </div>
       </main>
       <div>
+        <?php
+            // Exibir a mensagem de ERRO caso OCORRA
+            if (isset($mensagem)) {  // Verifica se tem mensagem de ERRO
+                echo "<br><div class='alert alert-danger' role='alert'>
+                        $mensagem
+                      </div>";
+            }
+        ?>
         <form class="needs-validation" method="post" name="formCadastro" action"">
           <div class="row g-3">
             <div class="col-12">
               <label for="email" class="form-label">E-mail </label>
-              <input name="txtEmail" type="email" class="form-control" id="email" placeholder="exemplo@exp.com">
+              <input name="email" type="text" class="form-control" placeholder="E-mail">
             </div>
             <div class="col-12">
               <label for="senha" class="form-label">Senha</label>
-              <input name="txtSenha" type="password" class="form-control" id="senha" placeholder="" value="" required="">
+              <input name="senha" type="password" class="form-control" placeholder="Senha">
             </div>
           </div>
           <hr class="col-12">
@@ -92,8 +99,8 @@ if(isset($_POST['email']) || isset($_POST['senha'])) {
       </div>
     </div>
 
-    <footer class="my-5 pt-5 text-muted text-center text-small">
-      <p class="mb-1">© 2022-2022 EzBook</p>
+    <footer class="my-5 pt-5 text-muted text-center text-small mt-auto">
+      <p class="mb-1">© 2022 EzBook</p>
       <ul class="list-inline">
         <li class="list-inline-item"><a href="#">Sobre</a></li>
         <li class="list-inline-item"><a href="#">Termos de uso</a></li>
