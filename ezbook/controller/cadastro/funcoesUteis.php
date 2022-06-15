@@ -45,7 +45,7 @@
         }
     }
 
-    function converterDataParaBanco ( $data) {
+    function converterDataParaBanco ($data) {
         if ( validarData($data) ) {
             $dtSep = explode("/", $data);
             $dia = $dtSep[0];
@@ -55,6 +55,11 @@
         } else {
             return null;
         }
+    }
+
+    function converterNumerico ($string) {
+        $output = preg_replace( '/[^0-9]/', '', $string );
+        return $output;
     }
 
 ?>

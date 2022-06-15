@@ -1,11 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
 
     <title>EzBook - Cadastro</title>
 
@@ -21,9 +20,9 @@
       <div class="inner">
         <h3 class="masthead-brand">EzBook</h3>
         <nav class="nav nav-masthead justify-content-center">
-          <a class="nav-link active" href="#">EzBook - Exemplo</a>
           <a class="nav-link" href="#">Agendar</a>
           <a class="nav-link" href="#">Contato</a>
+          <a class="nav-link active" href="../login/login.php">Login</a>
         </nav>
       </div>
     </header>
@@ -31,7 +30,6 @@
     <div class="container">
       <main>
         <div class="py-5 text-center">
-          <h1>EzBook</h1><br>
           <h2>Cadastro</h2>
           <p class="lead"> Bem vindo, siga os passos para se cadastrar.</p>
         </div>
@@ -53,7 +51,7 @@
                 
             }
         ?>
-        <form class="needs-validation" method="post" name="formCadastro" action="../../../controller/cadusuario.php" enctype="multipart/form-data">
+        <form class="needs-validation" method="post" name="formCadastro" action="../../../controller/cadastro/cadusuario.php" enctype="multipart/form-data">
           <div class="row g-3">
             <div class="col-sm-6">
               <label for="nome" class="form-label">Nome</label>
@@ -94,8 +92,8 @@
       </div>
     </div>
 
-    <footer class="my-5 pt-5 text-muted text-center text-small">
-      <p class="mb-1">© 2022-2022 EzBook</p>
+    <footer class="my-5 pt-5 text-muted text-center text-small mt-auto">
+      <p class="mb-1">© 2022 EzBook</p>
       <ul class="list-inline">
         <li class="list-inline-item"><a href="#">Sobre</a></li>
         <li class="list-inline-item"><a href="#">Termos de uso</a></li>

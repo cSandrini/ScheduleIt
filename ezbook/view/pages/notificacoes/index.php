@@ -1,11 +1,15 @@
+<?php
+
+include('../../../controller/protect.php');
+
+?>
 <!doctype html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
 
     <title>EzBook - Notificações</title>
 
@@ -38,19 +42,19 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Trocar conta</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Configurações</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Açao</a>
-              <a class="dropdown-item" href="#">Outra ação</a>
-              <a class="dropdown-item" href="#">Outra coisa</a>
-            </div>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Configurações</a>
+          </li>
+          <li>
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="text" placeholder="Pesquisar" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+            </form>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Pesquisar" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
-        </form>
+        <div class="my-2 my-lg-0">
+          <button class="btn btn-info my-2 my-sm-0" href="../../../controller/logout.php"><a style="text-decoration:none; color:inherit;" href="../../../controller/logout.php">Logout</a></button>
+        </div>
       </div>
     </nav>
 
@@ -68,9 +72,9 @@
 
     <main role="main" class="container">
       <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow">
-        <img class="mr-3" src="Henrique_Frisso.jpg" alt="" width="48" height="48">
+        <img class="mr-3" src="blank.png" alt="" width="48" height="48">
         <div class="lh-100">
-          <h6 class="mb-0 text-white lh-100">EzBook Perfil</h6>
+          <h6 class="mb-0 text-white lh-100"><?php echo $_SESSION['nome']; ?></h6>
           <small>Since 2022</small>
         </div>
       </div>

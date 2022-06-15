@@ -1,40 +1,37 @@
 <?php
-include('conexao.php');
+include('../../../model/conexaobd.php');
+
+if (isset($_GET['auth']) && $_GET['auth']==0) {
+  $mensagem = "Você precisa estar logado.";
+} 
 
 if(isset($_POST['email']) || isset($_POST['senha'])) {
+  $conexao = conectarBD();
 
-    if(strlen($_POST['email']) == 0) {
-        echo "Preencha seu e-mail";
-    } else if(strlen($_POST['senha']) == 0) {
-        echo "Preencha sua senha";
-    } else {
-        $email = $mysqli->real_escape_string($_POST['email']);
-        $senha = $mysqli->real_escape_string($_POST['senha']);
+  $email = mysqli_real_escape_string($conexao, $_POST['email']);
+  $senha = mysqli_real_escape_string($conexao, $_POST['senha']);
 
-        $sql_code = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
-        $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+  $sql = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
+  $resultado = mysqli_query($conexao, $sql) or die("Falha na execução do código SQL: " . mysqli_error($conexao));
 
-        $quantidade = $sql_query->num_rows;
+  $quantidade = mysqli_num_rows($resultado);
 
-        if($quantidade == 1) {
-            
-            $usuario = $sql_query->fetch_assoc();
+  if($quantidade == 1) {
+      
+      $usuario = mysqli_fetch_assoc($resultado);
 
-            if(!isset($_SESSION)) {
-                session_start();
-            }
-            
-            $_SESSION['id'] = $usuario['id'];
-            $_SESSION['nome'] = $usuario['nome'];
+      if(!isset($_SESSION)) {
+          session_start();
+      }
+      
+      $_SESSION['id'] = $usuario['id'];
+      $_SESSION['nome'] = $usuario['nome'];
 
-            header('Location: painel.php?');
+      header('Location: ../notificacoes/index.php?');
 
-        } else {
-          $mensagem = "Dados inválidos.";
-        }
-
-    }
-
+  } else {
+    $mensagem = "Dados inválidos.";
+  }
 }
 ?>
 <!doctype html>
@@ -44,9 +41,8 @@ if(isset($_POST['email']) || isset($_POST['senha'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
 
-    <title>EzBook - Cadastro</title>
+    <title>EzBook - Login</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../../styles/css/bootstrap.min.css" rel="stylesheet">
@@ -60,7 +56,6 @@ if(isset($_POST['email']) || isset($_POST['senha'])) {
       <div class="inner">
         <h3 class="masthead-brand">EzBook</h3>
         <nav class="nav nav-masthead justify-content-center">
-          <a class="nav-link active" href="#">EzBook - Exemplo</a>
           <a class="nav-link" href="#">Agendar</a>
           <a class="nav-link" href="#">Contato</a>
         </nav>
@@ -86,15 +81,16 @@ if(isset($_POST['email']) || isset($_POST['senha'])) {
           <div class="row g-3">
             <div class="col-12">
               <label for="email" class="form-label">E-mail </label>
-              <input name="email" type="text" class="form-control" placeholder="E-mail">
+              <input name="email" type="text" class="form-control" placeholder="E-mail" required="">
             </div>
             <div class="col-12">
               <label for="senha" class="form-label">Senha</label>
-              <input name="senha" type="password" class="form-control" placeholder="Senha">
+              <input name="senha" type="password" class="form-control" placeholder="Senha" required="">
             </div>
           </div>
           <hr class="col-12">
-          <button type="submit" class="w-100 btn btn-primary btn-lg">Entrar</button>
+          <button type="submit" class="w-100 btn btn-primary btn-lg mb-2">Entrar</button>
+          <a class="text-decoration-none" href="../cadastro/cadastro.php">Cadastre-se</a>
         </form>
       </div>
     </div>
