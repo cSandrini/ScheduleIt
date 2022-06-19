@@ -39,6 +39,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 30px 10%;
+            height: 100px;
         }
 
         .logo {
