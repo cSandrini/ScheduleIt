@@ -22,7 +22,7 @@
           <h2>Cadastro</h2>
           <p class="lead"> Bem vindo, siga os passos para se cadastrar.</p>
         </div>
-        <div class="shadow-none">
+        <div class="text-left">
           <?php
               // Exibir a mensagem de ERRO caso OCORRA
               if (isset($_GET["msg"])) {  // Verifica se tem mensagem de ERRO
@@ -42,36 +42,36 @@
           <form class="needs-validation" method="post" name="formCadastro" action="../../../controller/cadastro/cadusuario.php" enctype="multipart/form-data">
             <div class="row g-3">
               <div class="col-sm-6">
-                <label for="nome" class="form-label">Nome</label>
-                <input name="txtNome" type="text" class="form-control" id="nome" placeholder="" value="" required="">
+                <label for="nome" class="form-label mb-0">Nome</label>
+                <input name="txtNome" type="text" class="form-control" id="nome" placeholder="Nome" value="" required="">
               </div>
 
               <div class="col-sm-6">
-                <label for="sobrenome" class="form-label">Sobrenome</label>
-                <input name="txtSobrenome" type="text" class="form-control" id="sobrenome" placeholder="" value="" required="">
+                <label for="sobrenome" class="form-label mb-0">Sobrenome</label>
+                <input name="txtSobrenome" type="text" class="form-control" id="sobrenome" placeholder="Sobrenome" value="" required="">
               </div>
 
               <div class="col-sm-12">
-                <label for="cpf" class="form-label">CPF</label>
-                <input oninput="mCPF(this)" name="txtCpf" type="text" class="form-control" id="cpf" placeholder="" value="" required="" maxlength="14">
+                <label for="cpf" class="form-label mb-0">CPF</label>
+                <input oninput="mCPF(this)" name="txtCpf" type="text" class="form-control" id="cpf" placeholder="CPF" value="" required="" maxlength="14">
               </div>
 
               <div class="col-12">
-                <label for="numero" class="form-label">Número</label>
-                <input onkeypress="mask(this, mphone);" onblur="mask(this, mphone);" name="txtNumero" type="tel" class="form-control" id="numero" placeholder="" maxlength="15">
+                <label for="numero" class="form-label mb-0">Número</label>
+                <input onkeypress="mask(this, mphone);" onblur="mask(this, mphone);" name="txtNumero" type="tel" class="form-control" id="numero" placeholder="Número" maxlength="15">
               </div>
               <div class="col-12">
-                <label for="email" class="form-label">E-mail </label>
-                <input name="txtEmail" type="email" class="form-control" id="email" placeholder="">
+                <label for="email" class="form-label mb-0">E-mail </label>
+                <input name="txtEmail" type="email" class="form-control" id="email" placeholder="E-mail">
               </div>
               <div class="col-sm-6">
-                <label for="senha" class="form-label">Senha</label>
-                <input name="txtSenha" type="password" class="form-control" id="senha" placeholder="" value="" required="">
+                <label for="senha" class="form-label mb-0">Senha</label>
+                <input name="txtSenha" type="password" class="form-control" id="senha" placeholder="Senha" value="" required="">
               </div>
 
               <div class="col-sm-6">
-                <label for="lastName" class="form-label">Confirme sua senha</label>
-                <input name="txtSenhaConf" type="password" class="form-control" id="lastName" placeholder="" value="" required="">
+                <label for="lastName" class="form-label mb-0">Confirme sua senha</label>
+                <input name="txtSenhaConf" type="password" class="form-control" id="lastName" placeholder="Confirme sua senha" value="" required="">
               </div>
             </div>
             <hr class="my-4">
