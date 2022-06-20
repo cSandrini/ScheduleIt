@@ -6,17 +6,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title> - Cadastro</title>
+    <title>ScheduleIt - Cadastro</title>
     
     <script src="script.js"></script>
     <link href="../../styles/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../styles/css/cover.css" rel="stylesheet">
   </head>
-  <body class="text-center">
+  <body class="text-center bg-light">
     <!-- HEADER -->
     <?php include '../parts/header.php';?>
 
-    <div class="bg-light pt-5">
+    <div class="pt-5">
       <div style="width: 40rem;" class="pb-3 bg-white rounded container border">
         <div class="py-2 text-center">
           <h2>Cadastro</h2>

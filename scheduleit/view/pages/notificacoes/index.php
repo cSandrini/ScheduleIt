@@ -11,7 +11,7 @@ include('../../../controller/protect.php');
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>EzBook - Notificações</title>
+    <title>ScheduleIt - Notificações</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../../styles/css/bootstrap.min.css" rel="stylesheet">

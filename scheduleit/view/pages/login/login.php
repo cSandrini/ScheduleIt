@@ -9,7 +9,7 @@ include('../../../controller/login/loginController.php');
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title> - Login</title>
+    <title>ScheduleIt - Login</title>
 
     <link href="../../styles/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../styles/css/cover.css" rel="stylesheet">

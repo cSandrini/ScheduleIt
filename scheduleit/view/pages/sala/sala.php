@@ -38,24 +38,7 @@
 
 
 
-<div class="masthead mb-auto" style="opacity: 30%; background-color:black; height: 80px;">
-  <div class="inner">
-    <h3 class="masthead-brand">
-      EzBook
-    </h3>
-    <nav class="nav nav-masthead justify-content-center">
-      <a class="nav-link active" href="#">
-        EzBook - Exemplo
-      </a>
-      <a class="nav-link" href="#">
-        Agendar
-      </a>
-      <a class="nav-link" href="#">
-        Contato
-      </a>
-    </nav>
-  </div>
-</div>
+<?php include "../parts/header.php"; ?>
 <div class="d-flex flex-nowrap">
   <div class="d-flex flex-column flex-shrink-0 p-3 text-white" style="width: 280px  ;height: auto; min-height: 900px; opacity: 30%; background-color:black;">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
@@ -189,7 +172,7 @@
             <button class="btn cal-btn" type="button" style="background-color: red;">7</button>
     
             <button class="btn cal-btn" type="button" style="background-color: red;">8</button>
-            <a href="../Reserva/Reserva.html"><button class="btn cal-btn" type="button">9</button></a>
+            <a href="../reserva/reserva.php"><button class="btn cal-btn" type="button">9</button></a>
             <button class="btn cal-btn" type="button">10</button>
             <button class="btn cal-btn" type="button">11</button>
             <button class="btn cal-btn" type="button">12</button>
@@ -410,6 +393,8 @@
         </div>
       </div>
     </div>
+            <?php include "../parts/footer.php"; ?>
+
         </div>
       </div>
     

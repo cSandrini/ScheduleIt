@@ -2,15 +2,10 @@
 <html lang="en">
 
 <head>
-  <title>
-    Compra de Funções
-  </title>
-  <link href="assets/css.css" rel="stylesheet">
-  <script src="assets/js.js">
-  </script>
+  <title>ScheduleIt - Comprar Sala</title>
+  <link href="../../styles/css/bootstrap.min.css" rel="stylesheet">
+  <script src="assets/js.js"></script>
 </head>
-
-
 
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="home" viewBox="0 0 16 16">
@@ -69,89 +64,71 @@
 
 
 
-<body style="background-color: #333;">
-  
-  <div id="divgrandona">
-    <header class="masthead mb-auto">
-      <div class="inner">
-        <h3 class="masthead-brand">
-          EzBook
-        </h3>
-        <nav class="nav nav-masthead justify-content-center">
-          <a class="nav-link active" href="#">
-            EzBook - Exemplo
-          </a>
-          <a class="nav-link" href="#">
-            Agendar
-          </a>
-          <a class="nav-link" href="#">
-            Contato
-          </a>
-        </nav>
-      </div>
-    </header>
-    <div class="container px-4 py-5">
-      <h2 class="pb-2 border-bottom">
+<body>
+<?php include "../parts/header.php"; ?>
+  <div class="mt-5 container">
+    <h4 class="text-center pb-2 border-bottom">
         Escolha as funções que você deseja para sua sala
-      </h2>
-      <ul class="func">      
-        <li class="borda">
-          <input name="payment_methods" type="checkbox" id="CheckMS" class="input1" onclick="FunMS()">
-          <label for="CheckMS" class="label1">
-            <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
-              <use xlink:href="#collection">
-              </use>
-            </svg>
-            <div>
-              <h4 class="fw-bold mb-0">
-                Multiplas salas
-              </h4>
-              <p >
-                Permite que o usuário gerêncie mais de uma sala com as funções já compradas.
-              </p>
-            </div>
-          </label>
-        </li>
-        <li class="borda">
-          <input name="payment_methods" type="checkbox" id="CheckMF" class="input1" onclick="FunMF()">
-          <label for="CheckMF" class="label1">
-            <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
-              <use xlink:href="#home">
-              </use>
-            </svg>
-            <div>
-              <h4 class="fw-bold mb-0">
-                Multiplos funcionários
-              </h4>
-              <p>
-                Permite que o usuário adicione mais de um funcionário em uma sala.
-              </p>
-            </div>
-          </label>
-        </li>
-        <li class="borda">
-          <input name="payment_methods" type="checkbox" id="CheckAF" class="input1" onclick="FunAF()">
-          <label for="CheckAF" class="label1">
-            <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
-              <use xlink:href="#calendar3">
-              </use>
-            </svg>
-            <div>
-              <h4 class="fw-bold mb-0">
-                Agendamento fixo
-              </h4>
-              
-              <p>
-                Permite que o cliente crie uma rotina de agendamento (ex: toda quarta-feira).
-              </p>
-            </div>
-          </label>
-        </li> 
-      </ul>
-    </div>
-    
-    <div class="row px-5">
+    </h4>
+    <div class="mt-5 row px-5">
       <div class="col-7">
+        <div>
+          <ul class="">      
+            <li class="list-unstyled">
+              <input name="payment_methods" type="checkbox" id="CheckMS" class="input1" onclick="FunMS()">
+              <label for="CheckMS" class="label1">
+                <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
+                  <use xlink:href="#collection">
+                  </use>
+                </svg>
+                <div class="">
+                  <p class="fw-bold mb-0">
+                    Multiplas salas
+                  </p>
+                  <p class="">
+                    Permite que o usuário gerêncie mais de uma sala com as funções já compradas.
+                  </p>
+                </div>
+              </label>
+            </li>
+            <li class="list-unstyled">
+              <input name="payment_methods" type="checkbox" id="CheckMF" class="input1" onclick="FunMF()">
+              <label for="CheckMF" class="label1">
+                <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
+                  <use xlink:href="#home">
+                  </use>
+                </svg>
+                <div>
+                  <p class="fw-bold mb-0">
+                    Multiplos funcionários
+                  </p>
+                  <p>
+                    Permite que o usuário adicione mais de um funcionário em uma sala.
+                  </p>
+                </div>
+              </label>
+            </li>
+            <li class="list-unstyled">
+              <input name="payment_methods" type="checkbox" id="CheckAF" class="input1" onclick="FunAF()">
+              <label for="CheckAF" class="label1">
+                <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
+                  <use xlink:href="#calendar3">
+                  </use>
+                </svg>
+                <div>
+                  <p class="fw-bold mb-0">
+                    Agendamento fixo
+                  </p>
+                  
+                  <p>
+                    Permite que o cliente crie uma rotina de agendamento (ex: toda quarta-feira).
+                  </p>
+                </div>
+              </label>
+            </li> 
+          </ul>
+        </div>
+
         <h4 class="label2">
           Pagamento
         </h4>
@@ -292,16 +269,7 @@
         </form>
       </div>
     </div> 
-  </div>  
+  </div>
+  <?php include "../parts/footer.php"; ?>  
 </body>
-
-<footer class="my-5 pt-5 text-muted text-center text-small">
-  <p class="mb-1">© 2022-2022 EzBook</p>
-  <ul class="list-inline">
-    <li class="list-inline-item"><a href="#">Sobre</a></li>
-    <li class="list-inline-item"><a href="#">Termos de uso</a></li>
-    <li class="list-inline-item"><a href="#">Ajuda</a></li>
-  </ul>
-</footer>
-
 </html>
