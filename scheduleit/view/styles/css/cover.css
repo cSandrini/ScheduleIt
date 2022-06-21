@@ -1,0 +1,60 @@
+body {
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.botaofunc {
+  position: absolute;
+  opacity: 0;
+}
+.label1 {
+  position: relative;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: white;
+  cursor: pointer;
+}
+.borda {
+  box-sizing: border-box;
+  float: left;
+  height: auto;
+  width: auto;
+  display: flex;
+  color: black;
+}
+
+/* AGENDAS / CALENDARIOS */
+.cal-month,
+.cal-days,
+.cal-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  align-items: center;
+}
+.cal-month-name {
+  grid-column-start: 2;
+  grid-column-end: 7;
+  text-align: center;
+}
+.cal-weekday,
+.cal-btn {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  padding: 0;
+}
+.cal-btn:not([disabled]) {
+  font-weight: 500;
+}
+.cal-btn:hover,
+.cal-btn:focus {
+  background-color: rgba(0, 0, 0, .05);
+}
+.cal-btn[disabled] {
+  border: 0;
+  opacity: .5;
+}
