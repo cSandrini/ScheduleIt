@@ -12,10 +12,10 @@
   <?php include "../parts/header.php"; ?>
   <div class="container p-3">
       <div class="d-flex align-items-center p-3 text-white bg-secondary rounded">
-        <img class='mr-3 rounded' src='assets/IMG/Beto.jpg' alt='' width='48' height='48'>
+        <img class='mr-3 rounded' src='assets/IMG/blank.png' alt='' width='48' height='48'>
         <div class="lh-100 mr-auto">
-          <h6 class="mb-0 lh-100">Pedro</h6>
-          <small>Barbearia Premium</small>
+          <h6 class="mb-0 lh-100">Funcionário</h6>
+          <small>Estabelecimento</small>
         </div>
         <a style="text-decoration:none;" class="btn btn-outline-light btn-sm" href="../sala/sala.php">Voltar</a>
       </div>

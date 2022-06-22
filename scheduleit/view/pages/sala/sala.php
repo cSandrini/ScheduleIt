@@ -6,6 +6,7 @@
 
   <link href="../../styles/css/bootstrap.min.css" rel="stylesheet">
   <link href="../../styles/css/cover.css" rel="stylesheet">
+  <script src="assets/js.js"></script>
 </head>
 
 <body class="bg-light">
@@ -20,6 +21,9 @@
 </svg>
 
 <style>
+.desabilitado{
+  cursor: default;
+}
   .dropdown {
     position: relative;
     display: inline-block;
@@ -46,8 +50,8 @@
 <div class="container border rounded bg-white p-0 mt-5 rounded">
   <div>
     <div>
-      <div style="background-image: url('assets/IMG/banner.jpg'); width: 100%; height: 180px; background-size: cover; background-repeat: no-repeat;">
-        <img src="assets/IMG/bootstrap-logo.svg" alt="" width="180" height="180" class="rounded-circle me-2" style="padding: 15px;">
+      <div class="w-100 rounded bg-info">
+        <img src="assets/IMG/blank.png" alt="" width="180" height="180" class="rounded-circle me-2" style="padding: 15px;">
       </div>
       <div class="card-body p-0 pt-3">
         <h4 class="card-title text-center">Nome do estabelecimento</h4> 
@@ -57,8 +61,8 @@
             <p class="card-text">Descrição do estabelecimento <br> Endereço <br> Horário de atendimento <br> telefone <br> etc </p> 
           </div>
           <div class="col-2 p-0 mr-2">
-            <label for="list">Selecione a cidade</label>
-            <select class="form-select w-100" name="list">
+            <select class="form-select w-100" name="list" id="combom"  onclick="cidades()">
+              <option value="0" selected="selected" id="inicio">Selecione a cidade</option>
               <option value="1">Colatina</option>
               <option value="2">Marilândia</option>
               <option value="3">Santa Teresa</option>
@@ -69,13 +73,13 @@
     </div>
     <hr class="my-4">
     <div class="d-flex justify-content-around mb-3">
-      <div class="dropdown">
+      <div class="dropdown" id="beto" style="display: none;">
         <button class="botaofunc">
           <p>Funcionário 1</p>
         </button>
 
         <label for="botaofunc" class="align-items-center borda border rounded pr-2 bg-light">
-          <img src="assets/IMG/Beto.jpg" alt="" width="80" height="80" class="rounded mr-2">
+          <img src="assets/IMG/blank.png" alt="" width="80" height="80" class="rounded mr-2">
           <div class="">
             <h4 class="fw-bold mb-0">
               Nome do Funcionário
@@ -88,13 +92,13 @@
 
         <div class="cal dropdown-content rounded border">
           <div class="d-flex flex-nowrap">
-            <img src="assets/IMG/Beto.jpg" alt="" width="40" height="40" class="rounded me-2 mb-2 mr-2">
+            <img src="assets/IMG/blank.png" alt="" width="40" height="40" class="rounded me-2 mb-2 mr-2">
             <h4 class="fw-bold mb-0">
               Nome do Funcionário
             </h4>
           </div>
           <div class="cal-month">
-            <button class="btn cal-btn" type="button">
+            <button class="btn cal-btn" type="button" style="background-color: white;">
               <svg class="bi" width="16" height="16"><use xlink:href="#arrow-left-short"></use></svg>
             </button>
             <strong class="cal-month-name">Junho</strong>
@@ -112,7 +116,7 @@
               <option value="November">Novembro</option>
               <option value="December">Dezembro</option>
             </select>
-            <button class="btn cal-btn" type="button">
+            <button class="btn cal-btn" type="button" style="background-color: white;">
               <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-short"></use></svg>
             </button>
           </div>
@@ -126,8 +130,8 @@
             <div class="cal-weekday">Sab</div>
           </div>
           <div class="cal-days">
-            <button class="btn cal-btn" disabled="" type="button">30</button>
-            <button class="btn cal-btn" disabled="" type="button">31</button>
+            <button class="btn cal-btn desabilitado" disabled="" type="button" style="background-color: white;">30</button>
+            <button class="btn cal-btn desabilitado" disabled="" type="button" style="background-color: white;">31</button>
     
             <button class="btn cal-btn" type="button" style="background-color: red;">1</button>
             <button class="btn cal-btn" type="button" style="background-color: red;">2</button>
@@ -138,42 +142,42 @@
             <button class="btn cal-btn" type="button" style="background-color: red;">7</button>
     
             <button class="btn cal-btn" type="button" style="background-color: red;">8</button>
-            <button class="btn cal-btn" type="button"><a href="../reserva/reserva.php">9</a></button>
-            <button class="btn cal-btn" type="button">10</button>
-            <button class="btn cal-btn" type="button">11</button>
-            <button class="btn cal-btn" type="button">12</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;"><a href="../reserva/reserva.php">9</a></button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">10</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">11</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">12</button>
             <button class="btn cal-btn" type="button" style="background-color: red;">13</button>
-            <button class="btn cal-btn" type="button">14</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">14</button>
     
-            <button class="btn cal-btn" type="button">15</button>
-            <button class="btn cal-btn" type="button">16</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">15</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">16</button>
             <button class="btn cal-btn" type="button" style="background-color: red;">17</button>
-            <button class="btn cal-btn" type="button">18</button>
-            <button class="btn cal-btn" type="button">19</button>
-            <button class="btn cal-btn" type="button">20</button>
-            <button class="btn cal-btn" type="button">21</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">18</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">19</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">20</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">21</button>
     
             <button class="btn cal-btn" type="button" style="background-color: red;">22</button>
             <button class="btn cal-btn" type="button" style="background-color: red;">23</button>
             <button class="btn cal-btn" type="button" style="background-color: red;">24</button>
-            <button class="btn cal-btn" type="button">25</button>
-            <button class="btn cal-btn" type="button">26</button>
-            <button class="btn cal-btn" type="button">27</button>
-            <button class="btn cal-btn" type="button">28</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">25</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">26</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">27</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">28</button>
     
-            <button class="btn cal-btn" type="button">29</button>
-            <button class="btn cal-btn" type="button">30</button>
-            <button class="btn cal-btn" type="button">31</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">29</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">30</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">31</button>
           </div>
         </div>
       </div>
-      <div class="dropdown">
+      <div  id="joao" class="dropdown" style="display:none">
         <button class="botaofunc">
           <p>Funcionário 1</p>
         </button>
 
         <label for="botaofunc" class="align-items-center borda border rounded pr-2 bg-light">
-          <img src="assets/IMG/Joao.jpg" alt="" width="80" height="80" class="rounded mr-2">
+          <img src="assets/IMG/blank.png" alt="" width="80" height="80" class="rounded mr-2">
           <div class="">
             <h4 class="fw-bold mb-0">
               Nome do Funcionário
@@ -186,13 +190,13 @@
 
         <div class="cal dropdown-content rounded border">
           <div class="d-flex flex-nowrap">
-            <img src="assets/IMG/Joao.jpg" alt="" width="40" height="40" class="rounded me-2 mb-2 mr-2">
+            <img src="assets/IMG/blank.png" alt="" width="40" height="40" class="rounded me-2 mb-2 mr-2">
             <h4 class="fw-bold mb-0">
               Nome do Funcionário
             </h4>
           </div>
           <div class="cal-month">
-            <button class="btn cal-btn" type="button">
+            <button class="btn cal-btn" type="button" style="background-color: white;">
               <svg class="bi" width="16" height="16"><use xlink:href="#arrow-left-short"></use></svg>
             </button>
             <strong class="cal-month-name">Junho</strong>
@@ -210,7 +214,7 @@
               <option value="November">Novembro</option>
               <option value="December">Dezembro</option>
             </select>
-            <button class="btn cal-btn" type="button">
+            <button class="btn cal-btn" type="button" style="background-color: white;">
               <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-short"></use></svg>
             </button>
           </div>
@@ -224,54 +228,54 @@
             <div class="cal-weekday">Sab</div>
           </div>
           <div class="cal-days">
-            <button class="btn cal-btn" disabled="" type="button">30</button>
-            <button class="btn cal-btn" disabled="" type="button">31</button>
+            <button class="btn cal-btn desabilitado" disabled="" type="button" style="background-color: white;">30</button>
+            <button class="btn cal-btn desabilitado" disabled="" type="button" style="background-color: white;">31</button>
     
-            <button class="btn cal-btn" type="button">1</button>
-            <button class="btn cal-btn" type="button">2</button>
-            <button class="btn cal-btn" type="button">3</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">1</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">2</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">3</button>
             <button class="btn cal-btn" type="button" style="background-color: red;">4</button>
             <button class="btn cal-btn" type="button" style="background-color: red;">5</button>
-            <button class="btn cal-btn" type="button">6</button>
-            <button class="btn cal-btn" type="button">7</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">6</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">7</button>
     
-            <button class="btn cal-btn" type="button">8</button>
-            <button class="btn cal-btn" type="button">9</button>
-            <button class="btn cal-btn" type="button">10</button>
-            <button class="btn cal-btn" type="button">11</button>
-            <button class="btn cal-btn" type="button">12</button>
-            <button class="btn cal-btn" type="button">13</button>
-            <button class="btn cal-btn" type="button">14</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">8</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">9</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">10</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">11</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">12</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">13</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">14</button>
     
-            <button class="btn cal-btn" type="button">15</button>
-            <button class="btn cal-btn" type="button">16</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">15</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">16</button>
             <button class="btn cal-btn" type="button" style="background-color: red;">17</button>
-            <button class="btn cal-btn" type="button">18</button>
-            <button class="btn cal-btn" type="button">19</button>
-            <button class="btn cal-btn" type="button">20</button>
-            <button class="btn cal-btn" type="button">21</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">18</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">19</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">20</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">21</button>
     
-            <button class="btn cal-btn" type="button">22</button>
-            <button class="btn cal-btn" type="button">23</button>
-            <button class="btn cal-btn" type="button">24</button>
-            <button class="btn cal-btn" type="button">25</button>
-            <button class="btn cal-btn" type="button">26</button>
-            <button class="btn cal-btn" type="button">27</button>
-            <button class="btn cal-btn" type="button">28</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">22</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">23</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">24</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">25</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">26</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">27</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">28</button>
     
-            <button class="btn cal-btn" type="button">29</button>
-            <button class="btn cal-btn" type="button">30</button>
-            <button class="btn cal-btn" type="button">31</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">29</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">30</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">31</button>
           </div>
         </div>
       </div>
 
-      <div class="dropdown">
+      <div class="dropdown" id="rafael" style="display: none;">
         <button class="botaofunc"><p>Funcionário 1</p>
         </button>
 
         <label for="botaofunc" class="align-items-center borda border rounded pr-2 bg-light">
-          <img src="assets/IMG/Rafael.jpg" alt="" width="80" height="80" class="rounded mr-2">
+          <img src="assets/IMG/blank.png" alt="" width="80" height="80" class="rounded mr-2">
           <div class="">
             <h4 class="fw-bold mb-0">
               Nome do Funcionário
@@ -284,13 +288,13 @@
 
         <div class="cal dropdown-content rounded border">
           <div class="d-flex flex-nowrap">
-            <img src="assets/IMG/Rafael.jpg" alt="" width="40" height="40" class="rounded me-2 mb-2 mr-2">
+            <img src="assets/IMG/blank.png" alt="" width="40" height="40" class="rounded me-2 mb-2 mr-2">
             <h4 class="fw-bold mb-0">
               Nome do Funcionário
             </h4>
           </div>
           <div class="cal-month">
-            <button class="btn cal-btn" type="button">
+            <button class="btn cal-btn" type="button" style="background-color: white;">
               <svg class="bi" width="16" height="16"><use xlink:href="#arrow-left-short"></use></svg>
             </button>
             <strong class="cal-month-name">Junho</strong>
@@ -308,7 +312,7 @@
               <option value="November">Novembro</option>
               <option value="December">Dezembro</option>
             </select>
-            <button class="btn cal-btn" type="button">
+            <button class="btn cal-btn" type="button" style="background-color: white;">
               <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-short"></use></svg>
             </button>
           </div>
@@ -322,44 +326,44 @@
             <div class="cal-weekday">Sab</div>
           </div>
           <div class="cal-days">
-            <button class="btn cal-btn" disabled="" type="button">30</button>
-            <button class="btn cal-btn" disabled="" type="button">31</button>
+            <button class="btn cal-btn desabilitado" disabled="" type="button" style="background-color: white;">30</button>
+            <button class="btn cal-btn desabilitado" disabled="" type="button" style="background-color: white;">31</button>
     
-            <button class="btn cal-btn" type="button">1</button>
-            <button class="btn cal-btn" type="button">2</button>
-            <button class="btn cal-btn" type="button">3</button>
-            <button class="btn cal-btn" type="button">4</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">1</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">2</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">3</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">4</button>
             <button class="btn cal-btn" type="button" style="background-color: red;">5</button>
             <button class="btn cal-btn" type="button" style="background-color: red;">6</button>
-            <button class="btn cal-btn" type="button">7</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">7</button>
     
-            <button class="btn cal-btn" type="button">8</button>
-            <button class="btn cal-btn" type="button">9</button>
-            <button class="btn cal-btn" type="button">10</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">8</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">9</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">10</button>
             <button class="btn cal-btn" type="button" style="background-color: red;">11</button>
             <button class="btn cal-btn" type="button" style="background-color: red;">12</button>
             <button class="btn cal-btn" type="button" style="background-color: red;">13</button>
-            <button class="btn cal-btn" type="button">14</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">14</button>
     
-            <button class="btn cal-btn" type="button">15</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">15</button>
             <button class="btn cal-btn" type="button" style="background-color: red;">16</button>
-            <button class="btn cal-btn" type="button">17</button>
-            <button class="btn cal-btn" type="button">18</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">17</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">18</button>
             <button class="btn cal-btn" type="button" style="background-color: red;">19</button>
             <button class="btn cal-btn" type="button" style="background-color: red;">20</button>
-            <button class="btn cal-btn" type="button">21</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">21</button>
     
             <button class="btn cal-btn" type="button" style="background-color: red;">22</button>
-            <button class="btn cal-btn" type="button">23</button>
-            <button class="btn cal-btn" type="button">24</button>
-            <button class="btn cal-btn" type="button">25</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">23</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">24</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">25</button>
             <button class="btn cal-btn" type="button" style="background-color: red;">26</button>
             <button class="btn cal-btn" type="button" style="background-color: red;">27</button>
-            <button class="btn cal-btn" type="button">28</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">28</button>
     
-            <button class="btn cal-btn" type="button">29</button>
-            <button class="btn cal-btn" type="button">30</button>
-            <button class="btn cal-btn" type="button">31</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">29</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">30</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">31</button>
           </div>
         </div>
       </div>
