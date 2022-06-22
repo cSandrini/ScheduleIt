@@ -3,6 +3,8 @@
   flex-direction: row;
 }
 
+
+
 .imgtopo{
     height: 250px;
     width: 70%;
@@ -123,7 +125,10 @@
   .w-600px {
     width: 600px;
   }
-  
+  .input1[type="button"] {
+    position: absolute;
+    opacity: 0;
+  }
 /*!
  * Bootstrap v5.2.0-beta1 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors

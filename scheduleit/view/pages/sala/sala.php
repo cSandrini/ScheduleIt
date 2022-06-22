@@ -4,9 +4,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sala de agendamento</title>
 
-  <link href="../../styles/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <link href="../../styles/css/cover.css" rel="stylesheet">
   <script src="assets/js.js"></script>
+
 </head>
 
 <body class="bg-light">
@@ -56,18 +57,21 @@
       <div class="card-body p-0 pt-3">
         <h4 class="card-title text-center">Nome do estabelecimento</h4> 
         <hr>
-        <div class="px-4 d-flex">
-          <div class="col-2 border rounded p-2 mr-2 bg-light">
+        <div class="px-4 d-flex justify-content-between">
+          <div class="col-3 border rounded p-2 mr-2 bg-light">
             <p class="card-text">Descrição do estabelecimento <br> Endereço <br> Horário de atendimento <br> telefone <br> etc </p> 
           </div>
-          <div class="col-2 p-0 mr-2">
-            <select class="form-select w-100" name="list" id="combom"  onclick="cidades()">
+          <div class="col-4">
+            <select class="form-select" aria-label="Default select example" name="list" id="combom"  onclick="cidades()">
               <option value="0" selected="selected" id="inicio">Selecione a cidade</option>
               <option value="1">Colatina</option>
               <option value="2">Marilândia</option>
               <option value="3">Santa Teresa</option>
             </select>  
           </div>
+          <iframe class="border rounded" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1880.3365441818912!2d-40.6202736947007!3d-19.51269574405797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb7a90cf2f75401%3A0xb0adb4b9ee222958!2sBarbearia%20Vieira!5e0!3m2!1spt-BR!2sbr!4v1655906175079!5m2!1spt-BR!2sbr"
+           width="300" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+           </iframe>
         </div>
       </div>
     </div>
