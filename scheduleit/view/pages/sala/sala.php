@@ -52,7 +52,7 @@
   <div>
     <div>
       <div class="w-100 rounded bg-info">
-        <img src="assets/IMG/blank.png" alt="" width="180" height="180" class="rounded-circle me-2" style="padding: 15px;">
+        <img src="assets/IMG/blank.png" alt="" width="180" height="180" class="rounded p-3">
       </div>
       <div class="card-body p-0 pt-3">
         <h4 class="card-title text-center">Nome do estabelecimento</h4> 

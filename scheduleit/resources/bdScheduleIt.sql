@@ -27,11 +27,12 @@ CREATE TABLE IF NOT EXISTS `scheduleit`.`usuarios` (
   `email` VARCHAR(100) NULL,
   `senha` VARCHAR(50) NULL,
   `imagem` BLOB NULL,
+  `permissao` TINYINT NULL,
   PRIMARY KEY (`id`)
   )
 ENGINE = InnoDB;
 
-INSERT INTO scheduleit.usuarios (id, nome, sobrenome, cpf, numero, email, senha, imagem) VALUES (1, 'Admin', NULL, NULL, NULL, 'admin', '123', NULL);
+INSERT INTO scheduleit.usuarios (id, nome, sobrenome, cpf, numero, email, senha, imagem, permissao) VALUES (1, 'Admin', NULL, NULL, NULL, 'admin', '123', NULL, 9);
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
