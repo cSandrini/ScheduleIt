@@ -128,6 +128,32 @@
           </div>
 
           <h4 class="label2">
+            Configurações
+          </h4>
+          <div class="my-3">
+            <div>
+              <label class="label2" for="credit">
+                Nome da Sala
+              </label>
+              <input id="nomeSala" name="nomeSala" class="form-control" required="">
+            </div>
+            <div>
+              <label class="label2" for="tipos">
+                Tipo de Estabelecimento
+              </label>
+
+              <select class="form-control" name="tipos" id="tipos" aria-label="Default select example">
+                <option value="barbearia">Escolha uma classificação</option>]
+                <option value="barbearia">Barbearia</option>
+                <option value="salao">Salão</option>
+                <option value="consultorio">Consultório</option>
+                <option value="dentista">Dentista</option>
+                <option value="mecanica">Mecanica</option>
+              </select>
+            </div>
+          </div>
+
+          <h4 class="label2">
             Pagamento
           </h4>
           <div class="my-3">
