@@ -1,5 +1,6 @@
 valor = 0;
 contagem = 0;
+usado = false;
 function Atualização(){
   var total = 0
   if (valor < 0 ){
@@ -60,11 +61,13 @@ function PromoCode(){
   var promo = document.getElementById("PC");
   var txt = document.getElementById("PromoTXT").value;
   var promoccode = txt.toLowerCase()
-
-  if (promoccode == "scheduleit"){
-  promo.style.display = "block";
-  valor = valor -5;
-  } 
+  if (usado == false){
+    if (promoccode == "scheduleit"){
+      promo.style.display = "block";
+      usado = true;
+      valor = valor -5;
+    } 
+  }
   document.getElementById("PromoTXT").value="";
   Atualização();
 }
