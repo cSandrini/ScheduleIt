@@ -9,15 +9,65 @@
 <body class="bg-light">
     <!-- HEADER -->
     <?php include '../parts/header.php';?>
-    <?php include '../../../model/conexaobd';?>
 
     <?php
         // Exibir caso não ache nenhum departamento
-        //if (isset($mensagem)) {  // Verifica se tem mensagem de ERRO
-            echo "<br><div class='alert alert-danger col-md-2 text-center mx-auto' role='alert'>
-                    Nenhum departamento encontrado.
-                </div>";
+        //if (isset($mensagem)) {  // Verifica se tem mensagem de ERRO 
+            
+            //echo "<br><div class='alert alert-danger col-md-2 text-center mx-auto' role='alert'>
+            //         Nenhum departamento encontrado.
+            //     </div>";
+                
         //}
+
+
+        //Conexao no método PDO (?)
+        $con = new PDO("mysql:host=localhost;dbname=scheduleit",'root','');
+        if(isset($_POST["submit"])) {
+
+            $str = $_POST["busca"];
+
+            $search_string = "SELECT * FROM usuarios WHERE ";
+            $display_words = "";
+                                
+            // format each of search keywords into the db query to be run
+            $keywords = explode(' ', $str);			
+            foreach ($keywords as $word){
+                if (strlen($word) > 3){
+                $search_string .= "nome LIKE '%".$word."%' OR ";
+                $display_words .= $word.' ';
+                };
+            }
+            $search_string = substr($search_string, 0, strlen($search_string)-4);
+            $display_words = substr($display_words, 0, strlen($display_words)-1);
+
+            echo $search_string;
+            
+
+            $sth = $con->prepare("$search_string");
+
+
+            $sth->setFetchMode(PDO:: FETCH_OBJ);
+            $sth->execute();
+
+            if($row = $sth->fetch()) {
+                ?>
+                    <div class="container pt-3">
+                        <div class="row justify-content-center">
+                            <div style="width: 22rem; height: 15rem;" class="d-flex border rounded bg-white mr-2 mb-2">
+                                <a><?php echo $row->nome; ?></a>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+            }
+            
+            else{
+                echo "<br><div class='alert alert-danger col-md-2 text-center mx-auto' role='alert'>
+                Nenhum resultado encontrado.
+            </div>";
+        }
+    }
     ?>
 
     <!--
@@ -29,36 +79,6 @@
     </div>
     -->
     
-    <?php
-    // Pega os termos pesquisados do URL (get)
-    $busca = isset($_GET['busca']) ? $_GET['busca'] : '';
-
-    // Cria a Variável para pesquisar no banco
-    $stringBusca = "SELECT * FROM search_engine WHERE ";
-    $mostrarPalavra = "";
-					
-    // Coloca cada palavra pesquisada na variável de pesquisa
-    $keywords = explode(' ', $busca);			
-    foreach ($keywords as $palavra){
-    	$stringBusca .= "keywords LIKE '%".$palavra."%' OR ";
-    	$mostrarPalavra .= $palavra.' ';
-    }
-    $stringBusca = substr($stringBusca, 0, strlen($stringBusca)-4);
-    $mostrarPalavra = substr($mostrarPalavra, 0, strlen($mostrarPalavra)-1);
-    //echo $stringBusca
-    echo $result_count;
-
-    // connect to the database
-    $conexao = conectarbd()
-
-    // run the query in the db and search through each of the records returned
-    $query = mysqli_query($conexao, $stringBusca);
-    $result_count = mysqli_num_rows($query);
-
-    // display a message to the user to display the keywords
-    echo '<div class="right"><b><u>'.number_format($result_count).'</u></b> results found</div>';
-    echo 'Your search for <i>"'.$mostrarPalavra.'"</i><hr />';
-    ?>
     
     <!-- FOOTER -->
     <?php include '../parts/footer.php';?>
