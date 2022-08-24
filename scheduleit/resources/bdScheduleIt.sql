@@ -9,9 +9,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 DROP SCHEMA IF EXISTS `scheduleit` ;
 
--- -----------------------------------------------------
--- Schema scheduleit
--- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `scheduleit` DEFAULT CHARACTER SET utf8 ;
 USE `scheduleit` ;
 

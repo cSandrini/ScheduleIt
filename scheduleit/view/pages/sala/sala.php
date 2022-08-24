@@ -143,7 +143,7 @@ h1 { font-size: 1.5em; margin: 10px; }
             </p>
           </div>
         </label>
-
+        
         <div class="cal dropdown-content rounded border">
           <div class="d-flex flex-nowrap">
             <img src="assets/IMG/blank.png" alt="" width="40" height="40" class="rounded me-2 mb-2 mr-2">

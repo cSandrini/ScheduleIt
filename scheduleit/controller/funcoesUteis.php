@@ -32,6 +32,29 @@
 
         return $msgErro;
     }
+
+    function validarDadosSala($nome, $numero, $email, $endereco) {
+    
+        $msgErro = "";
+
+        if (empty($nome)) {
+            $msgErro = $msgErro . "NOME inválido! <BR>";
+        }
+
+        if ( empty($numero) ) {
+            $msgErro = $msgErro . "NÚMERO inválido! <BR>";
+        }
+
+        if ( empty($email) ) {
+            $msgErro = $msgErro . "EMAIL inválido! <BR>";
+        }
+
+        if ( empty($endereco) ) {
+            $msgErro = $msgErro . "ENDEREÇO inválido! <BR>";
+        }
+
+        return $msgErro;
+    }
     
     function validarDadosAtt($id, $imagem, $senha) {
         $msgErro = "";

@@ -1,3 +1,9 @@
+<?php
+
+include('../../../controller/protect.php');
+
+?>
+
 <!doctype html>
 <html>
   <head>
@@ -39,7 +45,10 @@
                   
               }
           ?>
-          <form class="needs-validation" method="post" name="formCadastro" action="../../../controller/cadastro/cadusuario.php" enctype="multipart/form-data">
+          <form class="needs-validation" method="post" name="formCadastro" action="../../../controller/cadastro/cadsala.php" enctype="multipart/form-data">
+            
+            <input style="display:none;" name="idProprietario" type="text" value="<?php echo $_SESSION['id'];?>"> 
+
             <div class="row g-3">
               <div class="col-sm-12">
                 <label for="nome" class="form-label mb-0">Nome do Estabelecimento</label>
@@ -48,17 +57,17 @@
 
               <div class="col-12">
                 <label for="numero" class="form-label mb-0">Número</label>
-                <input onkeypress="mask(this, mphone);" onblur="mask(this, mphone);" name="txtNumero" type="tel" class="form-control" id="numero" placeholder="Número" maxlength="15">
+                <input onkeypress="mask(this, mphone);" onblur="mask(this, mphone);" name="txtNumero" type="tel" class="form-control" id="numero" placeholder="Número" maxlength="15" required="">
               </div>
 
               <div class="col-12">
                 <label for="email" class="form-label mb-0">E-mail </label>
-                <input name="txtEmail" type="email" class="form-control" id="email" placeholder="E-mail">
+                <input name="txtEmail" type="email" class="form-control" id="email" placeholder="E-mail" required=""> 
               </div>
 
               <div class="col-12">
                 <label for="Endereco" class="form-label mb-0">Endereço </label>
-                <input name="txtEndereco" type="endereco" class="form-control" id="endereco" placeholder="Endereço">
+                <input name="txtEndereco" type="endereco" class="form-control" id="endereco" placeholder="Endereço" required="">
               </div>
 
             </div>

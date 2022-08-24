@@ -1,6 +1,6 @@
 <?php
 function carregarConfig($conexao, $id) {
-    $sql = "SELECT * FROM usuarios WHERE id = '$id'";
+    $sql = "SELECT * FROM usuario WHERE id = '$id'";
     
     // Executar no banco de dados
     $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );
@@ -22,7 +22,7 @@ function inserirImagem($conexao, $imagem, $id) {
     $arqAberto = fopen($imagem["tmp_name"], "r");
     $imagem = addslashes(fread($arqAberto,$tamanhoImg));
     
-    $sql = "UPDATE usuarios SET imagem='$imagem' WHERE id=$id";
+    $sql = "UPDATE usuario SET imagem='$imagem' WHERE id=$id";
     $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );
 }
 ?>
