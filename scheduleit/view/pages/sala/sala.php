@@ -24,11 +24,7 @@
 </svg>
 
 <style>
-  .estrela{
-    height: 100%;
-
-  }
-
+  
   .dropdown {
     position: relative;
     display: inline-block;
@@ -45,11 +41,6 @@
   
   .dropdown:hover .dropdown-content {
     display: block;
-  }
-
-  .estrelinha{
-    display:flex;
-    align-items: left;
   }
 
   fieldset, label { margin: 0; padding: 0; }
@@ -99,10 +90,7 @@ h1 { font-size: 1.5em; margin: 10px; }
   <div>
     <div>
       <div class="w-100 rounded bg-info">
-        <div class="estrelinha">
         <img src="assets/IMG/blank.png" alt="" width="180" height="180" class="rounded p-3">
-        
-        </div>
       </div>
       <div class="card-body p-0 pt-3">
         <h4 class="card-title text-center">Nome do estabelecimento</h4> 
