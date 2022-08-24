@@ -24,32 +24,34 @@
         //Conexao no método PDO (?)
         $con = new PDO("mysql:host=localhost;dbname=scheduleit",'root','');
         if(isset($_POST["submit"])) {
-
             $str = $_POST["busca"];
 
-            $search_string = "SELECT * FROM usuarios WHERE ";
+            $search_string = "SELECT * FROM usuario WHERE ";
             $display_words = "";
                                 
             // format each of search keywords into the db query to be run
-            $keywords = explode(' ', $str);			
+            $keywords = explode(' ', $str);
+            $multiple = FALSE;
             foreach ($keywords as $word){
                 if (strlen($word) > 3){
-                $search_string .= "nome LIKE '%".$word."%' OR ";
-                $display_words .= $word.' ';
-                };
-            }
+                    $search_string .= "nome LIKE '%".$word."%' OR ";
+                    $display_words .= $word.' ';
+                    $multiple = TRUE;
+                }
+            };
+
+            if ($multiple == TRUE){
             $search_string = substr($search_string, 0, strlen($search_string)-4);
             $display_words = substr($display_words, 0, strlen($display_words)-1);
-
             echo $search_string;
-            
 
             $sth = $con->prepare("$search_string");
-
+            
+            
 
             $sth->setFetchMode(PDO:: FETCH_OBJ);
             $sth->execute();
-
+            
             if($row = $sth->fetch()) {
                 ?>
                     <div class="container pt-3">
@@ -60,14 +62,19 @@
                         </div>
                     </div>
                 <?php
-            }
-            
-            else{
+                } else {
+                    echo "<br><div class='alert alert-danger col-md-2 text-center mx-auto' role='alert'>
+                Nenhum resultado encontrado.
+            </div>";
+                }
+
+            } else if ($multiple == FALSE) {
                 echo "<br><div class='alert alert-danger col-md-2 text-center mx-auto' role='alert'>
                 Nenhum resultado encontrado.
             </div>";
+            }
         }
-    }
+
     ?>
 
     <!--
