@@ -15,16 +15,20 @@
   <symbol id="arrow-left-short" viewBox="0 0 16 16">
     <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"></path>
   </symbol>
-  
+  <symbol id="star" viewBox="0 0 16 16">
+  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+  </symbol>
   <symbol id="arrow-right-short" viewBox="0 0 16 16">
     <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"></path>
   </symbol>
 </svg>
 
 <style>
-.desabilitado{
-  cursor: default;
-}
+  .estrela{
+    height: 100%;
+
+  }
+
   .dropdown {
     position: relative;
     display: inline-block;
@@ -42,6 +46,49 @@
   .dropdown:hover .dropdown-content {
     display: block;
   }
+
+  .estrelinha{
+    display:flex;
+    align-items: left;
+  }
+
+  fieldset, label { margin: 0; padding: 0; }
+body{ margin: 20px; }
+h1 { font-size: 1.5em; margin: 10px; }
+
+/****** Style Star Rating Widget *****/
+
+.rating { 
+  border: none;
+  float: left;
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 5px;
+  font-size: 40px;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "★";
+}
+
+
+
+.rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
 </style>
 
 
@@ -52,7 +99,10 @@
   <div>
     <div>
       <div class="w-100 rounded bg-info">
+        <div class="estrelinha">
         <img src="assets/IMG/blank.png" alt="" width="180" height="180" class="rounded p-3">
+        
+        </div>
       </div>
       <div class="card-body p-0 pt-3">
         <h4 class="card-title text-center">Nome do estabelecimento</h4> 
@@ -61,18 +111,30 @@
           <div class="col-3 border rounded p-2 mr-2 bg-light">
             <p class="card-text">Descrição do estabelecimento <br> Endereço <br> Horário de atendimento <br> telefone <br> etc </p> 
           </div>
-          <div class="col-4">
-            <select class="form-select" aria-label="Default select example" name="list" id="combom"  onclick="cidades()">
-              <option value="0" selected="selected" id="inicio">Selecione a cidade</option>
-              <option value="1">Colatina</option>
-              <option value="2">Marilândia</option>
-              <option value="3">Santa Teresa</option>
-            </select>  
+          <div>
+            <div class="pb-5">
+              <select class="form-select" aria-label="Default select example" name="list" id="combom"  onclick="cidades()">
+                <option value="0" selected="selected" id="inicio">Selecione a cidade</option>
+                <option value="1">Colatina</option>
+                <option value="2">Marilândia</option>
+                <option value="3">Santa Teresa</option>
+              </select>  
+            </div>
+            <div class="pt-5">
+              <fieldset class="rating">
+                <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+              </fieldset>
+            </div>
           </div>
           <iframe class="border rounded" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1880.3365441818912!2d-40.6202736947007!3d-19.51269574405797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb7a90cf2f75401%3A0xb0adb4b9ee222958!2sBarbearia%20Vieira!5e0!3m2!1spt-BR!2sbr!4v1655906175079!5m2!1spt-BR!2sbr"
            width="300" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-           </iframe>
+          </iframe>
         </div>
+        
       </div>
     </div>
     <hr class="my-4">
@@ -134,8 +196,8 @@
             <div class="cal-weekday">Sab</div>
           </div>
           <div class="cal-days">
-            <button class="btn cal-btn desabilitado" disabled="" type="button" style="background-color: white;">30</button>
-            <button class="btn cal-btn desabilitado" disabled="" type="button" style="background-color: white;">31</button>
+            <button class="btn cal-btn " disabled="" type="button" style="background-color: white;">30</button>
+            <button class="btn cal-btn " disabled="" type="button" style="background-color: white;">31</button>
     
             <button class="btn cal-btn" type="button" style="background-color: red;">1</button>
             <button class="btn cal-btn" type="button" style="background-color: red;">2</button>
@@ -232,8 +294,8 @@
             <div class="cal-weekday">Sab</div>
           </div>
           <div class="cal-days">
-            <button class="btn cal-btn desabilitado" disabled="" type="button" style="background-color: white;">30</button>
-            <button class="btn cal-btn desabilitado" disabled="" type="button" style="background-color: white;">31</button>
+            <button class="btn cal-btn " disabled="" type="button" style="background-color: white;">30</button>
+            <button class="btn cal-btn " disabled="" type="button" style="background-color: white;">31</button>
     
             <button class="btn cal-btn" type="button" style="background-color: white;">1</button>
             <button class="btn cal-btn" type="button" style="background-color: white;">2</button>
@@ -330,8 +392,8 @@
             <div class="cal-weekday">Sab</div>
           </div>
           <div class="cal-days">
-            <button class="btn cal-btn desabilitado" disabled="" type="button" style="background-color: white;">30</button>
-            <button class="btn cal-btn desabilitado" disabled="" type="button" style="background-color: white;">31</button>
+            <button class="btn cal-btn " disabled="" type="button" style="background-color: white;">30</button>
+            <button class="btn cal-btn " disabled="" type="button" style="background-color: white;">31</button>
     
             <button class="btn cal-btn" type="button" style="background-color: white;">1</button>
             <button class="btn cal-btn" type="button" style="background-color: white;">2</button>
