@@ -1,9 +1,15 @@
+<?php
+
+include('../../../controller/protect.php');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <title>ScheduleIt - Comprar Sala</title>
-  <link href="../../styles/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link href="../../styles/css/cover.css" rel="stylesheet">
   <script src="assets/js.js"></script>
 </head>
 
@@ -62,212 +68,214 @@
   </symbol>
 </svg>
 
-
-
 <body class="bg-light">
 <?php include "../parts/header.php"; ?>
   <div class="mt-5 container border rounded bg-white">
-    <h4 class="my-2 text-center pb-2 border-bottom">
-        Escolha as funções que você deseja para sua sala
-    </h4>
-    <div class="mt-5 row mx-3 mb-4">
-      <div class="col-7">
-        <div>
-          <ul class="">      
-            <li class="list-unstyled">
-              <input name="payment_methods" type="checkbox" id="CheckMS" class="input1" onclick="FunMS()">
-              <label for="CheckMS" class="label1">
-                <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
-                  <use xlink:href="#collection">
-                  </use>
-                </svg>
-                <div class="">
-                  <p class="fw-bold mb-0">
-                    Multiplas salas
-                  </p>
-                  <p class="">
-                    Permite que o usuário gerêncie mais de uma sala com as funções já compradas.
-                  </p>
-                </div>
+    <div>
+      <h4 class="my-2 text-center pb-2 border-bottom">
+          Escolha as funções que você deseja para sua sala
+      </h4>
+      <div class="mt-5 row mx-3 mb-4">
+        <div class="col-7">
+          <div>
+            <ul class="func pl-0">      
+              <li class="list-unstyled borda border rounded ml-0 bg-light">
+                <input name="payment_methods" type="checkbox" id="CheckMS" class="input1" onclick="FunMS()">
+                <label for="CheckMS" class="text-dark label1 mb-0">
+                  <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
+                    <use xlink:href="#collection">
+                    </use>
+                  </svg>
+                  <div class="">
+                    <p class="fw-bold mb-0">
+                      Multiplas salas
+                    </p>
+                    <p class="">
+                      Permite que o usuário gerêncie mais de uma sala com as funções já compradas.
+                    </p>
+                  </div>
+                </label>
+              </li>
+              <li class="list-unstyled borda border rounded ml-0 bg-light">
+                <input name="payment_methods" type="checkbox" id="CheckMF" class="input1" onclick="FunMF()">
+                <label for="CheckMF" class="text-dark label1 mb-0">
+                  <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
+                    <use xlink:href="#home">
+                    </use>
+                  </svg>
+                  <div>
+                    <p class="fw-bold mb-0">
+                      Multiplos funcionários
+                    </p>
+                    <p>
+                      Permite que o usuário adicione mais de um funcionário em uma sala com cada agenda separada.
+                    </p>
+                  </div>
+                </label>
+              </li>
+              <li class="list-unstyled borda border rounded ml-0 bg-light">
+                <input name="payment_methods" type="checkbox" id="CheckAF" class="input1" onclick="FunAF()">
+                <label for="CheckAF" class="text-dark label1 mb-0">
+                  <svg class="bi flex-shrink-0 me-3" width="1.75em" height="1.75em">
+                    <use xlink:href="#calendar3">
+                    </use>
+                  </svg>
+                  <div>
+                    <p class="fw-bold mb-0">
+                      Agendamento fixo
+                    </p>
+                    <p>
+                      Permite que o cliente crie uma rotina de agendamento (ex: toda quarta-feira).
+                    </p>
+                  </div>
+                </label>
+              </li> 
+            </ul>
+          </div>
+
+          <h4 class="label2">
+            Pagamento
+          </h4>
+          <div class="my-3">
+            <div class="form-check">
+              <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked="" required="">
+              <label class="label2" for="credit">
+                Cartão de crédito
               </label>
-            </li>
-            <li class="list-unstyled">
-              <input name="payment_methods" type="checkbox" id="CheckMF" class="input1" onclick="FunMF()">
-              <label for="CheckMF" class="label1">
-                <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
-                  <use xlink:href="#home">
-                  </use>
-                </svg>
-                <div>
-                  <p class="fw-bold mb-0">
-                    Multiplos funcionários
-                  </p>
-                  <p>
-                    Permite que o usuário adicione mais de um funcionário em uma sala.
-                  </p>
-                </div>
+            </div>
+            <div class="form-check">
+              <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required="">
+              <label class="label2" for="debit">
+                Cartão de débito
               </label>
-            </li>
-            <li class="list-unstyled">
-              <input name="payment_methods" type="checkbox" id="CheckAF" class="input1" onclick="FunAF()">
-              <label for="CheckAF" class="label1">
-                <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
-                  <use xlink:href="#calendar3">
-                  </use>
-                </svg>
-                <div>
-                  <p class="fw-bold mb-0">
-                    Agendamento fixo
-                  </p>
-                  <p>
-                    Permite que o cliente crie uma rotina de agendamento (ex: toda quarta-feira).
-                  </p>
-                </div>
+            </div>
+            <div class="form-check">
+              <input id="paypal" name="paymentMethod" type="radio" class="form-check-input">
+              <label class="label2" for="paypal">
+                Pix
               </label>
-            </li> 
-          </ul>
+            </div>
+          </div>
+        
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="cc-name" class="label2">
+                Nome do cartão
+              </label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="col-md-6">
+              <label for="cc-number" class="label2">
+                Número do cartão
+              </label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="col-md-3">
+              <label for="cc-expiration" class="label2">
+                Vencimento
+              </label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="col-md-3">
+              <label for="cc-cvv" class="label2">CVV</label>
+              <input type="text" class="form-control">
+            </div>
+          </div>
+          <hr class="my-4">
+          <button class="w-100 btn btn-primary btn-lg" type="submit">Continuar</button>
         </div>
 
-        <h4 class="label2">
-          Pagamento
-        </h4>
-        <div class="my-3">
-          <div class="form-check">
-            <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked="" required="">
-            <label class="label2" for="credit">
-              Cartão de crédito
-            </label>
+        <div class="col-5 px-3">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-primary">
+              Seu carrinho
+            </span>
+            <span class="badge bg-primary rounded-pill" id="Contador">0</span>
+          </h4>
+          <ul class="list-group mb-3">
+            <div id="MS" style="display:none">
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <h6 class="my-0">
+                  Multiplas salas
+                </h6>
+                <small class="text-muted">
+                  Proprietário pode possuir mais de uma sala
+                </small>
+              </div>
+              <span class="text-muted">
+                $12
+              </span>
+            </li>
           </div>
-          <div class="form-check">
-            <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required="">
-            <label class="label2" for="debit">
-              Cartão de débito
-            </label>
-          </div>
-          <div class="form-check">
-            <input id="paypal" name="paymentMethod" type="radio" class="form-check-input">
-            <label class="label2" for="paypal">
-              Pix
-            </label>
-          </div>
-        </div>
-        <div class="row g-3">
-          <div class="col-md-6">
-            <label for="cc-name" class="label2">
-              Nome do cartão
-            </label>
-            <input type="text" class="form-control">
-          </div>
-          <div class="col-md-6">
-            <label for="cc-number" class="label2">
-              Número do cartão
-            </label>
-            <input type="text" class="form-control">
-          </div>
-          <div class="col-md-3">
-            <label for="cc-expiration" class="label2">
-              Vencimento
-            </label>
-            <input type="text" class="form-control">
-          </div>
-          <div class="col-md-3">
-            <label for="cc-cvv" class="label2">CVV</label>
-            <input type="text" class="form-control">
-          </div>
-        </div>
-        <hr class="my-4">
-        <button class="w-100 btn btn-primary btn-lg" type="submit">Continuar</button>
-      </div>
-      <div class="col-5 px-3">
-        <h4 class="d-flex justify-content-between align-items-center mb-3">
-          <span class="text-primary">
-            Seu carrinho
-          </span>
-          <span class="badge bg-primary rounded-pill" id="Contador">0</span>
-        </h4>
-        <ul class="list-group mb-3">
-          <div id="MS" style="display:none">
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">
-                Multiplas salas
-              </h6>
-              <small class="text-muted">
-                Proprietário pode possuir mais de uma sala
-              </small>
+          <div id="MF" style="display:none">
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <h6 class="my-0">
+                  Multiplos funcionários
+                </h6>
+                <small class="text-muted">
+                  Proprietário pode possuir mais de um funcionário
+                </small>
+              </div>
+              <span class="text-muted">
+                $8
+              </span>
+            </li>
             </div>
-            <span class="text-muted">
-              $12
-            </span>
-          </li>
+            <div id="AF" style="display:none">
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <h6 class="my-0">
+                  Agendamento fixo
+                </h6>
+                <small class="text-muted">
+                  Cliente pode criar uma rotina
+                </small>
+              </div>
+              <span class="text-muted">
+                $5
+              </span>
+            </li>
+            </div>
+            <div id="PC" style="display:none">
+            <li class="list-group-item d-flex justify-content-between bg-light">
+              <div class="text-success">
+                <h6 class="my-0">
+                  Promo code
+                </h6>
+                <small>
+                  ScheduleIt
+                </small>
+              </div>
+              <span class="text-success">
+                −$5
+              </span>
+            </li>
+          </div>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>
+                Total (BRL)
+              </span>
+              <script type="text/javascript">
+                document.getElementById("Total").textContent=valor;
+              </script>
+              <span id="Total">
+                R$ 0
+              </span>
+            </li>
+          </ul>
+          <form class="card p-2">
+            <div class="input-group">
+              <input type="text" id="PromoTXT" class="form-control" placeholder="Promo code">
+              <button type="button" id="ButtonPC" class="btn btn-secondary" onclick="PromoCode()">
+                Enviar
+              </button>
+            </div>
+          </form>
         </div>
-        <div id="MF" style="display:none">
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">
-                Multiplos funcionários
-              </h6>
-              <small class="text-muted">
-                Proprietário pode possuir mais de um funcionário
-              </small>
-            </div>
-            <span class="text-muted">
-              $8
-            </span>
-          </li>
-          </div>
-          <div id="AF" style="display:none">
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">
-                Agendamento fixo
-              </h6>
-              <small class="text-muted">
-                Cliente pode criar uma rotina
-              </small>
-            </div>
-            <span class="text-muted">
-              $5
-            </span>
-          </li>
-          </div>
-          <div id="PC" style="display:none">
-          <li class="list-group-item d-flex justify-content-between bg-light">
-            <div class="text-success">
-              <h6 class="my-0">
-                Promo code
-              </h6>
-              <small>
-                EZBOOK
-              </small>
-            </div>
-            <span class="text-success">
-              −$5
-            </span>
-          </li>
-        </div>
-          <li class="list-group-item d-flex justify-content-between">
-            <span>
-              Total (BRL)
-            </span>
-            <script type="text/javascript">
-              document.getElementById("Total").textContent=valor;
-            </script>
-            <span id="Total">
-              R$ 0
-            </span>
-          </li>
-        </ul>
-        <form class="card p-2">
-          <div class="input-group">
-            <input type="text" id="PromoTXT" class="form-control" placeholder="Promo code">
-            <button type="button" id="ButtonPC" class="btn btn-secondary" onclick="PromoCode()">
-              Enviar
-            </button>
-          </div>
-        </form>
-      </div>
-    </div> 
+      </div> 
+    </div>
   </div>
   <?php include "../parts/footer.php"; ?>  
 </body>

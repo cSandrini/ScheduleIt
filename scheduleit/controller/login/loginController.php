@@ -11,7 +11,7 @@
     $email = mysqli_real_escape_string($conexao, $_POST['email']);
     $senha = mysqli_real_escape_string($conexao, $_POST['senha']);
 
-    $sql = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
+    $sql = "SELECT * FROM usuario WHERE email = '$email' AND senha = '$senha'";
     $resultado = mysqli_query($conexao, $sql) or die("Falha na execução do código SQL: " . mysqli_error($conexao));
 
     $quantidade = mysqli_num_rows($resultado);
