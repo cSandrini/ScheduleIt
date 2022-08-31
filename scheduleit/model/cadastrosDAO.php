@@ -15,8 +15,8 @@ function excluirUsuário() {
 }
 
 
-function cadastrarSala($conexao, $nome, $numero, $email, $endereco, $idProprietario) {
-    $sql = "INSERT INTO scheduleit.sala (idProprietario, nome, numero, email, endereco) VALUES ('$idProprietario', '$nome', '$numero', '$email', '$endereco');";
+function cadastrarSala($conexao, $nome, $cnpj, $telefone, $cep, $estado, $cidade, $bairro, $rua, $numero, $email, $descricao, $imgLogo) {
+    $sql = "INSERT INTO scheduleit.sala (idProprietario, nome, cnpj, telefone, cep, estado, cidade, bairro, rua, numero, email, descricao, imgLogo) VALUES ('$idProprietario', '$nome', '$cnpj', '$telefone', '$cep', '$estado', '$cidade', '$bairro', '$rua', '$numero', '$email', '$descricao', '$imgLogo');";
     $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );
 }
 
