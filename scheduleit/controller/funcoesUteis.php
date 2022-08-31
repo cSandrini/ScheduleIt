@@ -33,7 +33,7 @@
         return $msgErro;
     }
 
-    function validarDadosSala($nome, $numero, $email, $endereco) {
+    function validarDadosSala($nome, $numero, $email) {
     
         $msgErro = "";
 
@@ -47,10 +47,6 @@
 
         if ( empty($email) ) {
             $msgErro = $msgErro . "EMAIL inválido! <BR>";
-        }
-
-        if ( empty($endereco) ) {
-            $msgErro = $msgErro . "ENDEREÇO inválido! <BR>";
         }
 
         return $msgErro;

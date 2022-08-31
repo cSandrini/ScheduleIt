@@ -103,7 +103,7 @@ include('../../../controller/protect.php');
 
               <div class="col-12">
                 <label for="email" class="form-label mb-0">Descrição</label>
-                <textarea name="txtDescricao" rows="3" class="form-control" id="descricao" placeholder="Descricao" required=""></textarea>
+                <textarea name="txtDescricao" rows="3" class="form-control" id="descricao" placeholder="Descricao" required="" maxlength="300"></textarea>
               </div>
 
               <div class="col-sm-6">
