@@ -9,7 +9,7 @@ function carregarConfig($conexao, $id) {
     $dados['nome'] = $registro["nome"];
     $dados['sobrenome'] = $registro["sobrenome"];
     $dados['cpf'] = $registro["cpf"];
-    $dados['numero'] = $registro["numero"];
+    $dados['telefone'] = $registro["telefone"];
     $dados['email'] = $registro["email"];
     $dados['senha'] = $registro["senha"];
     $dados['imagem'] = $registro["imagem"];

@@ -57,8 +57,8 @@
               </div>
 
               <div class="col-12">
-                <label for="numero" class="form-label mb-0">Número</label>
-                <input onkeypress="mask(this, mphone);" onblur="mask(this, mphone);" name="txtNumero" type="tel" class="form-control" id="numero" placeholder="Número" maxlength="15">
+                <label for="telefone" class="form-label mb-0">Telefone</label>
+                <input onkeypress="mask(this, mphone);" onblur="mask(this, mphone);" name="txtTelefone" type="tel" class="form-control" id="telefone" placeholder="Telefone" maxlength="15">
               </div>
               <div class="col-12">
                 <label for="email" class="form-label mb-0">E-mail </label>

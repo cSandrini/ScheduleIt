@@ -1,6 +1,6 @@
 <?php
     require_once '../../model/conexaobd.php';
-    function validarDados($nome, $sobrenome, $cpf, $numero, $email, $senha, $senha2) {
+    function validarDados($nome, $sobrenome, $cpf, $telefone, $email, $senha, $senha2) {
     
         $msgErro = "";
 
@@ -16,8 +16,8 @@
             $msgErro = $msgErro . "CPF inválido! <BR>";
         }
 
-        if ( empty($numero) ) {
-            $msgErro = $msgErro . "NÚMERO inválido! <BR>";
+        if ( empty($telefone) ) {
+            $msgErro = $msgErro . "Telefone inválido! <BR>";
         }
 
         if ( empty($email) ) {
@@ -33,7 +33,7 @@
         return $msgErro;
     }
 
-    function validarDadosSala($nome, $numero, $email) {
+    function validarDadosSala($nome, $telefone, $email) {
     
         $msgErro = "";
 
@@ -41,7 +41,7 @@
             $msgErro = $msgErro . "NOME inválido! <BR>";
         }
 
-        if ( empty($numero) ) {
+        if ( empty($telefone) ) {
             $msgErro = $msgErro . "NÚMERO inválido! <BR>";
         }
 

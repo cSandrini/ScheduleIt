@@ -26,7 +26,7 @@
         if(isset($_POST["submit"])) {
             $str = $_POST["busca"];
 
-            $search_string = "SELECT * FROM usuario WHERE ";
+            $search_string = "SELECT * FROM sala WHERE ";
             $display_words = "";
                                 
             // format each of search keywords into the db query to be run
@@ -34,7 +34,7 @@
             $multiple = FALSE;
             foreach ($keywords as $word){
                 if (strlen($word) > 3){
-                    $search_string .= "nome LIKE '%".$word."%' OR ";
+                    $search_string .= "nomeFantasia LIKE '%".$word."%' OR ";
                     $display_words .= $word.' ';
                     $multiple = TRUE;
                 }
@@ -46,8 +46,6 @@
             echo $search_string;
 
             $sth = $con->prepare("$search_string");
-            
-            
 
             $sth->setFetchMode(PDO:: FETCH_OBJ);
             $sth->execute();
@@ -57,7 +55,10 @@
                     <div class="container pt-3">
                         <div class="row justify-content-center">
                             <div style="width: 22rem; height: 15rem;" class="d-flex border rounded bg-white mr-2 mb-2">
-                                <a><?php echo $row->nome; ?></a>
+                                <a><?php echo $row->nomeFantasia; ?></a>
+                                <a><?php echo $row->estado; ?></a>
+                                <a><?php echo $row->cidade; ?></a>
+                                
                             </div>
                         </div>
                     </div>

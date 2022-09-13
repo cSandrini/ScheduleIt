@@ -60,6 +60,19 @@
       </div>
       
     </div>
+
+    <label for="botaofunc" class="align-items-center borda border rounded pr-2 bg-light">
+          <img src="assets/IMG/blank.png" alt="" width="80" height="80" class="rounded mr-2">
+          <div class="">
+            <h4 class="fw-bold mb-0">
+              Nome do Funcionário
+            </h4>
+            <p class="mb-0">
+              Função do funcionário
+            </p>
+          </div>
+        </label>
+    
     <?php include "../parts/footer.php"; ?>
   </body>
 </html>

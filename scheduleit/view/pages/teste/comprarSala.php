@@ -297,6 +297,88 @@
       </div> 
     </div>
   </div>
+
+  <div class="cal dropdown-content rounded border">
+          <div class="d-flex flex-nowrap">
+            <img src="assets/IMG/blank.png" alt="" width="40" height="40" class="rounded me-2 mb-2 mr-2">
+            <h4 class="fw-bold mb-0">
+              Nome do Funcionário
+            </h4>
+          </div>
+          <div class="cal-month">
+            <button class="btn cal-btn" type="button" style="background-color: white;">
+              <svg class="bi" width="16" height="16"><use xlink:href="#arrow-left-short"></use></svg>
+            </button>
+            <strong class="cal-month-name">Junho</strong>
+            <select class="form-select cal-month-name d-none">
+              <option value="January">Janeiro</option>
+              <option value="February">Fevereiro</option>
+              <option value="March">Março</option>
+              <option value="April">Abril</option>
+              <option value="May">Maio</option>
+              <option selected="" value="June">Junho</option>
+              <option value="July">Julho</option>
+              <option value="August">Agosto</option>
+              <option value="September">Setembro</option>
+              <option value="October">Outubro</option>
+              <option value="November">Novembro</option>
+              <option value="December">Dezembro</option>
+            </select>
+            <button class="btn cal-btn" type="button" style="background-color: white;">
+              <svg class="bi" width="16" height="16"><use xlink:href="#arrow-right-short"></use></svg>
+            </button>
+          </div>
+          <div class="cal-weekdays text-muted">
+            <div class="cal-weekday">Dom</div>
+            <div class="cal-weekday">Seg</div>
+            <div class="cal-weekday">Ter</div>
+            <div class="cal-weekday">Qua</div>
+            <div class="cal-weekday">Qui</div>
+            <div class="cal-weekday">Sex</div>
+            <div class="cal-weekday">Sab</div>
+          </div>
+          <div class="cal-days">
+            <button class="btn cal-btn " disabled="" type="button" style="background-color: white;">30</button>
+            <button class="btn cal-btn " disabled="" type="button" style="background-color: white;">31</button>
+    
+            <button class="btn cal-btn" type="button" style="background-color: white;">1</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">2</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">3</button>
+            <button class="btn cal-btn" type="button" style="background-color: red;">4</button>
+            <button class="btn cal-btn" type="button" style="background-color: red;">5</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">6</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">7</button>
+    
+            <button class="btn cal-btn" type="button" style="background-color: white;">8</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">9</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">10</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">11</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">12</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">13</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">14</button>
+    
+            <button class="btn cal-btn" type="button" style="background-color: white;">15</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">16</button>
+            <button class="btn cal-btn" type="button" style="background-color: red;">17</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">18</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">19</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">20</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">21</button>
+    
+            <button class="btn cal-btn" type="button" style="background-color: white;">22</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">23</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">24</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">25</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">26</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">27</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">28</button>
+    
+            <button class="btn cal-btn" type="button" style="background-color: white;">29</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">30</button>
+            <button class="btn cal-btn" type="button" style="background-color: white;">31</button>
+          </div>
+        </div>
+      </div>
   <?php include "../parts/footer.php"; ?>  
 </body>
 </html>
