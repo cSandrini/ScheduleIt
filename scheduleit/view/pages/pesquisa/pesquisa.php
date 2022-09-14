@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ScheduleIt - Home</title>
+    <link href="../../styles/css/cover.css" rel="stylesheet">
 </head>
 <body class="bg-light">
     <!-- HEADER -->
@@ -12,104 +13,81 @@
             require_once '../../../model/conexaobd.php';
             $con = conectarBDPDO();?>
 
+<<<<<<< HEAD
     <?php
         if(isset($_POST["submit"])) {
             try {
                 $str = $_POST["busca"];
+=======
+    <div class="container pt-3">
+        <div class="row justify-content-center">
+            <?php
+                if(isset($_POST["submit"])) {
+                    try {
+                        $con = new PDO("mysql:host=localhost;dbname=scheduleit",'root','');
+                        $str = $_POST["busca"];
+>>>>>>> 743fa6325d57ea197d33ccbf3ba4519b697785c9
 
-                $search_string = "SELECT * FROM sala WHERE ";
-                $display_words = "";
-                                    
-                // format each of search keywords into the db query to be run
-                $keywords = explode(' ', $str);
-                $multiple = FALSE;
-                foreach ($keywords as $word){
-                    if (strlen($word) > 2){
-                        $search_string .= "nomeFantasia LIKE '%".$word."%' OR ";
-                        $display_words .= $word.' ';
-                        $multiple = TRUE;
-                    }
-                };
+                        $search_string = "SELECT * FROM sala WHERE ";
+                        $display_words = "";
+                                            
+                        // format each of search keywords into the db query to be run
+                        $keywords = explode(' ', $str);
+                        $multiple = FALSE;
+                        foreach ($keywords as $word){
+                            if (strlen($word) > 2){
+                                $search_string .= "nomeFantasia LIKE '%".$word."%' OR ";
+                                $display_words .= $word.' ';
+                                $multiple = TRUE;
+                            }
+                        };
 
-                if ($multiple == TRUE){
-                    $search_string = substr($search_string, 0, strlen($search_string)-4);
-                    $display_words = substr($display_words, 0, strlen($display_words)-1);
+                        if ($multiple == TRUE){
+                            $search_string = substr($search_string, 0, strlen($search_string)-4);
+                            $display_words = substr($display_words, 0, strlen($display_words)-1);
 
-                    $sth = $con->prepare("$search_string");
+                            $sth = $con->prepare("$search_string");
 
-                    $sth->setFetchMode(PDO:: FETCH_OBJ);
-                    $sth->execute();
-                
-                    if ($sth->rowCount() > 0) {
-                        $i=1;
-                        while($row=$sth->fetch()) {
-                            $img = base64_encode($row->imgLogo);
-                            echo "<div class='container pt-3'>
-                                <div class='row justify-content-center'>
-                                    <div style='width: 22rem; height: 15rem;' class='d-flex border rounded bg-white mr-2 mb-2'>
-                                        <a>$row->nomeFantasia</a>
-                                        <a>$row->estado</a>
-                                        <a>$row->cidade</a>
-                                        
-                                        <a><img class='mr-3 rounded' src='data:imgLogo/jpeg;base64,$img'></a>
-                                        
-                                    </div>
-                                </div>
-                            </div>";
+                            $sth->setFetchMode(PDO:: FETCH_OBJ);
+                            $sth->execute();
                         
+                            if ($sth->rowCount() > 0) {
+                                $i=1;
+                                while($row=$sth->fetch()) {
+                                    $img = base64_encode($row->imgLogo);
+                                    echo "<div style='width: 22rem; height: 15rem;' class='gallery_product border rounded bg-white mr-2 mb-2'>
+                                                <a href='#'><img class='rounded imgsala' src='data:imgLogo/jpeg;base64,$img'></a>
+                                                <p class='title'>$row->nomeFantasia <small>$row->cidade - $row->estado</small></p>
+                                            </div>";
+                                
+                                }
+                            } else {
+                                    echo "<br><div class='alert alert-danger col-md-2 text-center mx-auto' role='alert'>
+                                        Nenhum resultado encontrado.
+                                    </div>";
+                                }
+                        
+                        } 
+                    } catch(PDOException $e) {
+                            echo "Error: ". $e->getMessage();
                         }
-                    } else {
-                            echo "<br><div class='alert alert-danger col-md-2 text-center mx-auto' role='alert'>
-                                Nenhum resultado encontrado.
-                            </div>";
-                        }
-                
-                } 
-            } catch(PDOException $e) {
-                    echo "Error: ". $e->getMessage();
-                }
 
-            } if ($multiple == FALSE) {
-                echo "<br><div class='alert alert-danger col-md-2 text-center mx-auto' role='alert'>
-                Nenhum resultado encontrado.
-            </div>";
-            }
-        
-    ?>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@500&display=swap');
-        * {
-            
-        }
-        .gallery_product
-        {
-            margin-bottom: 30px;
-        }
-        .gallery_product .title{
-            font-family: "Montserrat", sans-serif;
-            background-color: rgba(255,255,255,0.65);
-            color:black;
-            text-align:center;
-            font-weight:bold;
-            font-size:20px;
-            position:relative;
-            width:370px;
-            height:50px;
-            bottom:50px;
-        }
-        .gallery_product .title small{
-            display: block;
-        }
-    </style>
-   
-    <div class="row">
-        <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe ">
-            <a data-toggle="modal" data-target="#exampleModal" href="#" ><img src="https://www.bigstockphoto.com/images/homepage/2016_popular_photo_categories.jpg" class="img-responsive"></a>
-            <p class="title">Título <small>Colatina - ES</small></p>
+                    } 
+                    
+                    if ($multiple == FALSE) {
+                        echo "<br><div class='alert alert-danger col-md-2 text-center mx-auto' role='alert'>
+                        Nenhum resultado encontrado.
+                    </div>";
+                    }            
+            ?>
         </div>
     </div>
+<<<<<<< HEAD
     
     
+=======
+
+>>>>>>> 743fa6325d57ea197d33ccbf3ba4519b697785c9
     <!-- FOOTER -->
     <?php include '../parts/footer.php';?>
 </body>

@@ -13,6 +13,7 @@ include('../../../controller/protect.php');
     <title>ScheduleIt - Minhas Salas</title>
 
     <script src="script.js"></script>
+    <link href="../../styles/css/cover.css" rel="stylesheet">
 </head>
 <body class="bg-light">
         <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -23,6 +24,7 @@ include('../../../controller/protect.php');
     </svg>
 
     <!-- HEADER -->
+<<<<<<< HEAD
     <?php 
         include '../parts/header.php';
         require_once '../../../model/conexaobd.php';
@@ -36,33 +38,42 @@ include('../../../controller/protect.php');
             $sth = $con->prepare("SELECT * FROM sala WHERE idProprietario=".$_SESSION["id"]);
             $sth->setFetchMode(PDO:: FETCH_OBJ);
             $sth->execute();
-
-            if ($sth->rowCount() > 0) {
-                $i=1;
-                while($row=$sth->fetch()) {
-                        ?>
-                        <?php$i++?>
-                            <div class="container pt-3">
-                                <div class="row justify-content-center">
-                                    <div style="width: 22rem; height: 15rem;" class="d-flex border rounded bg-white mr-2 mb-2">
-                                        <a><?php echo $row->nomeFantasia; ?></a>
-                                        <a><?php echo $row->estado; ?></a>
-                                        <a><?php echo $row->cidade; ?></a>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php
-                }
-            } else {
-                echo "<br><div class='alert alert-danger col-md-2 text-center mx-auto' role='alert'>
-                    Nenhum resultado encontrado.
-                </div>";
-            }
-        } catch(PDOException $e) {
-            echo "Error: ". $e->getMessage();
-        }
-    ?>
+=======
+    <?php include '../parts/header.php';?>
     
+    <div class="container pt-3">
+        <div class="row justify-content-center">
+            <?php
+                //Conexao no método PDO (?)
+                try {
+                    $con = new PDO("mysql:host=localhost;dbname=scheduleit",'root','');
+
+                    $sth = $con->prepare("SELECT * FROM sala WHERE idProprietario=".$_SESSION["id"]);
+                    $sth->setFetchMode(PDO:: FETCH_OBJ);
+                    $sth->execute();
+>>>>>>> 743fa6325d57ea197d33ccbf3ba4519b697785c9
+
+                    if ($sth->rowCount() > 0) {
+                        $i=1;
+                        while($row=$sth->fetch()) {
+                            $img = base64_encode($row->imgLogo);
+                            echo    "<div style='width: 22rem; height: 15rem;' class='gallery_product border rounded bg-white mr-2 mb-2'>
+                                        <a href='#'><img class='rounded imgsala' src='data:imgLogo/jpeg;base64,$img'></a>
+                                        <p class='title'>$row->nomeFantasia <small>$row->cidade - $row->estado</small></p>
+                                    </div>";
+                        }
+                    } else {
+                        echo "<br><div class='alert alert-danger col-md-2 text-center mx-auto' role='alert'>
+                            Nenhum resultado encontrado.
+                        </div>";
+                    }
+                } catch(PDOException $e) {
+                    echo "Error: ". $e->getMessage();
+                }
+            ?>
+        </div>
+    </div>
+
     <br><div class='col-md-2 text-center mx-auto' role='alert'>
         <a href='../cadastroSala/cadastroSala.php'>
             <button type='button' class='btn btn-primary'>
