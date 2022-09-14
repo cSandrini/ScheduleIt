@@ -35,7 +35,7 @@
                 $keywords = explode(' ', $str);
                 $multiple = FALSE;
                 foreach ($keywords as $word){
-                    if (strlen($word) > 3){
+                    if (strlen($word) > 2){
                         $search_string .= "nomeFantasia LIKE '%".$word."%' OR ";
                         $display_words .= $word.' ';
                         $multiple = TRUE;
@@ -84,7 +84,32 @@
                 }
         
     ?>
-
+    <style>
+        * {
+            
+        }
+        .gallery_product
+        {
+            margin-bottom: 30px;
+        }
+        .gallery_product .title{
+            background-color: rgba(255,255,255,0.8);
+            color:#fff;
+            position:relative;
+            height:50px;
+            bottom:50px;
+        }
+        .gallery_product .title small{
+            display:block;
+    }
+    </style>
+   
+    <div class="row">
+        <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe ">
+            <a data-toggle="modal" data-target="#exampleModal" href="#" ><img src="https://www.bigstockphoto.com/images/homepage/2016_popular_photo_categories.jpg" class="img-responsive"></a>
+            <h4 class="title">Título <small>Sub título</small></h4>
+        </div>
+    </div>
     <!--
     <div class="container pt-3">
         <div class="row justify-content-center">
