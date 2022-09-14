@@ -1,3 +1,9 @@
+<?php
+    if(!isset($_SESSION)) {
+        session_start();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +44,7 @@
                 //Conexao no método PDO (?)
                 try {
 
-                    $sth = $con->prepare("SELECT * FROM sala;");
+                    $sth = $con->prepare("SELECT * FROM Sala;");
                     $sth->setFetchMode(PDO:: FETCH_OBJ);
                     $sth->execute();
 

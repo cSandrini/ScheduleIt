@@ -1,6 +1,6 @@
 <?php
 function carregarMinhasSalas($conexao, $id) {
-    $sql = "SELECT * FROM sala WHERE idProprietario = '$id'";
+    $sql = "SELECT * FROM Sala WHERE idProprietario = '$id'";
     
     // Executar no banco de dados
     $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );

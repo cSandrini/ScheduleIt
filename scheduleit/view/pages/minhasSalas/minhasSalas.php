@@ -24,21 +24,6 @@ include('../../../controller/protect.php');
     </svg>
 
     <!-- HEADER -->
-<<<<<<< HEAD
-    <?php 
-        include '../parts/header.php';
-        require_once '../../../model/conexaobd.php';
-        $con = conectarBDPDO();
-        ?>
-        
-    <?php
-        //Conexao no método PDO (?)
-        try {
-
-            $sth = $con->prepare("SELECT * FROM sala WHERE idProprietario=".$_SESSION["id"]);
-            $sth->setFetchMode(PDO:: FETCH_OBJ);
-            $sth->execute();
-=======
     <?php include '../parts/header.php';?>
     
     <div class="container pt-3">
@@ -48,10 +33,9 @@ include('../../../controller/protect.php');
                 try {
                     $con = new PDO("mysql:host=localhost;dbname=scheduleit",'root','');
 
-                    $sth = $con->prepare("SELECT * FROM sala WHERE idProprietario=".$_SESSION["id"]);
+                    $sth = $con->prepare("SELECT * FROM Sala WHERE idProprietario=".$_SESSION["id"]);
                     $sth->setFetchMode(PDO:: FETCH_OBJ);
                     $sth->execute();
->>>>>>> 743fa6325d57ea197d33ccbf3ba4519b697785c9
 
                     if ($sth->rowCount() > 0) {
                         $i=1;

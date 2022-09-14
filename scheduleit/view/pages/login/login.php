@@ -1,5 +1,13 @@
 <?php
-include('../../../controller/login/loginController.php');
+  include('../../../controller/login/loginController.php');
+
+  if(!isset($_SESSION)) {
+    session_start();
+  }
+
+  if(isset($_SESSION['id'])) {
+    header('Location: ../config/config.php');
+  }
 ?>
 <!doctype html>
 <html lang="en">

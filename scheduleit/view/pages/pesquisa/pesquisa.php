@@ -13,12 +13,6 @@
             require_once '../../../model/conexaobd.php';
             $con = conectarBDPDO();?>
 
-<<<<<<< HEAD
-    <?php
-        if(isset($_POST["submit"])) {
-            try {
-                $str = $_POST["busca"];
-=======
     <div class="container pt-3">
         <div class="row justify-content-center">
             <?php
@@ -26,9 +20,8 @@
                     try {
                         $con = new PDO("mysql:host=localhost;dbname=scheduleit",'root','');
                         $str = $_POST["busca"];
->>>>>>> 743fa6325d57ea197d33ccbf3ba4519b697785c9
 
-                        $search_string = "SELECT * FROM sala WHERE ";
+                        $search_string = "SELECT * FROM Sala WHERE ";
                         $display_words = "";
                                             
                         // format each of search keywords into the db query to be run
@@ -62,9 +55,9 @@
                                 
                                 }
                             } else {
-                                    echo "<br><div class='alert alert-danger col-md-2 text-center mx-auto' role='alert'>
-                                        Nenhum resultado encontrado.
-                                    </div>";
+                                    echo    "<br><div class='alert alert-danger col-md-3 text-center mx-auto' role='alert'>
+                                                Nenhum resultado encontrado.
+                                            </div>";
                                 }
                         
                         } 
@@ -75,19 +68,13 @@
                     } 
                     
                     if ($multiple == FALSE) {
-                        echo "<br><div class='alert alert-danger col-md-2 text-center mx-auto' role='alert'>
+                        echo "<br><div class='alert alert-danger col-md-3 text-center mx-auto' role='alert'>
                         Nenhum resultado encontrado.
                     </div>";
                     }            
             ?>
         </div>
     </div>
-<<<<<<< HEAD
-    
-    
-=======
-
->>>>>>> 743fa6325d57ea197d33ccbf3ba4519b697785c9
     <!-- FOOTER -->
     <?php include '../parts/footer.php';?>
 </body>
