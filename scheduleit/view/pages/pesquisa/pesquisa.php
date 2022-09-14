@@ -8,12 +8,13 @@
 </head>
 <body class="bg-light">
     <!-- HEADER -->
-    <?php include '../parts/header.php';?>
+    <?php   include '../parts/header.php';
+            require_once '../../../model/conexaobd.php';
+            $con = conectarBDPDO();?>
 
     <?php
         if(isset($_POST["submit"])) {
             try {
-                $con = new PDO("mysql:host=localhost;dbname=scheduleit",'root','');
                 $str = $_POST["busca"];
 
                 $search_string = "SELECT * FROM sala WHERE ";
@@ -107,14 +108,6 @@
             <p class="title">Título <small>Colatina - ES</small></p>
         </div>
     </div>
-    <!--
-    <div class="container pt-3">
-        <div class="row justify-content-center">
-            <div style="width: 22rem; height: 15rem;" class="d-flex border rounded bg-white mr-2 mb-2">
-        </div>
-        
-    </div>
-    -->
     
     
     <!-- FOOTER -->

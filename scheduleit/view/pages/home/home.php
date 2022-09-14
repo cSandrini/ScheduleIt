@@ -24,7 +24,11 @@
         }
     </style>
     <!-- HEADER -->
-    <?php include '../parts/header.php';?>
+    <?php 
+        include '../parts/header.php';
+        require_once '../../../model/conexaobd.php';
+        $con = conectarBDPDO();
+        ?>
 
     <div class="container pt-3">
         <div class="row justify-content-center">
@@ -32,7 +36,6 @@
             <?php
                 //Conexao no método PDO (?)
                 try {
-                    $con = new PDO("mysql:host=localhost;dbname=scheduleit",'root','');
 
                     $sth = $con->prepare("SELECT * FROM sala;");
                     $sth->setFetchMode(PDO:: FETCH_OBJ);
