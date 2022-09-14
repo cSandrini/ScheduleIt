@@ -33,7 +33,6 @@
                 if ($multiple == TRUE){
                     $search_string = substr($search_string, 0, strlen($search_string)-4);
                     $display_words = substr($display_words, 0, strlen($display_words)-1);
-                    echo $search_string;
 
                     $sth = $con->prepare("$search_string");
 
@@ -43,18 +42,20 @@
                     if ($sth->rowCount() > 0) {
                         $i=1;
                         while($row=$sth->fetch()) {
-                        ?>
-                            <div class="container pt-3">
-                                <div class="row justify-content-center">
-                                    <div style="width: 22rem; height: 15rem;" class="d-flex border rounded bg-white mr-2 mb-2">
-                                        <a><?php echo $row->nomeFantasia; ?></a>
-                                        <a><?php echo $row->estado; ?></a>
-                                        <a><?php echo $row->cidade; ?></a>
+                            $img = base64_encode($row->imgLogo);
+                            echo "<div class='container pt-3'>
+                                <div class='row justify-content-center'>
+                                    <div style='width: 22rem; height: 15rem;' class='d-flex border rounded bg-white mr-2 mb-2'>
+                                        <a>$row->nomeFantasia</a>
+                                        <a>$row->estado</a>
+                                        <a>$row->cidade</a>
+                                        
+                                        <a><img class='mr-3 rounded' src='data:imgLogo/jpeg;base64,$img'></a>
                                         
                                     </div>
                                 </div>
-                            </div>
-                        <?php
+                            </div>";
+                        
                         }
                     } else {
                             echo "<br><div class='alert alert-danger col-md-2 text-center mx-auto' role='alert'>
