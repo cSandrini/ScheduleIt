@@ -107,10 +107,10 @@ include('../../../controller/protect.php');
                 </tr>
                 <tr>
                   <td>
-                    Número
+                    Telefone
                   </td>
                   <td>
-                    <input name="numero" class="form-control form-control-sm" type="text" placeholder="<?php echo $dados['numero'];?>">
+                    <input name="telefone" class="form-control form-control-sm" type="text" placeholder="<?php echo $dados['telefone'];?>">
                   </td>
                 </tr>
                 <tr>
