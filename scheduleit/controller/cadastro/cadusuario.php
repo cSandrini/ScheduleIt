@@ -17,7 +17,7 @@
         
         // CONECTAR
         require_once '../../model/conexaobd.php';
-        require_once '../../model/cadastrosDAO.php';
+        require_once '../../model/cadastroUsuarioDAO.php';
         $conexao = conectarBD();
         cadastrarUsuario($conexao, $nome, $sobrenome, $cpf, $telefone, $email, $senha);
         header("Location:../../view/pages/cadastro/cadastro.php?msg=Enviado com sucesso.");

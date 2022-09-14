@@ -6,8 +6,8 @@
     $cnpj = $_POST["txtCNPJ"];
     $telefone = converterNumerico($_POST["txtTelefone"]);
     $cep = $_POST["txtCEP"];
-    $estado = $_POST["txtEstado"];
-    $cidade = $_POST["txtCidade"];
+    $estado = $_POST[pegarValueEs()];
+    $cidade = $_POST[pegarValueCid()];
     $bairro = $_POST["txtBairro"];
     $rua = $_POST["txtRua"];
     $numero = $_POST["txtNumero"];
@@ -36,7 +36,8 @@
         
         // CONECTAR
         require_once '../../model/conexaobd.php';
-        require_once '../../model/cadastrosDAO.php';
+        require_once '../../model/cadastroUsuarioDAO.php';
+        require_once '../../model/cadastroSalaDAO.php';
         $tamanhoImg = $imagem["size"];
         $arqAberto = fopen($imagem["tmp_name"], "r");
         $imagem = addslashes(fread($arqAberto,$tamanhoImg));

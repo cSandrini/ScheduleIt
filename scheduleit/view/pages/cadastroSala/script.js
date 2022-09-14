@@ -58,6 +58,12 @@ function limpa_formulário_cep() {
   document.getElementById('cidade').value=("");
   document.getElementById('uf').value=("");
 }
+function pegarValueEs(){
+  document.getElementById('uf').value
+}
+function pegarValueCid(){
+  document.getElementById('cidade').value
+}
 
 function meu_callback(conteudo) {
   if (!("erro" in conteudo)) {
@@ -73,6 +79,8 @@ function meu_callback(conteudo) {
       alert("CEP não encontrado.");
   }
 }
+
+
 
 function pesquisacep(valor) {
 
