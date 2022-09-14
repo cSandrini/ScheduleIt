@@ -58,3 +58,26 @@ body {
   border: 0;
   opacity: .5;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@500&display=swap');
+
+.gallery_product .title{
+    font-family: "Montserrat", sans-serif;
+    background-color: rgba(255,255,255,0.8);
+    color:black;
+    text-align:center;
+    font-weight:bold;
+    font-size:20px;
+    position:relative;
+    width:22rem;
+    height:60px;
+    bottom:60px;
+}
+.gallery_product .title small{
+    display: block;
+}
+
+.imgsala {
+    width: 22rem;
+    height: 15rem;
+}
