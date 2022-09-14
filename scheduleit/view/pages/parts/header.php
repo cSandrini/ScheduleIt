@@ -85,9 +85,13 @@
                 <button class="btn btn-outline-info my-2 my-sm-0" type="submit" name="submit">Pesquisar</button>
             </form>
         </nav>
+
         <?php
             if(isset($_SESSION['id'])){
-                echo "<a href='../../../controller/logout.php'>Logout</a>";
+                echo "<div>
+                        <a href='../minhasSalas/minhasSalas.php'><button class='btn btn-outline-info my-2 my-sm-0 mr-2'>Minhas Salas</button></a>
+                        <a href='../../../controller/logout.php'>Logout</a>
+                    </div>";
             } else {
                 echo "<button style='color: white;' onclick='paginaLogin()'>Login</button>";
             }

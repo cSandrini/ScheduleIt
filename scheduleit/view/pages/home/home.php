@@ -43,14 +43,10 @@
                         $i=1;
                         while($row=$sth->fetch()) {
                             $img = base64_encode($row->imgLogo);
-                            echo "<div class='container pt-3'>
-                                <div class='row justify-content-center'>
-                                    <div style='width: 22rem; height: 15rem;' class='gallery_product border rounded bg-white mr-2 mb-2'>
+                            echo    "<div style='width: 22rem; height: 15rem;' class='gallery_product border rounded bg-white mr-2 mb-2'>
                                         <a href='#'><img class='rounded imgsala' src='data:imgLogo/jpeg;base64,$img'></a>
                                         <p class='title'>$row->nomeFantasia <small>$row->cidade - $row->estado</small></p>
-                                    </div>
-                                </div>
-                            </div>";
+                                    </div>";
                         }
                     } else {
                         echo "<br><div class='alert alert-danger col-md-2 text-center mx-auto' role='alert'>
@@ -63,7 +59,6 @@
             ?>
 
         </div>
-        
     </div>
 
     <!-- FOOTER -->
