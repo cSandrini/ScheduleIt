@@ -89,18 +89,21 @@
             color:black;
             text-align:center;
             font-weight:bold;
-            font-size:25px;
+            font-size:20px;
             position:relative;
-            width:60%;
+            width:370px;
             height:50px;
             bottom:50px;
+        }
+        .gallery_product .title small{
+            display: block;
         }
     </style>
    
     <div class="row">
         <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe ">
             <a data-toggle="modal" data-target="#exampleModal" href="#" ><img src="https://www.bigstockphoto.com/images/homepage/2016_popular_photo_categories.jpg" class="img-responsive"></a>
-            <p class="title">Título</p>
+            <p class="title">Título <small>Colatina - ES</small></p>
         </div>
     </div>
     <!--
