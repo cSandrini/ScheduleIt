@@ -75,6 +75,7 @@
         
     ?>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@500&display=swap');
         * {
             
         }
@@ -83,21 +84,23 @@
             margin-bottom: 30px;
         }
         .gallery_product .title{
-            background-color: rgba(255,255,255,0.8);
-            color:#fff;
+            font-family: "Montserrat", sans-serif;
+            background-color: rgba(255,255,255,0.65);
+            color:black;
+            text-align:center;
+            font-weight:bold;
+            font-size:25px;
             position:relative;
+            width:60%;
             height:50px;
             bottom:50px;
         }
-        .gallery_product .title small{
-            display:block;
-    }
     </style>
    
     <div class="row">
         <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe ">
             <a data-toggle="modal" data-target="#exampleModal" href="#" ><img src="https://www.bigstockphoto.com/images/homepage/2016_popular_photo_categories.jpg" class="img-responsive"></a>
-            <h4 class="title">Título <small>Sub título</small></h4>
+            <p class="title">Título</p>
         </div>
     </div>
     <!--
