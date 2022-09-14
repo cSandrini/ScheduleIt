@@ -1,10 +1,18 @@
+<?php
+
+include('../../../controller/protect.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ScheduleIt - Home</title>
+    <title>ScheduleIt - Minhas Salas</title>
+
+    <script src="script.js"></script>
 </head>
 <body class="bg-light">
         <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -18,16 +26,48 @@
     <?php include '../parts/header.php';?>
 
     <?php
+        //Conexao no método PDO (?)
+        try {
+            $con = new PDO("mysql:host=localhost;dbname=scheduleit",'root','');
 
-        
+            $sth = $con->prepare("SELECT * FROM sala WHERE idProprietario=".$_SESSION["id"]);
+            $sth->setFetchMode(PDO:: FETCH_OBJ);
+            $sth->execute();
 
-        // Exibir caso não ache nenhum departamento
-        echo "<br><div class='col-md-2 text-center mx-auto' role='alert'>
+            if ($sth->rowCount() > 0) {
+                $i=1;
+                while($row=$sth->fetch()) {
+                        ?>
+                        <?php$i++?>
+                            <div class="container pt-3">
+                                <div class="row justify-content-center">
+                                    <div style="width: 22rem; height: 15rem;" class="d-flex border rounded bg-white mr-2 mb-2">
+                                        <a><?php echo $row->nomeFantasia; ?></a>
+                                        <a><?php echo $row->estado; ?></a>
+                                        <a><?php echo $row->cidade; ?></a>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php
+                }
+            } else {
+                echo "<br><div class='alert alert-danger col-md-2 text-center mx-auto' role='alert'>
+                    Nenhum resultado encontrado.
+                </div>";
+            }
+        } catch(PDOException $e) {
+            echo "Error: ". $e->getMessage();
+        }
+    ?>
+    
+    <br><div class='col-md-2 text-center mx-auto' role='alert'>
+        <a href='../cadastroSala/cadastroSala.php'>
             <button type='button' class='btn btn-primary'>
                 + Adicionar sala
             </button>
-        </div>"
-    ?>
+        </a>        
+    </div>
+    
     
     <!-- FOOTER -->
     <?php include '../parts/footer.php';?>

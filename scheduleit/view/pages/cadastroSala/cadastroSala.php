@@ -73,12 +73,12 @@ include('../../../controller/protect.php');
 
               <div class="col-sm-6">
                 <label for="endereco" class="form-label mb-0">Estado </label>
-                <input value="Estado" name="txtEstado" class="form-control" id="uf" placeholder="Estado" disabled="" required="">
+                <input name="txtEstado" class="form-control" id="uf" placeholder="Estado" required="">
               </div>
 
               <div class="col-sm-6">
                 <label for="cidade" class="form-label mb-0">Cidade </label>
-                <input value="Cidade" name="txtCidade" class="form-control" id="cidade" placeholder="Cidade" disabled="" required="">
+                <input name="txtCidade" class="form-control" id="cidade" placeholder="Cidade" required="">
               </div>
 
               <div class="col-sm-6">
@@ -94,6 +94,11 @@ include('../../../controller/protect.php');
               <div class="col-sm-6">
                 <label for="numero" class="form-label mb-0">Número </label>
                 <input name="txtNumero" class="form-control" id="numero" placeholder="Número" required="">
+              </div>
+
+              <div class="col-12">
+                <label for="complemento" class="form-label mb-0">Complemento </label>
+                <input name="txtComplemento" class="form-control" id="complemento" placeholder="Complemento" required=""> 
               </div>
 
               <div class="col-12">

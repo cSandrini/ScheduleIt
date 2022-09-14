@@ -2,22 +2,23 @@
     require_once '../funcoesUteis.php';
 
     // PASSO 1 - RECEBER OS DADOS DO FORMULARIO
-    $nome = $_POST["txtNome"];
+    $nomeFantasia = $_POST["txtNome"];
     $cnpj = $_POST["txtCNPJ"];
     $telefone = converterNumerico($_POST["txtTelefone"]);
     $cep = $_POST["txtCEP"];
-    $estado = $_POST[pegarValueEs()];
-    $cidade = $_POST[pegarValueCid()];
+    $estado = $_POST["txtEstado"];
+    $cidade = $_POST["txtCidade"];
     $bairro = $_POST["txtBairro"];
     $rua = $_POST["txtRua"];
     $numero = $_POST["txtNumero"];
+    $complemento = $_POST["txtComplemento"];
     $email = $_POST["txtEmail"];
     $descricao = $_POST["txtDescricao"];
     $imagem = $_FILES["fileLogo"];
     $idProprietario = $_POST["idProprietario"];
 
     // PASSO 2 - VALIDAR OS DADOS
-    $msgErro = validarDadosSala($nome, $telefone, $email);
+    $msgErro = validarDadosSala($nomeFantasia, $telefone, $email);
     
     if ($imagem["error"]!=0) {
         $msgErro = $msgErro . "Erro ao fazer upload da imagem! <BR>";
@@ -43,7 +44,7 @@
         $imagem = addslashes(fread($arqAberto,$tamanhoImg));
 
         $conexao = conectarBD();
-        cadastrarSala($conexao, $nome, $cpnj, $telefone, $cep, $estado, $cidade, $bairro, $rua, $numero, $email, $descricao, $imagem, $idProprietario);
+        cadastrarSala($conexao, $idProprietario, $email, $cnpj, $nomeFantasia, $cep, $estado, $cidade, $bairro, $rua, $numero, $complemento, $telefone, $descricao, $imagem);
         header("Location:../../view/pages/cadastroSala/cadastroSala.php?msg=Enviado com sucesso.");
     } else {
         header("Location:../../view/pages/cadastroSala/cadastroSala.php?msg=$msgErro");
