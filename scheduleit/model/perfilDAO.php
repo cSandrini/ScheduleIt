@@ -22,7 +22,7 @@ function inserirImagem($conexao, $imagem, $id) {
     $arqAberto = fopen($imagem["tmp_name"], "r");
     $imagem = addslashes(fread($arqAberto,$tamanhoImg));
     
-    $sql = "UPDATE usuario SET foto='$imagem' WHERE id=$id";
+    $sql = "UPDATE Usuario SET foto='$imagem' WHERE id=$id";
     $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );
 }
 ?>

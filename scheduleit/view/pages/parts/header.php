@@ -88,9 +88,28 @@
 
         <?php
             if(isset($_SESSION['id'])){
+                require_once '../../../model/conexaobd.php';
+            
+                try {
+                    $con = conectarBDPDO();
+                    $sth = $con->prepare("SELECT * FROM Usuario WHERE id=".$_SESSION['id'].";");
+                    $sth->setFetchMode(PDO:: FETCH_OBJ);
+                    $sth->execute();
+
+                    if ($sth->rowCount() > 0) {
+                        $i=1;
+                        while($row=$sth->fetch()) {
+                            $img = base64_encode($row->foto);
+                        }
+                    }
+                } catch(PDOException $e) {
+                    echo "Error: ". $e->getMessage();
+                }
+                
                 echo "<div>
                         <a href='../minhasSalas/minhasSalas.php'><button class='btn btn-outline-info my-2 my-sm-0 mr-2'>Minhas Salas</button></a>
                         <a href='../../../controller/logout.php'>Logout</a>
+                        <a href='../config/config.php'><img class='border ml-2 rounded' src='data:imgLogo/jpeg;base64,$img' width='50' height='50'></a>
                     </div>";
             } else {
                 echo "<button style='color: white;' onclick='paginaLogin()'>Login</button>";

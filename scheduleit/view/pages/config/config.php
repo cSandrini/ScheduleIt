@@ -31,7 +31,6 @@ include('../../../controller/protect.php');
 
     <!-- PERFIL -->
     <?php
-      require_once '../../../model/conexaobd.php';
       require_once '../../../model/perfilDAO.php';
       
       $conexao = conectarBD();
@@ -58,11 +57,28 @@ include('../../../controller/protect.php');
         ?>
         <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-primary rounded">
           <?php //CARREGAR IMAGEM DE PERFIL
-            if(isset($_SESSION['imagem'])) {
-              $imagemPerf=$_SESSION['imagem'];
-              echo "<img class='mr-3 rounded' src='data:image/jpeg;base64,".base64_encode($imagemPerf)."' alt='' width='120' height='120'>";
+            require_once '../../../model/conexaobd.php';
+  
+            try {
+              $con = conectarBDPDO();
+              $sth = $con->prepare("SELECT * FROM Usuario WHERE id=".$_SESSION['id'].";");
+              $sth->setFetchMode(PDO:: FETCH_OBJ);
+              $sth->execute();
+
+              if ($sth->rowCount() > 0) {
+                  $i=1;
+                  while($row=$sth->fetch()) {
+                      $img = base64_encode($row->foto);
+                  }
+              }
+          } catch(PDOException $e) {
+              echo "Error: ". $e->getMessage();
+          }
+            
+            if(isset($img)) {
+              echo "<img class='mr-3 border rounded' src='data:image/jpeg;base64,$img' alt='' width='120' height='120'>";
             } else {
-              echo "<img class='mr-3 rounded' src='blank.png' alt='' width='120' height='120'>";
+              echo "<img class='mr-3 border rounded' src='blank.png' alt='' width='120' height='120'>";
             }
           ?>
           <div class="lh-100 mr-auto">

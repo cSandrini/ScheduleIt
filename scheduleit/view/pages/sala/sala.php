@@ -1,4 +1,10 @@
-<html lang="en"><head>
+<?php
+    if(!isset($_SESSION)) {
+        session_start();
+    }
+?>
+
+<html lang="pt-BR"><head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -120,7 +126,7 @@ h1 { font-size: 1.5em; margin: 10px; }
         <hr>
         <div class="px-4 d-flex justify-content-between">
           <div class="col-3 border rounded p-2 mr-2 bg-light">
-            <p class="card-text"> <?php echo $row->descricao ?> <br><br> <?php echo "$row->cep, $row->estado, $row->cidade, $row->bairro, $row->rua, $row->numero, $row->complemento"?> <br><br> Horário de atendimento <br><br> <?php echo $row->email ?> <br> <?php echo $row->telefone ?> </p> 
+            <p class="card-text"> <?php echo $row->descricao ?> <br><br> <?php echo "CEP: $row->cep. $row->cidade - $row->estado. $row->bairro, $row->rua, $row->numero, $row->complemento."?> <br><br> Horário de atendimento <br><br> <?php echo "Email: $row->email" ?> <br> <?php echo "Telefone: $row->telefone" ?> </p> 
           </div>
           <div>
             <div class="pt-5">
@@ -142,7 +148,7 @@ h1 { font-size: 1.5em; margin: 10px; }
     </div>
     <hr class="my-4">
     <div class="d-flex justify-content-around mb-3">
-      <div class="dropdown" id="beto" style="display: none;">
+      <div class="dropdown" id="func1">
         <button class="botaofunc">
           <p>Funcionário 1</p>
         </button>
@@ -240,7 +246,7 @@ h1 { font-size: 1.5em; margin: 10px; }
           </div>
         </div>
       </div>
-      <div  id="joao" class="dropdown" style="display:none">
+      <div  id="func2" class="dropdown">
         <button class="botaofunc">
           <p>Funcionário 1</p>
         </button>
@@ -339,7 +345,7 @@ h1 { font-size: 1.5em; margin: 10px; }
         </div>
       </div>
 
-      <div class="dropdown" id="rafael" style="display: none;">
+      <div class="dropdown" id="func3">
         <button class="botaofunc"><p>Funcionário 1</p>
         </button>
 
