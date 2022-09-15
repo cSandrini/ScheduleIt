@@ -85,29 +85,44 @@ h1 { font-size: 1.5em; margin: 10px; }
 
 
 
-<?php include "../parts/header.php"; ?>
+<?php include "../parts/header.php"; 
+
+//Conexao no método PDO (?)
+  try {
+      $con = new PDO("mysql:host=localhost;dbname=scheduleit",'root','');
+
+      $sth = $con->prepare("SELECT * FROM Sala WHERE idSala=".$_GET["idSala"]);
+      $sth->setFetchMode(PDO:: FETCH_OBJ);
+      $sth->execute();
+
+      if ($sth->rowCount() > 0) {
+        $row=$sth->fetch();
+      } else {
+          echo "<br><div class='alert alert-danger col-md-2 text-center mx-auto' role='alert'>
+              Nenhuma sala encontrada.
+          </div>";
+      }
+  } catch(PDOException $e) {
+      echo "Error: ". $e->getMessage();
+  }
+?>
+
 <div class="container border rounded bg-white p-0 mt-5 rounded">
   <div>
     <div>
       <div class="w-100 rounded bg-info">
-        <img src="assets/IMG/blank.png" alt="" width="180" height="180" class="rounded p-3">
+        <?php
+          echo "<img src='data:imgLogo/jpeg;base64,".base64_encode($row->imgLogo)."' width='180' height='180' class='rounded p-3'>";
+        ?>
       </div>
       <div class="card-body p-0 pt-3">
-        <h4 class="card-title text-center">Nome do estabelecimento</h4> 
+        <h4 class="card-title text-center"><?php echo $row->nomeFantasia ?></h4> 
         <hr>
         <div class="px-4 d-flex justify-content-between">
           <div class="col-3 border rounded p-2 mr-2 bg-light">
-            <p class="card-text">Descrição do estabelecimento <br> Endereço <br> Horário de atendimento <br> telefone <br> etc </p> 
+            <p class="card-text"> <?php echo $row->descricao ?> <br><br> <?php echo "$row->cep, $row->estado, $row->cidade, $row->bairro, $row->rua, $row->numero, $row->complemento"?> <br><br> Horário de atendimento <br><br> <?php echo $row->email ?> <br> <?php echo $row->telefone ?> </p> 
           </div>
           <div>
-            <div class="pb-5">
-              <select class="form-select" aria-label="Default select example" name="list" id="combom"  onclick="cidades()">
-                <option value="0" selected="selected" id="inicio">Selecione a cidade</option>
-                <option value="1">Colatina</option>
-                <option value="2">Marilândia</option>
-                <option value="3">Santa Teresa</option>
-              </select>  
-            </div>
             <div class="pt-5">
               <fieldset class="rating">
                 <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>

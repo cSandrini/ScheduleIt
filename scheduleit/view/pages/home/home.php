@@ -15,21 +15,6 @@
 </head>
 
 <body class="bg-light">
-    <style>
-        .imagem{  
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-        .rotulo{
-            background-color: white;
-            opacity: 58%;
-            width: 100%;
-            height: 30%;
-            position: relative;
-            margin-top: -21%;
-        }
-    </style>
     <!-- HEADER -->
     <?php 
         include '../parts/header.php';
@@ -53,7 +38,7 @@
                         while($row=$sth->fetch()) {
                             $img = base64_encode($row->imgLogo);
                             echo    "<div style='width: 22rem; height: 15rem;' class='gallery_product border rounded bg-white mr-2 mb-2'>
-                                        <a href='#'><img class='rounded imgsala' src='data:imgLogo/jpeg;base64,$img'></a>
+                                        <a href='../sala/sala.php?idSala=$row->idSala'><img class='rounded imgsala' src='data:imgLogo/jpeg;base64,$img'></a>
                                         <p class='title'>$row->nomeFantasia <small>$row->cidade - $row->estado</small></p>
                                     </div>";
                         }
