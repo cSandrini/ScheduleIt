@@ -156,7 +156,7 @@ include('../../../controller/protect.php');
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="inserirSenhaModal">Confirmar alterações</h5>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
@@ -172,12 +172,5 @@ include('../../../controller/protect.php');
         </div>
       </form>
     </main>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" 
-    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" 
-    crossorigin="anonymous"></script>
   </body>
 </html>
