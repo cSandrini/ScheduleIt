@@ -18,7 +18,9 @@
     $id = $_POST["id"];
 
     // PASSO 2 - VALIDAR OS DADOS
-    $msgErro = validarDadosAtt($id, $imagemPerfil, $senha);
+    if(isset($_FILES["imagemPerfil"])){
+        $msgErro = validarDadosAtt($id, $imagemPerfil, $senha);
+    }
     
     if (empty($msgErro)) {            
         // CONECTAR

@@ -33,7 +33,6 @@
                     $sth->execute();
 
                     if ($sth->rowCount() > 0) {
-                        $i=1;
                         while($row=$sth->fetch()) {
                             $img = base64_encode($row->imgLogo);
                             echo    "<div style='padding: 0!important; width: 22rem; height: 15rem;' class='gallery_product border rounded bg-white me-2 mb-2'>

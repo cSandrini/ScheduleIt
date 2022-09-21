@@ -18,7 +18,7 @@ include('../../../controller/protect.php');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="../../styles/css/cover.css" rel="stylesheet">
   </head>
-  <body class="text-center bg-light">
+  <body class="bg-light">
     <!-- HEADER -->
     <?php include '../parts/header.php';?>
 
@@ -111,7 +111,7 @@ include('../../../controller/protect.php');
                 <textarea name="txtDescricao" rows="3" class="form-control" id="descricao" placeholder="Descricao" required="" maxlength="300"></textarea>
               </div>
 
-              <div class="col-sm-6">
+              <div>
               <label for="cpf" class="form-label mb-0">Escolha uma logo</label>
                 <input name="fileLogo" type="file" class="form-control mb-0" aria-label="Large file input example">
               </div>
