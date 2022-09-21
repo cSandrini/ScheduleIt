@@ -79,7 +79,7 @@ include('../../../controller/protect.php');
         <div class="col-7">
           <div>
             <ul class="func pl-0">      
-              <li class="list-unstyled borda border rounded ml-0 bg-light">
+              <li class="list-unstyled borda border rounded ms-0 bg-light">
                 <input name="payment_methods" type="checkbox" id="CheckMS" class="input1" onclick="FunMS()">
                 <label for="CheckMS" class="text-dark label1 mb-0">
                   <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
@@ -96,7 +96,7 @@ include('../../../controller/protect.php');
                   </div>
                 </label>
               </li>
-              <li class="list-unstyled borda border rounded ml-0 bg-light">
+              <li class="list-unstyled borda border rounded ms-0 bg-light">
                 <input name="payment_methods" type="checkbox" id="CheckMF" class="input1" onclick="FunMF()">
                 <label for="CheckMF" class="text-dark label1 mb-0">
                   <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
@@ -113,7 +113,7 @@ include('../../../controller/protect.php');
                   </div>
                 </label>
               </li>
-              <li class="list-unstyled borda border rounded ml-0 bg-light">
+              <li class="list-unstyled borda border rounded ms-0 bg-light">
                 <input name="payment_methods" type="checkbox" id="CheckAF" class="input1" onclick="FunAF()">
                 <label for="CheckAF" class="text-dark label1 mb-0">
                   <svg class="bi flex-shrink-0 me-3" width="1.75em" height="1.75em">

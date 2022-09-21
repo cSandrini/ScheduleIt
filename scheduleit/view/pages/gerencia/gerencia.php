@@ -93,7 +93,7 @@
 
         <div style="display:none" id="func1">
           <label for="botaofunc" class="label1 borda mt-5">
-            <img src="assets/IMG/blank.png" alt="" width="80" height="80" class="rounded-circle me-4">
+            <img src="../../styles/blank.png" alt="" width="80" height="80" class="rounded-circle me-4">
             <div>
               <h4 class="fw-bold mb-0">
                 Fulano
@@ -109,7 +109,7 @@
         </div>
         <div style="display:none" id="func2">
           <label for="botaofunc" class="label1 borda mt-5">
-            <img src="assets/IMG/blank.png" alt="" width="80" height="80" class="rounded-circle me-4">
+            <img src="../../styles/blank.png" alt="" width="80" height="80" class="rounded-circle me-4">
             <div>
               <h4 class="fw-bold mb-0">
                 Fulano

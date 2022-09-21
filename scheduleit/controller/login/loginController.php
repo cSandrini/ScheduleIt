@@ -3,7 +3,7 @@
 
   if (isset($_GET['auth']) && $_GET['auth']==0) {
     $mensagem = "Você precisa estar logado.";
-  } 
+  }
 
   if(isset($_POST['email']) || isset($_POST['senha'])) {
     $conexao = conectarBD();

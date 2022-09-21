@@ -75,13 +75,13 @@ include('../../../controller/protect.php');
               echo "Error: ". $e->getMessage();
           }
             
-            if(isset($img)) {
-              echo "<img class='mr-3 border rounded' src='data:image/jpeg;base64,$img' alt='' width='120' height='120'>";
+            if($img) {
+              echo "<img class='me-3 border rounded' src='data:image/jpeg;base64,$img' alt='' width='120' height='120'>";
             } else {
-              echo "<img class='mr-3 border rounded' src='blank.png' alt='' width='120' height='120'>";
+              echo "<img class='me-3 border rounded' src='blank.png' alt='' width='120' height='120'>";
             }
           ?>
-          <div class="lh-100 mr-auto">
+          <div class="lh-100 me-auto">
             <h6 class="mb-0 text-white lh-100"><?php echo $_SESSION['nome'];?></h6>
             <small>Since 2022</small>
             <div class="mb-3">

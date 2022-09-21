@@ -36,7 +36,7 @@
                         $i=1;
                         while($row=$sth->fetch()) {
                             $img = base64_encode($row->imgLogo);
-                            echo    "<div style='width: 22rem; height: 15rem;' class='gallery_product border rounded bg-white mr-2 mb-2'>
+                            echo    "<div style='padding: 0!important; width: 22rem; height: 15rem;' class='gallery_product border rounded bg-white me-2 mb-2'>
                                         <a href='../sala/sala.php?idSala=$row->idSala'><img class='rounded imgsala' src='data:imgLogo/jpeg;base64,$img'></a>
                                         <p class='title'>$row->nomeFantasia <small>$row->cidade - $row->estado</small></p>
                                     </div>";

@@ -1,3 +1,9 @@
+<?php
+
+include('../../../controller/protect.php');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -73,7 +79,7 @@
         <div class="col-7">
           <div>
             <ul class="func pl-0">      
-              <li class="list-unstyled borda ml-0">
+              <li class="list-unstyled borda ms-0">
                 <input name="payment_methods" type="checkbox" id="CheckMS" class="input1" onclick="FunMS()">
                 <label for="CheckMS" class="label1 mb-0">
                   <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
@@ -90,7 +96,7 @@
                   </div>
                 </label>
               </li>
-              <li class="list-unstyled borda ml-0">
+              <li class="list-unstyled borda ms-0">
                 <input name="payment_methods" type="checkbox" id="CheckMF" class="input1" onclick="FunMF()">
                 <label for="CheckMF" class="label1 mb-0">
                   <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
@@ -107,7 +113,7 @@
                   </div>
                 </label>
               </li>
-              <li class="list-unstyled borda ml-0">
+              <li class="list-unstyled borda ms-0">
                 <input name="payment_methods" type="checkbox" id="CheckAF" class="input1" onclick="FunAF()">
                 <label for="CheckAF" class="label1 mb-0">
                   <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em">
@@ -300,7 +306,7 @@
 
   <div class="cal dropdown-content rounded border">
           <div class="d-flex flex-nowrap">
-            <img src="assets/IMG/blank.png" alt="" width="40" height="40" class="rounded me-2 mb-2 mr-2">
+            <img src="../../styles/blank.png" alt="" width="40" height="40" class="rounded me-2 mb-2">
             <h4 class="fw-bold mb-0">
               Nome do Funcionário
             </h4>

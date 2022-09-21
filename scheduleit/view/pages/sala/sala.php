@@ -118,14 +118,14 @@ h1 { font-size: 1.5em; margin: 10px; }
     <div>
       <div class="w-100 rounded bg-info">
         <?php
-          echo "<img src='data:imgLogo/jpeg;base64,".base64_encode($row->imgLogo)."' width='180' height='180' class='rounded p-3'>";
+          echo "<img class='rounded m-3' src='data:imgLogo/jpeg;base64,".base64_encode($row->imgLogo)."' width='160' height='160'>";
         ?>
       </div>
       <div class="card-body p-0 pt-3">
         <h4 class="card-title text-center"><?php echo $row->nomeFantasia ?></h4> 
         <hr>
         <div class="px-4 d-flex justify-content-between">
-          <div class="col-3 border rounded p-2 mr-2 bg-light">
+          <div class="col-3 border rounded p-2 me-2 bg-light">
             <p class="card-text"> <?php echo $row->descricao ?> <br><br> <?php echo "CEP: $row->cep. $row->cidade - $row->estado. $row->bairro, $row->rua, $row->numero, $row->complemento."?> <br><br> Horário de atendimento <br><br> <?php echo "Email: $row->email" ?> <br> <?php echo "Telefone: $row->telefone" ?> </p> 
           </div>
           <div>
@@ -154,7 +154,7 @@ h1 { font-size: 1.5em; margin: 10px; }
         </button>
 
         <label for="botaofunc" class="align-items-center borda border rounded pr-2 bg-light">
-          <img src="assets/IMG/blank.png" alt="" width="80" height="80" class="rounded mr-2">
+          <img src="../../styles/blank.png" alt="" width="80" height="80" class="rounded me-2">
           <div class="">
             <h4 class="fw-bold mb-0">
               Nome do Funcionário
@@ -167,7 +167,7 @@ h1 { font-size: 1.5em; margin: 10px; }
         
         <div class="cal dropdown-content rounded border">
           <div class="d-flex flex-nowrap">
-            <img src="assets/IMG/blank.png" alt="" width="40" height="40" class="rounded me-2 mb-2 mr-2">
+            <img src="../../styles/blank.png" alt="" width="40" height="40" class="rounded me-2 mb-2 me-2">
             <h4 class="fw-bold mb-0">
               Nome do Funcionário
             </h4>
@@ -252,7 +252,7 @@ h1 { font-size: 1.5em; margin: 10px; }
         </button>
 
         <label for="botaofunc" class="align-items-center borda border rounded pr-2 bg-light">
-          <img src="assets/IMG/blank.png" alt="" width="80" height="80" class="rounded mr-2">
+          <img src="../../styles/blank.png" alt="" width="80" height="80" class="rounded me-2">
           <div class="">
             <h4 class="fw-bold mb-0">
               Nome do Funcionário
@@ -265,7 +265,7 @@ h1 { font-size: 1.5em; margin: 10px; }
 
         <div class="cal dropdown-content rounded border">
           <div class="d-flex flex-nowrap">
-            <img src="assets/IMG/blank.png" alt="" width="40" height="40" class="rounded me-2 mb-2 mr-2">
+            <img src="../../styles/blank.png" alt="" width="40" height="40" class="rounded me-2 mb-2">
             <h4 class="fw-bold mb-0">
               Nome do Funcionário
             </h4>
@@ -350,7 +350,7 @@ h1 { font-size: 1.5em; margin: 10px; }
         </button>
 
         <label for="botaofunc" class="align-items-center borda border rounded pr-2 bg-light">
-          <img src="assets/IMG/blank.png" alt="" width="80" height="80" class="rounded mr-2">
+          <img src="../../styles/blank.png" alt="" width="80" height="80" class="rounded me-2">
           <div class="">
             <h4 class="fw-bold mb-0">
               Nome do Funcionário
@@ -363,7 +363,7 @@ h1 { font-size: 1.5em; margin: 10px; }
 
         <div class="cal dropdown-content rounded border">
           <div class="d-flex flex-nowrap">
-            <img src="assets/IMG/blank.png" alt="" width="40" height="40" class="rounded me-2 mb-2 mr-2">
+            <img src="../../styles/blank.png" alt="" width="40" height="40" class="rounded me-2 mb-2">
             <h4 class="fw-bold mb-0">
               Nome do Funcionário
             </h4>

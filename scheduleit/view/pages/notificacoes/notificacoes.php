@@ -29,12 +29,12 @@ include('../../../controller/protect.php');
         <?php //CARREGAR IMAGEM DE PERFIL
           if(isset($_SESSION['imagem'])) {
             $imagemPerf=$_SESSION['imagem'];
-            echo "<img class='mr-3 rounded' src='data:image/jpeg;base64,".base64_encode($imagemPerf)."' alt='' width='48' height='48'>";
+            echo "<img class='me-3 rounded' src='data:image/jpeg;base64,".base64_encode($imagemPerf)."' alt='' width='48' height='48'>";
           } else {
-            echo "<img class='mr-3 rounded' src='blank.png' alt='' width='48' height='48'>";
+            echo "<img class='me-3 rounded' src='../../styles/blank.png' alt='' width='48' height='48'>";
           }
         ?>
-        <div class="lh-100 mr-auto">
+        <div class="lh-100 me-auto">
           <h6 class="mb-0 text-white lh-100"><?php echo $_SESSION['nome']; ?></h6>
           <small>Since 2022</small>
         </div>
@@ -44,21 +44,21 @@ include('../../../controller/protect.php');
       <div class="my-3 p-3 bg-white rounded border">
         <h6 class="border-bottom border-gray pb-2 mb-0">Notificações</h6>
         <div class="media text-muted pt-3">
-          <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
+          <img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="me-2 rounded">
           <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
             <strong class="d-block text-gray-dark">@Usuário</strong>
             Notificações.
           </p>
         </div>
         <div class="media text-muted pt-3">
-          <img data-src="holder.js/32x32?theme=thumb&bg=e83e8c&fg=e83e8c&size=1" alt="" class="mr-2 rounded">
+          <img data-src="holder.js/32x32?theme=thumb&bg=e83e8c&fg=e83e8c&size=1" alt="" class="me-2 rounded">
           <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
             <strong class="d-block text-gray-dark">@Usuário</strong>
             Notificações.
           </p>
         </div>
         <div class="media text-muted pt-3">
-          <img data-src="holder.js/32x32?theme=thumb&bg=6f42c1&fg=6f42c1&size=1" alt="" class="mr-2 rounded">
+          <img data-src="holder.js/32x32?theme=thumb&bg=6f42c1&fg=6f42c1&size=1" alt="" class="me-2 rounded">
           <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
             <strong class="d-block text-gray-dark">@Usuário</strong>
             Notificações.

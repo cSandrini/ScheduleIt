@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="../../styles/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +24,7 @@
             padding: 0;
         }
 
-        li, a, button, input {
+        li, a, button, input, p {
             font-family: "Montserrat", sans-serif;
             font-weight: 500;
             font-size: 16px;
@@ -81,8 +84,10 @@
         <span style="cursor:pointer;" onclick="paginaHome()" style="color: rgb(102, 0, 102);"><strong>SCHEDULE</strong><span style="color: rgb(187, 10, 187);"><strong>IT</strong></span></span>
         <nav>
             <form class="form-inline my-2 my-lg-0" method="post" name="pesquisar" action="../pesquisa/pesquisa.php">
-                <input class="form-control mr-sm-2" type="text" placeholder="Pesquisar" required="" name="busca" >
-                <button class="btn btn-outline-info my-2 my-sm-0" type="submit" name="submit">Pesquisar</button>
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Pesquisar" required="" name="busca" >
+                    <button class="btn btn-outline-info" type="submit" name="submit">Pesquisar</button>
+                </div>
             </form>
         </nav>
 
@@ -99,18 +104,32 @@
                     if ($sth->rowCount() > 0) {
                         $i=1;
                         while($row=$sth->fetch()) {
+                            $nome = $row->nome;
                             $img = base64_encode($row->foto);
                         }
                     }
                 } catch(PDOException $e) {
                     echo "Error: ". $e->getMessage();
                 }
-                
-                echo "<div>
-                        <a href='../minhasSalas/minhasSalas.php'><button class='btn btn-outline-info my-2 my-sm-0 mr-2'>Minhas Salas</button></a>
-                        <a href='../../../controller/logout.php'>Logout</a>
-                        <a href='../config/config.php'><img class='border ml-2 rounded' src='data:imgLogo/jpeg;base64,$img' width='50' height='50'></a>
-                    </div>";
+
+                echo "<div class='dropdown'>
+                        <button style='padding: 0;' class='btn btn-default dropdown' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>";
+                        if($img) {
+                            echo "<img class='border rounded' src='data:foto/jpeg;base64,$img' width='50' height='50'>";
+                        } else {
+                            echo "<img class='border rounded' src='../../styles/blank.png' width='50' height='50'>";
+                        }
+                echo "</button>
+                        <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
+                            <p class='dropdown-header'>Logado como $nome</p>
+                            <div class='dropdown-divider'></div>
+                            <a class='dropdown-item' href='../notificacoes/notificacoes.php'>Notificações</a>
+                            <a class='dropdown-item' href='../minhasSalas/minhasSalas.php'>Minhas Salas</a>
+                            <a class='dropdown-item' href='../agenda/agenda.php'>Agenda</a>
+                            <div class='dropdown-divider'></div>
+                            <a class='dropdown-item' href='../config/config.php'>Configurações</a>
+                            <a class='dropdown-item' href='../../../controller/logout.php'>Sair</a>
+                        </div>";
             } else {
                 echo "<button style='color: white;' onclick='paginaLogin()'>Login</button>";
             }

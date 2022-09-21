@@ -1,9 +1,15 @@
-<!doctype html>
+<?php
+    if(!isset($_SESSION)) {
+        session_start();
+    }
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <title>ScheduleIt - Agenda</title>
-<link href="../../styles/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body class="text-center">
   <?php include "../parts/header.php"; ?>
@@ -60,18 +66,6 @@
       </div>
       
     </div>
-
-    <label for="botaofunc" class="align-items-center borda border rounded pr-2 bg-light">
-          <img src="assets/IMG/blank.png" alt="" width="80" height="80" class="rounded mr-2">
-          <div class="">
-            <h4 class="fw-bold mb-0">
-              Nome do Funcionário
-            </h4>
-            <p class="mb-0">
-              Função do funcionário
-            </p>
-          </div>
-        </label>
     
     <?php include "../parts/footer.php"; ?>
   </body>
