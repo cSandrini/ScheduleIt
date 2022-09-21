@@ -24,8 +24,7 @@
             padding: 0;
         }
 
-        li, a, button, input, p {
-            font-family: "Montserrat", sans-serif;
+        li {
             font-weight: 500;
             font-size: 16px;
             color: black;
@@ -66,7 +65,7 @@
             color: #0088a9
         }
 
-        button {
+        .hbutton {
             padding: 9px 25px;
             background-color: rgba(0,136,169,1);
             border: none;
@@ -75,7 +74,7 @@
             transition: all 0.3s ease 0s;
         }
 
-        button:hover {
+        .hbutton:hover {
             background-color:  rgba(0,136,169,0.75);
         }
     </style>
@@ -128,10 +127,10 @@
                             <a class='dropdown-item' href='../agenda/agenda.php'>Agenda</a>
                             <div class='dropdown-divider'></div>
                             <a class='dropdown-item' href='../config/config.php'>Configurações</a>
-                            <a class='dropdown-item' href='../../../controller/logout.php'>Sair</a>
+                            <a style='color: red;' class='dropdown-item' href='../../../controller/logout.php'>Sair</a>
                         </div>";
             } else {
-                echo "<button style='color: white;' onclick='paginaLogin()'>Login</button>";
+                echo "<button class='hbutton' style='color: white;' onclick='paginaLogin()'>Login</button>";
             }
         ?>
     </header>
