@@ -78,7 +78,7 @@ include('../../../controller/protect.php');
             if($img) {
               echo "<img class='me-3 border rounded' src='data:image/jpeg;base64,$img' alt='' width='120' height='120'>";
             } else {
-              echo "<img class='me-3 border rounded' src='blank.png' alt='' width='120' height='120'>";
+              echo "<img class='me-3 border rounded' src='../../styles/blank.png' alt='' width='120' height='120'>";
             }
           ?>
           <div class="lh-100 me-auto">
