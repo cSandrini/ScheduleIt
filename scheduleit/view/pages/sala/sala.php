@@ -92,10 +92,11 @@ h1 { font-size: 1.5em; margin: 10px; }
 
 
 <?php include "../parts/header.php"; 
+      require_once "../../../model/conexaobd.php";
 
 //Conexao no método PDO (?)
   try {
-      $con = new PDO("mysql:host=localhost;dbname=scheduleit",'root','');
+      $con = conectarBDPDO();
 
       $sth = $con->prepare("SELECT * FROM Sala WHERE idSala=".$_GET["idSala"]);
       $sth->setFetchMode(PDO:: FETCH_OBJ);
@@ -116,11 +117,20 @@ h1 { font-size: 1.5em; margin: 10px; }
 <div class="container border rounded bg-white p-0 mt-5 rounded">
   <div>
     <div>
-      <div class="w-100 rounded bg-info">
+      <div  class="d-flex align-items-center p-3 text-white-50 bg-info rounded">
         <?php
           echo "<img class='rounded m-3' src='data:imgLogo/jpeg;base64,".base64_encode($row->imgLogo)."' width='160' height='160'>";
-        ?>
-      </div>
+          if ($_SESSION["id"] == $row->idProprietario) {
+            ?>
+              <div class='lh-100 me-auto'>
+                <a href="../editarSala/editarSala.php"><button type='button' class='btn btn-light mb-2'>Editar</button></a>
+              <div class="">
+                <a href="../teste/comprarSala.php"><button type='button' class='btn btn-light'>Publicar</button></a>
+              </div>
+            </div>
+          <?php }
+          ?>
+      </div>  
       <div class="card-body p-0 pt-3">
         <h4 class="card-title text-center"><?php echo $row->nomeFantasia ?></h4> 
         <hr>

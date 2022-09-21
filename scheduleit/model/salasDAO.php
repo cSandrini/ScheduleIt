@@ -6,7 +6,7 @@ function carregarMinhasSalas($conexao, $id) {
     $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );
     $registro = mysqli_fetch_assoc( $resultado );
     // Pegar os campos desse resultado
-    $dados['nome'] = $registro["nome"];
+    $dados['nomeFantasia'] = $registro["nomeFantasia"];
     $dados['cnpj'] = $registro["cnpj"];
     $dados['telefone'] = $registro["telefone"];
     $dados['cep'] = $registro["cep"];
