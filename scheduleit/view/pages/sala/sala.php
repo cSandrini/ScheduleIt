@@ -44,25 +44,28 @@
 <div class="container border rounded bg-white p-0 mt-5 rounded">
   <div>
     <div>
-      <div class="rounded bg-info">
+      <div  class="d-flex align-items-center p-3 text-white-50 bg-info rounded">
         <?php
           echo "<img class='rounded m-3' src='data:imgLogo/jpeg;base64,".base64_encode($row->imgLogo)."' width='160' height='160'>";
-        ?>
+          if ($_SESSION["id"] == $row->idProprietario) {
+            ?>
+              <div class='lh-100 me-auto'>
+                <a href="../editarSala/editarSala.php"><button type='button' class='btn btn-light mb-2'>Editar</button></a>
+              <div class="">
+                <a href="../teste/comprarSala.php"><button type='button' class='btn btn-light'>Publicar</button></a>
+              </div>
+            </div>
+          <?php }
+          ?>
+      </div>  
+      <div class="card-body p-0 pt-3">
+        <h4 class="card-title text-center"><?php echo $row->nomeFantasia ?></h4> 
+        <hr>
+        <div class="px-4 d-flex justify-content-between">
+          <div class="col-3 border rounded p-2 me-2 bg-light">
+            <p class="card-text"> <?php echo $row->descricao ?> <br><br> <?php echo "CEP: $row->cep. $row->cidade - $row->estado. $row->bairro, $row->rua, $row->numero, $row->complemento."?> <br><br> Horário de atendimento <br><br> <?php echo "Email: $row->email" ?> <br> <?php echo "Telefone: $row->telefone" ?> </p> 
+          </div>
         </div>
-        <div class="card-body p-0 pt-3">
-          <h4 class="card-title text-center"><?php echo $row->nomeFantasia ?></h4> 
-          <hr>
-          <div class="px-3 d-flex justify-content-between">
-            <div class="w-50">
-              <div class="border rounded p-2 me-2 bg-light">
-                <p class="card-text"> <?php echo $row->descricao ?> <br><br> <?php echo "CEP: $row->cep. $row->cidade - $row->estado. $row->bairro, $row->rua, $row->numero, $row->complemento."?> <br><br> Horário de atendimento <br><br> <?php echo "Email: $row->email" ?> <br> <?php echo "Telefone: $row->telefone" ?> </p> 
-              </div>
-            </div>
-            <div class="w-50">
-              <div class="border rounded p-2 me-2 bg-light">
-                <p class="card-text"> <?php echo $row->descricao ?> <br><br> <?php echo "CEP: $row->cep. $row->cidade - $row->estado. $row->bairro, $row->rua, $row->numero, $row->complemento."?> <br><br> Horário de atendimento <br><br> <?php echo "Email: $row->email" ?> <br> <?php echo "Telefone: $row->telefone" ?> </p> 
-              </div>
-            </div>
 
             <!--
             <div>
