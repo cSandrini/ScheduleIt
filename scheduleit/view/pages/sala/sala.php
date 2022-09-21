@@ -19,10 +19,11 @@
 <body class="bg-light">
 
 <?php include "../parts/header.php"; 
+      require_once "../../../model/conexaobd.php";
 
 //Conexao no método PDO (?)
   try {
-      $con = new PDO("mysql:host=localhost;dbname=scheduleit",'root','');
+      $con = conectarBDPDO();
 
       $sth = $con->prepare("SELECT * FROM Sala WHERE idSala=".$_GET["idSala"]);
       $sth->setFetchMode(PDO:: FETCH_OBJ);

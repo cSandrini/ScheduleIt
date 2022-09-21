@@ -23,14 +23,15 @@ include('../../../controller/protect.php');
     </svg>
 
     <!-- HEADER -->
-    <?php include '../parts/header.php';?>
+    <?php include '../parts/header.php';
+    require_once "../../../model/conexaobd.php";?>
     
     <div class="container pt-3">
         <div class="row justify-content-center">
             <?php
                 //Conexao no método PDO (?)
                 try {
-                    $con = new PDO("mysql:host=localhost;dbname=scheduleit",'root','');
+                    $con = conectarBDPDO();
 
                     $sth = $con->prepare("SELECT * FROM Sala WHERE idProprietario=".$_SESSION["id"]);
                     $sth->setFetchMode(PDO:: FETCH_OBJ);
