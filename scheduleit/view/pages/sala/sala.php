@@ -46,7 +46,7 @@
     <div>
       <div  class="d-flex align-items-center p-3 text-white-50 bg-info rounded">
         <?php
-          echo "<img class='rounded m-3' src='data:imgLogo/jpeg;base64,".base64_encode($row->imgLogo)."' width='160' height='160'>";
+          echo "<img class='rounded' src='data:imgLogo/jpeg;base64,".base64_encode($row->imgLogo)."' width='160' height='160'>";
           if ($_SESSION["id"] == $row->idProprietario) {
             ?>
               <div class='lh-100 me-auto'>
