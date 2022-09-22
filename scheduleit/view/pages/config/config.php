@@ -18,11 +18,8 @@ include('../../../controller/protect.php');
 
     <!-- Custom styles for this template -->
     <link href="offcanvas.css" rel="stylesheet">
-    <script>
-      function overlay(e) {
-
-      }
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="js.js"></script>
   </head>
 
   <body class="bg-light">
@@ -71,14 +68,14 @@ include('../../../controller/protect.php');
                       $img = base64_encode($row->foto);
                   }
               }
-          } catch(PDOException $e) {
-              echo "Error: ". $e->getMessage();
-          }
+            } catch(PDOException $e) {
+                echo "Error: ". $e->getMessage();
+            }
             
             if($img) {
-              echo "<img class='me-3 border rounded' src='data:image/jpeg;base64,$img' alt='' width='120' height='120'>";
+              echo "<img id='imgShow' class='me-3 border rounded' src='data:image/jpeg;base64,$img' alt='' width='120' height='120'>";
             } else {
-              echo "<img class='me-3 border rounded' src='../../styles/blank.png' alt='' width='120' height='120'>";
+              echo "<img id='imgShow' class='me-3 border rounded' src='../../styles/blank.png' alt='' width='120' height='120'>";
             }
           ?>
           <div class="lh-100 me-auto">
@@ -173,4 +170,12 @@ include('../../../controller/protect.php');
       </form>
     </main>
   </body>
+  
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" 
+    crossorigin="anonymous"></script>
+
 </html>

@@ -1,4 +1,15 @@
 <?php
+    require_once '../../model/conexaobd.php';
+    try {
+        $con = conectarBDPDO();
+        $sth = $con->prepare("SELECT * FROM Usuario WHERE id=".$_SESSION['id'].";");
+        $sth->setFetchMode(PDO:: FETCH_OBJ);
+        $sth->execute();
+        $row=$sth->fetch();
+        $senha = $row->senha;
+    } catch(PDOException $e) {
+        echo "Error: ". $e->getMessage();
+    }
     require_once '../funcoesUteis.php';
 
     // PASSO 1 - RECEBER OS DADOS DO FORMULARIO
@@ -14,19 +25,22 @@
     if(isset($_FILES["imagemPerfil"])){
         $imagemPerfil = $_FILES["imagemPerfil"];
     }
-    $senha = $_POST["senhaModal"];
+    $senhaModal = $_POST["senhaModal"];
     $id = $_POST["id"];
 
     // PASSO 2 - VALIDAR OS DADOS
     if(isset($_FILES["imagemPerfil"])){
-        $msgErro = validarDadosAtt($id, $imagemPerfil, $senha);
+        $msgErro = validarDadosAtt($id, $imagemPerfil, $senha, $senhaModal);
     }
     
-    if (empty($msgErro)) {            
-        // CONECTAR
-        $conexao=conectarBD();
-        inserirImagem($conexao, $imagemPerfil, $id);
-        header("Location:../../view/pages/config/config.php?msg=0.");
+    if (empty($msgErro)) {          
+        if ($senha = $senhaModal) {
+            // CONECTAR
+            $conexao=conectarBD();
+            inserirImagem($conexao, $imagemPerfil, $id);
+            header("Location:../../view/pages/config/config.php?msg=0.");
+        }  
+        
     } else {
         header("Location:../../view/pages/config/config.php?msg=$msgErro");
     }
