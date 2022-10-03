@@ -48,15 +48,16 @@
         <?php
           echo "<img class='rounded' src='data:imgLogo/jpeg;base64,".base64_encode($row->imgLogo)."' width='160' height='160'>";
           if ($_SESSION["id"] == $row->idProprietario) {
-            ?>
-            <div class='lh-100 me-auto ms-2'>
-                <a href="../editarSala/editarSala.php"><button type='button' class='btn btn-light mb-2'>Editar</button></a>
-              <div class="">
-                <a href="../teste/comprarSala.php"><button type='button' class='btn btn-light'>Publicar</button></a>
-              </div>
-            </div>
-          <?php }
-          ?>
+            echo "<div class='lh-100 me-auto ms-2'>
+                    <a href='../editarSala/editarSala.php?idSala=$row->idSala'><button type='button' class='btn btn-light mb-2'>Editar</button></a>
+                  <div class=''>
+                    <a href='../teste/comprarSala.php?idSala=$row->idSala'><button type='button' class='btn btn-light'>Publicar</button></a>
+                  </div>
+                </div>";
+              }
+        ?>
+
+
       </div>  
       <div class="card-body p-0 pt-3">
         <h4 class="card-title text-center"><?php echo $row->nomeFantasia ?></h4> 

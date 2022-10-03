@@ -6,13 +6,13 @@
         $email = $_POST["email"];
     }
     if(isset($_POST["cnpj"])){
-        $cnpj = $_POST["cnpj"]];
+        $cnpj = $_POST["cnpj"];
     }
     if(isset($_POST["nomeFantasia"])){
         $senhaNova = $_POST["nomeFantasia"];
     }
     if(isset($_POST["cep"])){
-        $cep = $_POST["cep"]);
+        $cep = $_POST["cep"];
     }
     if(isset($_POST["estado"])){
         $estado = $_POST["estado"];
@@ -28,6 +28,9 @@
     }
     if(isset($_POST["numero"])){
         $numero = $_POST["numero"];
+    }
+    if(isset($_POST["complemento"])){
+        $complemento = $_POST["complemento"];
     }
     if(isset($_POST["telefone"])){
         $telefone = $_POST["telefone"];
