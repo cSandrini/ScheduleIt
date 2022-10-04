@@ -31,11 +31,13 @@ include('../../../controller/protect.php');
       require_once '../../../model/perfilDAO.php';
       
       $conexao = conectarBD();
+      $id=$_SESSION['id'];
       $dados = carregarConfig($conexao, $_SESSION['id']);
+
     ?>
     <main role="main" class="container">
-      <form method="post" name="formCadastro" action="../../../controller/config/attusuario.php" enctype="multipart/form-data">
-
+      <form method="post" name="formAlterarImgUsuario" action="../../../controller/config/attImgUsuario.php?id=<?php echo $id;?>" enctype="multipart/form-data">
+      <input style="display:none;" name="id" type="text" value="<?php echo $id;?>" required="">
         <?php
           // Exibir a mensagem de ERRO caso OCORRA
           if (isset($_GET["msg"])) {  // Verifica se tem mensagem de ERRO
@@ -58,7 +60,7 @@ include('../../../controller/protect.php');
   
             try {
               $con = conectarBDPDO();
-              $sth = $con->prepare("SELECT * FROM Usuario WHERE id=".$_SESSION['id'].";");
+              $sth = $con->prepare("SELECT * FROM Usuario WHERE id=".$id.";");
               $sth->setFetchMode(PDO:: FETCH_OBJ);
               $sth->execute();
 
@@ -82,11 +84,14 @@ include('../../../controller/protect.php');
             <h6 class="mb-0 text-white lh-100"><?php echo $_SESSION['nome'];?></h6>
             <small>Since 2022</small>
             <div class="mb-3">
-              <label for="imagemPerfil" class="form-label"><small>Editar Imagem de Perfil</small></label>
-              <input name="imagemPerfil" class="form-control form-control-sm" id="imagemPerfil" type="file">
+              <label for="imgUsuario" class="form-label"><small>Editar Imagem de Perfil</small></label>
+              <input name="imgUsuario" class="form-control form-control-sm" id="imgUsuario" type="file" required="">
+              <button type='submit' class='btn btn-light'>Salvar Alterações</button>
             </div>
           </div>
         </div>
+      </form>
+      <form method="post" name="formAlterarUsuario" action="../../../controller/config/attUsuario.php?id=<?php echo $id;?>" enctype="multipart/form-data">
         <div class="my-3 p-3 bg-white rounded">
           <h6 class="pb-2 mb-0">Configurações</h6>
             <table class="table border-bottom">
@@ -99,7 +104,7 @@ include('../../../controller/protect.php');
                     Nome
                   </td>
                   <td>
-                    <input name="nome" readonly class="form-control form-control-sm" type="text" placeholder="<?php echo $dados['nome'];?>">
+                    <input name="txtNome" class="form-control form-control-sm" type="text" placeholder="" value="<?php echo $dados['nome'];?>" required="">
                   </td>
                 </tr>
                 <tr>
@@ -107,7 +112,7 @@ include('../../../controller/protect.php');
                     Sobrenome
                   </td>
                   <td>
-                    <input name="sobrenome" readonly class="form-control form-control-sm" type="text" placeholder="<?php echo $dados['sobrenome'];?>">
+                    <input name="txtSobrenome" class="form-control form-control-sm" type="text"  placeholder="" value="<?php echo $dados['sobrenome'];?>"required="">
                   </td>
                 </tr>
                 <tr>
@@ -115,7 +120,7 @@ include('../../../controller/protect.php');
                     CPF
                   </td>
                   <td>
-                    <input name="cpf" readonly class="form-control form-control-sm" type="text" placeholder="<?php echo $dados['cpf'];?>">
+                    <input name="txtCpf" class="form-control form-control-sm" type="text" placeholder="" value="<?php echo $dados['cpf'];?>" required="">
                   </td>
                 </tr>
                 <tr>
@@ -123,7 +128,7 @@ include('../../../controller/protect.php');
                     Telefone
                   </td>
                   <td>
-                    <input name="telefone" class="form-control form-control-sm" type="text" placeholder="<?php echo $dados['telefone'];?>">
+                    <input name="txtTelefone" class="form-control form-control-sm" type="text" placeholder="" value="<?php echo $dados['telefone'];?>" required="">
                   </td>
                 </tr>
                 <tr>
@@ -131,7 +136,7 @@ include('../../../controller/protect.php');
                     Email
                   </td>
                   <td>
-                    <input name="email" class="form-control form-control-sm" type="text" placeholder="<?php echo $dados['email'];?>">
+                    <input name="txtEmail" class="form-control form-control-sm" type="text" placeholder=""  value="<?php echo $dados['email'];?>" required="">
                   </td>
                 </tr>
                 <tr>
@@ -139,7 +144,7 @@ include('../../../controller/protect.php');
                     Senha
                   </td>
                   <td>
-                    <input name="senhaNova" class="form-control form-control-sm" type="password" placeholder="**********">
+                    <input name="txtSenha" class="form-control form-control-sm" type="password" placeholder="**********" value="">
                   </td>
                 </tr>
               </tbody>
@@ -158,7 +163,7 @@ include('../../../controller/protect.php');
                 </button>
               </div>
               <div class="modal-body">
-                <input name="senhaModal" class="form form-control" type="password" placeholder="Insira sua senha"></input>
+                <input name="senhaModal" class="form form-control" type="password" placeholder="Insira sua senha"value=""></input>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

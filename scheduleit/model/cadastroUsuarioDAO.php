@@ -6,11 +6,16 @@ function cadastrarUsuario($conexao, $nome, $sobrenome, $cpf, $telefone, $email, 
     $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );
 }
 
-function alterarUsuário() {
-    
+function editarUsuario($conexao, $nome, $sobrenome, $cpf, $telefone, $email, $senha) {
+    require_once "../funcoesUteis.php";
+    $id = $_GET["id"];
+    $sql = "UPDATE scheduleit.Usuario SET nome='$nome', sobrenome='$sobrenome', cpf='$cpf', telefone=$telefone, email='$email', senha='$senha' WHERE id=$id;";
+    $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );
 }
 
-function excluirUsuário() {
+
+
+function excluirUsuario() {
     
 }
 
