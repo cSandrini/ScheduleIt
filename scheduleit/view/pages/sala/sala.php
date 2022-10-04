@@ -29,7 +29,7 @@
   
             try {
               $con = conectarBDPDO();
-              $sth = $con->prepare("SELECT * FROM Sala WHERE idProprietario=".$_SESSION['id']." AND idSala=".$_GET["idSala"].";");
+              $sth = $con->prepare("SELECT * FROM Sala WHERE idSala=".$_GET["idSala"].";");
               $sth->setFetchMode(PDO:: FETCH_OBJ);
               $sth->execute();
 
@@ -52,11 +52,7 @@
                       $idProprietario = $row->idProprietario;
 
                   }
-              } else {
-                echo "<br><div class='alert alert-danger col-md-2 text-center mx-auto' role='alert'>
-                   Nenhuma sala encontrada.
-                </div>";
-              }
+              } 
             } catch(PDOException $e) {
                 echo "Error: ". $e->getMessage();
             }
