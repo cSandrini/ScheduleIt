@@ -58,19 +58,16 @@
             require_once '../../model/perfilDAO.php';
             $conexao = conectarBD();
             $dados = carregarConfig($conexao, $id);
-            if($dados['senha']==$senha) {
-                if ($imagem["error"]!=0) {
-                    $msgErro = $msgErro . "Erro ao fazer upload da imagem! <BR>";
-                } else if ($imagem["size"]>65000) {
-                    $msgErro = $msgErro . "Imagem maior que 65Kb! <BR>";
-                } else if(($imagem["type"]!="image/gif") &&
-                    ($imagem["type"]!="image/jpeg") &&
-                    ($imagem["type"]!="image/pjpeg") &&
-                    ($imagem["type"]!="image/png") &&
-                    ($imagem["type"]!="image/x-png") &&
-                    ($imagem["type"]!="image/bmp")  ) {
-                        $msgErro= $imagem["type"];
-                }
+            if ($imagem["error"]!=0) {
+                $msgErro = $msgErro . "Erro ao fazer upload da imagem! <BR>";
+            } else if ($imagem["size"]>65000) {
+                $msgErro = $msgErro . "Imagem maior que 65Kb! <BR>";
+            } else if(($imagem["type"]!="image/gif") &&
+                ($imagem["type"]!="image/jpeg") &&
+                ($imagem["type"]!="image/pjpeg") &&
+                ($imagem["type"]!="image/png") &&
+                ($imagem["type"]!="image/x-png") &&
+                ($imagem["type"]!="image/bmp")  ) {
             }
         } else {
             $msgErro = $msgErro . "Senha inválida! <BR>";
