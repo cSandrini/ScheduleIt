@@ -50,6 +50,7 @@
     } 
     if(isset($_FILES["imgLogo"])){
         $imgLogo = $_FILES["imgLogo"];
+        
     }
 
     $senha = $_POST["senhaModal"];
@@ -57,7 +58,7 @@
 
     // PASSO 2 - VALIDAR OS DADOS
     $msgErro = validarDadosSala($email, $cnpj, $nomeFantasia, $cep, $estado, $cidade, $bairro, $rua, $numero, $complemento, $telefone, $descricao);
-    $msgErroImg = validarImgLogo($imgLogo)
+    $msgErroImg = validarImgLogo($imgLogo);
 
     if (empty($msgErroImg)) {            
         // CONECTAR

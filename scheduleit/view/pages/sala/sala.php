@@ -75,10 +75,11 @@
                   <div class=''>
                     <a href='../teste/comprarSala.php?idSala=$idSala'><button type='button' class='btn btn-light'>Publicar</button></a>
                   </div>
-                    <form method='post' name='FormEditarImgLogo' action='../../../controller/config/attSala.php' enctype='multipart/form-data'>
+                    <form method='post' name='FormEditarImgLogo' action='../../../controller/editarSala/attImgLogo.php?idSala=$idSala' enctype='multipart/form-data'>
                       <div class=''>
                         <label for='imgLogo' class='form-label'><small>Editar Logo</small></label>
-                        <input name='imgLogo' class='form-control form-control-sm' id='imgLogo' type='file'>
+                        <input name='imgLogo' class='form-control form-control-sm' id='imgLogo' type='file' required=''>
+                        <button type='submit' class='btn btn-light'>Salvar Alterações</button>
                       </div>
                     </form>
                   </div>";

@@ -77,6 +77,22 @@
         return $msgErro;
     }
     
+    function validarImgLogo($ImgLogo){
+        $msgErro = "";
+        if ($imgLogo["error"]!=0) {
+            $msgErro = $msgErro . "Erro ao fazer upload da imagem! <BR>";
+        } else if ($imgLogo["size"]>65000) {
+            $msgErro = $msgErro . "Imagem maior que 65Kb! <BR>";
+        } else if(($imgLogo["type"]!="image/gif") &&
+            ($imgLogo["type"]!="image/jpeg") &&
+            ($imgLogo["type"]!="image/pjpeg") &&
+            ($imgLogo["type"]!="image/png") &&
+            ($imgLogo["type"]!="image/x-png") &&
+            ($imgLogo["type"]!="image/bmp")  ) {
+        }
+        return $msgErro;
+
+    }
 
     function validarDadosAttUsuario($id, $imagem, $senha, $senhaModal) {
         $msgErro = "";

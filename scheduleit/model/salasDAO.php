@@ -23,12 +23,13 @@ function carregarMinhasSalas($conexao, $id) {
     return $dados;
 }
 
-function inserirImagem($conexao, $imagem, $id) {
-    $tamanhoImg = $imagem["size"];
-    $arqAberto = fopen($imagem["tmp_name"], "r");
-    $imagem = addslashes(fread($arqAberto,$tamanhoImg));
+function editarImgLogo($conexao, $imgLogo) {
+    $idSala = $_GET["idSala"];
+    $tamanhoImg = $imgLogo["size"];
+    $arqAberto = fopen($imgLogo["tmp_name"], "r");
+    $imgLogo = addslashes(fread($arqAberto,$tamanhoImg));
     
-    $sql = "UPDATE Usuario SET imagem='$imagem' WHERE id=$id";
+    $sql = "UPDATE Sala SET imgLogo='$imgLogo' WHERE idSala=$idSala";
     $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );
 }
 ?>

@@ -15,13 +15,5 @@ function editarSala($conexao, $email, $cnpj, $nomeFantasia, $cep, $estado, $cida
    $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );
 }
 
-function editarImgLogo(){
-   require_once "../funcoesUteis.php";
-   $idSala = $_GET["idSala"];
-   $tamanhoImg = $imgLogo["size"];
-   $arqAberto = fopen($imgLogo["tmp_name"], "r");
-   $imgLogo = addslashes(fread($arqAberto,$tamanhoImg));
-   $sql = "UPDATE scheduleit.Sala SET imgLogo='$imgLogo' WHERE idSala=$idSala";
-   $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );
-}
+
 ?>
