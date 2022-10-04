@@ -48,13 +48,28 @@
     if(isset($_POST["txtDescricao"])){
         $descricao = $_POST["txtDescricao"];
     } 
+    if(isset($_FILES["imgLogo"])){
+        $imgLogo = $_FILES["imgLogo"];
+    }
+
     $senha = $_POST["senhaModal"];
     $id = $_POST["idProprietario"];
 
     // PASSO 2 - VALIDAR OS DADOS
     $msgErro = validarDadosSala($email, $cnpj, $nomeFantasia, $cep, $estado, $cidade, $bairro, $rua, $numero, $complemento, $telefone, $descricao);
-    //validarDadosSala($nomeFantasia, $telefone, $email);
-    
+    $msgErroImg = validarImgLogo($imgLogo)
+
+    if (empty($msgErroImg)) {            
+        // CONECTAR
+        require_once '../../model/conexaobd.php';
+        require_once '../../model/cadastroSalaDAO.php';
+        $conexao=conectarBD();
+        editarImgLogo($conexao, $imgLogo);
+        header("Location:../../view/pages/sala/sala.php?idSala=$idSala&msg=0.");
+    } else {
+        header("Location:../../view/pages/sala/sala.php?idSala=$idSala&msg=$msgErro");
+    }
+
     if (empty($msgErro)) {            
         // CONECTAR
         require_once '../../model/conexaobd.php';
