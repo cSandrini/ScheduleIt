@@ -1,59 +1,85 @@
 <?php
+    include('../../controller/protect.php');
     require_once '../funcoesUteis.php';
+    require_once '../../model/conexaobd.php';
+    require_once '../../model/salasDAO.php';
+
+    $idSala = $_GET["idSala"];
+
+    $conexao = conectarBD();
+    $dados = carregarMinhasSalas($conexao, $_SESSION['id']);
+
 
     // PASSO 1 - RECEBER OS DADOS DO FORMULARIO
-    if(isset($_POST["email"])){
-        $email = $_POST["email"];
+    if(isset($_POST["txtEmail"])){
+        $email = $_POST["txtEmail"];
+    } 
+    if(isset($_POST["txtCNPJ"])){
+        $cnpj = $_POST["txtCNPJ"];
+    } 
+    if(isset($_POST["txtNome"])){
+        $nomeFantasia = $_POST["txtNome"];
+    } 
+    if(isset($_POST["txtCEP"])){
+        $cep = $_POST["txtCEP"];
+    } 
+    if(isset($_POST["txtEstado"])){
+        $estado = $_POST["txtEstado"];
+    } 
+    if(isset($_POST["txtCidade"])){
+        $cidade = $_POST["txtCidade"];
+    } 
+    if(isset($_POST["txtBairro"])){
+        $bairro = $_POST["txtBairro"];
+    } 
+    if(isset($_POST["txtRua"])){
+        $rua = $_POST["txtRua"];
     }
-    if(isset($_POST["cnpj"])){
-        $cnpj = $_POST["cnpj"];
+    if(isset($_POST["txtNumero"])){
+        $numero = $_POST["txtNumero"];
+    } 
+    if(isset($_POST["txtComplemento"])){
+        $complemento = $_POST["txtComplemento"];
+    } else {
     }
-    if(isset($_POST["nomeFantasia"])){
-        $senhaNova = $_POST["nomeFantasia"];
-    }
-    if(isset($_POST["cep"])){
-        $cep = $_POST["cep"];
-    }
-    if(isset($_POST["estado"])){
-        $estado = $_POST["estado"];
-    }
-    if(isset($_POST["cidade"])){
-        $cidade = $_POST["cidade"];
-    }
-    if(isset($_POST["bairro"])){
-        $bairro = $_POST["bairro"];
-    }
-    if(isset($_POST["rua"])){
-        $rua = $_POST["rua"];
-    }
-    if(isset($_POST["numero"])){
-        $numero = $_POST["numero"];
-    }
-    if(isset($_POST["complemento"])){
-        $complemento = $_POST["complemento"];
-    }
-    if(isset($_POST["telefone"])){
-        $telefone = $_POST["telefone"];
-    }
-    if(isset($_POST["descricao"])){
-        $descricao = $_POST["descricao"];
-    }
+    if(isset($_POST["txtTelefone"])){
+        $telefone = $_POST["txtTelefone"];
+    } 
+    if(isset($_POST["txtDescricao"])){
+        $descricao = $_POST["txtDescricao"];
+    } 
     if(isset($_FILES["imgLogo"])){
-        $imgLogo = $_FILES["cep"]);
+        $imgLogo = $_FILES["imgLogo"];
     }
+
     $senha = $_POST["senhaModal"];
-    $id = $_POST["id"];
+    $id = $_POST["idProprietario"];
 
     // PASSO 2 - VALIDAR OS DADOS
-    $msgErro = validarDadosAtt($id, $imagemPerfil, $senha);
-    
+    $msgErro = validarDadosSala($email, $cnpj, $nomeFantasia, $cep, $estado, $cidade, $bairro, $rua, $numero, $complemento, $telefone, $descricao);
+    $msgErroImg = validarImgLogo($imgLogo)
+
+    if (empty($msgErroImg)) {            
+        // CONECTAR
+        require_once '../../model/conexaobd.php';
+        require_once '../../model/cadastroSalaDAO.php';
+        $conexao=conectarBD();
+        editarImgLogo($conexao, $imgLogo);
+        header("Location:../../view/pages/sala/sala.php?idSala=$idSala&msg=0.");
+    } else {
+        header("Location:../../view/pages/sala/sala.php?idSala=$idSala&msg=$msgErro");
+    }
+
     if (empty($msgErro)) {            
         // CONECTAR
+        require_once '../../model/conexaobd.php';
+        require_once '../../model/cadastroSalaDAO.php';
+        
         $conexao=conectarBD();
-        inserirImagem($conexao, $imagemPerfil, $id);
-        header("Location:../../view/pages/config/config.php?msg=0.");
+        editarSala($conexao, $email, $cnpj, $nomeFantasia, $cep, $estado, $cidade, $bairro, $rua, $numero, $complemento, $telefone, $descricao, $idSala);
+        header("Location:../../view/pages/editarSala/editarSala.php?idSala=$idSala&msg=Editado com sucesso.");
     } else {
-        header("Location:../../view/pages/config/config.php?msg=$msgErro");
+        header("Location:../../view/pages/editarSala/editarSala.php?idSala=$idSala&msg=$msgErro");
     }
 
 ?>

@@ -1,7 +1,7 @@
 <?php
     require_once '../../model/conexaobd.php';
     function validarDados($nome, $sobrenome, $cpf, $telefone, $email, $senha, $senha2) {
-    
+
         $msgErro = "";
 
         if (empty($nome)) {
@@ -33,26 +33,52 @@
         return $msgErro;
     }
 
-    function validarDadosSala($nome, $telefone, $email) {
+    function validarDadosSala($email, $cnpj, $nomeFantasia, $cep, $estado, $cidade, $bairro, $rua, $numero, $complemento, $telefone, $descricao) {
     
         $msgErro = "";
 
-        if (empty($nome)) {
+        if (empty($email)) {
+            $msgErro = $msgErro . "EMAIL inválido! <BR>";
+        }
+        if (empty($cnpj)) {
+            $msgErro = $msgErro . "CNPJ inválido! <BR>";
+        }
+        if (empty($nomeFantasia)) {
             $msgErro = $msgErro . "NOME inválido! <BR>";
         }
-
-        if ( empty($telefone) ) {
-            $msgErro = $msgErro . "NÚMERO inválido! <BR>";
+        if (empty($cep)) {
+            $msgErro = $msgErro . "CEP inválido! <BR>";
         }
-
-        if ( empty($email) ) {
-            $msgErro = $msgErro . "EMAIL inválido! <BR>";
+        if (empty($estado)) {
+            $msgErro = $msgErro . "ESTADO inválido! <BR>";
+        }
+        if (empty($cidade)) {
+            $msgErro = $msgErro . "CIDADE inválida! <BR>";
+        }
+        if (empty($bairro)) {
+            $msgErro = $msgErro . "BAIRRO inválido! <BR>";
+        }
+        if ( empty($rua) ) {
+            $msgErro = $msgErro . "RUA inválida! <BR>";
+        }
+        if ( empty($numero) ) {
+            $msgErro = $msgErro . "NUMERO inválido! <BR>";
+        }
+        if ( empty($complemento) ) {
+            $msgErro = $complemento . "COMPLEMENTO inválido! <BR>";
+        }
+        if ( empty($telefone) ) {
+            $msgErro = $telefone . "TELEFONE inválido! <BR>";
+        }
+        if ( empty($descricao) ) {
+            $msgErro = $descricao . "DESCRIÇÃO inválida! <BR>";
         }
 
         return $msgErro;
     }
     
-    function validarDadosAtt($id, $imagem, $senha, $senhaModal) {
+
+    function validarDadosAttUsuario($id, $imagem, $senha, $senhaModal) {
         $msgErro = "";
         if($senha==$senhaModal) {
             require_once '../../model/perfilDAO.php';
