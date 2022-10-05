@@ -11,14 +11,18 @@
         
     }
 
-    $msgErro = validarImgLogo($imgLogo);
+    if($_FILES['imgLogo']['size'] > 0 ) {
+        $imgLogo = $_FILES['imgLogo'];
+        $msgErro = validarImg($imagem);
+    } 
+    $msgErro = validarImg($imgLogo);
 
     if (empty($msgErro)) {            
         // CONECTAR
         require_once '../../model/conexaobd.php';
         $conexao=conectarBD();
         editarImgLogo($conexao, $imgLogo);
-        header("Location:../../view/pages/sala/sala.php?idSala=$idSala&msg=0.");
+        header("Location:../../view/pages/sala/sala.php?idSala=$idSala&msg=Editado com sucesso.");
     } else {
         header("Location:../../view/pages/sala/sala.php?idSala=$idSala&msg=$msgErro");
     }

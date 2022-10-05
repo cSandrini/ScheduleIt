@@ -12,7 +12,7 @@ function carregarConfig($conexao, $id) {
     $dados['telefone'] = $registro["telefone"];
     $dados['email'] = $registro["email"];
     $dados['senha'] = $registro["senha"];
-    $dados['imagem'] = $registro["foto"];
+    $dados['imagem'] = base64_encode($registro["foto"]);
     return $dados;
 }
 

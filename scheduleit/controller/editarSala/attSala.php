@@ -11,43 +11,66 @@
 
 
     // PASSO 1 - RECEBER OS DADOS DO FORMULARIO
-    if(isset($_POST["txtEmail"])){
+    if(!empty($_POST["txtEmail"])){
         $email = $_POST["txtEmail"];
-    } 
-    if(isset($_POST["txtCNPJ"])){
-        $cnpj = $_POST["txtCNPJ"];
-    } 
-    if(isset($_POST["txtNome"])){
-        $nomeFantasia = $_POST["txtNome"];
-    } 
-    if(isset($_POST["txtCEP"])){
-        $cep = $_POST["txtCEP"];
-    } 
-    if(isset($_POST["txtEstado"])){
-        $estado = $_POST["txtEstado"];
-    } 
-    if(isset($_POST["txtCidade"])){
-        $cidade = $_POST["txtCidade"];
-    } 
-    if(isset($_POST["txtBairro"])){
-        $bairro = $_POST["txtBairro"];
-    } 
-    if(isset($_POST["txtRua"])){
-        $rua = $_POST["txtRua"];
+    }  else {
+        $email = $dados['email'];
     }
-    if(isset($_POST["txtNumero"])){
+    if(!empty($_POST["txtCNPJ"])){
+        $cnpj = $_POST["txtCNPJ"];
+    }  else {
+        $cnpj = $dados['cnpj'];
+    }
+    if(!empty($_POST["txtNome"])){
+        $nomeFantasia = $_POST["txtNome"];
+    }  else {
+        $nomeFantasia = $dados['nomeFantasia'];
+    }
+    if(!empty($_POST["txtCEP"])){
+        $cep = $_POST["txtCEP"];
+    }  else {
+        $cep = $dados['cep'];
+    }
+    if(!empty($_POST["txtEstado"])){
+        $estado = $_POST["txtEstado"];
+    }  else {
+        $estado = $dados['estado'];
+    }
+    if(!empty($_POST["txtCidade"])){
+        $cidade = $_POST["txtCidade"];
+    }  else {
+        $cidade = $dados['cidade'];
+    }
+    if(!empty($_POST["txtBairro"])){
+        $bairro = $_POST["txtBairro"];
+    }  else {
+        $bairro = $dados['bairro'];
+    }
+    if(!empty($_POST["txtRua"])){
+        $rua = $_POST["txtRua"];
+    } else {
+        $rua = $dados['rua'];
+    }
+    if(!empty($_POST["txtNumero"])){
         $numero = $_POST["txtNumero"];
-    } 
-    if(isset($_POST["txtComplemento"])){
+    }  else {
+        $numero = $dados['numero'];
+    }
+    if(!empty($_POST["txtComplemento"])){
         $complemento = $_POST["txtComplemento"];
     } else {
+        $complemento = $dados['complemento'];
     }
-    if(isset($_POST["txtTelefone"])){
+    if(!empty($_POST["txtTelefone"])){
         $telefone = $_POST["txtTelefone"];
-    } 
-    if(isset($_POST["txtDescricao"])){
+    }  else {
+        $telefone = $dados['telefone'];
+    }
+    if(!empty($_POST["txtDescricao"])){
         $descricao = $_POST["txtDescricao"];
-    } 
+    }  else {
+        $descricao = $dados['descricao'];
+    }
 
 
     $senha = $_POST["senhaModal"];

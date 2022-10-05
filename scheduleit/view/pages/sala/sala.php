@@ -56,10 +56,29 @@
             } catch(PDOException $e) {
                 echo "Error: ". $e->getMessage();
             }
-  
+
 ?>
 
 <div class="container border rounded bg-white p-0 mt-5 rounded">
+
+<?php
+// Exibir a mensagem de ERRO caso OCORRA
+              if (isset($_GET["msg"])) {  // Verifica se tem mensagem de ERRO
+                $mensagem = $_GET["msg"];
+                if ($mensagem=="Editado com sucesso.") {
+                  echo "<div style='margin-bottom:0 !important'class='alert alert-success' role='alert'>
+                          $mensagem
+                        </div>";
+                } else {
+                  echo "<div style='margin-bottom:0 !important' class='alert alert-danger' role='alert'>
+                          $mensagem
+                        </div>";
+                }
+                  
+              } 
+            ?>
+  </div>     
+  <div class="container border rounded bg-white p-0 mt-3 rounded">    
   <div>
     <div>
       <div  class="d-flex align-items-center p-3 text-white-50 bg-info rounded">

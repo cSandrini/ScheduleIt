@@ -77,21 +77,22 @@
         return $msgErro;
     }
     
-    function validarImgLogo($ImgLogo){
+
+
+    function validarImg($imagem){
         $msgErro = "";
-        if ($imgLogo["error"]!=0) {
+        if ($imagem["error"]!=0) {
             $msgErro = $msgErro . "Erro ao fazer upload da imagem! <BR>";
-        } else if ($imgLogo["size"]>65000) {
+        } else if ($imagem["size"]>65000) {
             $msgErro = $msgErro . "Imagem maior que 65Kb! <BR>";
-        } else if(($imgLogo["type"]!="image/gif") &&
-            ($imgLogo["type"]!="image/jpeg") &&
-            ($imgLogo["type"]!="image/pjpeg") &&
-            ($imgLogo["type"]!="image/png") &&
-            ($imgLogo["type"]!="image/x-png") &&
-            ($imgLogo["type"]!="image/bmp")  ) {
+        } else if(($imagem["type"]!="image/gif") &&
+            ($imagem["type"]!="image/jpeg") &&
+            ($imagem["type"]!="image/pjpeg") &&
+            ($imagem["type"]!="image/png") &&
+            ($imagem["type"]!="image/x-png") &&
+            ($imagem["type"]!="image/bmp")  ) {
         }
         return $msgErro;
-
     }
 
     function validarDadosAttUsuario($id, $imagem, $senha, $senhaModal) {
