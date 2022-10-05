@@ -88,22 +88,19 @@ require_once '../parts/header.php';
           if (isset($_SESSION["id"])) {
             if ($_SESSION["id"] == $idProprietario) {
               echo "<div class='lh-100 me-auto ms-2'>
-                      <a href='../editarSala/editarSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'>Editar</button></a>
+                      <a href='../editarSala/editarSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-pen'></i> Editar</button></a>
                     <div class=''>
-                      <a href='../teste/comprarSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light'>Publicar</button></a>
+                      <a href='../teste/comprarSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-send'></i> Publicar</button></a>
                     </div>
                       <form method='post' name='FormEditarImgLogo' action='../../../controller/editarSala/attImgLogo.php?idSala=$idSala' enctype='multipart/form-data'>
-                        <label for='imgLogo' class='form-label'><small>Editar Logo</small></label>
                         <div class='d-flex'>
-                          <input name='imgLogo' class='form-control form-control-sm' id='imgLogo' type='file' required=''>
-                          <button type='submit' class='ms-2 btn btn-sm btn-light'>
-                          <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-check' viewBox='0 0 16 16'>
-                            <path d='M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z'></path>
-                          </svg>
-                        </button>
+                          <input name='imgLogo' class='form-control form-control-sm mb-2' id='imgLogo' type='file' required=''>
+                          <button type='submit' class='ms-2 btn btn-sm btn-light mb-2'>
+                            <i class='bi bi-file-earmark-arrow-up'></i>
+                          </button>
                         </div>
                         <div class=''>
-                          <a href='../../../controller/editarSala/excluirSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mt-2'>Excluir</button></a>
+                          <a href='../../../controller/editarSala/excluirSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light'><i class='bi bi-trash'></i> Excluir</button></a>
                         </div>
                       </form>
                     </div>";
