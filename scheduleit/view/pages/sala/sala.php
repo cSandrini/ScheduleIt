@@ -56,24 +56,23 @@
 <?php
 require_once '../parts/header.php';
 // Exibir a mensagem de ERRO caso OCORRA
-              if (isset($_GET["msg"])) {  // Verifica se tem mensagem de ERRO
-                $mensagem = $_GET["msg"];
-                if ($mensagem=="Editado com sucesso.") {
-                  echo "<div class='container border rounded bg-white p-0 mt-5 rounded'>
-                          <div style='margin-bottom:0 !important'class='alert alert-success' role='alert'>
-                            $mensagem
-                          </div>
-                        </div>";
-                } else {
-                  echo "<div class='container border rounded bg-white p-0 mt-5 rounded'>
-                          <div style='margin-bottom:0 !important' class='alert alert-danger' role='alert'>
-                            $mensagem
-                          </div>
-                        </div>";
-                }
-                  
-              } 
-            ?>
+  if (isset($_GET["msg"])) {  // Verifica se tem mensagem de ERRO
+    $mensagem = $_GET["msg"];
+    if ($mensagem=="Editado com sucesso.") {
+      echo "<div class='container border rounded bg-white p-0 mt-5 rounded'>
+              <div style='margin-bottom:0 !important'class='alert alert-success' role='alert'>
+                $mensagem
+              </div>
+            </div>";
+    } else {
+      echo "<div class='container border rounded bg-white p-0 mt-5 rounded'>
+              <div style='margin-bottom:0 !important' class='alert alert-danger' role='alert'>
+                $mensagem
+              </div>
+            </div>";
+    }
+  } 
+?>
   </div>     
   <div class="container border rounded bg-white p-0 mt-3 rounded">    
   <div>
@@ -102,6 +101,9 @@ require_once '../parts/header.php';
                             <path d='M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z'></path>
                           </svg>
                         </button>
+                        </div>
+                        <div class=''>
+                          <a href='../../../controller/editarSala/excluirSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mt-2'>Excluir</button></a>
                         </div>
                       </form>
                     </div>";

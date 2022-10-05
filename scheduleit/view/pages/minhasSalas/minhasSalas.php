@@ -26,6 +26,23 @@ include('../../../controller/protect.php');
     <?php include '../parts/header.php';
     require_once "../../../model/conexaobd.php";?>
     
+<?php
+// Exibir a mensagem de ERRO caso OCORRA
+              if (isset($_GET["msg"])) {  // Verifica se tem mensagem de ERRO
+                $mensagem = $_GET["msg"];
+                if ($mensagem=="Editado com sucesso.") {
+                  echo "<div style='margin-bottom:0 !important'class='alert alert-success' role='alert'>
+                          $mensagem
+                        </div>";
+                } else {
+                  echo "<div style='margin-bottom:0 !important' class='alert alert-danger' role='alert'>
+                          $mensagem
+                        </div>";
+                }
+                  
+              } 
+            ?>
+
     <div class="container pt-3">
         <div class="row justify-content-center">
             <?php

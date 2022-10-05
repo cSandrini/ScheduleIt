@@ -82,7 +82,7 @@
     if (empty($msgErro)) {            
         // CONECTAR
         require_once '../../model/conexaobd.php';
-        require_once '../../model/cadastroSalaDAO.php';
+        require_once '../../model/salasDAO.php';
         
         $conexao=conectarBD();
         editarSala($conexao, $email, $cnpj, $nomeFantasia, $cep, $estado, $cidade, $bairro, $rua, $numero, $complemento, $telefone, $descricao, $idSala);
