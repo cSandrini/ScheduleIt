@@ -12,7 +12,24 @@ function editarUsuario($conexao, $id, $nome, $sobrenome, $cpf, $telefone, $email
     $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );
 }
 
+function validarDadosBD($conexao, $cpf, $email) {
 
+    $msgErro = "";
+
+    $sqlCPF = "SELECT * FROM `usuario` WHERE cpf = '$cpf'";
+    $resultado = mysqli_query( $conexao, $sqlCPF ) or die( mysqli_error($conexao) );
+    if ($resultado->num_rows > 0) {
+        $msgErro = $msgErro . "CPF já cadastrado! <BR>";
+    }
+
+    $sqlEmail = "SELECT * FROM `usuario` WHERE email = '$email'";
+    $resultado = mysqli_query( $conexao, $sqlEmail ) or die( mysqli_error($conexao) );
+    if ($resultado->num_rows > 0) {
+        $msgErro = $msgErro . "EMAIL já cadastrado! <BR>";
+    }
+
+    return $msgErro;
+}
 
 function excluirUsuario() {
     

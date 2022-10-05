@@ -8,8 +8,9 @@
 
     <title>ScheduleIt - Cadastro</title>
     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="script.js"></script>
-    <link href="../../styles/css/bootstrap.min.css" rel="stylesheet">
+
     <link href="../../styles/css/cover.css" rel="stylesheet">
   </head>
   <body class="text-center bg-light">

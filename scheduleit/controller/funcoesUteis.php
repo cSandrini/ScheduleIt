@@ -1,8 +1,10 @@
 <?php
     require_once '../../model/conexaobd.php';
+    require_once '../../model/cadastroUsuarioDAO.php';
     function validarDados($nome, $sobrenome, $cpf, $telefone, $email, $senha, $senha2) {
 
-        $msgErro = "";
+        $conexao = conectarBD();
+        $msgErro = "" . validarDadosBD($conexao, $cpf, $email);
 
         if (empty($nome)) {
             $msgErro = $msgErro . "NOME inválido! <BR>";
@@ -20,10 +22,6 @@
             $msgErro = $msgErro . "Telefone inválido! <BR>";
         }
 
-        if ( empty($email) ) {
-            $msgErro = $msgErro . "EMAIL inválido! <BR>";
-        }
-
         if ( empty($senha) ) {
             $msgErro = $msgErro . "SENHA inválido! <BR>";
         } elseif ( empty($senha2) || $senha!=$senha2) {
@@ -39,6 +37,8 @@
 
         if (empty($email)) {
             $msgErro = $msgErro . "EMAIL inválido! <BR>";
+            $conexao = conectarBD();
+
         }
         if (empty($cnpj)) {
             $msgErro = $msgErro . "CNPJ inválido! <BR>";
