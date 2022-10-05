@@ -61,62 +61,62 @@ include('../../../controller/protect.php');
 
               <div class="col-sm-6">
                 <label for="nomeFantasia" class="form-label mb-0">Nome do Estabelecimento</label>
-                <input name="txtNome" type="text" class="form-control" id="nomeFantasia" placeholder="" value="<?php echo $dados['nomeFantasia'];?>" required="">
+                <input name="txtNome" type="text" class="form-control" id="nomeFantasia" placeholder="<?php echo $dados['nomeFantasia'];?>" value="" >
               </div>
 
               <div class="col-sm-6">
                 <label for="cnpj" class="form-label mb-0">CNPJ</label>
-                <input name="txtCNPJ" oninput="mascara(this)" type="text" class="form-control" id="cnpj" placeholder="" value="<?php echo $dados['cnpj'];?>" required="" >
+                <input name="txtCNPJ" oninput="mascara(this)" type="text" class="form-control" id="cnpj" placeholder="<?php echo $dados['cnpj'];?>" value=""  >
               </div>
 
               <div class="col-12">
                 <label for="telefone" class="form-label mb-0">Telefone</label>
-                <input onkeypress="mask(this, mphone);" onblur="mask(this, mphone);" name="txtTelefone" type="tel" class="form-control" id="numero" placeholder="" value="<?php echo $dados['telefone'];?>" maxlength="15" required="">
+                <input onkeypress="mask(this, mphone);" onblur="mask(this, mphone);" name="txtTelefone" type="tel" class="form-control" id="numero" placeholder="<?php echo $dados['telefone'];?>" value="" maxlength="15" >
               </div>
 
               <div class="col-sm-6">
                 <label for="cep" class="form-label mb-0">CEP</label>
-                <input name="txtCEP" type="text" class="form-control" id="cep" placeholder="" value="<?php echo $dados['cep'];?>" onblur="pesquisacep(this.value);" required="">
+                <input name="txtCEP" type="text" class="form-control" id="cep" placeholder="<?php echo $dados['cep'];?>" value="" onblur="pesquisacep(this.value);" >
               </div>
 
               <div class="col-sm-6">
                 <label for="endereco" class="form-label mb-0">Estado </label>
-                <input name="txtEstado" class="form-control" id="uf" placeholder="" value="<?php echo $dados['estado'];?>" required="">
+                <input name="txtEstado" class="form-control" id="uf" placeholder="<?php echo $dados['estado'];?>" value="" >
               </div>
 
               <div class="col-sm-6">
                 <label for="cidade" class="form-label mb-0">Cidade </label>
-                <input name="txtCidade" class="form-control" id="cidade" placeholder="" value="<?php echo $dados['cidade'];?>" required="">
+                <input name="txtCidade" class="form-control" id="cidade" placeholder="<?php echo $dados['cidade'];?>" value="" >
               </div>
 
               <div class="col-sm-6">
                 <label for="bairro" class="form-label mb-0">Bairro </label>
-                <input name="txtBairro" class="form-control" id="bairro" placeholder="" value="<?php echo $dados['bairro'];?>" required="">
+                <input name="txtBairro" class="form-control" id="bairro" placeholder="<?php echo $dados['bairro'];?>" value="" >
               </div>
 
               <div class="col-sm-6">
                 <label for="rua" class="form-label mb-0">Rua </label>
-                <input name="txtRua" class="form-control" id="rua" placeholder="" value="<?php echo $dados['rua'];?>" required="">
+                <input name="txtRua" class="form-control" id="rua" placeholder="<?php echo $dados['rua'];?>" value="" >
               </div>
 
               <div class="col-sm-6">
                 <label for="numero" class="form-label mb-0">Número </label>
-                <input name="txtNumero" class="form-control" id="numero" placeholder="" value="<?php echo $dados['numero'];?>" required="">
+                <input name="txtNumero" class="form-control" id="numero" placeholder="<?php echo $dados['numero'];?>" value="" >
               </div>
 
               <div class="col-12">
                 <label for="complemento" class="form-label mb-0">Complemento </label>
-                <input name="txtComplemento" class="form-control" id="complemento" placeholder="" value="<?php echo $dados['complemento'];?>" required=""> 
+                <input name="txtComplemento" class="form-control" id="complemento" placeholder="<?php echo $dados['complemento'];?>" value="" > 
               </div>
 
               <div class="col-12">
                 <label for="email" class="form-label mb-0">E-mail </label>
-                <input name="txtEmail" type="email" class="form-control" id="email" placeholder="" value="<?php echo $dados['email'];?>" required=""> 
+                <input name="txtEmail" type="email" class="form-control" id="email" placeholder="<?php echo $dados['email'];?>" value="" > 
               </div>
 
               <div class="col-12">
                 <label for="descricao" class="form-label mb-0">Descrição</label>
-                <textarea name="txtDescricao" rows="3" class="form-control" id="descricao" placeholder=""  maxlength="300" required=""><?php echo $dados['descricao'];?></textarea>
+                <textarea name="txtDescricao" rows="3" class="form-control" id="descricao" placeholder="<?php echo $dados['descricao'];?>"  maxlength="300" ></textarea>
               </div>
 
           

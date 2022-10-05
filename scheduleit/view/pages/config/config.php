@@ -102,7 +102,7 @@ include('../../../controller/protect.php');
                     Nome
                   </td>
                   <td>
-                    <input name="txtNome" class="form-control form-control-sm" type="text" placeholder="" value="<?php echo $dados['nome'];?>" required="">
+                    <input name="txtNome" class="form-control form-control-sm" type="text" placeholder="<?php echo $dados['nome'];?>" value="">
                   </td>
                 </tr>
                 <tr>
@@ -110,7 +110,7 @@ include('../../../controller/protect.php');
                     Sobrenome
                   </td>
                   <td>
-                    <input name="txtSobrenome" class="form-control form-control-sm" type="text"  placeholder="" value="<?php echo $dados['sobrenome'];?>"required="">
+                    <input name="txtSobrenome" class="form-control form-control-sm" type="text"  placeholder="<?php echo $dados['sobrenome'];?>" value="">
                   </td>
                 </tr>
                 <tr>
@@ -118,7 +118,7 @@ include('../../../controller/protect.php');
                     CPF
                   </td>
                   <td>
-                    <input name="txtCpf" class="form-control form-control-sm" type="text" placeholder="" value="<?php echo $dados['cpf'];?>" required="">
+                    <input name="txtCpf" class="form-control form-control-sm" type="text" placeholder="<?php echo $dados['cpf'];?>" value="">
                   </td>
                 </tr>
                 <tr>
@@ -126,7 +126,7 @@ include('../../../controller/protect.php');
                     Telefone
                   </td>
                   <td>
-                    <input name="txtTelefone" class="form-control form-control-sm" type="text" placeholder="" value="<?php echo $dados['telefone'];?>" required="">
+                    <input name="txtTelefone" class="form-control form-control-sm" type="text" placeholder="<?php echo $dados['telefone'];?>" value="">
                   </td>
                 </tr>
                 <tr>
@@ -134,7 +134,7 @@ include('../../../controller/protect.php');
                     Email
                   </td>
                   <td>
-                    <input name="txtEmail" class="form-control form-control-sm" type="text" placeholder=""  value="<?php echo $dados['email'];?>" required="">
+                    <input name="txtEmail" class="form-control form-control-sm" type="text" placeholder="<?php echo $dados['email'];?>"  value="">
                   </td>
                 </tr>
                 <tr>
@@ -142,7 +142,7 @@ include('../../../controller/protect.php');
                     Senha
                   </td>
                   <td>
-                    <input name="txtSenha" class="form-control form-control-sm" type="password" placeholder="**********" value="">
+                    <input name="txtSenha" class="form-control form-control-sm" type="password" placeholder="*****" value="">
                   </td>
                 </tr>
               </tbody>
