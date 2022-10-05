@@ -14,7 +14,6 @@
     $msgErro = validarDados($nome, $sobrenome, $cpf, $telefone, $email, $senha, $senha2);
     
     if ( empty($msgErro) ) {            
-        
         // CONECTAR
         require_once '../../model/conexaobd.php';
         require_once '../../model/cadastroUsuarioDAO.php';
