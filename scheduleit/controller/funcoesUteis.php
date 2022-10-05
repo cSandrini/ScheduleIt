@@ -1,6 +1,6 @@
 <?php
     require_once '../../model/conexaobd.php';
-    require_once '../../model/cadastroUsuarioDAO.php';
+    require_once '../../model/usuarioDAO.php';
     function validarDados($nome, $sobrenome, $cpf, $telefone, $email, $senha, $senha2) {
 
         $conexao = conectarBD();
@@ -98,7 +98,7 @@
     function validarDadosAttUsuario($id, $imagem, $senha, $senhaModal) {
         $msgErro = "";
         if($senha==$senhaModal) {
-            require_once '../../model/perfilDAO.php';
+            require_once '../../model/usuarioDAO.php';
             $conexao = conectarBD();
             $dados = carregarConfig($conexao, $id);
             if ($imagem["error"]!=0) {

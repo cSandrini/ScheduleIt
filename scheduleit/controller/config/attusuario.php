@@ -1,7 +1,7 @@
 <?php
     include('../../controller/protect.php');
     require_once '../../model/conexaobd.php';
-    require_once '../../model/perfilDAO.php';
+    require_once '../../model/usuarioDAO.php';
     require_once '../funcoesUteis.php';
 
     $id = $_POST["idUsuario"];
@@ -45,7 +45,7 @@
         $msgErro = validarImg($imagem);
         if (empty($msgErro)) {            
             require_once '../../model/conexaobd.php';
-            require_once '../../model/cadastroUsuarioDAO.php';
+            require_once '../../model/UsuarioDAO.php';
             $conexao=conectarBD();
             editarImgUsuario($conexao, $imagem, $id);
         }
@@ -56,7 +56,7 @@
     if (empty($msgErro)) {            
         // CONECTAR
         require_once '../../model/conexaobd.php';
-        require_once '../../model/cadastroUsuarioDAO.php';
+        require_once '../../model/UsuarioDAO.php';
         $conexao=conectarBD();
 
         editarUsuario($conexao, $id, $nome, $sobrenome, $cpf, $telefone, $email, $senhaNova);

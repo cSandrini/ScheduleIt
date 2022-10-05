@@ -28,7 +28,7 @@ include('../../../controller/protect.php');
 
     <!-- PERFIL -->
     <?php
-      require_once '../../../model/perfilDAO.php';
+      require_once '../../../model/usuarioDAO.php';
       
       $conexao = conectarBD();
       $id=$_SESSION['id'];
