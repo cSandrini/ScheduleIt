@@ -14,8 +14,8 @@ function editarUsuario($conexao, $id, $nome, $sobrenome, $cpf, $telefone, $email
 
 
 
-function excluirUsuario() {
-    
+function excluirUsuario($conexao, $id) {
+    $sql = "DELETE FROM scheduleit.Usuario WHERE id = $id";
 }
 
 

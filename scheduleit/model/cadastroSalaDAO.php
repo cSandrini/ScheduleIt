@@ -15,5 +15,10 @@ function editarSala($conexao, $email, $cnpj, $nomeFantasia, $cep, $estado, $cida
    $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );
 }
 
+function excluirSala($conexao, $id) {
+   $idSala = $_GET["idSala"];
+   $sql = "DELETE FROM scheduleit.Sala WHERE idSala = $idSala";
+   $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );
+}
 
 ?>

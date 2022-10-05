@@ -100,6 +100,9 @@
                         <input name='imgLogo' class='form-control form-control-sm' id='imgLogo' type='file' required=''>
                         <button type='submit' class='btn btn-light'>Salvar Alterações</button>
                       </div>
+                  <div class=''>
+                    <a href='../../../controller/editarSala/excluirSala.php?idSala=$idSala'><button type='button' class='btn btn-light'>Excluir</button></a>
+                  </div>
                     </form>
                   </div>";
               }
