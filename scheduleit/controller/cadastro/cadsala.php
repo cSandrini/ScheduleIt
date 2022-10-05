@@ -37,8 +37,8 @@
         
         // CONECTAR
         require_once '../../model/conexaobd.php';
-        require_once '../../model/cadastroUsuarioDAO.php';
-        require_once '../../model/cadastroSalaDAO.php';
+        require_once '../../model/UsuarioDAO.php';
+        require_once '../../model/salasDAO.php';
         $tamanhoImg = $imagem["size"];
         $arqAberto = fopen($imagem["tmp_name"], "r");
         $imagem = addslashes(fread($arqAberto,$tamanhoImg));

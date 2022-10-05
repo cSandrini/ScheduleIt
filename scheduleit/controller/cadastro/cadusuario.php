@@ -16,7 +16,7 @@
     if ( empty($msgErro) ) {            
         // CONECTAR
         require_once '../../model/conexaobd.php';
-        require_once '../../model/cadastroUsuarioDAO.php';
+        require_once '../../model/usuarioDAO.php';
         $conexao = conectarBD();
         cadastrarUsuario($conexao, $nome, $sobrenome, $cpf, $telefone, $email, $senha);
         header("Location:../../view/pages/cadastro/cadastro.php?msg=Enviado com sucesso.");
