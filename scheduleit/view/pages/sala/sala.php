@@ -19,59 +19,56 @@
 
 <body class="bg-light">
 
-<?php include "../parts/header.php"; 
-      require_once "../../../model/conexaobd.php";
-
-//Conexao no método PDO (?)
-
-
-              require_once '../../../model/conexaobd.php';
-  
-            try {
-              $con = conectarBDPDO();
-              $sth = $con->prepare("SELECT * FROM Sala WHERE idSala=".$_GET["idSala"].";");
-              $sth->setFetchMode(PDO:: FETCH_OBJ);
-              $sth->execute();
-
-              if ($sth->rowCount() > 0) {
-                  $i=1;
-                  while($row=$sth->fetch()) {
-                      $img = base64_encode($row->imgLogo);
-                      $nomeFantasia = $row->nomeFantasia;
-                      $idSala = $row->idSala;
-                      $descricao = $row->descricao;
-                      $cep = $row->cep;
-                      $cidade = $row->cidade;
-                      $estado = $row->estado;
-                      $bairro = $row->bairro;
-                      $rua = $row->rua;
-                      $numero = $row->numero;
-                      $complemento = $row->complemento;
-                      $email = $row->email;
-                      $telefone = $row->telefone;
-                      $idProprietario = $row->idProprietario;
-
-                  }
-              } 
-            } catch(PDOException $e) {
-                echo "Error: ". $e->getMessage();
-            }
-
+<?php 
+  require_once '../../../model/conexaobd.php';
+  try {
+    $con = conectarBDPDO();
+    $sth = $con->prepare("SELECT * FROM Sala WHERE idSala=".$_GET["idSala"].";");
+    $sth->setFetchMode(PDO:: FETCH_OBJ);
+    $sth->execute();
+    if ($sth->rowCount() > 0) {
+      $i=1;
+      while($row=$sth->fetch()) {
+          $img = base64_encode($row->imgLogo);
+          $nomeFantasia = $row->nomeFantasia;
+          $idSala = $row->idSala;
+          $descricao = $row->descricao;
+          $cep = $row->cep;
+          $cidade = $row->cidade;
+          $estado = $row->estado;
+          $bairro = $row->bairro;
+          $rua = $row->rua;
+          $numero = $row->numero;
+          $complemento = $row->complemento;
+          $email = $row->email;
+          $telefone = $row->telefone;
+          $idProprietario = $row->idProprietario;
+      }
+    } else {
+      header("Location:naoencontrada.php");
+      exit;
+    }
+  } catch(PDOException $e) {
+      echo "Error: ". $e->getMessage();
+  }
 ?>
 
-<div class="container border rounded bg-white p-0 mt-5 rounded">
-
 <?php
+require_once '../parts/header.php';
 // Exibir a mensagem de ERRO caso OCORRA
               if (isset($_GET["msg"])) {  // Verifica se tem mensagem de ERRO
                 $mensagem = $_GET["msg"];
                 if ($mensagem=="Editado com sucesso.") {
-                  echo "<div style='margin-bottom:0 !important'class='alert alert-success' role='alert'>
-                          $mensagem
+                  echo "<div class='container border rounded bg-white p-0 mt-5 rounded'>
+                          <div style='margin-bottom:0 !important'class='alert alert-success' role='alert'>
+                            $mensagem
+                          </div>
                         </div>";
                 } else {
-                  echo "<div style='margin-bottom:0 !important' class='alert alert-danger' role='alert'>
-                          $mensagem
+                  echo "<div class='container border rounded bg-white p-0 mt-5 rounded'>
+                          <div style='margin-bottom:0 !important' class='alert alert-danger' role='alert'>
+                            $mensagem
+                          </div>
                         </div>";
                 }
                   
@@ -87,22 +84,29 @@
             echo "<img id='imgShow' class='rounded' src='data:image/jpeg;base64,$img' alt='' width='160' height='160'>";
           } else {
             echo "<img id='imgShow' class='rounded' src='../../styles/blank.png' alt='' width='160' height='160'>";
-                      }
-          if ($_SESSION["id"] == $idProprietario) {
-            echo "<div class='lh-100 me-auto ms-2'>
-                    <a href='../editarSala/editarSala.php?idSala=$idSala'><button type='button' class='btn btn-light mb-2'>Editar</button></a>
-                  <div class=''>
-                    <a href='../teste/comprarSala.php?idSala=$idSala'><button type='button' class='btn btn-light'>Publicar</button></a>
-                  </div>
-                    <form method='post' name='FormEditarImgLogo' action='../../../controller/editarSala/attImgLogo.php?idSala=$idSala' enctype='multipart/form-data'>
-                      <div class=''>
+          }
+
+          if (isset($_SESSION["id"])) {
+            if ($_SESSION["id"] == $idProprietario) {
+              echo "<div class='lh-100 me-auto ms-2'>
+                      <a href='../editarSala/editarSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'>Editar</button></a>
+                    <div class=''>
+                      <a href='../teste/comprarSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light'>Publicar</button></a>
+                    </div>
+                      <form method='post' name='FormEditarImgLogo' action='../../../controller/editarSala/attImgLogo.php?idSala=$idSala' enctype='multipart/form-data'>
                         <label for='imgLogo' class='form-label'><small>Editar Logo</small></label>
-                        <input name='imgLogo' class='form-control form-control-sm' id='imgLogo' type='file' required=''>
-                        <button type='submit' class='btn btn-light'>Salvar Alterações</button>
-                      </div>
-                    </form>
-                  </div>";
-              }
+                        <div class='d-flex'>
+                          <input name='imgLogo' class='form-control form-control-sm' id='imgLogo' type='file' required=''>
+                          <button type='submit' class='ms-2 btn btn-sm btn-light'>
+                          <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-check' viewBox='0 0 16 16'>
+                            <path d='M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z'></path>
+                          </svg>
+                        </button>
+                        </div>
+                      </form>
+                    </div>";
+            }
+          }
         ?>
 
 
@@ -112,7 +116,7 @@
         <hr>
         <div class="px-4 d-flex justify-content-between">
           <div class="col-3 border rounded p-2 me-2 bg-light">
-            <p class="card-text"> <?php echo $descricao ?> <br><br> <?php echo "CEP: $cep. $cidade - $estado. $bairro, $rua, $numero, $complemento."?> <br><br> Horário de atendimento <br><br> <?php echo "Email: $email" ?> <br> <?php echo "Telefone: $telefone" ?> </p> 
+            <p class="card-text"> <?php echo $descricao ?> <br><br> <?php echo "CEP: $cep. $cidade - $estado. $rua, $bairro, $numero, $complemento."?> <br><br> Horário de atendimento <br><br> <?php echo "Email: $email" ?> <br> <?php echo "Telefone: $telefone" ?> </p> 
           </div>
         </div>
 
@@ -140,7 +144,7 @@
     
   
 
-    <?php include "../parts/footer.php"; ?>
+    <?php require_once "../parts/footer.php"; ?>
   </body>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" 

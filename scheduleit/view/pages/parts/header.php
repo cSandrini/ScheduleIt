@@ -104,7 +104,7 @@
                         $i=1;
                         while($row=$sth->fetch()) {
                             $nome = $row->nome;
-                            $img = base64_encode($row->foto);
+                            $imgPerfilHeader = base64_encode($row->foto);
                         }
                     }
                 } catch(PDOException $e) {
@@ -113,8 +113,8 @@
 
                 echo "<div class='dropdown'>
                         <button style='padding: 0;' class='btn btn-default dropdown' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>";
-                        if($img) {
-                            echo "<img class='border rounded' src='data:foto/jpeg;base64,$img' width='50' height='50'>";
+                        if($imgPerfilHeader) {
+                            echo "<img class='border rounded' src='data:foto/jpeg;base64,$imgPerfilHeader' width='50' height='50'>";
                         } else {
                             echo "<img class='border rounded' src='../../styles/blank.png' width='50' height='50'>";
                         }
