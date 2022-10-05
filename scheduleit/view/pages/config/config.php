@@ -36,8 +36,8 @@ include('../../../controller/protect.php');
 
     ?>
     <main role="main" class="container">
-      <form method="post" name="formAlterarImgUsuario" action="../../../controller/config/attImgUsuario.php?id=<?php echo $id;?>" enctype="multipart/form-data">
-      <input style="display:none;" name="id" type="text" value="<?php echo $id;?>" required="">
+      <form method="post" name="formAlterarUsuario" action="../../../controller/config/attUsuario.php" enctype="multipart/form-data">
+        <input style="display:none;" name="idUsuarioImagem" type="text" value="<?php echo $id;?>" required="">
         <?php
           // Exibir a mensagem de ERRO caso OCORRA
           if (isset($_GET["msg"])) {  // Verifica se tem mensagem de ERRO
@@ -84,20 +84,18 @@ include('../../../controller/protect.php');
             <h6 class="mb-0 text-white lh-100"><?php echo $_SESSION['nome'];?></h6>
             <small>Since 2022</small>
             <div class="mb-3">
-              <label for="imgUsuario" class="form-label"><small>Editar Imagem de Perfil</small></label>
-              <input name="imgUsuario" class="form-control form-control-sm" id="imgUsuario" type="file" required="">
-              <button type='submit' class='btn btn-light'>Salvar Alterações</button>
+              <label for="imgPerfil" class="form-label"><small>Editar Imagem de Perfil</small></label>
+              <input name="imgPerfil" class="form-control form-control-sm" id="imgPerfil" type="file" value=''>
             </div>
           </div>
         </div>
-      </form>
-      <form method="post" name="formAlterarUsuario" action="../../../controller/config/attUsuario.php?id=<?php echo $id;?>" enctype="multipart/form-data">
+
         <div class="my-3 p-3 bg-white rounded">
           <h6 class="pb-2 mb-0">Configurações</h6>
             <table class="table border-bottom">
               <tbody>
                 <!--REVER ISSO-->
-                <input style="display:none;" name="id" type="text" value="<?php echo $_SESSION['id'];?>">
+                <input style="display:none;" name="idUsuario" type="text" value="<?php echo $_SESSION['id'];?>">
 
                 <tr>
                   <td>

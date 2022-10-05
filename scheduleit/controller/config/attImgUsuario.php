@@ -4,7 +4,7 @@
     require_once '../../model/conexaobd.php';
     require_once '../../model/perfilDAO.php';
     
-    $id = $_POST["id"];
+    $id = $_POST["idUsuarioImagem"];
 
     if(isset($_FILES["imgUsuario"])){
         $imagem = $_FILES["imgUsuario"];
