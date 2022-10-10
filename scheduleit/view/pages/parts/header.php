@@ -123,7 +123,7 @@
                         <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
                             <p class='dropdown-header'>Logado como $nome</p>
                             <div class='dropdown-divider'></div>
-                            <a class='dropdown-item' href='../notificacoes/notificacoes.php'><i class='bi bi-bell'></i> Notificações</a>
+                            <a class='dropdown-item' href='../notificacoes/notificacoes.php'>Notificações</a>
                             <a class='dropdown-item' href='../minhasSalas/minhasSalas.php'>Minhas Salas</a>
                             <a class='dropdown-item' href='../agenda/agenda.php'>Agenda</a>
                             <div class='dropdown-divider'></div>

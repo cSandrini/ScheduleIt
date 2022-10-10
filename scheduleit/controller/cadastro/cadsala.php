@@ -37,7 +37,7 @@
         
         // CONECTAR
         require_once '../../model/conexaobd.php';
-        require_once '../../model/UsuarioDAO.php';
+        require_once '../../model/usuarioDAO.php';
         require_once '../../model/salasDAO.php';
         $tamanhoImg = $imagem["size"];
         $arqAberto = fopen($imagem["tmp_name"], "r");
