@@ -122,10 +122,11 @@ include('../../../controller/protect.php');
           
 
             </div>
-            <hr class="my-4">
-            <div class="d-flex">
-            <button type="button" class="mx-auto btn btn-primary btn-sm w-25" data-bs-toggle="modal" data-bs-target="#inserirSenhaModal">Salvar</button>
-          </div>
+          <hr class="my-4">
+            <div class="d-flext ms-auto">
+              <a href='../sala/sala.php?idSala=<?php echo $_GET["idSala"]?>'><button type='button' class='btn btn-outline-danger btn-sm '>Cancelar</button></a>
+              <button type="button" class="btn btn-primary btn-sm w-25" data-bs-toggle="modal" data-bs-target="#inserirSenhaModal">Salvar</button>
+            </div>
         </div>
         <div class="modal fade" id="inserirSenhaModal" tabindex="-1" role="dialog" aria-labelledby="inserirSenhaModal" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">

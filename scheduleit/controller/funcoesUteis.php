@@ -148,7 +148,7 @@
     }
 
     function criptografar ($senha) {
-        $salt = "ifes";
+        $salt = "M1#42&/$2wfFgk";
         $senhaCriptografada = sha1($senha.$salt);
         return $senhaCriptografada;
     }

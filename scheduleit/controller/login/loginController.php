@@ -10,7 +10,7 @@
 
     $email = mysqli_real_escape_string($conexao, $_POST['email']);
     $senha = mysqli_real_escape_string($conexao, $_POST['senha']);
-    $salt = "ifes";
+    $salt = "M1#42&/$2wfFgk";
     $senhaCriptografada = sha1($senha.$salt);
 
     $sql = "SELECT * FROM Usuario WHERE email = '$email' AND senha = '$senhaCriptografada'";
