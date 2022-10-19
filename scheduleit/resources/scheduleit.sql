@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS `scheduleit`.`Sala` (
   `telefone` VARCHAR(15) NOT NULL,
   `classificacao` FLOAT NOT NULL,
   `descricao` VARCHAR(200) NULL,
+  `visibilidade` BOOLEAN NOT NULL, 
   `imgLogo` BLOB NULL,
   PRIMARY KEY (`idSala`),
   INDEX `fk_Sala_Usuario1_idx` (`idProprietario` ASC),
@@ -100,12 +101,13 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `scheduleit`.`Recursos`
+-- Table `scheduleit`.`Recurso`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `scheduleit`.`Recursos` (
-  `idRecursos` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `scheduleit`.`Recurso` (
+  `idRecurso` VARCHAR(45) NOT NULL,
   `valor` FLOAT NOT NULL,
-  PRIMARY KEY (`idRecursos`))
+  
+  PRIMARY KEY (`idRecurso`))
 ENGINE = InnoDB;
 
 
@@ -113,13 +115,13 @@ ENGINE = InnoDB;
 -- Table `scheduleit`.`Carrinho`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `scheduleit`.`Carrinho` (
-  `idRecursos` INT NOT NULL,
+  `idRecurso` VARCHAR(45) NOT NULL,
   `idSala` INT NOT NULL,
-  PRIMARY KEY (`idRecursos`, `idSala`),
+  PRIMARY KEY (`idRecurso`, `idSala`),
   INDEX `fk_Carrinho_Sala1_idx` (`idSala` ASC),
-  CONSTRAINT `fk_Carrinho_Recursos`
-    FOREIGN KEY (`idRecursos`)
-    REFERENCES `scheduleit`.`Recursos` (`idRecursos`)
+  CONSTRAINT `fk_Carrinho_Recurso`
+    FOREIGN KEY (`idRecurso`)
+    REFERENCES `scheduleit`.`Recurso` (`idRecurso`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Carrinho_Sala1`
@@ -150,12 +152,16 @@ INSERT INTO `Funcionario` (`idFuncionario`, `idSala`, `idUsuario`) VALUES (NULL,
 
 INSERT INTO `Horario` (`idHorario`, `idFuncionario`, `data`, `horario`, `Usuario_id`) VALUES (NULL, '1', '2023-01-23', '15:00:00', '1');
 
-INSERT INTO `Recursos` (`idRecursos`, `valor`) VALUES (NULL, '10');
+INSERT INTO `Recurso` (`idRecurso`, `valor`) VALUES ('1Sala', '0');
+INSERT INTO `Recurso` (`idRecurso`, `valor`) VALUES ('5Sala', '15');
+INSERT INTO `Recurso` (`idRecurso`, `valor`) VALUES ('ilimitadoSala', '30');
 
-INSERT INTO `Recursos` (`idRecursos`, `valor`) VALUES (NULL, '30');
-INSERT INTO `Recursos` (`idRecursos`, `valor`) VALUES (NULL, '20');
-INSERT INTO `Carrinho` (`idRecursos`, `idSala`) VALUES ('1', '1');
+INSERT INTO `Recurso` (`idRecurso`, `valor`) VALUES ('1Funcionario', '0');
+INSERT INTO `Recurso` (`idRecurso`, `valor`) VALUES ('5Funcionario', '15');
+INSERT INTO `Recurso` (`idRecurso`, `valor`) VALUES ('ilimitadoFuncionario', '30');
 
-INSERT INTO `Carrinho` (`idRecursos`, `idSala`) VALUES ('1', '2');
-INSERT INTO `Carrinho` (`idRecursos`, `idSala`) VALUES ('2', '2');
-INSERT INTO `Carrinho` (`idRecursos`, `idSala`) VALUES ('3', '2');
+INSERT INTO `Recurso` (`idRecurso`, `valor`) VALUES ('mensal', '20');
+INSERT INTO `Recurso` (`idRecurso`, `valor`) VALUES ('trimestral', '55');
+INSERT INTO `Recurso` (`idRecurso`, `valor`) VALUES ('semestral', '100');
+INSERT INTO `Recurso` (`idRecurso`, `valor`) VALUES ('anual', '180');
+
