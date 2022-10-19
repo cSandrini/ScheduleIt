@@ -4,7 +4,7 @@
     function validarDados($nome, $sobrenome, $cpf, $telefone, $email, $senha, $senha2) {
 
         $conexao = conectarBD();
-        $msgErro = "" . validarDadosBD($conexao, $cpf, $email);
+        $msgErro = ""; //. validarDadosBD($conexao, $cpf, $email);
 
         if (empty($nome)) {
             $msgErro = $msgErro . "NOME inválido! <BR>";
@@ -145,6 +145,12 @@
     function converterNumerico ($string) {
         $output = preg_replace( '/[^0-9]/', '', $string );
         return $output;
+    }
+
+    function criptografar ($senha) {
+        $salt = "ifes";
+        $senhaCriptografada = sha1($senha.$salt);
+        return $senhaCriptografada;
     }
 ?>
 

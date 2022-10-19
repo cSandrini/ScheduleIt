@@ -58,7 +58,7 @@
         require_once '../../model/conexaobd.php';
         require_once '../../model/usuarioDAO.php';
         $conexao=conectarBD();
-
+        $senhaNova = criptografar($senhaNova);
         editarUsuario($conexao, $id, $nome, $sobrenome, $cpf, $telefone, $email, $senhaNova);
         header("Location:../../view/pages/config/config.php?msg=0&img=");
     } else {

@@ -18,6 +18,7 @@
         require_once '../../model/conexaobd.php';
         require_once '../../model/usuarioDAO.php';
         $conexao = conectarBD();
+        $senha = criptografar($senha);
         cadastrarUsuario($conexao, $nome, $sobrenome, $cpf, $telefone, $email, $senha);
         header("Location:../../view/pages/cadastro/cadastro.php?msg=Enviado com sucesso.");
     } else {

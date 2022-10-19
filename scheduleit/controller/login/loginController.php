@@ -10,8 +10,10 @@
 
     $email = mysqli_real_escape_string($conexao, $_POST['email']);
     $senha = mysqli_real_escape_string($conexao, $_POST['senha']);
+    $salt = "ifes";
+    $senhaCriptografada = sha1($senha.$salt);
 
-    $sql = "SELECT * FROM Usuario WHERE email = '$email' AND senha = '$senha'";
+    $sql = "SELECT * FROM Usuario WHERE email = '$email' AND senha = '$senhaCriptografada'";
     $resultado = mysqli_query($conexao, $sql) or die("Falha na execução do código SQL: " . mysqli_error($conexao));
 
     $quantidade = mysqli_num_rows($resultado);
