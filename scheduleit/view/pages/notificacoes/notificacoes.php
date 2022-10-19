@@ -1,7 +1,6 @@
 <?php
-
-include('../../../controller/protect.php');
-
+  include('../../../controller/protect.php');
+  include('../../../controller/notificacoes/funcoesNotificacoes.php');
 ?>
 <!doctype html>
 <html>

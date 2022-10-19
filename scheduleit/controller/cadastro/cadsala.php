@@ -18,7 +18,7 @@
     $idProprietario = $_POST["idProprietario"];
 
     // PASSO 2 - VALIDAR OS DADOS
-    $msgErro = validarDadosSala($nomeFantasia, $telefone, $email);
+    $msgErro = validarDadosSala($email, $cnpj, $nomeFantasia, $cep, $estado, $cidade, $bairro, $rua, $numero, $complemento, $telefone, $descricao);
     
     if ($imagem["error"]!=0) {
         $msgErro = $msgErro . "Erro ao fazer upload da imagem! <BR>";
