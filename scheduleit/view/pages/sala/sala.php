@@ -54,24 +54,9 @@
 ?>
 
 <?php
-require_once '../parts/header.php';
-// Exibir a mensagem de ERRO caso OCORRA
-  if (isset($_GET["msg"])) {  // Verifica se tem mensagem de ERRO
-    $mensagem = $_GET["msg"];
-    if ($mensagem=="Editado com sucesso.") {
-      echo "<div class='container border rounded bg-white p-0 mt-5 rounded'>
-              <div style='margin-bottom:0 !important'class='alert alert-success' role='alert'>
-                $mensagem
-              </div>
-            </div>";
-    } else {
-      echo "<div class='container border rounded bg-white p-0 mt-5 rounded'>
-              <div style='margin-bottom:0 !important' class='alert alert-danger' role='alert'>
-                $mensagem
-              </div>
-            </div>";
-    }
-  } 
+  require_once '../parts/header.php';
+  require_once "../../../controller/mensagem.php";
+  mensagem('Editado com sucesso.');
 ?>
   </div>     
   <div class="container border rounded bg-white p-0 mt-3 rounded">    

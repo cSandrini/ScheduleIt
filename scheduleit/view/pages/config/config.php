@@ -1,7 +1,5 @@
 <?php
-
-include('../../../controller/protect.php');
-
+  include('../../../controller/protect.php');
 ?>
 <!doctype html>
 <html>
@@ -24,61 +22,29 @@ include('../../../controller/protect.php');
 
   <body class="bg-light">
     <!-- HEADER -->
-    <?php include '../parts/header.php';?>
+    <?php 
+      include '../parts/header.php';
+      require_once "../../../controller/mensagem.php";
+    ?>
 
     <!-- PERFIL -->
     <?php
       require_once '../../../model/usuarioDAO.php';
-      
+      // Obtem os dados d o usuário que aparecem no formulário.
       $conexao = conectarBD();
       $id=$_SESSION['id'];
       $dados = carregarConfig($conexao, $_SESSION['id']);
-
     ?>
     <main role="main" class="container">
       <form method="post" name="formAlterarUsuario" action="../../../controller/config/attUsuario.php" enctype="multipart/form-data">
         <input style="display:none;" name="idUsuarioImagem" type="text" value="<?php echo $id;?>" required="">
         <?php
-          // Exibir a mensagem de ERRO caso OCORRA
-          if (isset($_GET["msg"])) {  // Verifica se tem mensagem de ERRO
-            $mensagem = $_GET["msg"];
-            if ($mensagem=="0") {
-              echo "<div class='mt-3 alert alert-success' role='alert'>
-                      Alterações realizadas.
-                    </div>";
-            } else {
-              echo "<div class='mt-3 alert alert-danger' role='alert'>
-                      $mensagem
-                    </div>";
-            }
-              
-          }
+          mensagem('Alterações realizadas.')
         ?>
         <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-primary rounded">
           <?php //CARREGAR IMAGEM DE PERFIL
-            require_once '../../../model/conexaobd.php';
-  
-            try {
-              $con = conectarBDPDO();
-              $sth = $con->prepare("SELECT * FROM Usuario WHERE id=".$id.";");
-              $sth->setFetchMode(PDO:: FETCH_OBJ);
-              $sth->execute();
-
-              if ($sth->rowCount() > 0) {
-                  $i=1;
-                  while($row=$sth->fetch()) {
-                      $img = base64_encode($row->foto);
-                  }
-              }
-            } catch(PDOException $e) {
-                echo "Error: ". $e->getMessage();
-            }
-            
-            if($img) {
-              echo "<img id='imgShow' class='me-3 border rounded' src='data:image/jpeg;base64,$img' alt='' width='120' height='120'>";
-            } else {
-              echo "<img id='imgShow' class='me-3 border rounded' src='../../styles/blank.png' alt='' width='120' height='120'>";
-            }
+            require_once '../../../controller/config/funcoesUsuario.php';
+            carregarDadosUsuario($id)
           ?>
           <div class="lh-100 me-auto">
             <h6 class="mb-0 text-white lh-100"><?php echo $_SESSION['nome'];?></h6>

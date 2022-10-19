@@ -1,7 +1,5 @@
 <?php
-
-include('../../../controller/protect.php');
-
+    include('../../../controller/protect.php');
 ?>
 
 <!DOCTYPE html>
@@ -23,54 +21,17 @@ include('../../../controller/protect.php');
     </svg>
 
     <!-- HEADER -->
-    <?php include '../parts/header.php';
-    require_once "../../../model/conexaobd.php";?>
-    
-<?php
-// Exibir a mensagem de ERRO caso OCORRA
-              if (isset($_GET["msg"])) {  // Verifica se tem mensagem de ERRO
-                $mensagem = $_GET["msg"];
-                if ($mensagem=="Editado com sucesso.") {
-                  echo "<div style='margin-bottom:0 !important'class='alert alert-success' role='alert'>
-                          $mensagem
-                        </div>";
-                } else {
-                  echo "<div style='margin-bottom:0 !important' class='alert alert-danger' role='alert'>
-                          $mensagem
-                        </div>";
-                }
-                  
-              } 
-            ?>
+    <?php 
+        include '../parts/header.php';
+        require_once "../../../controller/minhasSalas/funcoesMinhasSalas.php";
+        require_once "../../../controller/mensagem.php";
+        mensagem(null); // Exibir a mensagem de ERRO caso OCORRA
+    ?>
 
     <div class="container pt-3">
         <div class="row justify-content-center">
             <?php
-                //Conexao no método PDO (?)
-                try {
-                    $con = conectarBDPDO();
-
-                    $sth = $con->prepare("SELECT * FROM Sala WHERE idProprietario=".$_SESSION["id"]);
-                    $sth->setFetchMode(PDO:: FETCH_OBJ);
-                    $sth->execute();
-
-                    if ($sth->rowCount() > 0) {
-                        $i=1;
-                        while($row=$sth->fetch()) {
-                            $img = base64_encode($row->imgLogo);
-                            echo    "<div style='padding: 0!important; width: 22rem; height: 15rem;' class='gallery_product border rounded bg-white me-2 mb-2'>
-                                        <a href='../sala/sala.php?idSala=$row->idSala'><img class='rounded imgsala' src='data:imgLogo/jpeg;base64,$img'></a>
-                                        <p class='title'>$row->nomeFantasia <small>$row->cidade - $row->estado</small></p>
-                                    </div>";
-                        }
-                    } else {
-                        echo "<br><div class='alert alert-danger col-md-2 text-center mx-auto' role='alert'>
-                            Nenhum resultado encontrado.
-                        </div>";
-                    }
-                } catch(PDOException $e) {
-                    echo "Error: ". $e->getMessage();
-                }
+                carregarMinhasSalas();
             ?>
         </div>
     </div>

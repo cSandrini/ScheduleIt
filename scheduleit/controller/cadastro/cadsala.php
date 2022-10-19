@@ -45,9 +45,9 @@
 
         $conexao = conectarBD();
         cadastrarSala($conexao, $idProprietario, $email, $cnpj, $nomeFantasia, $cep, $estado, $cidade, $bairro, $rua, $numero, $complemento, $telefone, $descricao, $imagem);
-        header("Location:../../view/pages/cadastroSala/cadastroSala.php?msg=Enviado com sucesso.");
+        header("Location:../../view/pages/cadastroSala/cadastroSala.php?msg=0&msgType=1");
     } else {
-        header("Location:../../view/pages/cadastroSala/cadastroSala.php?msg=$msgErro");
+        header("Location:../../view/pages/cadastroSala/cadastroSala.php?msg=$msgErro&msgType=3");
     }
 
 ?>

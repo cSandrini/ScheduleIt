@@ -60,9 +60,8 @@
         $conexao=conectarBD();
         $senhaNova = criptografar($senhaNova);
         editarUsuario($conexao, $id, $nome, $sobrenome, $cpf, $telefone, $email, $senhaNova);
-        header("Location:../../view/pages/config/config.php?msg=0&img=");
+        header("Location:../../view/pages/config/config.php?msg=0&msgType=1&img=");
     } else {
-        header("Location:../../view/pages/config/config.php?msg=$msgErro");
+        header("Location:../../view/pages/config/config.php?msg=$msgErro&msgType=3");
     }
-
 ?>
