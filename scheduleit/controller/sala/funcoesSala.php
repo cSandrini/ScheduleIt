@@ -2,7 +2,11 @@
     require_once '../../../model/conexaobd.php';
     try {
         $con = conectarBDPDO();
-        $sth = $con->prepare("SELECT * FROM Sala WHERE idSala=".$_GET["idSala"].";");
+        if (isset($_GET["idSala"])){
+            $sth = $con->prepare("SELECT * FROM Sala WHERE idSala=".$_GET["idSala"].";");
+        } else {
+            header("Location:naoencontrada.php");
+        }
         $sth->setFetchMode(PDO:: FETCH_OBJ);
         $sth->execute();
         if ($sth->rowCount() > 0) {
@@ -24,7 +28,7 @@
             $idProprietario = $row->idProprietario;
         }
         } else {
-        header("Location:naoencontrada.php");
+            header("Location:naoencontrada.php");
         exit;
         }
     } catch(PDOException $e) {
