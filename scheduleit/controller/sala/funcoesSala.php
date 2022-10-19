@@ -64,4 +64,20 @@
             }
         }
     }
+    function editarFuncionario($idProprietario) {
+        if (isset($_SESSION["id"])) {
+            if ($_SESSION["id"] == $idProprietario) {
+                echo "<div class='input-group'>
+
+                <div>
+                <div class='input-group-prepend'>
+    <button class='btn btn-outline-secondary' type='button'>+ Adicionar funcionário</button>
+  </div>
+  <input type='text' class='form-control' placeholder='CPF'>
+  <input type='text' class='form-control' placeholder='Função'>
+                </div>
+                </div>";
+            }
+        }
+    }
 ?>

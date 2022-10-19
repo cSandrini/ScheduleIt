@@ -45,21 +45,68 @@
           <div class="col-3 border rounded p-2 me-2 bg-light">
             <p class="card-text"> <?php echo $descricao ?> <br><br> <?php echo "CEP: $cep. $cidade - $estado. $rua, $bairro, $numero, $complemento."?> <br><br> Horário de atendimento <br><br> <?php echo "Email: $email" ?> <br> <?php echo "Telefone: $telefone" ?> </p> 
           </div>
-        </div>
+          <div>
+          <button for="botaofunc" class="btn btn-outline-secondary">
+          
+              
 
-            <!--
-            <div>
-              <div class="pt-5">
-                <fieldset class="rating">
-                  <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-                  <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-                  <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-                  <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-                  <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-                </fieldset>
-              </div>
+                  <?php
+                //Conexao no método PDO (?)
+                try {
+                    $con = new PDO("mysql:host=localhost;dbname=scheduleit",'root','');
+
+                    $sth = $con->prepare("SELECT * FROM usuario WHERE cpf = 13560366781;");
+                    $sth->setFetchMode(PDO:: FETCH_OBJ);
+                    $sth->execute();
+
+                    
+                    if ($sth->rowCount() > 0) {
+                        $i=1;
+                        while($row=$sth->fetch()) {
+                          $foto = base64_encode($row->foto);
+                                ?>
+                                    <?php$i++?>
+                                    <div style="float: left;">
+                                    <?php
+                                    if($foto) {
+            echo "<img id='imgShow' class='me-3 border rounded' src='data:image/jpeg;base64,$foto' alt='' width='80' height='80'>";
+        } else {
+            echo "<img id='imgShow' class='me-3 border rounded' src='../../styles/blank.png' alt='' width='120' height='120'>";
+        }
+        ?>
+                  </div>
+                                    <div style="float: right;"> 
+                                     <h4 class="fw-bold mb-0">  
+                                     <?php echo $row->nome; ?>
+                                     </h4> 
+                                      <p> 
+                                      Função do funcionário  
+                                      </p>  
+                                      </div>
+                                <?php
+                        }
+                    } else {
+                        echo "<br><div class='alert alert-danger col-md-2 text-center mx-auto' role='alert'>
+                            Nenhum resultado encontrado.
+                        </div>";
+                    }
+                } catch(PDOException $e) {
+                    echo "Error: ". $e->getMessage();
+                }
+//**  */
+
+            ?>
+    
+          
+          
+        </button>
+          </div>
+          <div style="float: left">
+            <?php
+              editarFuncionario($idProprietario);
+            ?>
             </div>
-            -->
+        </div>
           </div>
           
         </div>
