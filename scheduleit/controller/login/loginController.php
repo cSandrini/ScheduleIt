@@ -13,7 +13,7 @@
     $salt = "M1#42&/$2wfFgk";
     $senhaCriptografada = sha1($senha.$salt);
 
-    $sql = "SELECT * FROM Usuario WHERE email = '$email' AND senha = '$senhaCriptografada'";
+    $sql = "SELECT * FROM usuario WHERE email = '$email' AND senha = '$senhaCriptografada'";
     $resultado = mysqli_query($conexao, $sql) or die("Falha na execução do código SQL: " . mysqli_error($conexao));
 
     $quantidade = mysqli_num_rows($resultado);

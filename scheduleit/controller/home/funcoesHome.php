@@ -3,7 +3,7 @@
         require_once '../../../model/conexaobd.php';
         try {
             $con = conectarBDPDO();
-            $sth = $con->prepare("SELECT * FROM Sala;");
+            $sth = $con->prepare("SELECT * FROM sala;");
             $sth->setFetchMode(PDO:: FETCH_OBJ);
             $sth->execute();
 

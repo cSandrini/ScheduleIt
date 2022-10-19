@@ -28,7 +28,7 @@
                         $con = new PDO("mysql:host=localhost;dbname=scheduleit",'root','');
                         $str = $_POST["busca"];
 
-                        $search_string = "SELECT * FROM Sala WHERE ";
+                        $search_string = "SELECT * FROM sala WHERE ";
                         $display_words = "";
                                             
                         // format each of search keywords into the db query to be run
@@ -70,15 +70,14 @@
                         } 
                     } catch(PDOException $e) {
                             echo "Error: ". $e->getMessage();
-                        }
-
-                    } 
+                    }
+                } 
                     
-                    if ($multiple == FALSE) {
-                        echo "<br><div class='alert alert-danger col-md-3 text-center mx-auto' role='alert'>
-                        Nenhum resultado encontrado.
-                    </div>";
-                    }            
+                if ($multiple == FALSE) {
+                    echo    "<br><div class='alert alert-danger col-md-3 text-center mx-auto' role='alert'>
+                                Nenhum resultado encontrado.
+                            </div>";
+                }            
             ?>
         </div>
     </div>

@@ -9,7 +9,7 @@
     $dados = carregarConfig($conexao, $id);
 
     // PASSO 1 - RECEBER OS DADOS DO FORMULARIO
-
+    $senhaModal = criptografar($_POST["senhaModal"]);
     if(!empty($_POST["txtEmail"])){
         $email = $_POST["txtEmail"];
     } else {
@@ -19,11 +19,6 @@
         $telefone = converterNumerico($_POST["txtTelefone"]);
     } else {
         $telefone = $dados['telefone'];
-    }
-    if(!empty($_POST["txtSenha"])){
-        $senhaNova = $_POST["txtSenha"];
-    } else {
-        $senhaNova = $dados['senha'];
     }
     if(!empty($_POST["txtNome"])){
         $nome = $_POST["txtNome"];
@@ -50,7 +45,9 @@
             editarImgUsuario($conexao, $imagem, $id);
         }
     } 
-    $senha = $_POST["senhaModal"];
+    if($senhaModal != $dados['senha']) {
+        $msgErro = $msgErro . "Senha inválida <br>";
+    }
 
 
     if (empty($msgErro)) {            
@@ -58,7 +55,11 @@
         require_once '../../model/conexaobd.php';
         require_once '../../model/usuarioDAO.php';
         $conexao=conectarBD();
-        $senhaNova = criptografar($senhaNova);
+        if(!empty($_POST["txtSenha"])){
+            $senhaNova = criptografar($_POST["txtSenha"]);
+        } else {
+            $senhaNova = $dados['senha'];
+        }
         editarUsuario($conexao, $id, $nome, $sobrenome, $cpf, $telefone, $email, $senhaNova);
         header("Location:../../view/pages/config/config.php?msg=0&msgType=1&img=");
     } else {

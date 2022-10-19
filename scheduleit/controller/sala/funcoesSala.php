@@ -3,7 +3,7 @@
     try {
         $con = conectarBDPDO();
         if (isset($_GET["idSala"])){
-            $sth = $con->prepare("SELECT * FROM Sala WHERE idSala=".$_GET["idSala"].";");
+            $sth = $con->prepare("SELECT * FROM sala WHERE idSala=".$_GET["idSala"].";");
         } else {
             header("Location:naoencontrada.php");
         }
@@ -43,7 +43,7 @@
         }
 
         if (isset($_SESSION["id"])) {
-            if ($_SESSION["id"] == $idProprietario) {
+            if ($_SESSION["id"] == $idProprietario || $_SESSION["id"] == 1) {
                 echo "<div class='lh-100 me-auto ms-2'>
                         <a href='../editarSala/editarSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-pen'></i> Editar</button></a>
                     <div class=''>

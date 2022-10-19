@@ -18,6 +18,14 @@
     <link href="offcanvas.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="js.js"></script>
+    <script>
+      $(document).keypress(function(event){
+          var keycode = (event.keyCode ? event.keyCode : event.which);
+          if(keycode == '13'){
+            $('#inserirSenhaModal').modal('show'); 
+          }
+      });
+    </script>
   </head>
 
   <body class="bg-light">
@@ -127,7 +135,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                <input name="senhaModal" class="form form-control" type="password" placeholder="Insira sua senha"value=""></input>
+                <input id="senhaModal" name="senhaModal" class="form form-control" type="password" placeholder="Insira sua senha" required=""></input>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -139,7 +147,7 @@
       </form>
     </main>
   </body>
-  
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

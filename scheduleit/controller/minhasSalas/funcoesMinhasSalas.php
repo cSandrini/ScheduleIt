@@ -4,7 +4,7 @@
         try {
             $con = conectarBDPDO();
 
-            $sth = $con->prepare("SELECT * FROM Sala WHERE idProprietario=".$_SESSION["id"]);
+            $sth = $con->prepare("SELECT * FROM sala WHERE idProprietario=".$_SESSION["id"]);
             $sth->setFetchMode(PDO:: FETCH_OBJ);
             $sth->execute();
 

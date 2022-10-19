@@ -3,8 +3,9 @@
     require_once '../../model/usuarioDAO.php';
     function validarDados($nome, $sobrenome, $cpf, $telefone, $email, $senha, $senha2) {
 
-        $conexao = conectarBD();
-        $msgErro = ""; //. validarDadosBD($conexao, $cpf, $email);
+        $msgErro = ""; 
+        $conexao = conectarBDPDO();
+        $msgErro = $msgErro . validarDadosBD($conexao, $cpf, $email);
 
         if (empty($nome)) {
             $msgErro = $msgErro . "NOME inválido! <BR>";
@@ -147,10 +148,36 @@
         return $output;
     }
 
-    function criptografar ($senha) {
+    function criptografar($senha) {
         $salt = "M1#42&/$2wfFgk";
         $senhaCriptografada = sha1($senha.$salt);
         return $senhaCriptografada;
+    }
+
+    function validarDadosBD($con, $cpf, $email) {
+        $msgErro = "";
+        
+        $search_string = "SELECT * FROM usuario WHERE email = '$email';";
+        $sth = $con->prepare($search_string);
+
+        $sth->setFetchMode(PDO:: FETCH_OBJ);
+        $sth->execute();
+    
+        if ($sth->rowCount() > 0) {
+            $msgErro = $msgErro . "Email já cadastrado <br>";
+        }
+
+        $search_string = "SELECT * FROM usuario WHERE cpf = ".$cpf.";";
+        $sth = $con->prepare($search_string);
+
+        $sth->setFetchMode(PDO:: FETCH_OBJ);
+        $sth->execute();
+
+        if ($sth->rowCount() > 0) {
+            $msgErro = $msgErro . "CPF já cadastrado <br>";
+        }
+
+        return $msgErro;
     }
 ?>
 

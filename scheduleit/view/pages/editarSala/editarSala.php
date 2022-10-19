@@ -18,7 +18,7 @@ include('../../../controller/protect.php');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="../../styles/css/cover.css" rel="stylesheet">
   </head>
-  <body class="text-center bg-light">
+  <body class="bg-light">
     <!-- HEADER -->
     <?php 
       include '../parts/header.php';
@@ -29,12 +29,12 @@ include('../../../controller/protect.php');
       $conexao = conectarBD();
       $dados = carregarMinhasSalas($conexao, $_SESSION['id']);
     ?>
-    <div class="pt-5">
-      <div style="width: 40rem;" class="pb-3 bg-white rounded container border">
-        <div class="py-2 text-center">
+    <div class="">
+      <div style="width: 40rem;" class="text-center pb-3 bg-white rounded container border">
+        <div class="py-2">
           <h2>Ediçao de Sala</h2>
         </div>
-        <div class="text-left">
+        <div class="text-center">
           <?php
               require_once "../../../controller/mensagem.php";
               mensagem('Editado com sucesso.');
@@ -110,9 +110,9 @@ include('../../../controller/protect.php');
           
 
             </div>
-          <hr class="my-4">
-            <div class="d-flext ms-auto">
-              <a href='../sala/sala.php?idSala=<?php echo $_GET["idSala"]?>'><button type='button' class='btn btn-outline-danger btn-sm '>Cancelar</button></a>
+          <hr class="my-3">
+            <div class="text-end">
+              <a href='../sala/sala.php?idSala=<?php echo $_GET["idSala"]?>'><button type='button' class='btn btn-outline-danger btn-sm'>Cancelar</button></a>
               <button type="button" class="btn btn-primary btn-sm w-25" data-bs-toggle="modal" data-bs-target="#inserirSenhaModal">Salvar</button>
             </div>
         </div>

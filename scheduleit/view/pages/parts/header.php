@@ -97,7 +97,7 @@
             
                 try {
                     $con = conectarBDPDO();
-                    $sth = $con->prepare("SELECT * FROM Usuario WHERE id=".$_SESSION['id'].";");
+                    $sth = $con->prepare("SELECT * FROM usuario WHERE id=".$_SESSION['id'].";");
                     $sth->setFetchMode(PDO:: FETCH_OBJ);
                     $sth->execute();
 
