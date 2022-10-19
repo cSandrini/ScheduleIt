@@ -7,5 +7,5 @@ require_once '../../model/salasDAO.php';
 $conexao=conectarBD();
 
 excluirSala($conexao, $idSala);
-header("Location:../../view/pages/minhasSalas/minhasSalas.php?msg=Excluido com sucesso.");
+    header("Location:../../view/pages/minhasSalas/minhasSalas.php?msg=0&msgType=2");
 ?>

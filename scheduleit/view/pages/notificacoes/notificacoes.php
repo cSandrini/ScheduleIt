@@ -1,7 +1,6 @@
 <?php
-
-include('../../../controller/protect.php');
-
+  include('../../../controller/protect.php');
+  include('../../../controller/notificacoes/funcoesNotificacoes.php');
 ?>
 <!doctype html>
 <html>
@@ -27,12 +26,7 @@ include('../../../controller/protect.php');
     <div class="container pt-3">
       <div class="d-flex align-items-center p-3 text-white-50 bg-primary rounded">
         <?php //CARREGAR IMAGEM DE PERFIL
-          if(isset($_SESSION['imagem'])) {
-            $imagemPerf=$_SESSION['imagem'];
-            echo "<img class='me-3 rounded' src='data:image/jpeg;base64,".base64_encode($imagemPerf)."' alt='' width='48' height='48'>";
-          } else {
-            echo "<img class='me-3 rounded' src='../../styles/blank.png' alt='' width='48' height='48'>";
-          }
+          carregarImagemPerfil();
         ?>
         <div class="lh-100 me-auto">
           <h6 class="mb-0 text-white lh-100"><?php echo $_SESSION['nome']; ?></h6>

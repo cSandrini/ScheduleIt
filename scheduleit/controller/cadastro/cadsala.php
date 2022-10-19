@@ -18,7 +18,7 @@
     $idProprietario = $_POST["idProprietario"];
 
     // PASSO 2 - VALIDAR OS DADOS
-    $msgErro = validarDadosSala($nomeFantasia, $telefone, $email);
+    $msgErro = validarDadosSala($email, $cnpj, $nomeFantasia, $cep, $estado, $cidade, $bairro, $rua, $numero, $complemento, $telefone, $descricao);
     
     if ($imagem["error"]!=0) {
         $msgErro = $msgErro . "Erro ao fazer upload da imagem! <BR>";
@@ -45,9 +45,9 @@
 
         $conexao = conectarBD();
         cadastrarSala($conexao, $idProprietario, $email, $cnpj, $nomeFantasia, $cep, $estado, $cidade, $bairro, $rua, $numero, $complemento, $telefone, $descricao, $imagem);
-        header("Location:../../view/pages/cadastroSala/cadastroSala.php?msg=Enviado com sucesso.");
+        header("Location:../../view/pages/cadastroSala/cadastroSala.php?msg=0&msgType=1");
     } else {
-        header("Location:../../view/pages/cadastroSala/cadastroSala.php?msg=$msgErro");
+        header("Location:../../view/pages/cadastroSala/cadastroSala.php?msg=$msgErro&msgType=3");
     }
 
 ?>

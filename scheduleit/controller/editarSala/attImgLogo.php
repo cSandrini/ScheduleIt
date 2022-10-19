@@ -22,8 +22,8 @@
         require_once '../../model/conexaobd.php';
         $conexao=conectarBD();
         editarImgLogo($conexao, $imgLogo);
-        header("Location:../../view/pages/sala/sala.php?idSala=$idSala&msg=Editado com sucesso.");
+        header("Location:../../view/pages/sala/sala.php?idSala=$idSala&msg=0&msgType=1");
     } else {
-        header("Location:../../view/pages/sala/sala.php?idSala=$idSala&msg=$msgErro");
+        header("Location:../../view/pages/sala/sala.php?idSala=$idSala&msg=$msgErro&msgType=3");
     }
 ?>

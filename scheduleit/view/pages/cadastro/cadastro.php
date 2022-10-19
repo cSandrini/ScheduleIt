@@ -15,7 +15,10 @@
   </head>
   <body class="text-center bg-light">
     <!-- HEADER -->
-    <?php include '../parts/header.php';?>
+    <?php 
+      include '../parts/header.php';
+      require_once "../../../controller/mensagem.php";
+    ?>
 
     <div class="pt-5">
       <div style="width: 40rem;" class="pb-3 bg-white rounded container border">
@@ -25,20 +28,7 @@
         </div>
         <div class="text-left">
           <?php
-              // Exibir a mensagem de ERRO caso OCORRA
-              if (isset($_GET["msg"])) {  // Verifica se tem mensagem de ERRO
-                $mensagem = $_GET["msg"];
-                if ($mensagem=="Enviado com sucesso.") {
-                  echo "<div class='alert alert-success' role='alert'>
-                          $mensagem
-                        </div>";
-                } else {
-                  echo "<div class='alert alert-danger' role='alert'>
-                          $mensagem
-                        </div>";
-                }
-                  
-              }
+            mensagem('Cadastrado com sucesso.'); // Exibir a mensagem de ERRO caso OCORRA
           ?>
           <form class="needs-validation" method="post" name="formCadastro" action="../../../controller/cadastro/cadusuario.php" enctype="multipart/form-data">
             <div class="row g-3">

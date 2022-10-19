@@ -80,7 +80,7 @@
         }
     </style>
 <body>
-    <header class="border-bottom bg-white">
+    <header class="border-bottom bg-white mb-3">
         <span style="cursor:pointer;" onclick="paginaHome()" style="color: rgb(102, 0, 102);"><strong>SCHEDULE</strong><span style="color: rgb(187, 10, 187);"><strong>IT</strong></span></span>
         <nav>
             <form class="form-inline my-2 my-lg-0" method="post" name="pesquisar" action="../pesquisa/pesquisa.php">

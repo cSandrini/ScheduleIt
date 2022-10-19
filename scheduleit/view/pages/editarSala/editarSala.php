@@ -21,13 +21,13 @@ include('../../../controller/protect.php');
   <body class="text-center bg-light">
     <!-- HEADER -->
     <?php 
-    include '../parts/header.php';
-    require_once '../../../model/conexaobd.php';
-    require_once '../../../model/salasDAO.php';
-    //require_once '../../../model/editarSalaDAO.php';
+      include '../parts/header.php';
+      require_once '../../../model/conexaobd.php';
+      require_once '../../../model/salasDAO.php';
+      //require_once '../../../model/editarSalaDAO.php';
 
-    $conexao = conectarBD();
-    $dados = carregarMinhasSalas($conexao, $_SESSION['id']);
+      $conexao = conectarBD();
+      $dados = carregarMinhasSalas($conexao, $_SESSION['id']);
     ?>
     <div class="pt-5">
       <div style="width: 40rem;" class="pb-3 bg-white rounded container border">
@@ -36,20 +36,8 @@ include('../../../controller/protect.php');
         </div>
         <div class="text-left">
           <?php
-              // Exibir a mensagem de ERRO caso OCORRA
-              if (isset($_GET["msg"])) {  // Verifica se tem mensagem de ERRO
-                $mensagem = $_GET["msg"];
-                if ($mensagem=="Editado com sucesso.") {
-                  echo "<div class='alert alert-success' role='alert'>
-                          $mensagem
-                        </div>";
-                } else {
-                  echo "<div class='alert alert-danger' role='alert'>
-                          $mensagem
-                        </div>";
-                }
-                  
-              }
+              require_once "../../../controller/mensagem.php";
+              mensagem('Editado com sucesso.');
 
               $idSala = $_GET["idSala"];
           ?>

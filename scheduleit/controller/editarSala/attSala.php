@@ -86,9 +86,9 @@
         
         $conexao=conectarBD();
         editarSala($conexao, $email, $cnpj, $nomeFantasia, $cep, $estado, $cidade, $bairro, $rua, $numero, $complemento, $telefone, $descricao, $idSala);
-        header("Location:../../view/pages/editarSala/editarSala.php?idSala=$idSala&msg=Editado com sucesso.");
+        header("Location:../../view/pages/editarSala/editarSala.php?idSala=$idSala&msg=0&msgType=1");
     } else {
-        header("Location:../../view/pages/editarSala/editarSala.php?idSala=$idSala&msg=$msgErro");
+        header("Location:../../view/pages/editarSala/editarSala.php?idSala=$idSala&msg=$msgErro&msgType=3");
     }
 
 ?>
