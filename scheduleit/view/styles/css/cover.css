@@ -81,3 +81,11 @@ body {
     width: 22rem;
     height: 15rem;
 }
+
+.stars {
+  color: #f5b904;
+}
+
+.title-card {
+  font-size: 17px;
+}
