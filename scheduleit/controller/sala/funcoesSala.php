@@ -43,7 +43,13 @@
         }
 
         if (isset($_SESSION["id"])) {
-            if ($_SESSION["id"] == $idProprietario || $_SESSION["id"] == 1) {
+            $con = conectarBDPDO();
+            $sth = $con->prepare("SELECT * FROM usuario WHERE id=".$_SESSION["id"].";");
+            $sth->setFetchMode(PDO:: FETCH_OBJ);
+            $sth->execute();
+            $row=$sth->fetch();
+            $permissao = $row->permissao;
+            if ($_SESSION["id"] == $idProprietario || $permissao == 9) {
                 echo "<div class='lh-100 me-auto ms-2'>
                         <a href='../editarSala/editarSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-pen'></i> Editar</button></a>
                     <div class=''>
@@ -70,12 +76,12 @@
                 echo "<div class='input-group'>
 
                 <div>
-                <div class='input-group-prepend'>
-    <button class='btn btn-outline-secondary' type='button'>+ Adicionar funcionário</button>
-  </div>
-  <input type='text' class='form-control' placeholder='CPF'>
-  <input type='text' class='form-control' placeholder='Função'>
-                </div>
+                    <div class='input-group-prepend'>
+                        <button class='btn btn-outline-secondary' type='button'>+ Adicionar funcionário</button>
+                        </div>
+                        <input type='text' class='form-control' placeholder='CPF'>
+                        <input type='text' class='form-control' placeholder='Função'>
+                    </div>
                 </div>";
             }
         }
