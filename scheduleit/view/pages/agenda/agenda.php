@@ -17,13 +17,16 @@
   <script src="../../../resources/libraries/vanilla-calendar-2.1.1/build/vanilla-calendar.min.js" defer></script>
 </head>
 <body class="bg-light">
-    <?php include "../parts/header.php"; ?>
+    <?php 
+      include "../parts/header.php";
+      require_once "../../../controller/agenda/agenda.php";
+    ?>
       <div class="container">
         <div class="bg-secondary rounded mb-2 text-center mx-auto title-cards">
-            <p class="p-2 m-0 font-weight-bold text-white">Agenda - <?php echo $nome;?></p>
+            <p class="p-2 m-0 font-weight-bold text-white">Agenda - <?php echo $dados['nome']; ?></p>
         </div>
         <div class="d-flex justify-content-center">
-          <div id="calendar" class="border vanilla-calendar vanilla-calendar_default me-2">
+          <div id="calendar" class="border vanilla-calendar vanilla-calendar_default calendar-info me-2">
             <script>
               document.addEventListener('DOMContentLoaded', () => {
                 const calendar =  new VanillaCalendar('#calendar', {
