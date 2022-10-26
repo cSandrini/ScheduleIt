@@ -89,3 +89,14 @@ body {
 .title-card {
   font-size: 17px;
 }
+
+.calendar-info {
+  width: 260px!important;
+  height: auto;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.title-cards {
+  width: 524px;
+}
