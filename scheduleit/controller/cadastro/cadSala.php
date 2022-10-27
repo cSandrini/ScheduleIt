@@ -1,19 +1,21 @@
 <?php
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
     require_once '../funcoesUteis.php';
 
     // PASSO 1 - RECEBER OS DADOS DO FORMULARIO
-    $nomeFantasia = $_POST["txtNome"];
+    $nomeFantasia = addslashes($_POST["txtNome"]);
     $cnpj = $_POST["txtCNPJ"];
     $telefone = converterNumerico($_POST["txtTelefone"]);
     $cep = $_POST["txtCEP"];
     $estado = $_POST["txtEstado"];
     $cidade = $_POST["txtCidade"];
-    $bairro = $_POST["txtBairro"];
-    $rua = $_POST["txtRua"];
+    $bairro = addslashes($_POST["txtBairro"]);
+    $rua = addslashes($_POST["txtRua"]);
     $numero = $_POST["txtNumero"];
     $complemento = $_POST["txtComplemento"];
     $email = $_POST["txtEmail"];
-    $descricao = $_POST["txtDescricao"];
+    $descricao = addslashes($_POST["txtDescricao"]);
     $imagem = $_FILES["fileLogo"];
     $idProprietario = $_POST["idProprietario"];
 
