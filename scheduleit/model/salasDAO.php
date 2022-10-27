@@ -24,20 +24,20 @@ function carregarMinhasSalas($conexao, $id) {
 }
 
 function cadastrarSala($conexao, $idProprietario, $email, $cnpj, $nomeFantasia, $cep, $estado, $cidade, $bairro, $rua, $numero, $complemento, $telefone, $descricao, $imagem) {
-   $sql = "INSERT INTO scheduleit.Sala (idProprietario, email, cnpj, nomeFantasia, cep, estado, cidade, bairro, rua, numero, complemento, telefone, classificacao, descricao, imgLogo) VALUES ('$idProprietario', '$email', '$cnpj', '$nomeFantasia', '$cep', '$estado', '$cidade', '$bairro', '$rua', '$numero', '$complemento', '$telefone', '0', '$descricao', '$imagem');";
+   $sql = "INSERT INTO scheduleit.sala (idProprietario, email, cnpj, nomeFantasia, cep, estado, cidade, bairro, rua, numero, complemento, telefone, classificacao, descricao, imgLogo) VALUES ('$idProprietario', '$email', '$cnpj', '$nomeFantasia', '$cep', '$estado', '$cidade', '$bairro', '$rua', '$numero', '$complemento', '$telefone', '0', '$descricao', '$imagem');";
    $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );
 }
 
 function editarSala($conexao, $email, $cnpj, $nomeFantasia, $cep, $estado, $cidade, $bairro, $rua, $numero, $complemento, $telefone, $descricao) {
    require_once "../funcoesUteis.php";
    $idSala = $_GET["idSala"];
-   $sql = "UPDATE scheduleit.Sala SET email='$email', cnpj='$cnpj', nomeFantasia='$nomeFantasia', cep='$cep', estado='$estado', cidade='$cidade', bairro='$bairro', rua='$rua', numero='$numero', complemento='$complemento', telefone='$telefone', descricao='$descricao' WHERE idSala=$idSala";
+   $sql = "UPDATE scheduleit.sala SET email='$email', cnpj='$cnpj', nomeFantasia='$nomeFantasia', cep='$cep', estado='$estado', cidade='$cidade', bairro='$bairro', rua='$rua', numero='$numero', complemento='$complemento', telefone='$telefone', descricao='$descricao' WHERE idSala=$idSala";
    $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );
 }
 
 function excluirSala($conexao, $id) {
    $idSala = $_GET["idSala"];
-   $sql = "DELETE FROM scheduleit.Sala WHERE idSala = $idSala";
+   $sql = "DELETE FROM scheduleit.sala WHERE idSala = $idSala";
    $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );
 }
 
@@ -47,7 +47,7 @@ function editarImgLogo($conexao, $imgLogo) {
     $arqAberto = fopen($imgLogo["tmp_name"], "r");
     $imgLogo = addslashes(fread($arqAberto,$tamanhoImg));
     
-    $sql = "UPDATE Sala SET imgLogo='$imgLogo' WHERE idSala=$idSala";
+    $sql = "UPDATE sala SET imgLogo='$imgLogo' WHERE idSala=$idSala";
     $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );
 }
 ?>

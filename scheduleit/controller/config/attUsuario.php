@@ -1,4 +1,7 @@
 <?php
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    
     require_once '../../model/conexaobd.php';
     require_once '../../model/usuarioDAO.php';
     require_once '../funcoesUteis.php';
@@ -38,8 +41,6 @@
         $imagem = $_FILES['imgPerfil'];
         $msgErro = validarImg($imagem);
         if (empty($msgErro)) {            
-            require_once '../../model/conexaobd.php';
-            require_once '../../model/usuarioDAO.php';
             editarImgUsuario($conexao, $imagem, $id);
         }
     } 
@@ -50,8 +51,6 @@
 
     if (empty($msgErro)) {            
         // CONECTAR
-        require_once '../../model/conexaobd.php';
-        require_once '../../model/usuarioDAO.php';
         if(!empty($_POST["txtSenha"])){
             $senhaNova = criptografar($_POST["txtSenha"]);
         } else {

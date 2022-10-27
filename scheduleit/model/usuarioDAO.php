@@ -17,13 +17,13 @@ function carregarConfig($conexao, $id) {
 
 
 function cadastrarUsuario($conexao, $nome, $sobrenome, $cpf, $telefone, $email, $senha) {
-    $sql = "INSERT INTO scheduleit.Usuario (nome, sobrenome, cpf, telefone, email, senha, permissao) VALUES ('$nome', '$sobrenome', '$cpf', '$telefone', '$email', '$senha', 0);";
+    $sql = "INSERT INTO scheduleit.usuario (nome, sobrenome, cpf, telefone, email, senha, permissao) VALUES ('$nome', '$sobrenome', '$cpf', '$telefone', '$email', '$senha', 0);";
     $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );
 }
 
 function editarUsuario($conexao, $id, $nome, $sobrenome, $cpf, $telefone, $email, $senha) {
     require_once "../funcoesUteis.php";
-    $sql = "UPDATE scheduleit.Usuario SET nome='$nome', sobrenome='$sobrenome', cpf='$cpf', telefone=$telefone, email='$email', senha='$senha' WHERE id=$id;";
+    $sql = "UPDATE scheduleit.usuario SET nome='$nome', sobrenome='$sobrenome', cpf='$cpf', telefone=$telefone, email='$email', senha='$senha' WHERE id=$id;";
     $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );
 }
 
@@ -33,7 +33,7 @@ function editarImgUsuario($conexao, $imagem, $id) {
     $arqAberto = fopen($imagem["tmp_name"], "r");
     $imagem = addslashes(fread($arqAberto,$tamanhoImg));
 
-    $sql = "UPDATE Usuario SET foto='$imagem' WHERE id=$id";
+    $sql = "UPDATE usuario SET foto='$imagem' WHERE id=$id";
     $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );
 }
 ?>
