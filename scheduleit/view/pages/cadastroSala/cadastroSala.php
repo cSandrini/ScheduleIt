@@ -33,7 +33,7 @@
           <?php
             mensagem('Cadastrado com sucesso'); // Exibir a mensagem de ERRO caso OCORRA
           ?>
-          <form class="needs-validation" method="post" name="formCadastro" action="../../../controller/cadastro/cadsala.php" enctype="multipart/form-data">
+          <form class="needs-validation" method="post" name="formCadastro" action="../../../controller/cadastro/cadSala.php" enctype="multipart/form-data">
             
             <input style="display:none;" name="idProprietario" type="text" value="<?php echo $_SESSION['id'];?>"> 
 

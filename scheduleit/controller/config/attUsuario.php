@@ -1,5 +1,4 @@
 <?php
-    include('../../controller/protect.php');
     require_once '../../model/conexaobd.php';
     require_once '../../model/usuarioDAO.php';
     require_once '../funcoesUteis.php';
@@ -41,7 +40,6 @@
         if (empty($msgErro)) {            
             require_once '../../model/conexaobd.php';
             require_once '../../model/usuarioDAO.php';
-            $conexao=conectarBD();
             editarImgUsuario($conexao, $imagem, $id);
         }
     } 
@@ -54,7 +52,6 @@
         // CONECTAR
         require_once '../../model/conexaobd.php';
         require_once '../../model/usuarioDAO.php';
-        $conexao=conectarBD();
         if(!empty($_POST["txtSenha"])){
             $senhaNova = criptografar($_POST["txtSenha"]);
         } else {

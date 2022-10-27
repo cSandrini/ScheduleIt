@@ -30,7 +30,7 @@
           <?php
             mensagem('Cadastrado com sucesso.'); // Exibir a mensagem de ERRO caso OCORRA
           ?>
-          <form class="needs-validation" method="post" name="formCadastro" action="../../../controller/cadastro/cadusuario.php" enctype="multipart/form-data">
+          <form class="needs-validation" method="post" name="formCadastro" action="../../../controller/cadastro/cadUsuario.php" enctype="multipart/form-data">
             <div class="row g-3">
               <div class="col-sm-6">
                 <label for="nome" class="form-label mb-0">Nome</label>
