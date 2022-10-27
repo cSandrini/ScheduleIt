@@ -125,7 +125,7 @@
                             <div class='dropdown-divider'></div>
                             <a class='dropdown-item' href='../notificacoes/notificacoes.php'>Notificações</a>
                             <a class='dropdown-item' href='../minhasSalas/minhasSalas.php'>Minhas Salas</a>
-                            <a class='dropdown-item' href='../agenda/agenda.php'>Agenda</a>
+                            <a class='dropdown-item' href='../agenda/agenda.php?id=".$_SESSION['id']."'>Agenda</a>
                             <div class='dropdown-divider'></div>
                             <a class='dropdown-item' href='../config/config.php'>Configurações</a>
                             <a style='color: red;' class='dropdown-item' href='../../../controller/logout.php'>Sair</a>

@@ -94,15 +94,17 @@ body {
   width: 380px!important;
   height: auto;
   border-radius: 4px;
-  font-size: 15px!important;
 }
 
 .calendar-info button{
-  border-radius: 3px;
-  padding: 8px;
-  font-size: 15px!important;
+  border-radius: 4px;
+  font-size: 16px!important;
+}
+
+.calendar-info b{
+  text-transform: uppercase;
 }
 
 .title-cards {
-  width: 524px;
+  width: 764px;
 }
