@@ -41,6 +41,16 @@ function excluirSala($conexao, $id) {
    $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );
 }
 
+function publicarSala($conexao, $id) {
+   $sql = "UPDATE scheduleit.sala SET visibilidade='1' WHERE idSala=$id";
+   $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );
+}
+
+function privarSala($conexao, $id) {
+   $sql = "UPDATE scheduleit.sala SET visibilidade='0' WHERE idSala=$id";
+   $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );
+}
+
 function editarImgLogo($conexao, $imgLogo) {
     $idSala = $_GET["idSala"];
     $tamanhoImg = $imgLogo["size"];

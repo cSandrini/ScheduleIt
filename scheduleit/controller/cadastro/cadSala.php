@@ -1,6 +1,6 @@
 <?php
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
+    error_reporting(E_ALL); //REPORTAR ERROS
+    ini_set('display_errors', 1); //REPORTAR ERROS
     require_once '../funcoesUteis.php';
 
     // PASSO 1 - RECEBER OS DADOS DO FORMULARIO

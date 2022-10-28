@@ -22,7 +22,7 @@ include('../../../controller/protect.php');
       </h4>
       <div class="mt-5 row mx-3 mb-4">
         <div class="col-7">
-          <form class="needs-validation" method="post" name="formPublicar" action="../../../controller/" enctype="multipart/form-data">
+          <form class="needs-validation" method="post" name="formPublicar" action='../../../controller/editarSala/publicarSala.php?idSala=<?php echo $_GET['idSala']?>' enctype="multipart/form-data">
             <h4 class="label2">
               Configurações
             </h4>
@@ -31,35 +31,34 @@ include('../../../controller/protect.php');
                 <div class="input-group-prepend">
                   <label class="input-group-text" for="limiteSala">Limite de salas</label>
                 </div>
-                  <select class="custom-select" id="limiteSalas">
-                    <option selectec value="1Sala">1</option>
-                    <option value="5Sala">até 5</option>
-                    <option value="ilimitadoSala">Ilimitado</option>
-                    </select>
+                <select class="custom-select" id="limiteSalas">
+                  <option selectec value="1Sala">1</option>
+                  <option value="5Sala">até 5</option>
+                  <option value="ilimitadoSala">Ilimitado</option>
+                  </select>
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text" for="limiteFuncionario">Limite de funcionários por sala</label>
                   </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <label class="input-group-text" for="limiteFuncionario">Limite de funcionários por sala</label>
-                    </div>
-                    <select class="custom-select" id="limiteFuncionarios">
-                      <option Selected value="1Funcionario">1</option>
-                      <option value="5Funcionario">até 5</option>
-                      <option value="ilimitadoFuncionario">Ilimitado</option>
-                    </select>
+                  <select class="custom-select" id="limiteFuncionarios">
+                    <option Selected value="1Funcionario">1</option>
+                    <option value="5Funcionario">até 5</option>
+                    <option value="ilimitadoFuncionario">Ilimitado</option>
+                  </select>
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text" for="plano">Plano</label>
                   </div>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <label class="input-group-text" for="plano">Plano</label>
-                    </div>
-                    <select class="custom-select" id="plano" required="">
-                      <option selected>Selecione...</option>
-                      <option value="mensal">Mensal</option>
-                      <option value="trimestral">Trimestral</option>
-                      <option value="semestral">Semestral</option>
-                      <option value="anual">Anual</option>
-                    </select>
-                  </div>
-          </form>
+                  <select class="custom-select" id="plano" required="">
+                    <option selected>Selecione...</option>
+                    <option value="mensal">Mensal</option>
+                    <option value="trimestral">Trimestral</option>
+                    <option value="semestral">Semestral</option>
+                    <option value="anual">Anual</option>
+                  </select>
+                </div>
               </div>
               <h4 class="label2">
                 Pagamento
@@ -84,32 +83,33 @@ include('../../../controller/protect.php');
                 </label>
               </div>
             </div>
-          <div class="row g-3">
-                  <div class="col-md-6">
-                    <label for="cc-name" class="label2">
-                      Nome do cartão
-                    </label>
-                    <input type="text" class="form-control">
-                  </div>
-                  <div class="col-md-6">
-                    <label for="cc-number" class="label2">
-                      Número do cartão
-                    </label>
-                    <input type="text" class="form-control">
-                  </div>
-                  <div class="col-md-3">
-                    <label for="cc-expiration" class="label2">
-                      Vencimento
-                    </label>
-                    <input type="text" class="form-control">
-                  </div>
-                  <div class="col-md-3">
-                    <label for="cc-cvv" class="label2">CVV</label>
-                    <input type="text" class="form-control">
-                  </div>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="cc-name" class="label2">
+                  Nome do cartão
+                </label>
+                <input type="text" class="form-control">
               </div>
-              <hr class="my-4">
+              <div class="col-md-6">
+                <label for="cc-number" class="label2">
+                  Número do cartão
+                </label>
+                <input type="text" class="form-control">
+              </div>
+              <div class="col-md-3">
+                <label for="cc-expiration" class="label2">
+                  Vencimento
+                </label>
+                <input type="text" class="form-control">
+              </div>
+              <div class="col-md-3">
+                <label for="cc-cvv" class="label2">CVV</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <hr class="my-4">
             <button class="w-100 btn btn-primary btn-lg" type="submit">Continuar</button>
+          </form>
         </div>
         
         <div class="col-5 px-3">
