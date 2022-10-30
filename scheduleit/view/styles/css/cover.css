@@ -108,3 +108,18 @@ body {
 .title-cards {
   width: 764px;
 }
+
+.salaDisplay {
+  padding: 8px!important;
+  width: 355px!important;
+  height: 130px;
+  cursor: pointer;
+  position: relative;
+}
+
+.salaFixa {
+  position: absolute;
+  top: 5px;
+  right: 7px;
+  font-size: 16px;
+}
