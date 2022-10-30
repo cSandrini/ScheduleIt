@@ -31,7 +31,7 @@
                     $i=1;
                     while($row=$sth->fetch()) {
                         $img = base64_encode($row->imgLogo);
-                        $salaDisplay = salaDisplay($row->idSala, $img, $row->nomeFantasia, $row->cidade, $row->estado, $row->classificacao);
+                        $salaDisplay = salaDisplay($row->idSala, $img, $row->nomeFantasia, $row->cidade, $row->estado, $row->classificacao, "");
                         echo $salaDisplay;
                     }
                 } else {

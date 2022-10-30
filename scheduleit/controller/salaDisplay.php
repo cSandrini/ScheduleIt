@@ -1,5 +1,5 @@
 <?php
-    function salaDisplay($idSala, $img, $nomeFantasia, $cidade, $estado, $classificacao) {
+    function salaDisplay($idSala, $img, $nomeFantasia, $cidade, $estado, $classificacao, $visibilidade) {
         return    "<div class='salaDisplay border rounded bg-white me-3 mb-3 p-0' onclick='redirectSala($idSala)'>
                         <div class='m-0 p-2 d-flex align-items-center gallery_product' onclick='redirectSala($idSala)'>
                             <div class='d-inline'>
@@ -9,6 +9,7 @@
                                 <p class='mb-1 fw-bold title-card'>$nomeFantasia</p>
                                 <p class='m-0'><small>$cidade - $estado</small></p>
                                 <p class='mt-3 stars'><i class='bi bi-star-fill'></i> $classificacao</p>
+                                $visibilidade
                             </div>
                         </div>
                     </div>";

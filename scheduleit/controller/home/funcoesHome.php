@@ -28,7 +28,7 @@
                                             <p class='mt-3 stars'><i class='bi bi-star-fill'></i> $row->classificacao</p>
                                         </div>
                                     </div>
-                                    <span id='salaFixa' class='salaFixa' onclick='fixar()'><i class='bi bi-pin-angle'></i></span>
+                                    <span class='cornerButton' onclick='fixar(this)'><i class='bi bi-pin-angle'></i></span>
                                 </div>";
                     }
                 }

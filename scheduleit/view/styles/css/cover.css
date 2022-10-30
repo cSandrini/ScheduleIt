@@ -117,9 +117,17 @@ body {
   position: relative;
 }
 
-.salaFixa {
+.funcionarioDisplay {
+  padding: 8px!important;
+  width: 320px!important;
+  height: 98px;
+  cursor: pointer;
+  position: relative;
+}
+
+.cornerButton {
   position: absolute;
-  top: 5px;
-  right: 7px;
+  top: 0.5rem;
+  right: 0.5rem;
   font-size: 16px;
 }
