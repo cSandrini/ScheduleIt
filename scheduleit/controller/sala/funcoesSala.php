@@ -87,13 +87,11 @@
             }
             $permissao = $row->permissao;
             if ($_SESSION["id"] == $idProprietario || $permissao == 9) {
-                echo    "<div class='input-group'>
-                        <div>
-                            <div class='input-group-prepend'>
-                                <button class='btn btn-outline-secondary' type='button'>+ Adicionar funcionário</button>
-                                </div>
-                                <input type='text' class='form-control' placeholder='CPF'>
-                                <input type='text' class='form-control' placeholder='Função'>
+                echo    "<div class='dropdown'>
+                            <button class='btn btn-outline-secondary dropdown' id='buttonAddFuncionario' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>+ Adicionar funcionário</button>
+                            <div class='dropdown-menu' aria-labelledby='buttonAddFuncionario'>
+                                <input type='text' class='dropdown-item' placeholder='CPF'>
+                                <input type='text' class='dropdown-item' placeholder='Função'>
                             </div>
                         </div>";
             }
