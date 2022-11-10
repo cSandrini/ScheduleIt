@@ -26,6 +26,7 @@
           }
       });
     </script>
+    <link href="../../styles/css/cover.css" rel="stylesheet">
   </head>
 
   <body class="bg-light">
@@ -56,7 +57,6 @@
           ?>
           <div class="lh-100 me-auto">
             <h6 class="mb-0 text-white lh-100"><?php echo $_SESSION['nome'];?></h6>
-            <small>Since 2022</small>
             <div class="mb-3">
               <label for="imgPerfil" class="form-label"><small>Editar Imagem de Perfil</small></label>
               <input name="imgPerfil" class="form-control form-control-sm" id="imgPerfil" type="file" value=''>
@@ -146,6 +146,7 @@
         </div>
       </form>
     </main>
+    <?php include '../parts/footer.php';?>
   </body>
 
     <!-- Bootstrap core JavaScript

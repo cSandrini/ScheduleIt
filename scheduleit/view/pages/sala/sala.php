@@ -22,6 +22,7 @@
 <body class="bg-light">
   <?php
     require_once '../parts/header.php';
+    echo "<div>";
     echo "<div class='container p-0'>";
     mensagem('Editado com sucesso.');
     echo "</div>";
@@ -96,6 +97,7 @@
       <hr class="my-4">
     </div>
   </div>
+</div>
 </div>
 <?php require_once "../parts/footer.php"; ?>
 </body>

@@ -45,6 +45,10 @@
             height: 100px;
         }
 
+        .translate {
+            transform: translate(-15.5%);
+        }
+
         .logo {
             cursor: pointer;
         }
@@ -82,7 +86,7 @@
 <body>
     <header class="border-bottom bg-white mb-3">
         <span style="cursor:pointer;" onclick="paginaHome()" style="color: rgb(102, 0, 102);"><strong>SCHEDULE</strong><span style="color: rgb(187, 10, 187);"><strong>IT</strong></span></span>
-        <nav>
+        <nav class="translate">
             <form class="form-inline my-2 my-lg-0" method="post" name="pesquisar" action="../pesquisa/pesquisa.php">
                 <div class="input-group">
                     <input class="form-control" type="text" placeholder="Pesquisar" required="" name="busca" >

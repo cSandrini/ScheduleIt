@@ -25,9 +25,16 @@
         include '../parts/header.php';
         require_once "../../../controller/minhasSalas/funcoesMinhasSalas.php";
         require_once "../../../controller/mensagem.php";
+        echo "<div>";
         mensagem(null); // Exibir a mensagem de ERRO caso OCORRA
     ?>
-
+    <div class='col-md-2 text-center mx-auto' role='alert'>
+        <a href='../cadastroSala/cadastroSala.php'>
+            <button type='button' class='btn btn-primary'>
+                + Adicionar sala
+            </button>
+        </a>        
+    </div>
     <div class="container pt-3">
         <div class="row justify-content-center">
             <?php
@@ -35,16 +42,7 @@
             ?>
         </div>
     </div>
-
-    <br><div class='col-md-2 text-center mx-auto' role='alert'>
-        <a href='../cadastroSala/cadastroSala.php'>
-            <button type='button' class='btn btn-primary'>
-                + Adicionar sala
-            </button>
-        </a>        
     </div>
-    
-    
     <!-- FOOTER -->
     <?php include '../parts/footer.php';?>
 </body>

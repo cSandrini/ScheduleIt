@@ -17,7 +17,7 @@
 
 <body class="bg-light">
     <!-- HEADER -->
-    <?php 
+    <?php
         include '../parts/header.php';
         include '../../../controller/home/funcoesHome.php';
     ?>
