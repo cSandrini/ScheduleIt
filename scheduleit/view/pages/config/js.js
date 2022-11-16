@@ -1,3 +1,4 @@
+/*
 $('document').ready(function () {
     $("#imgPerfil").change(function () {
         if (this.files && this.files[0]) {
@@ -9,3 +10,4 @@ $('document').ready(function () {
         }
     });
 });
+*/

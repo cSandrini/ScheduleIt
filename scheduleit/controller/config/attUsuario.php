@@ -6,7 +6,7 @@
     require_once '../../model/usuarioDAO.php';
     require_once '../funcoesUteis.php';
 
-    $id = $_POST["idUsuario"];
+    $id = $_GET["id"];
     $conexao = conectarBD();
     $dados = carregarConfig($conexao, $id);
 
