@@ -4,6 +4,10 @@
 CREATE SCHEMA IF NOT EXISTS `scheduleit` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `scheduleit` ;
 
+-- AUMENTAR NÚMERO DE PACOTES
+set global net_buffer_length=1000000; 
+set global max_allowed_packet=1000000000; 
+
 -- -----------------------------------------------------
 -- Table `scheduleit`.`Usuario`
 -- -----------------------------------------------------
@@ -15,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `scheduleit`.`Usuario` (
   `telefone` VARCHAR(15) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
   `senha` VARCHAR(50) NOT NULL,
-  `foto` BLOB NULL,
+  `foto` MEDIUMBLOB NULL,
   `permissao` TINYINT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;

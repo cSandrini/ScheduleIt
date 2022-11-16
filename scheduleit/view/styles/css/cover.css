@@ -1,6 +1,8 @@
-body {
-  justify-content: center;
-  min-height: 100vh;
+body{ 
+  min-height: 100vh; 
+  margin: 0; 
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
 .botaofunc {
@@ -130,4 +132,19 @@ body {
   top: 0.5rem;
   right: 0.5rem;
   font-size: 16px;
+}
+
+.dropdownColor {
+  --bs-dropdown-link-active-bg: #dfdfdf;
+}
+
+.rodape {
+  position: relative;
+  right: 50%;
+  transform: translate(50%);
+}
+
+.rodape a {
+  text-decoration: none;
+  color: rgba(var(--bs-body-color-rgb),.75)!important;
 }

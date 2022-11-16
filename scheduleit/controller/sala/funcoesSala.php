@@ -90,8 +90,8 @@
                 echo    "<div class='dropdown'>
                             <button class='btn btn-outline-secondary dropdown' id='buttonAddFuncionario' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>+ Adicionar funcionário</button>
                             <div class='dropdown-menu' aria-labelledby='buttonAddFuncionario'>
-                                <input type='text' class='dropdown-item' placeholder='CPF'>
-                                <input type='text' class='dropdown-item' placeholder='Função'>
+                                <input type='text' class='dropdown-item dropdownColor' placeholder='CPF'>
+                                <input type='text' class='dropdown-item dropdownColor' placeholder='Função'>
                             </div>
                         </div>";
             }
