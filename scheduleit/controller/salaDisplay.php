@@ -6,7 +6,7 @@
                                 <img class='rounded imgsala me-2' style='padding: 0!important; width: 7rem; height: 7rem;'  src='data:imgLogo/jpeg;base64,$img'>
                             </div>
                             <div class='d-inline lh-1'>
-                                <p class='mb-1 fw-bold title-card'>$nomeFantasia</p>
+                                <p class='d-inline-block text-truncate mb-1 fw-bold title-card' style='max-width: 220px;'>$nomeFantasia</p>
                                 <p class='m-0'><small>$cidade - $estado</small></p>
                                 <p class='mt-3 stars'><i class='bi bi-star-fill'></i> $classificacao</p>
                                 $visibilidade
