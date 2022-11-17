@@ -9,12 +9,13 @@
 <head>
   <meta charset="utf-8">
   <title>ScheduleIt - Agenda</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <link href="../../styles/css/cover.css" rel="stylesheet">
   <!-- Plugin CSS -->
   <link href="../../../resources/libraries/vanilla-calendar-2.1.1/build/vanilla-calendar.min.css" rel="stylesheet">
   <!-- Plugin JS -->
   <script src="../../../resources/libraries/vanilla-calendar-2.1.1/build/vanilla-calendar.min.js" defer></script>
+  <script src="js.js"></script>
 </head>
 <body class="bg-light">
     <?php 
@@ -46,40 +47,54 @@
                   <tr>
                     <th scope="col">Horário</th>
                     <th scope="col">Nome</th>
+                    <th></th>
                   </tr>
                 </thead>
-                <tbody class="">        
+                <tbody class=""> 
                   <tr class="">
-                    <td scope="row">07:00 - 08:00</td>
-                    <td></td>
+                    <td class="align-middle" scope="row">07:00 - 08:00</td>
+                    <td class="align-middle"></td>
+                    <td class="align-middle"><button class="btn btn-sm btn-outline-success" onclick="agendar(<?php echo $_GET['id'];?>, <?php echo $_SESSION['id'];?>, 17-11-2022, 1)">Agendar</button></td>
                   </tr>
                   <tr class="table-danger">
-                    <td scope="row">08:00 - 09:00</td>
-                    <td>Pedro</td>
+                    <td class="align-middle"scope="row">08:00 - 09:00</td>
+                    <td class="align-middle">Pedro</td>
+                    <td class="align-middle"><button class="btn btn-sm btn-outline-danger" disabled>Reservado</button></td>
                   </tr>
                   <tr class="table-danger">
-                    <td scope="row">09:00 - 10:00</td>
-                    <td>Joaquim</td>
+                    <td class="align-middle" scope="row">09:00 - 10:00</td>
+                    <td class="align-middle">Joaquim</td>
+                    <td class="align-middle"><button class="btn btn-sm btn-outline-danger" disabled>Reservado</button></td>
                   </tr>
                   <tr class="">
-                    <td scope="row">12:00 - 13:00</td>
-                    <td></td>
+                    <td class="align-middle" scope="row">10:00 - 11:00</td>
+                    <td class="align-middle"></td>
+                    <td class="align-middle"><button class="btn btn-sm btn-outline-success" onclick="agendar(<?php $_GET['id'];?>, <?php $_SESSION['id'];?>, 17-11-2022, 4)">Agendar</button></td>
                   </tr>
                   <tr class="">
-                    <td scope="row">13:00 - 14:00</td>
-                    <td></td>
+                    <td class="align-middle" scope="row">13:00 - 14:00</td>
+                    <td class="align-middle"></td>
+                    <td class="align-middle"><button class="btn btn-sm btn-outline-success" onclick="agendar(<?php $_GET['id'];?>, <?php $_SESSION['id'];?>, 17-11-2022, 5)">Agendar</button></td>
                   </tr>
                   <tr class="table-danger">
-                    <td scope="row">14:00 - 15:00</td>
-                    <td>João Pedro</td>
+                    <td class="align-middle" scope="row">14:00 - 15:00</td>
+                    <td class="align-middle">João Pedro</td>
+                    <td class="align-middle"><button class="btn btn-sm btn-outline-danger" disabled>Reservado</button></td>
                   </tr>
                   <tr class="">
-                    <td scope="row">15:00 - 16:00</td>
-                    <td></td>
+                    <td class="align-middle" scope="row">15:00 - 16:00</td>
+                    <td class="align-middle"></td>
+                    <td class="align-middle"><button class="btn btn-sm btn-outline-success" onclick="agendar(<?php $_GET['id'];?>, <?php $_SESSION['id'];?>, 17-11-2022, 7)">Agendar</button></td>
                   </tr>
                   <tr class="table-danger">
-                    <td scope="row">16:00-17:00</td>
-                    <td>Arthur</td>
+                    <td class="align-middle" scope="row">16:00-17:00</td>
+                    <td class="align-middle">Arthur</td>
+                    <td class="align-middle"><button class="btn btn-sm btn-outline-danger" disabled>Reservado</button></td>
+                  </tr>
+                  <tr class="table-danger">
+                    <td class="align-middle" scope="row">17:00-18:00</td>
+                    <td class="align-middle">Arthur</td>
+                    <td class="align-middle"><button class="btn btn-sm btn-outline-danger" disabled>Reservado</button></td>
                   </tr>
                 </tbody>
               </table>
