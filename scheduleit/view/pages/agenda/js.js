@@ -1,6 +1,5 @@
-
-function agendar(idSala, idUsuario, dataDia, horario) {
-    let data = {idSala : idSala, idUsuario : idUsuario, dataDia : dataDia, horario : horario};
+function post(idFuncionario, idUsuario, dataDMA, idHorario, type) {
+    let data = [{idFuncionario : idFuncionario, idUsuario : idUsuario, dataDMA : dataDMA, idHorario : idHorario, type : type}];
 
     fetch("agendaController.php", {
     method: "POST",

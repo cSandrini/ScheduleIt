@@ -67,7 +67,7 @@
                     }
                     $i++;
                     echo  "<div class='funcionarioDisplay border rounded bg-white me-3 mb-3 p-0'>
-                            <div class='m-0 p-2 d-flex align-items-center gallery_product' onclick='redirectAgenda()'>
+                            <div class='m-0 p-2 d-flex align-items-center gallery_product' onclick='redirectAgenda($row->id)'>
                                 <div class='d-inline'>"
                                   ,$imgTag,
                                 "</div>

@@ -19,20 +19,42 @@
 </head>
 <body class="bg-light">
     <?php 
+      if (!isset($_GET['dataDMA'])) {
+        $currentDate = new DateTime();
+        $_GET['dataDMA'] = $currentDate->format('Y-m-d');
+
+      }
       include "../parts/header.php";
       require_once "../../../controller/agenda/agenda.php";
     ?>
       <div class="container">
+        <?php
+        /*
+          if($dados['imagem']) {
+              echo "<img class='rounded' src='data:foto/jpeg;base64,".$dados['imagem']."' width='50' height='50'>";
+          } else {
+              echo "<img class='rounded' src='../../styles/blank.png' width='50' height='50'>";
+          }  
+        */
+        ?>  
         <div class="bg-secondary rounded mb-2 text-center mx-auto title-cards">
-            <p class="p-2 m-0 font-weight-bold text-white">Agenda - <?php echo $dados['nome']; ?></p>
+          <p class="p-2 m-0 font-weight-bold text-white">Agenda - <?php echo $dados['nome']; ?></p>
         </div>
         <div class="d-flex justify-content-center">
           <div id="calendar" style="height: 400px;" class="border vanilla-calendar vanilla-calendar_default calendar-info me-2">
             <script>
               document.addEventListener('DOMContentLoaded', () => {
                 const calendar =  new VanillaCalendar('#calendar', {
+                  actions: {
+                    clickDay(event, dates) {
+                      window.location.href = "agenda.php?id="+<?php echo $_GET['id'];?>+"&dataDMA="+dates;
+                    },
+                  },
                   settings: {
                     lang: 'pt-BR',
+                    selected: {
+                      dates: ['<?php echo $_GET['dataDMA'];?>'],
+                    },
                   },
                   type: 'default',
                 });
@@ -51,51 +73,39 @@
                   </tr>
                 </thead>
                 <tbody class=""> 
-                  <tr class="">
-                    <td class="align-middle" scope="row">07:00 - 08:00</td>
-                    <td class="align-middle"></td>
-                    <td class="align-middle"><button class="btn btn-sm btn-outline-success" onclick="agendar(<?php echo $_GET['id'];?>, <?php echo $_SESSION['id'];?>, 17-11-2022, 1)">Agendar</button></td>
-                  </tr>
-                  <tr class="table-danger">
-                    <td class="align-middle"scope="row">08:00 - 09:00</td>
-                    <td class="align-middle">Pedro</td>
-                    <td class="align-middle"><button class="btn btn-sm btn-outline-danger" disabled>Reservado</button></td>
-                  </tr>
-                  <tr class="table-danger">
-                    <td class="align-middle" scope="row">09:00 - 10:00</td>
-                    <td class="align-middle">Joaquim</td>
-                    <td class="align-middle"><button class="btn btn-sm btn-outline-danger" disabled>Reservado</button></td>
-                  </tr>
-                  <tr class="">
-                    <td class="align-middle" scope="row">10:00 - 11:00</td>
-                    <td class="align-middle"></td>
-                    <td class="align-middle"><button class="btn btn-sm btn-outline-success" onclick="agendar(<?php $_GET['id'];?>, <?php $_SESSION['id'];?>, 17-11-2022, 4)">Agendar</button></td>
-                  </tr>
-                  <tr class="">
-                    <td class="align-middle" scope="row">13:00 - 14:00</td>
-                    <td class="align-middle"></td>
-                    <td class="align-middle"><button class="btn btn-sm btn-outline-success" onclick="agendar(<?php $_GET['id'];?>, <?php $_SESSION['id'];?>, 17-11-2022, 5)">Agendar</button></td>
-                  </tr>
-                  <tr class="table-danger">
-                    <td class="align-middle" scope="row">14:00 - 15:00</td>
-                    <td class="align-middle">João Pedro</td>
-                    <td class="align-middle"><button class="btn btn-sm btn-outline-danger" disabled>Reservado</button></td>
-                  </tr>
-                  <tr class="">
-                    <td class="align-middle" scope="row">15:00 - 16:00</td>
-                    <td class="align-middle"></td>
-                    <td class="align-middle"><button class="btn btn-sm btn-outline-success" onclick="agendar(<?php $_GET['id'];?>, <?php $_SESSION['id'];?>, 17-11-2022, 7)">Agendar</button></td>
-                  </tr>
-                  <tr class="table-danger">
-                    <td class="align-middle" scope="row">16:00-17:00</td>
-                    <td class="align-middle">Arthur</td>
-                    <td class="align-middle"><button class="btn btn-sm btn-outline-danger" disabled>Reservado</button></td>
-                  </tr>
-                  <tr class="table-danger">
-                    <td class="align-middle" scope="row">17:00-18:00</td>
-                    <td class="align-middle">Arthur</td>
-                    <td class="align-middle"><button class="btn btn-sm btn-outline-danger" disabled>Reservado</button></td>
-                  </tr>
+                  <?php
+                    $con = conectarBDPDO();
+                    $sth = $con->prepare("SELECT * FROM horario WHERE idFuncionario=".$_GET['id']." AND dataDMA='".$_GET['dataDMA']."';");
+                    $sth->setFetchMode(PDO:: FETCH_OBJ);
+                    $sth->execute();
+
+                    $arr = array();
+                    while($row=$sth->fetch()) {
+                      array_push($arr, $row->idHorario);
+                    }
+
+                    $h=7;
+                    for ($i=1; $i<=9; $i++) {
+                      if (in_array($i, $arr)) {
+                        echo "<tr>
+                                <td class='align-middle' scope='row'>".$h.":00 - ".($h+1).":00</td>
+                                <td class='align-middle'>Nome</td>
+                                <td class='align-middle'><button class='btn btn-sm btn-outline-danger' onclick='post(".$_GET['id'].",".$_SESSION['id'].",\"".$_GET['dataDMA']."\",$i,2)'>Reservado</button></td>
+                              </tr>";
+                      } else {
+                        echo "<tr>
+                                <td class='align-middle' scope='row'>".$h.":00 - ".($h+1).":00</td>
+                                <td class='align-middle'></td>
+                                <td class='align-middle'><button class='btn btn-sm btn-outline-success' onclick='post(".$_GET['id'].",".$_SESSION['id'].",\"".$_GET['dataDMA']."\",$i,1)'>Agendar</button></td>
+                              </tr>";
+                      }
+                      if ($i==4) {
+                        $h+=3;
+                      } else {
+                        $h++;
+                      }
+                    }
+                  ?>
                 </tbody>
               </table>
             </div>

@@ -83,21 +83,20 @@ ENGINE = InnoDB;
 -- Table `scheduleit`.`Horario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `scheduleit`.`Horario` (
-  `idHorario` INT NOT NULL AUTO_INCREMENT,
-  `idFuncionario` INT NOT NULL,
-  `data` DATE NOT NULL,
-  `horario` TIME NOT NULL,
-  `Usuario_id` INT NULL,
-  PRIMARY KEY (`idHorario`),
-  INDEX `fk_Horario_Funcionario1_idx` (`idFuncionario` ASC),
-  INDEX `fk_Horario_Usuario1_idx` (`Usuario_id` ASC),
-  CONSTRAINT `fk_Horario_Funcionario1`
+  `idSala` INT NULL,
+  `idFuncionario` INT NULL,
+  `idUsuario` INT NOT NULL,
+  `dataDMA` DATE NOT NULL,
+  `idHorario` INT NOT NULL,
+  INDEX `fk_Horario_idFuncionario` (`idFuncionario` ASC),
+  INDEX `fk_Horario_idUsuario` (`idUsuario` ASC),
+  CONSTRAINT `fk_Horario_idFuncionario`
     FOREIGN KEY (`idFuncionario`)
     REFERENCES `scheduleit`.`Funcionario` (`idFuncionario`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Horario_Usuario1`
-    FOREIGN KEY (`Usuario_id`)
+  CONSTRAINT `fk_Horario_idUsuario`
+    FOREIGN KEY (`idUsuario`)
     REFERENCES `scheduleit`.`Usuario` (`id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION)

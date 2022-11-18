@@ -69,7 +69,8 @@
                             <a href='../../../controller/editarSala/excluirSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light'><i class='bi bi-trash'></i> Excluir</button></a>
                         </div>
                         </form>
-                    </div>";
+                    </div>
+                  </div>";
             }
         }
     }
