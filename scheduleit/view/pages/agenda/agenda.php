@@ -69,7 +69,8 @@
                   <tr>
                     <th scope="col">Horário</th>
                     <th scope="col">Nome</th>
-                    <th></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody class=""> 
@@ -84,19 +85,22 @@
                       array_push($arr, $row->idHorario);
                     }
 
+                    
                     $h=7;
                     for ($i=1; $i<=9; $i++) {
                       if (in_array($i, $arr)) {
-                        echo "<tr>
+                        echo "<tr class='table-danger'>
                                 <td class='align-middle' scope='row'>".$h.":00 - ".($h+1).":00</td>
                                 <td class='align-middle'>Nome</td>
-                                <td class='align-middle'><button class='btn btn-sm btn-outline-danger' onclick='post(".$_GET['id'].",".$_SESSION['id'].",\"".$_GET['dataDMA']."\",$i,2)'>Reservado</button></td>
+                                <td class='align-middle text-end'><button class='btn btn-sm btn-outline-danger' onclick='post(".$_GET['id'].",".$_SESSION['id'].",\"".$_GET['dataDMA']."\",$i,2)'>Reservado</button></td>
+                                <td class='p-0 align-middle'><button class='btn btn-sm btn-outline-secondary'><i class='bi bi-calendar-x'></i></button></td>
                               </tr>";
                       } else {
                         echo "<tr>
                                 <td class='align-middle' scope='row'>".$h.":00 - ".($h+1).":00</td>
                                 <td class='align-middle'></td>
-                                <td class='align-middle'><button class='btn btn-sm btn-outline-success' onclick='post(".$_GET['id'].",".$_SESSION['id'].",\"".$_GET['dataDMA']."\",$i,1)'>Agendar</button></td>
+                                <td class='align-middle text-end'><button class='btn btn-sm btn-outline-success' onclick='post(".$_GET['id'].",".$_SESSION['id'].",\"".$_GET['dataDMA']."\",$i,1)'>Agendar</button></td>
+                                <td class='p-0 align-middle'><button class='btn btn-sm btn-outline-secondary'><i class='bi bi-calendar-x'></i></button></td>
                               </tr>";
                       }
                       if ($i==4) {

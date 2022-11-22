@@ -153,8 +153,6 @@ INSERT INTO `Funcionario` (`idFuncionario`, `idSala`, `idUsuario`) VALUES (NULL,
 INSERT INTO `Funcionario` (`idFuncionario`, `idSala`, `idUsuario`) VALUES (NULL, '1', '3');
 INSERT INTO `Funcionario` (`idFuncionario`, `idSala`, `idUsuario`) VALUES (NULL, '2', '2');
 
-INSERT INTO `Horario` (`idHorario`, `idFuncionario`, `data`, `horario`, `Usuario_id`) VALUES (NULL, '1', '2023-01-23', '15:00:00', '1');
-
 INSERT INTO `Recurso` (`idRecurso`, `valor`) VALUES ('1Sala', '0');
 INSERT INTO `Recurso` (`idRecurso`, `valor`) VALUES ('5Sala', '15');
 INSERT INTO `Recurso` (`idRecurso`, `valor`) VALUES ('ilimitadoSala', '30');
