@@ -89,7 +89,7 @@
                       if (!empty($arr) && in_array(array($i, 'true'), $arr)) {
                         echo "<tr class='table-secondary'>
                                   <td class='align-middle' scope='row'>".$h.":00 - ".($h+1).":00</td>
-                                  <td class='tdw align-middle'>WindersonNunes</td>
+                                  <td class='tdw align-middle'></td>
                                   <td class='align-middle text-end'><button class='btn btn-sm btn-outline-secondary' disabled>Disabilitado</button></td>
                                   <td class='p-0 align-middle'><button class='btn btn-sm btn-outline-secondary me-2' onclick='post(".$_GET['id'].",".$_SESSION['id'].",\"".$_GET['dataDMA']."\",$i,2)'><i class='bi bi-calendar-x'></i></button></td>
                                 </tr>";
