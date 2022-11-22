@@ -70,7 +70,7 @@
         <?php
           mensagem('Alterações realizadas.')
         ?>
-        <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-primary rounded">
+        <div class="d-flex align-items-center p-3 mb-3 text-white-50 bg-primary rounded">
           <?php //CARREGAR IMAGEM DE PERFIL
             require_once '../../../controller/config/funcoesUsuario.php';
             carregarDadosUsuario($id)
@@ -139,7 +139,7 @@
               </tbody>
             </table>
           <div class="d-flex">
-            <button type="button" class="mx-auto btn btn-primary btn-sm w-25" data-bs-toggle="modal" data-bs-target="#inserirSenhaModal">Salvar</button>
+            <button type="button" class="mx-auto btn btn-primary w-25" data-bs-toggle="modal" data-bs-target="#inserirSenhaModal">Salvar</button>
           </div>
         </div>
         <div class="modal fade" id="inserirSenhaModal" tabindex="-1" role="dialog" aria-labelledby="inserirSenhaModal" aria-hidden="true">

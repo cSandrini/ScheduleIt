@@ -3,6 +3,8 @@ body{
   margin: 0; 
   display: grid;
   grid-template-rows: auto 1fr auto;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .botaofunc {
@@ -93,7 +95,7 @@ body{
 }
 
 .calendar-info {
-  width: 380px!important;
+  width: 400px!important;
   height: auto;
   border-radius: 4px;
 }
@@ -147,4 +149,12 @@ body{
 .rodape a {
   text-decoration: none;
   color: rgba(var(--bs-body-color-rgb),.75)!important;
+}
+
+.fsp {
+  font-size: 14px;
+}
+
+hr {
+  color: #d3d3d3!important;
 }

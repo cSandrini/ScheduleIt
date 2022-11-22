@@ -27,7 +27,7 @@
     mensagem('Editado com sucesso.');
     echo "</div>";
   ?>
-<div class="container border rounded bg-white p-0 mt-3 rounded">    
+<div class="container border rounded bg-white p-0 rounded">    
   <div>
     <div>
       <div  class="d-flex align-items-center p-3 text-white-50 bg-info rounded">

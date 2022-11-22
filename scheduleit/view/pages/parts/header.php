@@ -80,7 +80,7 @@
         background-color:  rgba(0,136,169,0.75);
     }
 </style>
-<header class="border-bottom bg-white mb-3">
+<header class="border-bottom bg-white mb-4">
     <span style="cursor:pointer;" onclick="paginaHome()" style="color: rgb(102, 0, 102);"><strong>SCHEDULE</strong><span style="color: rgb(187, 10, 187);"><strong>IT</strong></span></span>
     <nav class="translate">
         <form class="form-inline my-2 my-lg-0" method="post" name="pesquisar" action="../pesquisa/pesquisa.php">

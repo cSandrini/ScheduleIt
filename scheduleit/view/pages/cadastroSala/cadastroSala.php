@@ -23,7 +23,7 @@
       require_once "../../../controller/mensagem.php";
     ?>
 
-    <div class="pt-5">
+    <div class="">
       <div style="width: 40rem;" class="pb-3 bg-white rounded container border">
         <div class="py-2 text-center">
           <h2>Cadastro de Sala</h2>

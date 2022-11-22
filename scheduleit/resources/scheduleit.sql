@@ -24,7 +24,6 @@ CREATE TABLE IF NOT EXISTS `scheduleit`.`Usuario` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `scheduleit`.`Sala`
 -- -----------------------------------------------------
@@ -55,10 +54,10 @@ CREATE TABLE IF NOT EXISTS `scheduleit`.`Sala` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `scheduleit`.`Funcionario`
 -- -----------------------------------------------------
+/*
 CREATE TABLE IF NOT EXISTS `scheduleit`.`Funcionario` (
   `idFuncionario` INT NOT NULL AUTO_INCREMENT,
   `idSala` INT NOT NULL,
@@ -77,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `scheduleit`.`Funcionario` (
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
+*/
 
 -- -----------------------------------------------------
 -- Table `scheduleit`.`Horario`
@@ -85,14 +84,14 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `scheduleit`.`Horario` (
   `idSala` INT NULL,
   `idFuncionario` INT NULL,
-  `idUsuario` INT NOT NULL,
+  `idUsuario` INT NULL,
   `dataDMA` DATE NOT NULL,
   `idHorario` INT NOT NULL,
   INDEX `fk_Horario_idFuncionario` (`idFuncionario` ASC),
   INDEX `fk_Horario_idUsuario` (`idUsuario` ASC),
   CONSTRAINT `fk_Horario_idFuncionario`
     FOREIGN KEY (`idFuncionario`)
-    REFERENCES `scheduleit`.`Funcionario` (`idFuncionario`)
+    REFERENCES `scheduleit`.`Usuario` (`id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Horario_idUsuario`
@@ -102,21 +101,22 @@ CREATE TABLE IF NOT EXISTS `scheduleit`.`Horario` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `scheduleit`.`Recurso`
 -- -----------------------------------------------------
+/*
 CREATE TABLE IF NOT EXISTS `scheduleit`.`Recurso` (
   `idRecurso` VARCHAR(45) NOT NULL,
   `valor` FLOAT NOT NULL,
   
   PRIMARY KEY (`idRecurso`))
 ENGINE = InnoDB;
-
+*/
 
 -- -----------------------------------------------------
 -- Table `scheduleit`.`Carrinho`
 -- -----------------------------------------------------
+/*
 CREATE TABLE IF NOT EXISTS `scheduleit`.`Carrinho` (
   `idRecurso` VARCHAR(45) NOT NULL,
   `idSala` INT NOT NULL,
@@ -133,6 +133,8 @@ CREATE TABLE IF NOT EXISTS `scheduleit`.`Carrinho` (
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+*/
+
 
 INSERT INTO `Usuario` (`id`, `nome`, `sobrenome`, `cpf`, `telefone`, `email`, `senha`, `foto`, `permissao`) VALUES
 (1, 'Admin', 'Admin', "0", "0", 'admin', '06e260af20654ea97d229dc9cab79fb0a76ce11b', NULL, 9);
@@ -149,6 +151,7 @@ VALUES (NULL, '2', 'vamonos@gmail.com', '12345678912345', 'VamonosPest', '297050
 INSERT INTO `Sala` (`idSala`, `idProprietario`, `email`, `cnpj`, `nomeFantasia`, `cep`, `estado`, `cidade`, `bairro`, `rua`, `numero`, `complemento`, `telefone`, `classificacao`, `descricao`, `imgLogo`) 
 VALUES (NULL, '1', 'pollos@gmail.com', '12345678912346', 'Los Pollos Hermanos', '29705099', 'ES', 'Colatina', 'Carlos Germano Naumman', 'Rod. Gether Lopes de Faria', '80', '', '27999588557', '4.5', "Comida Mexicana!", NULL);
 
+/*
 INSERT INTO `Funcionario` (`idFuncionario`, `idSala`, `idUsuario`) VALUES (NULL, '1', '2');
 INSERT INTO `Funcionario` (`idFuncionario`, `idSala`, `idUsuario`) VALUES (NULL, '1', '3');
 INSERT INTO `Funcionario` (`idFuncionario`, `idSala`, `idUsuario`) VALUES (NULL, '2', '2');
@@ -165,4 +168,4 @@ INSERT INTO `Recurso` (`idRecurso`, `valor`) VALUES ('mensal', '20');
 INSERT INTO `Recurso` (`idRecurso`, `valor`) VALUES ('trimestral', '55');
 INSERT INTO `Recurso` (`idRecurso`, `valor`) VALUES ('semestral', '100');
 INSERT INTO `Recurso` (`idRecurso`, `valor`) VALUES ('anual', '180');
-
+*/

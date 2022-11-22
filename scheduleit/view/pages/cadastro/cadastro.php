@@ -20,7 +20,7 @@
       require_once "../../../controller/mensagem.php";
     ?>
 
-    <div class="pt-5">
+    <div class="">
       <div style="width: 40rem;" class="pb-3 bg-white rounded container border">
         <div class="py-2 text-center">
           <h2>Cadastro</h2>
@@ -70,9 +70,9 @@
           </form>
         </div>
       </div>
-
-      <!-- FOOTER -->
-      <?php include '../parts/footer.php';?>
-    </div>         
+      <p class="fsp mt-2 text-muted">Ao criar uma conta você concorda com nossos <a class="text-reset" href="">Termos de Uso</a> e <a class="text-reset" href="">Políticas de Privacidades</a>.</p>
+    </div>  
+    <!-- FOOTER -->
+    <?php include '../parts/footer.php';?>       
   </body>
 </html>

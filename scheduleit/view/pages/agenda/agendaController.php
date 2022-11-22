@@ -23,4 +23,7 @@
     if ($type==2) {
         deletar($con, $idFuncionario, $dataDMA, $idHorario);
     }
+    if ($type==3) {
+        disabilitar($con, $idFuncionario, $dataDMA, $idHorario);
+    }
 ?>

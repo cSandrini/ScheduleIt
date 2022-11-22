@@ -15,7 +15,7 @@ include('../../../controller/protect.php');
 
 <body class="bg-light">
 <?php include "../parts/header.php"; ?>
-  <div class="mt-5 container border rounded bg-white">
+  <div class="container border rounded bg-white">
     <div>
       <h4 class="my-2 text-center pb-2 border-bottom">
         Publicar Sala

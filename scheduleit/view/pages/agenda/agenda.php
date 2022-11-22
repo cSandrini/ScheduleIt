@@ -75,32 +75,37 @@
                 </thead>
                 <tbody class=""> 
                   <?php
-                    $con = conectarBDPDO();
-                    $sth = $con->prepare("SELECT * FROM horario WHERE idFuncionario=".$_GET['id']." AND dataDMA='".$_GET['dataDMA']."';");
+                    $sth = $con->prepare("SELECT * FROM horario WHERE idFuncionario=".$_GET['id']." AND dataDMA='".$_GET['dataDMA']."' ORDER BY idHorario;");
                     $sth->setFetchMode(PDO:: FETCH_OBJ);
                     $sth->execute();
 
                     $arr = array();
                     while($row=$sth->fetch()) {
-                      array_push($arr, $row->idHorario);
+                      array_push($arr, array($row->idHorario, $row->disabilitado));
                     }
 
-                    
                     $h=7;
                     for ($i=1; $i<=9; $i++) {
-                      if (in_array($i, $arr)) {
+                      if (!empty($arr) && in_array(array($i, 'true'), $arr)) {
+                        echo "<tr class='table-secondary'>
+                                  <td class='align-middle' scope='row'>".$h.":00 - ".($h+1).":00</td>
+                                  <td class='tdw align-middle'>WindersonNunes</td>
+                                  <td class='align-middle text-end'><button class='btn btn-sm btn-outline-secondary' disabled>Disabilitado</button></td>
+                                  <td class='p-0 align-middle'><button class='btn btn-sm btn-outline-secondary me-2' onclick='post(".$_GET['id'].",".$_SESSION['id'].",\"".$_GET['dataDMA']."\",$i,2)'><i class='bi bi-calendar-x'></i></button></td>
+                                </tr>";
+                      } else if (!empty($arr) && in_array(array($i, 'false'), $arr)) {
                         echo "<tr class='table-danger'>
                                 <td class='align-middle' scope='row'>".$h.":00 - ".($h+1).":00</td>
-                                <td class='align-middle'>Nome</td>
+                                <td class='tdw text-truncate align-middle'>Nome</td>
                                 <td class='align-middle text-end'><button class='btn btn-sm btn-outline-danger' onclick='post(".$_GET['id'].",".$_SESSION['id'].",\"".$_GET['dataDMA']."\",$i,2)'>Reservado</button></td>
-                                <td class='p-0 align-middle'><button class='btn btn-sm btn-outline-secondary'><i class='bi bi-calendar-x'></i></button></td>
+                                <td class='p-0 align-middle'><button class='btn btn-sm btn-outline-secondary me-2' onclick='post(".$_GET['id'].",".$_SESSION['id'].",\"".$_GET['dataDMA']."\",$i,2)'><i class='bi bi-calendar-x'></i></button></td>
                               </tr>";
                       } else {
                         echo "<tr>
                                 <td class='align-middle' scope='row'>".$h.":00 - ".($h+1).":00</td>
-                                <td class='align-middle'></td>
+                                <td class='tdw text-truncate align-middle'></td>
                                 <td class='align-middle text-end'><button class='btn btn-sm btn-outline-success' onclick='post(".$_GET['id'].",".$_SESSION['id'].",\"".$_GET['dataDMA']."\",$i,1)'>Agendar</button></td>
-                                <td class='p-0 align-middle'><button class='btn btn-sm btn-outline-secondary'><i class='bi bi-calendar-x'></i></button></td>
+                                <td class='p-0 align-middle'><button class='btn btn-sm btn-outline-secondary me-2' onclick='post(".$_GET['id'].",".$_SESSION['id'].",\"".$_GET['dataDMA']."\",$i,3)'><i class='bi bi-calendar-x'></i></button></td>
                               </tr>";
                       }
                       if ($i==4) {
