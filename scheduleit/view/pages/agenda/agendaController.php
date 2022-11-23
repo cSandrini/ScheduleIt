@@ -1,6 +1,6 @@
 <?php
- error_reporting(E_ALL); //REPORTAR ERROS
- ini_set('display_errors', 1); //REPORTAR ERROS
+    error_reporting(E_ALL); //REPORTAR ERROS
+    ini_set('display_errors', 1); //REPORTAR ERROS
  
     $json = file_get_contents('php://input');
     // Converts it into a PHP object
