@@ -45,9 +45,8 @@
             <p class="card-text"> <?php echo $descricao ?> <br><br> <?php echo "CEP: $cep. $cidade - $estado. $rua, $bairro, $numero, $complemento."?> <br><br> Horário de atendimento <br><br> <?php echo "Email: $email" ?> <br> <?php echo "Telefone: $telefone" ?> </p> 
           </div>
           <?php 
-          require_once '../../../controller/funcionarioDisplay.php';
-          $session = $_SESSION['id'];
-          carregarFuncionarios($idSala, $idProprietario, $session);
+            require_once '../../../controller/funcionarioDisplay.php';
+            carregarFuncionarios($idSala);
           /*
             if (isset($_SESSION['id']) && $_SESSION['id']==$idProprietario) {
               $removerFuncionarioButton = "<button class='m-0 p-0 btn btn-link text-decoration-none cornerButton text-danger' onclick='removerFuncionario(this)'><i class='bi bi-x-circle-fill'></i></button>";
