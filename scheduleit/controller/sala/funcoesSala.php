@@ -74,7 +74,7 @@
             }
         }
     }
-    function editarFuncionario($idProprietario) {
+    function editarFuncionario($idProprietario, $idSala) {
         if (isset($_SESSION["id"])) {
             try {
                 $con = conectarBDPDO();
@@ -91,8 +91,8 @@
                 echo    "<div class='dropdown'>
                             <button class='btn btn-outline-secondary dropdown' id='buttonAddFuncionario' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>+ Adicionar funcionário</button>
                             <div class='dropdown-menu' aria-labelledby='buttonAddFuncionario'>
-                                <form class='needs-validation' method='post' name='formEditarSala' action='' enctype='multipart/form-data'>
-                                    <input type='text' class='dropdown-item dropdownColor' placeholder='CPF'>
+                                <form class='needs-validation' method='post' name='formEditarSala' action='../../../controller/funcionario/adicionarFuncionario.php?idSala=$idSala' enctype='multipart/form-data'>
+                                    <input type='text' name='cpf' class='dropdown-item dropdownColor' placeholder='CPF' required=''>
                                     <button type='submit' class='dropdown-item dropdownColor'>Adicionar</button>
                                 </form> 
                             </div>

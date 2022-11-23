@@ -3,7 +3,9 @@
         session_start();
     }
     require_once "../../../controller/sala/funcoesSala.php";
+    require_once "../../../controller/funcionario/funcoesFuncionario.php";
     require_once "../../../controller/mensagem.php";
+
 ?>
 
 <html lang="pt-BR"><head>
@@ -42,7 +44,11 @@
           <div class="col-3 border rounded p-2 me-2 bg-light">
             <p class="card-text"> <?php echo $descricao ?> <br><br> <?php echo "CEP: $cep. $cidade - $estado. $rua, $bairro, $numero, $complemento."?> <br><br> Horário de atendimento <br><br> <?php echo "Email: $email" ?> <br> <?php echo "Telefone: $telefone" ?> </p> 
           </div>
-          <?php
+          <?php 
+          require_once '../../../controller/funcionarioDisplay.php';
+          $session = $_SESSION['id'];
+          carregarFuncionarios($idSala, $idProprietario, $session);
+          /*
             if (isset($_SESSION['id']) && $_SESSION['id']==$idProprietario) {
               $removerFuncionarioButton = "<button class='m-0 p-0 btn btn-link text-decoration-none cornerButton text-danger' onclick='removerFuncionario(this)'><i class='bi bi-x-circle-fill'></i></button>";
             } else {
@@ -85,10 +91,10 @@
             } catch(PDOException $e) {
               echo "Error: ". $e->getMessage();
             }
-          ?>
+          */?>
           <div style="float: left">
             <?php
-              editarFuncionario($idProprietario);
+              editarFuncionario($idProprietario, $idSala);
             ?>
           </div>
         </div>  
