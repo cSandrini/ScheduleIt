@@ -57,7 +57,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `scheduleit`.`Funcionario`
 -- -----------------------------------------------------
-/*
+
 CREATE TABLE IF NOT EXISTS `scheduleit`.`Funcionario` (
   `idFuncionario` INT NOT NULL AUTO_INCREMENT,
   `idSala` INT NOT NULL,
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `scheduleit`.`Funcionario` (
     ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-*/
+
 
 -- -----------------------------------------------------
 -- Table `scheduleit`.`Horario`

@@ -91,8 +91,10 @@
                 echo    "<div class='dropdown'>
                             <button class='btn btn-outline-secondary dropdown' id='buttonAddFuncionario' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>+ Adicionar funcionário</button>
                             <div class='dropdown-menu' aria-labelledby='buttonAddFuncionario'>
-                                <input type='text' class='dropdown-item dropdownColor' placeholder='CPF'>
-                                <input type='text' class='dropdown-item dropdownColor' placeholder='Função'>
+                                <form class='needs-validation' method='post' name='formEditarSala' action='' enctype='multipart/form-data'>
+                                    <input type='text' class='dropdown-item dropdownColor' placeholder='CPF'>
+                                    <button type='submit' class='dropdown-item dropdownColor'>Adicionar</button>
+                                </form> 
                             </div>
                         </div>";
             }

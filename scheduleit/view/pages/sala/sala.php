@@ -73,7 +73,6 @@
                                 "</div>
                                 <div class='d-inline lh-1'>
                                     <span style='max-width: 220px;' class='d-inline-block text-truncate mb-1 fw-bold title-card'>$row->nome</span>
-                                    <p class='m-0'><small>Função</small></p>
                                 </div>
                             </div>",$removerFuncionarioButton,
                           "</div>";
