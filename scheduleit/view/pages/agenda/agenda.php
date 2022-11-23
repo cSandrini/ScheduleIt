@@ -105,7 +105,6 @@
                     while($row=$sth->fetch()) {
                       array_push($arr, array($row->idHorario, $row->disabilitado));
                       array_push($arrId, array($row->idHorario, $row->idUsuario));
-                      array_push($arrNome, array($row->idHorario, $row->Nome));
                     }
 
                     $h=7;
@@ -122,7 +121,7 @@
                       } else if (!empty($arr) && in_array(array($i, 'false'), $arr)) {
                         echo "<tr class='table-danger'>
                                 <td class='align-middle' scope='row'>".$h.":00 - ".($h+1).":00</td>
-                                <td class='tdw text-truncate align-middle'></td>";
+                                <td class='tdw text-truncate align-middle'>Nome</td>";
                                 if ($perm) {
                                   echo "<td class='align-middle text-end'><button class='btn btn-sm btn-outline-danger' onclick='post(".$_GET['id'].",".$_SESSION['id'].",\"".$_GET['dataDMA']."\",$i,2)'>Reservado</button></td>
                                         <td class='p-0 align-middle'><button class='btn btn-sm btn-outline-secondary me-2' onclick='post(".$_GET['id'].",".$_SESSION['id'].",\"".$_GET['dataDMA']."\",$i,4)'><i class='bi bi-calendar-x'></i></button></td>";
