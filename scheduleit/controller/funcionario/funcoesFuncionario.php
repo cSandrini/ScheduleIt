@@ -1,6 +1,4 @@
 <?php
-    require_once '../../../model/conexaobd.php';
-
 function carregarFuncionarios($idSala){
     require_once '../../../controller/funcionarioDisplay.php';
     if (isset($_SESSION['id']) && $_SESSION['id']==$_GET['idSala']) {
@@ -10,7 +8,7 @@ function carregarFuncionarios($idSala){
     }
     try {
         $con = conectarBDPDO();
-        $sth = $con->prepare("SELECT * FROM funcionario WHERE idSala=".$_GET["idSala"].";");
+        $sth = $con->prepare("SELECT * FROM funcionario, usuario WHERE idSala=".$_GET["idSala"]." AND funcionario.idUsuario = usuario.id;");
         $sth->setFetchMode(PDO:: FETCH_OBJ);
         $sth->execute();
         if ($sth->rowCount() > 0) {
@@ -20,17 +18,17 @@ function carregarFuncionarios($idSala){
                 $foto = addslashes('../../styles/blank.png');
                 $imgTag = "<img class='rounded imgsala me-2' style='padding: 0!important; width: 80px; height: 80px;'  src='$foto'>";
               } else {
-                $foto = base64_encode($foto);
+                $foto = base64_encode($row->foto);
                 $imgTag = "<img class='rounded imgsala me-2' style='padding: 0!important; width: 80px; height: 80px;'  src='data:image/png;base64,$foto'>";
               }
               $i++;
               echo  "<div class='funcionarioDisplay border rounded bg-white me-3 mb-3 p-0'>
-                      <div class='m-0 p-2 d-flex align-items-center gallery_product' onclick='redirectAgenda($row->idFuncionario)'>
+                      <div class='m-0 p-2 d-flex align-items-center gallery_product' onclick='redirectAgenda($row->idUsuario)'>
                           <div class='d-inline'>"
                             ,$imgTag,
                           "</div>
                           <div class='d-inline lh-1'>
-                              <span style='max-width: 220px;' class='d-inline-block text-truncate mb-1 fw-bold title-card'></span>
+                              <span style='max-width: 220px;' class='d-inline-block text-truncate mb-1 fw-bold title-card'>$row->nome</span>
                           </div>
                       </div>",$removerFuncionarioButton,
                     "</div>";
