@@ -44,6 +44,7 @@
           <div class="col-3 border rounded p-2 me-2 bg-light">
             <p class="card-text"> <?php echo $descricao ?> <br><br> <?php echo "CEP: $cep. $cidade - $estado. $rua, $bairro, $numero, $complemento."?> <br><br> Horário de atendimento <br><br> <?php echo "Email: $email" ?> <br> <?php echo "Telefone: $telefone" ?> </p> 
           </div>
+          <div style="height: 282px; max-width: 600px;" class="mx-4 overflow-auto row justify-content-center">
           <?php 
             require_once '../../../controller/funcionarioDisplay.php';
             carregarFuncionarios($idSala);
@@ -91,6 +92,7 @@
               echo "Error: ". $e->getMessage();
             }
           */?>
+          </div>
           <div style="float: left">
             <?php
               editarFuncionario($idProprietario, $idSala);

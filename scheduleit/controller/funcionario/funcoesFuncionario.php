@@ -28,7 +28,7 @@ function carregarFuncionarios($idSala){
                             ,$imgTag,
                           "</div>
                           <div class='d-inline lh-1'>
-                              <span style='max-width: 220px;' class='d-inline-block text-truncate mb-1 fw-bold title-card'>$row->nome</span>
+                              <span style='max-width: 110px;' class='d-inline-block text-truncate mb-1 title-card'>$row->nome</span>
                           </div>
                       </div>",$removerFuncionarioButton,
                     "</div>";
