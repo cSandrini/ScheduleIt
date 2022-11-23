@@ -1,11 +1,7 @@
 <?php
 function carregarFuncionarios($idSala){
     require_once '../../../controller/funcionarioDisplay.php';
-    if (isset($_SESSION['id']) && $_SESSION['id']==$_GET['idSala']) {
-        $removerFuncionarioButton = "<button class='m-0 p-0 btn btn-link text-decoration-none cornerButton text-danger' onclick='removerFuncionario(this)'><i class='bi bi-x-circle-fill'></i></button>";
-    } else {
-        $removerFuncionarioButton = "";
-    }
+
     try {
         $con = conectarBDPDO();
         $sth = $con->prepare("SELECT * FROM funcionario, usuario WHERE idSala=".$_GET["idSala"]." AND funcionario.idUsuario = usuario.id;");
@@ -22,6 +18,11 @@ function carregarFuncionarios($idSala){
                 $imgTag = "<img class='rounded imgsala me-2' style='padding: 0!important; width: 80px; height: 80px;'  src='data:image/png;base64,$foto'>";
               }
               $i++;
+            if (isset($_SESSION['id']) && $_SESSION['id']==$_GET['idSala'] || $_SESSION['id']==1) {
+                $removerFuncionarioButton = "<a href='../../../controller/funcionario/removerFuncionario.php?idSala=$row->idSala&idUsuario=$row->idUsuario'><button class='m-0 p-0 btn btn-link text-decoration-none cornerButton text-danger' onclick='removerFuncionario(this)'><i class='bi bi-x-circle-fill'></i></button></a>";
+            } else {
+                $removerFuncionarioButton = "";
+            }
               echo  "<div class='funcionarioDisplay border rounded bg-white me-3 mb-3 p-0'>
                       <div class='m-0 p-2 d-flex align-items-center gallery_product' onclick='redirectAgenda($row->idUsuario)'>
                           <div class='d-inline'>"
