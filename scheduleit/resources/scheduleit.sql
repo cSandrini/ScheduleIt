@@ -77,7 +77,6 @@ CREATE TABLE IF NOT EXISTS `scheduleit`.`Funcionario` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `scheduleit`.`Horario`
 -- -----------------------------------------------------
@@ -97,6 +96,37 @@ CREATE TABLE IF NOT EXISTS `scheduleit`.`Horario` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Horario_idUsuario`
     FOREIGN KEY (`idUsuario`)
+    REFERENCES `scheduleit`.`Usuario` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `scheduleit`.`Notificacao`
+-- -----------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS `scheduleit`.`Notificacao` (
+  `idSala` INT NULL,
+  `idFuncionario` INT NULL,
+  `idUsuario` INT NOT NULL,
+  `dataDMA` DATE NOT NULL,
+  `idHorario` INT NOT NULL,
+  `tipo` INT NOT NULL,
+  INDEX `fk_Notificacao_idSala` (`idSala` ASC),
+  INDEX `fk_Notificacao_idUsuario` (`idUsuario` ASC),
+  INDEX `fk_Notificacao_idFuncionario` (`idFuncionario` ASC),  
+  CONSTRAINT `fk_Notificacao_idSala`
+    FOREIGN KEY (`idSala`)
+    REFERENCES `scheduleit`.`Sala` (`idSala`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Notificacao_idUsuario`
+    FOREIGN KEY (`idUsuario`)
+    REFERENCES `scheduleit`.`Usuario` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Notificacao_idFuncionario`
+    FOREIGN KEY (`idFuncionario`)
     REFERENCES `scheduleit`.`Usuario` (`id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION)

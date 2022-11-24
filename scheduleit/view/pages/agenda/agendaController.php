@@ -7,21 +7,22 @@
     $data = json_decode($json);
 
     $idFuncionario = $data[0]->idFuncionario;
-    if(isset($data[0]->idUsuario)) {
-        $idUsuario = $data[0]->idUsuario;
-    }
+    $idUsuario = $data[0]->idUsuario;
     $dataDMA = $data[0]->dataDMA;
     $idHorario = $data[0]->idHorario;
     $type = $data[0]->type;
 
     require_once '../../../model/agendaDAO.php';
+    require_once '../../../model/notificacaoDAO.php';
     require_once '../../../model/conexaobd.php';
     $con = conectarBD();
     if ($type==1) {
         agendar($con, $idFuncionario, $idUsuario, $dataDMA, $idHorario);
+        notificar($con, $idFuncionario, $idUsuario, $dataDMA, $idHorario, $type);
     } 
     if ($type==2) {
         deletar($con, $idFuncionario, $dataDMA, $idHorario);
+        notificar($con, $idFuncionario, $idUsuario, $dataDMA, $idHorario, $type);
     }
     if ($type==3) {
         disabilitar($con, $idFuncionario, $dataDMA, $idHorario);

@@ -8,7 +8,6 @@ function carregarFuncionarios($idSala){
         $sth->setFetchMode(PDO:: FETCH_OBJ);
         $sth->execute();
         if ($sth->rowCount() > 0) {
-            $i=1;
             while($row=$sth->fetch()) {
               if(!isset($row->foto)) {
                 $foto = addslashes('../../styles/blank.png');
@@ -17,7 +16,6 @@ function carregarFuncionarios($idSala){
                 $foto = base64_encode($row->foto);
                 $imgTag = "<img class='rounded imgsala me-2' style='padding: 0!important; width: 80px; height: 80px;'  src='data:image/png;base64,$foto'>";
               }
-              $i++;
             if (isset($_SESSION['id']) && $_SESSION['id']==$_GET['idSala'] || $_SESSION['id']==1) {
                 $removerFuncionarioButton = "<a href='../../../controller/funcionario/removerFuncionario.php?idSala=$row->idSala&idUsuario=$row->idUsuario'><button class='m-0 p-0 btn btn-link text-decoration-none cornerButton text-danger' onclick='removerFuncionario(this)'><i class='bi bi-x-circle-fill'></i></button></a>";
             } else {
@@ -35,8 +33,11 @@ function carregarFuncionarios($idSala){
                     "</div>";
             }
         } else {
-            echo  "<br><div class='alert alert-danger col-md-2 text-center mx-auto' role='alert'>
-                      Nenhum resultado encontrado.
+            echo  "<br>
+                  <div>
+                    <div class='alert alert-warning text-center' role='alert'>
+                        Nenhum funcionário encontrado.
+                    </div>
                   </div>";
         }
       } catch(PDOException $e) {
