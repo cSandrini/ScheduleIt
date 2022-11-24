@@ -3,7 +3,7 @@
         require_once '../../../model/conexaobd.php';
         try {
             $con = conectarBDPDO();
-            $sth = $con->prepare("SELECT * FROM sala;");
+            $sth = $con->prepare("SELECT * FROM sala ORDER BY classificacao DESC;");
             $sth->setFetchMode(PDO:: FETCH_OBJ);
             $sth->execute();
 
@@ -28,7 +28,6 @@
                                             <p class='mt-3 stars'><i class='bi bi-star-fill'></i> $row->classificacao</p>
                                         </div>
                                     </div>
-                                    <span class='cornerButton' onclick='fixar(this)'><i class='bi bi-pin-angle'></i></span>
                                 </div>";
                     }
                 }
