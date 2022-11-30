@@ -46,6 +46,15 @@
     ?>
       <div class="container">
         <?php
+        $currentDateT = new DateTime();
+        $minMonth = $currentDateT;
+        $minMonth->modify('first day of this month');
+        $minMonth = $minMonth->format('Y-m-d');
+
+        $maxMonth = $currentDateT;
+        $maxMonth->modify('+3 months');
+        $maxMonth->modify('last day of this month');
+        $maxMonth = $maxMonth->format('Y-m-d');
         /*
           if($dados['imagem']) {
               echo "<img class='rounded' src='data:foto/jpeg;base64,".$dados['imagem']."' width='50' height='50'>";
@@ -53,11 +62,11 @@
               echo "<img class='rounded' src='../../styles/blank.png' width='50' height='50'>";
           }  
         */
-        ?>  
+        ?>
         <div class="bg-secondary rounded mb-2 text-center mx-auto title-cards">
           <p class="p-2 m-0 font-weight-bold text-white">Agenda - <?php echo $dados['nome']; ?></p>
         </div>
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center mb-2">
           <div id="calendar" style="height: 400px;" class="border vanilla-calendar vanilla-calendar_default calendar-info me-2">
             <script>
               document.addEventListener('DOMContentLoaded', () => {
@@ -68,6 +77,10 @@
                     },
                   },
                   settings: {
+                    range: {
+                      min: '<?php echo $minMonth; ?>',
+			                max: '<?php echo $maxMonth; ?>',
+                    },
                     lang: 'pt-BR',
                     selected: {
                       dates: ['<?php echo $_GET['dataDMA'];?>'],
@@ -157,6 +170,14 @@
             </div>
           </div>
         </div>
+        <?php
+          if($perm) {
+            echo  "<div class='d-flex justify-content-center'>
+                    <button class='btn btn-secondary me-2' onclick='disableAll(".$_GET['id'].','.$_SESSION['id'].',"'.$_GET['dataDMA'].'",3'.")'>Desabilitar Todos</button>
+                    <button class='btn btn-secondary' onclick='enableAll(".$_GET['id'].','.$_SESSION['id'].',"'.$_GET['dataDMA'].'",2'.")'>Habilitar Todos</button>
+                  </div>";
+          }
+        ?>
       </div>
     <?php include "../parts/footer.php"; ?>
   </body>

@@ -9,3 +9,15 @@ function post(idFuncionario, idUsuario, dataDMA, idHorario, type) {
         location.reload();
     });
 }
+
+function disableAll(idFuncionario, idUsuario, dataDMA, type) {
+    for (i=1; i<10; i++) {
+        post(idFuncionario, idUsuario, dataDMA, i, type);
+    }
+}
+
+function enableAll(idFuncionario, idUsuario, dataDMA, type) {
+    for (i=1; i<10; i++) {
+        post(idFuncionario, idUsuario, dataDMA, i, type);
+    }
+}

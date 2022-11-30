@@ -15,7 +15,7 @@
                     $visibilidade = '';
                     $img = base64_encode($row->imgLogo);
                     if ($row->visibilidade==0) {
-                        $visibilidade = "<p class='text-danger m-0 p-0'><i class='bi bi-eye-slash text-danger'></i> Página não publicada</p>";
+                        $visibilidade = "<p class='bottomMsg text-danger m-0 p-0'><i class='bi bi-eye-slash text-danger'></i> Página não publicada</p>";
                     }
                     $salaDisplay = salaDisplay($row->idSala, $img, $row->nomeFantasia, $row->cidade, $row->estado, $row->classificacao, $visibilidade);
                     echo $salaDisplay;
