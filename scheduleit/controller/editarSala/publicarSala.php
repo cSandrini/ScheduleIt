@@ -6,7 +6,9 @@
     if(isset($_GET['idSala'])) {
         $idSala = $_GET['idSala'];
         $con = conectarBD();
-        publicarSala($con, $idSala);
+        $assinatura = date("Y/m/d");
+        $plano = $_POST["plano"];
+        publicarSala($con, $idSala, $assinatura, $plano);
         header("Location:../../view/pages/home/home.php");
     }
 ?>

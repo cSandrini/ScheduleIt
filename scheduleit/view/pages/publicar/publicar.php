@@ -24,42 +24,39 @@ include('../../../controller/protect.php');
         <div class="col-7">
           <form class="needs-validation" method="post" name="formPublicar" action='../../../controller/editarSala/publicarSala.php?idSala=<?php echo $_GET['idSala']?>' enctype="multipart/form-data">
             <h4 class="label2">
-              Configurações
+              Plano
             </h4>
             <div>
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <label class="input-group-text" for="limiteSala">Limite de salas</label>
-                </div>
-                <select class="custom-select" id="limiteSalas">
-                  <option selectec value="1Sala">1</option>
-                  <option value="5Sala">até 5</option>
-                  <option value="ilimitadoSala">Ilimitado</option>
-                  </select>
-                </div>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <label class="input-group-text" for="limiteFuncionario">Limite de funcionários por sala</label>
-                  </div>
-                  <select class="custom-select" id="limiteFuncionarios">
-                    <option Selected value="1Funcionario">1</option>
-                    <option value="5Funcionario">até 5</option>
-                    <option value="ilimitadoFuncionario">Ilimitado</option>
-                  </select>
-                </div>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <label class="input-group-text" for="plano">Plano</label>
-                  </div>
-                  <select class="custom-select" id="plano" required="">
-                    <option selected>Selecione...</option>
-                    <option value="mensal">Mensal</option>
-                    <option value="trimestral">Trimestral</option>
-                    <option value="semestral">Semestral</option>
-                    <option value="anual">Anual</option>
-                  </select>
-                </div>
+            <div class="my-3">
+                <div class="form-check">
+                  <input id="mensal" name="plano" type="radio" class="form-check-input" checked="" required="" value="1">
+                  <label class="label2" for="mensal">
+                    Mensal
+                  </label>
               </div>
+              <div class="form-check">
+                <input id="trimestral" name="plano" type="radio" class="form-check-input" value="2">
+                <label class="label2" for="trimestral">
+                  Trimestral
+                </label>
+              </div>
+              <div class="form-check">
+                <input id="semestral" name="plano" type="radio" class="form-check-input" value="3">
+                <label class="label2" for="semestral">
+                  Semestral
+                </label>
+              </div>
+              <div class="form-check">
+                <input id="anual" name="plano" type="radio" class="form-check-input" value="4">
+                <label class="label2" for="anual">
+                  Anual
+                </label>
+              </div>
+              <script type="text/javascript">
+                document.querySelector('input[name="plano"]:checked').value;
+              </script>
+            </div>
+            </div>
               <h4 class="label2">
                 Pagamento
               </h4>
@@ -113,73 +110,14 @@ include('../../../controller/protect.php');
         </div>
         
         <div class="col-5 px-3">
-          <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-primary">
-              Seu carrinho
-            </span>
-            <span class="badge bg-primary rounded-pill" id="Contador">0</span>
-          </h4>
+        
           <ul class="list-group mb-3">
             <div id="MS" style="display:none">
             <li class="list-group-item d-flex justify-content-between lh-sm">
-              <div>
-                <h6 class="my-0">
-                  Limite Funcionário  
-                </h6>
-                <small class="text-muted">
-                  Proprietário pode possuir mais de uma sala
-                </small>
-              </div>
-              <span class="text-muted">
-                $12
-              </span>
+
             </li>
           </div>
-          <div id="MF" style="display:none">
-            <li class="list-group-item d-flex justify-content-between lh-sm">
-              <div>
-                <h6 class="my-0">
-                  Multiplos funcionários
-                </h6>
-                <small class="text-muted">
-                  Proprietário pode possuir mais de um funcionário
-                </small>
-              </div>
-              <span class="text-muted">
-                $8
-              </span>
-            </li>
-            </div>
-            <div id="AF" style="display:none">
-            <li class="list-group-item d-flex justify-content-between lh-sm">
-              <div>
-                <h6 class="my-0">
-                  Agendamento fixo
-                </h6>
-                <small class="text-muted">
-                  Cliente pode criar uma rotina
-                </small>
-              </div>
-              <span class="text-muted">
-                $5
-              </span>
-            </li>
-            </div>
-            <div id="PC" style="display:none">
-            <li class="list-group-item d-flex justify-content-between bg-light">
-              <div class="text-success">
-                <h6 class="my-0">
-                  Promo code
-                </h6>
-                <small>
-                  ScheduleIt
-                </small>
-              </div>
-              <span class="text-success">
-                −$5
-              </span>
-            </li>
-          </div>
+          
             <li class="list-group-item d-flex justify-content-between">
               <span>
                 Total (BRL)

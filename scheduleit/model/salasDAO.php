@@ -41,8 +41,8 @@ function excluirSala($conexao, $id) {
    $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );
 }
 
-function publicarSala($conexao, $id) {
-   $sql = "UPDATE scheduleit.sala SET visibilidade='1' WHERE idSala=$id";
+function publicarSala($conexao, $id, $assinatura, $plano) {
+   $sql = "UPDATE scheduleit.sala SET visibilidade='1', assinatura='$assinatura',  plano='$plano' WHERE idSala=$id";
    $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );
 }
 
