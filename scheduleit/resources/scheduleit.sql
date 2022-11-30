@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `scheduleit`.`Horario` (
   `idUsuario` INT NULL,
   `dataDMA` DATE NOT NULL,
   `idHorario` INT NOT NULL,
-  `disabilitado` varchar(5) DEFAULT 'false',
+  `desabilitado` varchar(5) DEFAULT 'false',
   INDEX `fk_Horario_idFuncionario` (`idFuncionario` ASC),
   INDEX `fk_Horario_idUsuario` (`idUsuario` ASC),
   CONSTRAINT `fk_Horario_idFuncionario`

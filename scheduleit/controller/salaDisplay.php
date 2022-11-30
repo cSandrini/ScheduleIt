@@ -10,6 +10,7 @@
                             <p class='m-0'><small>$cidade - $estado</small></p>
                             <p class='mt-3 stars'><i class='bi bi-star-fill'></i> $classificacao</p>
                         </div>
+                        $visibilidade
                     </div>
                 </div>";
     }
