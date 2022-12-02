@@ -109,7 +109,7 @@
                 </thead>
                 <tbody class=""> 
                   <?php
-                    $sth = $con->prepare("SELECT * FROM horario, usuario WHERE idFuncionario=".$_GET['id']." AND dataDMA='".$_GET['dataDMA']."' AND horario.idFuncionario = usuario.id ORDER BY idHorario;");
+                    $sth = $con->prepare("SELECT * FROM horario, usuario WHERE idFuncionario=".$_GET['id']." AND dataDMA='".$_GET['dataDMA']."' AND horario.idUsuario = usuario.id ORDER BY idHorario;");
                     $sth->setFetchMode(PDO:: FETCH_OBJ);
                     $sth->execute();
 
