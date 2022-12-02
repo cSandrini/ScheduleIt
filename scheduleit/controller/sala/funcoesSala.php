@@ -1,8 +1,6 @@
 <?php
     require_once '../../../model/conexaobd.php';
 
-    $visibilidade = null;
-
     try {
         $con = conectarBDPDO();
         if (isset($_GET["idSala"])){
@@ -13,24 +11,23 @@
         $sth->setFetchMode(PDO:: FETCH_OBJ);
         $sth->execute();
         if ($sth->rowCount() > 0) {
-        $i=1;
-        while($row=$sth->fetch()) {
-            $img = base64_encode($row->imgLogo);
-            $nomeFantasia = $row->nomeFantasia;
-            $idSala = $row->idSala;
-            $descricao = $row->descricao;
-            $cep = $row->cep;
-            $cidade = $row->cidade;
-            $estado = $row->estado;
-            $bairro = $row->bairro;
-            $rua = $row->rua;
-            $numero = $row->numero;
-            $complemento = $row->complemento;
-            $email = $row->email;
-            $telefone = $row->telefone;
-            $idProprietario = $row->idProprietario;
-            $visibilidade = $row->visibilidade;
-        }
+            while($row=$sth->fetch()) {
+                $img = base64_encode($row->imgLogo);
+                $nomeFantasia = $row->nomeFantasia;
+                $idSala = $row->idSala;
+                $descricao = $row->descricao;
+                $cep = $row->cep;
+                $cidade = $row->cidade;
+                $estado = $row->estado;
+                $bairro = $row->bairro;
+                $rua = $row->rua;
+                $numero = $row->numero;
+                $complemento = $row->complemento;
+                $email = $row->email;
+                $telefone = $row->telefone;
+                $idProprietario = $row->idProprietario;
+                $visibilidade = $row->visibilidade;
+            }
         } else {
             header("Location:naoencontrada.php");
         exit;
@@ -39,9 +36,43 @@
         echo "Error: ". $e->getMessage();
     }
 
-    $conexao = conectarBD();
-
     function editarSala($img, $idProprietario, $idSala) {
+        try {
+            $con = conectarBDPDO();
+            if (isset($_GET["idSala"])){
+                $sth = $con->prepare("SELECT idProprietario FROM sala WHERE idSala=".$_GET["idSala"].";");
+            }
+            $sth->setFetchMode(PDO:: FETCH_OBJ);
+            $sth->execute();
+            if ($sth->rowCount() > 0) {
+                while($row=$sth->fetch()) {
+                    $idProprietario = $row->idProprietario;
+                }
+            } else {
+                header("Location:naoencontrada.php");
+                exit;
+            }
+        } catch(PDOException $e) {
+            echo "Error: ". $e->getMessage();
+        }
+        try {
+            $con = conectarBDPDO();
+            if (isset($_GET["idSala"])){
+                $sth = $con->prepare("SELECT * FROM sala WHERE idSala=".$_GET["idSala"].";");
+            }
+            $sth->setFetchMode(PDO:: FETCH_OBJ);
+            $sth->execute();
+            if ($sth->rowCount() > 0) {
+                while($row=$sth->fetch()) {
+                    $visibilidade = $row->visibilidade;
+                }
+            } else {
+                header("Location:naoencontrada.php");
+                exit;
+            }
+        } catch(PDOException $e) {
+            echo "Error: ". $e->getMessage();
+        }
         if($img) {
             echo "<img id='imgShow' class='rounded' src='data:image/jpeg;base64,$img' alt='' width='160' height='160'>";
         } else {
@@ -78,11 +109,11 @@
                             </form>
                         </div>
                     </div>";
-                } elseif ($visibilidade == 1) {
+                } else {
                     echo "<div class='lh-100 me-auto ms-2'>
                             <a href='../editarSala/editarSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-pen'></i> Editar</button></a>
                         <div class=''>
-                            <button type='button' class='btn btn-sm btn-light mb-2' onclick='privarSala($conexao, $idSala)'><i class='bi bi-send'></i> Privar</button>
+                            <a href='../../../controller/editarSala/privarSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-send'></i> Privar</button></a>
                         </div>
                             <form method='post' name='FormEditarImgLogo' action='../../../controller/editarSala/attImgLogo.php?idSala=$idSala' enctype='multipart/form-data'>
                             <div class='d-flex'>
@@ -105,16 +136,18 @@
         if (isset($_SESSION["id"])) {
             try {
                 $con = conectarBDPDO();
-                $sth = $con->prepare("SELECT * FROM usuario WHERE id=".$_SESSION["id"].";");
+                $sth = $con->prepare("SELECT * FROM usuario, sala WHERE id=".$_SESSION["id"]." AND idSala=".$_GET['idSala']." AND idProprietario=".$_SESSION['id']." AND sala.idProprietario = usuario.id;");
                 $sth->setFetchMode(PDO:: FETCH_OBJ);
                 $sth->execute();
                 $row=$sth->fetch();
-                $permissao = $row->permissao;
+                if ($sth->rowCount() > 0) {
+                    $permissao = $row->permissao;
+                    $idProprietario = $row->idProprietario;
+                }
             } catch(PDOException $e) {
                 echo "Error: ". $e->getMessage();
             }
-            $permissao = $row->permissao;
-            if ($_SESSION["id"] == $idProprietario || $permissao == 9) {
+            if (isset($_SESSION["id"]) && $_SESSION["id"] == $idProprietario || isset($permissao) && $permissao == 9) {
                 echo    "<div class='dropdown'>
                             <button class='btn btn-outline-secondary dropdown' id='buttonAddFuncionario' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>+ Adicionar funcionário</button>
                             <div class='dropdown-menu' aria-labelledby='buttonAddFuncionario'>

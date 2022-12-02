@@ -1,6 +1,19 @@
 <?php
 function carregarFuncionarios($idSala){
     require_once '../../../controller/funcionarioDisplay.php';
+    try {
+      $con = conectarBDPDO();
+      $sth = $con->prepare("SELECT * FROM usuario, sala WHERE id=".$_SESSION["id"]." AND idSala=".$_GET["idSala"]." AND idProprietario=".$_SESSION['id']." AND sala.idProprietario = usuario.id;");
+      $sth->setFetchMode(PDO:: FETCH_OBJ);
+      $sth->execute();
+      $row=$sth->fetch();
+      if ($sth->rowCount() > 0) {
+        $permissao = $row->permissao;
+        $idProprietario = $row->idProprietario;
+      }
+    } catch(PDOException $e) {
+        echo "Error: ". $e->getMessage();
+    }
 
     try {
         $con = conectarBDPDO();
@@ -16,10 +29,10 @@ function carregarFuncionarios($idSala){
                 $foto = base64_encode($row->foto);
                 $imgTag = "<img class='rounded imgsala me-2' style='padding: 0!important; width: 80px; height: 80px;'  src='data:image/png;base64,$foto'>";
               }
-            if (isset($_SESSION['id']) && $_SESSION['id']==$_GET['idSala'] || $_SESSION['id']==1) {
-                $removerFuncionarioButton = "<a href='../../../controller/funcionario/removerFuncionario.php?idSala=$row->idSala&idUsuario=$row->idUsuario'><button class='m-0 p-0 btn btn-link text-decoration-none cornerButton text-danger' onclick='removerFuncionario(this)'><i class='bi bi-x-circle-fill'></i></button></a>";
+            if (isset($_SESSION['id']) && isset($idProprietario) && $_SESSION['id']==$idProprietario || isset($permissao) && $permissao==9) {
+              $removerFuncionarioButton = "<a href='../../../controller/funcionario/removerFuncionario.php?idSala=$row->idSala&idUsuario=$row->idUsuario'><button class='m-0 p-0 btn btn-link text-decoration-none cornerButton text-danger' onclick='removerFuncionario(this)'><i class='bi bi-x-circle-fill'></i></button></a>";
             } else {
-                $removerFuncionarioButton = "";
+              $removerFuncionarioButton = "";
             }
               echo  "<div class='funcionarioDisplay border rounded bg-white me-3 mb-3 p-0'>
                       <div class='m-0 p-2 d-flex align-items-center gallery_product' onclick='redirectAgenda($row->idUsuario)'>
