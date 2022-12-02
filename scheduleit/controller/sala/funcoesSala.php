@@ -39,7 +39,7 @@
                 $dataExpiracao = date("Y-m-d", strtotime($assinatura." +3 month"));
             } elseif ($plano == 3){
                 $dataExpiracao = date("Y-m-d", strtotime($assinatura." +6 month"));
-            } elseif ($plano == 3){
+            } elseif ($plano == 4){
                 $dataExpiracao = date("Y-m-d", strtotime($assinatura." +1 year"));
             } 
             $dataAtual = ("Y/m/d");
@@ -53,11 +53,11 @@
             $sth->execute();
             $row=$sth->fetch();
             $permissao = $row->permissao;
-        }   else {
-                header("Location:naoencontrada.php");
-        exit;
-        }
-        if ($permissao != 9 || $session != $idProprietario && $visibilidade == 0 ) {
+            }   else {
+                    header("Location:naoencontrada.php");
+            exit;
+            }
+        if (($permissao != 9 || $session != $idProprietario) && $visibilidade == 0 ) {
             header("Location:naoencontrada.php");
         exit;
         }
@@ -95,8 +95,18 @@
             if ($sth->rowCount() > 0) {
                 while($row=$sth->fetch()) {
                     $visibilidade = $row->visibilidade;
+                    $assinatura = $row->assinatura;
                     $plano = $row->plano;
                 }
+                if ($plano == 1){
+                    $dataExpiracao = date("Y-m-d", strtotime($assinatura." +1 month"));
+                } elseif ($plano == 2){
+                    $dataExpiracao = date("Y-m-d", strtotime($assinatura." +3 month"));
+                } elseif ($plano == 3){
+                    $dataExpiracao = date("Y-m-d", strtotime($assinatura." +6 month"));
+                } elseif ($plano == 4){
+                    $dataExpiracao = date("Y-m-d", strtotime($assinatura." +1 year"));
+                } 
             } else {
                 header("Location:naoencontrada.php");
                 exit;
@@ -117,6 +127,7 @@
                 $sth->execute();
                 $row=$sth->fetch();
                 $permissao = $row->permissao;
+
             } catch(PDOException $e) {
                 echo "Error: ". $e->getMessage();
             }
@@ -143,12 +154,13 @@
                 }elseif ($visibilidade == 0 && $plano != null){
                     echo "<div class='lh-100 me-auto ms-2'>
                             <a href='../editarSala/editarSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-pen'></i> Editar</button></a>
-                        <div class=''>
-                            <a href='../../../controller/editarSala/publicarSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-send'></i> Publicar</button></a>
+                        <div class='d-flex'>
+                            <a href='../publicar/publicar.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-send'></i> Publicar</button></a>
+                            <p class='ms-2 rounded bg-light text-dark mb-2 px-2 py-1 fst-normal'>Assinado em: $assinatura - Expira em: $dataExpiracao</p>
                         </div>
                             <form method='post' name='FormEditarImgLogo' action='../../../controller/editarSala/attImgLogo.php?idSala=$idSala' enctype='multipart/form-data'>
-                            <div class='d-flex'>
-                                <input name='imgLogo' class='form-control form-control-sm mb-2' id='imgLogo' type='file' required=''>
+                            <div class='d-inline-flex'>
+                                <input name='imgLogo' class='col form-control form-control-sm mb-2' id='imgLogo' type='file' required=''>
                                 <button type='submit' class='ms-2 btn btn-sm btn-light mb-2'>
                                 <i class='bi bi-file-earmark-arrow-up'></i>
                                 </button>
@@ -159,16 +171,17 @@
                             </form>
                         </div>
                     </div>";
-                    
+
                 }else {
                     echo "<div class='lh-100 me-auto ms-2'>
                             <a href='../editarSala/editarSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-pen'></i> Editar</button></a>
-                        <div class=''>
-                            <a href='../../../controller/editarSala/privarSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-send'></i> Privar</button></a>
+                        <div class='d-flex'>
+                            <a href='../publicar/publicar.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-send'></i> Publicar</button></a>
+                            <p class='ms-2 rounded bg-light text-dark mb-2 px-2 py-1 fst-normal'>Assinado em: $assinatura - Expira em: $dataExpiracao</p>
                         </div>
                             <form method='post' name='FormEditarImgLogo' action='../../../controller/editarSala/attImgLogo.php?idSala=$idSala' enctype='multipart/form-data'>
-                            <div class='d-flex'>
-                                <input name='imgLogo' class='form-control form-control-sm mb-2' id='imgLogo' type='file' required=''>
+                            <div class='d-inline-flex'>
+                                <input name='imgLogo' class='col form-control form-control-sm mb-2' id='imgLogo' type='file' required=''>
                                 <button type='submit' class='ms-2 btn btn-sm btn-light mb-2'>
                                 <i class='bi bi-file-earmark-arrow-up'></i>
                                 </button>
@@ -179,6 +192,7 @@
                             </form>
                         </div>
                     </div>";
+
                 }
             }
         }
