@@ -9,8 +9,8 @@ function deletar($conexao, $idFuncionario, $dataDMA, $idHorario) {
     $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );
 }
 
-function disabilitar($conexao, $idFuncionario, $dataDMA, $idHorario) {
-    $sql = "INSERT INTO scheduleit.horario (idFuncionario, dataDMA, idHorario, disabilitado) VALUES ('$idFuncionario', '$dataDMA', '$idHorario', 'true');";
+function desabilitar($conexao, $idFuncionario, $dataDMA, $idHorario) {
+    $sql = "INSERT INTO scheduleit.horario (idFuncionario, dataDMA, idHorario, desabilitado) VALUES ('$idFuncionario', '$dataDMA', '$idHorario', 'true');";
     $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );
 }
 

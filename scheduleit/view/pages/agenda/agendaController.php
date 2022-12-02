@@ -25,10 +25,10 @@
         notificar($con, $idFuncionario, $idUsuario, $dataDMA, $idHorario, $type);
     }
     if ($type==3) {
-        disabilitar($con, $idFuncionario, $dataDMA, $idHorario);
+        desabilitar($con, $idFuncionario, $dataDMA, $idHorario);
     }
     if ($type==4) {
         deletar($con, $idFuncionario, $dataDMA, $idHorario);
-        disabilitar($con, $idFuncionario, $dataDMA, $idHorario);
+        desabilitar($con, $idFuncionario, $dataDMA, $idHorario);
     }
 ?>
