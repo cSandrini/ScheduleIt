@@ -34,7 +34,7 @@
     <div>
       <div  class="d-flex align-items-center p-3 text-white-50 bg-info rounded">
         <?php
-          editarSala($img, $idProprietario, $idSala);
+          interfaceEditarSala($img, $idProprietario, $idSala);
         ?>
       </div>  
       <div class="card-body p-0 pt-3">
@@ -44,10 +44,11 @@
           <div class="col-3 border rounded p-2 me-2 bg-light">
             <p class="card-text"> <?php echo $descricao ?> <br><br> <?php echo "CEP: $cep. $cidade - $estado. $rua, $bairro, $numero, $complemento."?> <br><br> Horário de atendimento <br><br> <?php echo "Email: $email" ?> <br> <?php echo "Telefone: $telefone" ?> </p> 
           </div>
-          <div style="height: 282px; max-width: 600px;" class="mx-4 overflow-auto row justify-content-center">
+
           <?php 
-            require_once '../../../controller/funcionarioDisplay.php';
-            carregarFuncionarios($idSala);
+          
+          $session = $_SESSION['id'];
+          carregarFuncionarios($idSala, $idProprietario, $session);
           /*
             if (isset($_SESSION['id']) && $_SESSION['id']==$idProprietario) {
               $removerFuncionarioButton = "<button class='m-0 p-0 btn btn-link text-decoration-none cornerButton text-danger' onclick='removerFuncionario(this)'><i class='bi bi-x-circle-fill'></i></button>";
@@ -92,7 +93,7 @@
               echo "Error: ". $e->getMessage();
             }
           */?>
-          </div>
+          
           <div style="float: left">
             <?php
               editarFuncionario($idProprietario, $idSala);

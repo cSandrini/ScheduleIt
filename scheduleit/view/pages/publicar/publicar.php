@@ -13,6 +13,41 @@ include('../../../controller/protect.php');
   <script src="assets/js.js"></script>
 </head>
 
+<script type="text/javascript">
+            var valorDesconto;
+            var desconto = false;
+            function Subtotal(){
+                var plano = document.querySelector('input[name="plano"]:checked').value;
+              if(plano == 1){
+                var subtotal = 20
+              }else if(plano == 2){
+                var subtotal = 55.00
+              }else if(plano == 3){
+                var subtotal = 100.00
+              }else if(plano == 4){
+                var subtotal = 190
+              }  
+              desconto = false;
+              document.getElementById('Total').textContent  = Number(subtotal).toFixed(2);
+            }
+            function PromoCode(){
+              var txt = document.getElementById('PromoTXT').value;
+              var promoccode = txt.toLowerCase();
+              var subtotal = parseFloat(document.getElementById('Total').textContent);
+
+              if (promoccode == "scheduleit" && desconto == false){
+              valorDesconto = subtotal * 0.1;
+              var total = subtotal - valorDesconto;
+              document.getElementById('Total').textContent = Number(total).toFixed(2) + " (Desconto de R$ " + Number(valorDesconto).toFixed(2) + ")";
+              desconto = true;
+              } else {
+
+                document.getElementById('Total').textContent = Number(subtotal).toFixed(2) + " (Desconto de R$ " + Number(valorDesconto).toFixed(2) + ")";
+              }
+              document.getElementById('PromoTXT').value="";         
+            }
+</script>
+
 <body class="bg-light">
 <?php include "../parts/header.php"; ?>
   <div class="container border rounded bg-white">
@@ -29,32 +64,30 @@ include('../../../controller/protect.php');
             <div>
             <div class="my-3">
                 <div class="form-check">
-                  <input id="mensal" name="plano" type="radio" class="form-check-input" checked="" required="" value="1">
+                  <input id="mensal" name="plano" type="radio" class="form-check-input" checked="" required="" value="1" onclick="Subtotal()">
                   <label class="label2" for="mensal">
                     Mensal
                   </label>
               </div>
               <div class="form-check">
-                <input id="trimestral" name="plano" type="radio" class="form-check-input" value="2">
+                <input id="trimestral" name="plano" type="radio" class="form-check-input" value="2" onclick="Subtotal()">
                 <label class="label2" for="trimestral">
                   Trimestral
                 </label>
               </div>
               <div class="form-check">
-                <input id="semestral" name="plano" type="radio" class="form-check-input" value="3">
+                <input id="semestral" name="plano" type="radio" class="form-check-input" value="3" onclick="Subtotal()">
                 <label class="label2" for="semestral">
                   Semestral
                 </label>
               </div>
               <div class="form-check">
-                <input id="anual" name="plano" type="radio" class="form-check-input" value="4">
+                <input id="anual" name="plano" type="radio" class="form-check-input" value="4" onclick="Subtotal()">
                 <label class="label2" for="anual">
                   Anual
                 </label>
               </div>
-              <script type="text/javascript">
-                document.querySelector('input[name="plano"]:checked').value;
-              </script>
+
             </div>
             </div>
               <h4 class="label2">
@@ -112,28 +145,22 @@ include('../../../controller/protect.php');
         <div class="col-5 px-3">
         
           <ul class="list-group mb-3">
-            <div id="MS" style="display:none">
-            <li class="list-group-item d-flex justify-content-between lh-sm">
-
-            </li>
-          </div>
-          
             <li class="list-group-item d-flex justify-content-between">
               <span>
-                Total (BRL)
+                Total R$
               </span>
-              <script type="text/javascript">
-                document.getElementById("Total").textContent=valor;
-              </script>
               <span id="Total">
-                R$ 0
+              <script type="text/javascript">
+                Subtotal()
+              </script>
               </span>
             </li>
           </ul>
+
           <form class="card p-2">
             <div class="input-group">
               <input type="text" id="PromoTXT" class="form-control" placeholder="Promo code">
-              <button type="radio" id="ButtonPC" class="btn btn-secondary" onclick="PromoCode()">
+              <button type="button" id="ButtonPC" class="btn btn-secondary" onclick="PromoCode()" >
                 Enviar
               </button>
             </div>
@@ -145,3 +172,4 @@ include('../../../controller/protect.php');
   <?php include "../parts/footer.php"; ?>  
 </body>
 </html>
+
