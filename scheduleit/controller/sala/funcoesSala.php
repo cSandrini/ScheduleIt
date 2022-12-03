@@ -96,16 +96,21 @@
                 while($row=$sth->fetch()) {
                     $visibilidade = $row->visibilidade;
                     $assinatura = $row->assinatura;
+                    $assinaturaConv = date("d/m/Y", strtotime($assinatura));
                     $plano = $row->plano;
                 }
                 if ($plano == 1){
                     $dataExpiracao = date("Y-m-d", strtotime($assinatura." +1 month"));
+                    $expiracaoConv = date("d/m/Y", strtotime($dataExpiracao));
                 } elseif ($plano == 2){
                     $dataExpiracao = date("Y-m-d", strtotime($assinatura." +3 month"));
+                    $expiracaoConv = date("d/m/Y", strtotime($dataExpiracao));
                 } elseif ($plano == 3){
                     $dataExpiracao = date("Y-m-d", strtotime($assinatura." +6 month"));
+                    $expiracaoConv = date("d/m/Y", strtotime($dataExpiracao));
                 } elseif ($plano == 4){
                     $dataExpiracao = date("Y-m-d", strtotime($assinatura." +1 year"));
+                    $expiracaoConv = date("d/m/Y", strtotime($dataExpiracao));
                 } 
             } else {
                 header("Location:naoencontrada.php");
@@ -156,7 +161,7 @@
                             <a href='../editarSala/editarSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-pen'></i> Editar</button></a>
                         <div class='d-flex'>
                             <a href='../publicar/publicar.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-send'></i> Publicar</button></a>
-                            <p class='ms-2 rounded bg-light text-dark mb-2 px-2 py-1 fst-normal'>Assinado em: $assinatura - Expira em: $dataExpiracao</p>
+                            <p class='ms-2 rounded bg-light text-dark mb-2 px-2 py-1 fst-normal'>Assinado em: $assinaturaConv - Expira em: $expiracaoConv</p>
                         </div>
                             <form method='post' name='FormEditarImgLogo' action='../../../controller/editarSala/attImgLogo.php?idSala=$idSala' enctype='multipart/form-data'>
                             <div class='d-inline-flex'>
@@ -177,7 +182,7 @@
                             <a href='../editarSala/editarSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-pen'></i> Editar</button></a>
                         <div class='d-flex'>
                             <a href='../publicar/publicar.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-send'></i> Publicar</button></a>
-                            <p class='ms-2 rounded bg-light text-dark mb-2 px-2 py-1 fst-normal'>Assinado em: $assinatura - Expira em: $dataExpiracao</p>
+                            <p class='ms-2 rounded bg-light text-dark mb-2 px-2 py-1 fst-normal'>Assinado em: $assinaturaConv - Expira em: $expiracaoConv</p>
                         </div>
                             <form method='post' name='FormEditarImgLogo' action='../../../controller/editarSala/attImgLogo.php?idSala=$idSala' enctype='multipart/form-data'>
                             <div class='d-inline-flex'>
