@@ -31,7 +31,7 @@
           $arrHorarios = array(1 => '07:00', 2 => '08:00', 3 => '09:00', 4 => '10:00', 5 => '13:00', 6 => '14:00', 7 => '16:00', 8 => '16:00', 9 => '17:00');
           try {
             $con = conectarBDPDO();
-            $sth = $con->prepare("SELECT * FROM notificacao, usuario WHERE idUsuario=".$_SESSION["id"]." AND notificacao.idUsuario = usuario.id ORDER BY dataDMA, idHorario;");
+            $sth = $con->prepare("SELECT * FROM notificacao, usuario WHERE idUsuario=".$_SESSION["id"]." AND notificacao.idFuncionario = usuario.id ORDER BY dataDMA, idHorario;");
             $sth->setFetchMode(PDO:: FETCH_OBJ);
             $sth->execute();
           } catch(PDOException $e) {
