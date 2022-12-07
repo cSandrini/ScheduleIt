@@ -16,7 +16,7 @@
     </head>
     <body class="bg-light"> 
         <?php include "../parts/header.php"; ?>
-        <div class="container border rounded bg-white p-0 mt-3 rounded">   
+        <div class="container p-0 mt-3 rounded">   
             <div style='margin-bottom:0!important' class='alert alert-danger text-center' role='alert'>
                 Essa sala não existe.
             </div>

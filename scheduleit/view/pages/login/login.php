@@ -26,7 +26,7 @@
     <!-- HEADER -->
     <?php include '../parts/header.php';?>
 
-    <div class="pt-5">
+    <div class="">
       <div style="width: 22rem;" class="pb-2 bg-white rounded container border">
         <div>
           <div class="py-2 text-center">
@@ -57,9 +57,8 @@
           </form>
         </div>
       </div>
-    
-      <!-- FOOTER -->
-      <?php include '../parts/footer.php';?>
     </div>
+    <!-- FOOTER -->
+    <?php include '../parts/footer.php';?>
   </body>
 </html>

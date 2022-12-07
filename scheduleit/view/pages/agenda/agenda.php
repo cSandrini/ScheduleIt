@@ -1,7 +1,5 @@
 <?php
-    if(!isset($_SESSION)) {
-        session_start();
-    }
+    include('../../../controller/protect.php');
 ?>
 
 <!DOCTYPE html>
@@ -9,29 +7,84 @@
 <head>
   <meta charset="utf-8">
   <title>ScheduleIt - Agenda</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <link href="../../styles/css/cover.css" rel="stylesheet">
   <!-- Plugin CSS -->
   <link href="../../../resources/libraries/vanilla-calendar-2.1.1/build/vanilla-calendar.min.css" rel="stylesheet">
   <!-- Plugin JS -->
   <script src="../../../resources/libraries/vanilla-calendar-2.1.1/build/vanilla-calendar.min.js" defer></script>
+  <script src="js.js"></script>
 </head>
 <body class="bg-light">
     <?php 
+      if (!isset($_GET['dataDMA'])) {
+        $currentDate = new DateTime();
+        $_GET['dataDMA'] = $currentDate->format('Y-m-d');
+
+      }
       include "../parts/header.php";
       require_once "../../../controller/agenda/agenda.php";
+
+      $perm = false;
+      if (isset($_SESSION["id"])) {
+        try {
+            $con = conectarBDPDO();
+            $sth = $con->prepare("SELECT * FROM usuario WHERE id=".$_SESSION["id"].";");
+            $sth->setFetchMode(PDO:: FETCH_OBJ);
+            $sth->execute();
+            $row=$sth->fetch();
+            $permissao = $row->permissao;
+        } catch(PDOException $e) {
+            echo "Error: ". $e->getMessage();
+        }
+        $permissao = $row->permissao;
+        if ($_SESSION["id"] == $_GET["id"] || $permissao == 9) {
+            $perm = true;
+        }
+      }
+
     ?>
       <div class="container">
+        <?php
+        $currentDateT = new DateTime();
+        $minMonth = $currentDateT;
+        $minMonth->modify('first day of this month');
+        $minMonth = $minMonth->format('Y-m-d');
+
+        $maxMonth = $currentDateT;
+        $maxMonth->modify('+3 months');
+        $maxMonth->modify('last day of this month');
+        $maxMonth = $maxMonth->format('Y-m-d');
+        /*
+          if($dados['imagem']) {
+              echo "<img class='rounded' src='data:foto/jpeg;base64,".$dados['imagem']."' width='50' height='50'>";
+          } else {
+              echo "<img class='rounded' src='../../styles/blank.png' width='50' height='50'>";
+          }  
+        */
+        ?>
         <div class="bg-secondary rounded mb-2 text-center mx-auto title-cards">
-            <p class="p-2 m-0 font-weight-bold text-white">Agenda - <?php echo $dados['nome']; ?></p>
+          <p class="p-2 m-0 font-weight-bold text-white">Agenda - <?php echo $dados['nome']; ?></p>
         </div>
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center mb-2">
           <div id="calendar" style="height: 400px;" class="border vanilla-calendar vanilla-calendar_default calendar-info me-2">
             <script>
               document.addEventListener('DOMContentLoaded', () => {
                 const calendar =  new VanillaCalendar('#calendar', {
+                  actions: {
+                    clickDay(event, dates) {
+                      window.location.href = "agenda.php?id="+<?php echo $_GET['id'];?>+"&dataDMA="+dates;
+                    },
+                  },
                   settings: {
+                    range: {
+                      min: '<?php echo $minMonth; ?>',
+			                max: '<?php echo $maxMonth; ?>',
+                    },
                     lang: 'pt-BR',
+                    selected: {
+                      dates: ['<?php echo $_GET['dataDMA'];?>'],
+                    },
                   },
                   type: 'default',
                 });
@@ -46,46 +99,85 @@
                   <tr>
                     <th scope="col">Horário</th>
                     <th scope="col">Nome</th>
+                    <?php
+                      if ($perm) {
+                        echo "<th scope='col'></th>";
+                      }
+                      echo "<th scope='col'></th>";
+                    ?>
                   </tr>
                 </thead>
-                <tbody class="">        
-                  <tr class="">
-                    <td scope="row">07:00 - 08:00</td>
-                    <td></td>
-                  </tr>
-                  <tr class="table-danger">
-                    <td scope="row">08:00 - 09:00</td>
-                    <td>Pedro</td>
-                  </tr>
-                  <tr class="table-danger">
-                    <td scope="row">09:00 - 10:00</td>
-                    <td>Joaquim</td>
-                  </tr>
-                  <tr class="">
-                    <td scope="row">12:00 - 13:00</td>
-                    <td></td>
-                  </tr>
-                  <tr class="">
-                    <td scope="row">13:00 - 14:00</td>
-                    <td></td>
-                  </tr>
-                  <tr class="table-danger">
-                    <td scope="row">14:00 - 15:00</td>
-                    <td>João Pedro</td>
-                  </tr>
-                  <tr class="">
-                    <td scope="row">15:00 - 16:00</td>
-                    <td></td>
-                  </tr>
-                  <tr class="table-danger">
-                    <td scope="row">16:00-17:00</td>
-                    <td>Arthur</td>
-                  </tr>
+                <tbody class=""> 
+                  <?php
+                    $sth = $con->prepare("SELECT * FROM horario, usuario WHERE idFuncionario=".$_GET['id']." AND dataDMA='".$_GET['dataDMA']."' AND horario.idUsuario = usuario.id ORDER BY idHorario;");
+                    $sth->setFetchMode(PDO:: FETCH_OBJ);
+                    $sth->execute();
+
+                    $arr = array();
+                    $arrId = array();
+                    $arrNome = array();
+                    while($row=$sth->fetch()) {
+                      array_push($arr, array($row->idHorario, $row->desabilitado));
+                      array_push($arrId, array($row->idHorario, $row->idUsuario));
+                      $arrNome = $arrNome + array($row->idHorario => $row->nome) ;
+                    }
+
+                    $h=7;
+                    for ($i=1; $i<=9; $i++) {
+                      if (!empty($arr) && in_array(array($i, 'true'), $arr)) {
+                        echo "<tr class='table-secondary'>
+                                  <td class='align-middle' scope='row'>".$h.":00 - ".($h+1).":00</td>
+                                  <td class='tdw align-middle'></td>
+                                  <td class='align-middle text-end'><button class='btn btn-sm btn-outline-secondary' disabled>Desabilitado</button></td>";
+                                if ($perm) {
+                                  echo "<td class='p-0 align-middle'><button class='btn btn-sm btn-outline-secondary me-2' onclick='post(".$_GET['id'].",".$_SESSION['id'].",\"".$_GET['dataDMA']."\",$i,2)'><i class='bi bi-calendar-x'></i></button></td>";
+                                }
+                                echo "</tr>";
+                      } else if (!empty($arr) && in_array(array($i, 'false'), $arr)) {
+                        echo "<tr class='table-danger'>
+                                <td class='align-middle' scope='row'>".$h.":00 - ".($h+1).":00</td>
+                                <td class='tdw text-truncate align-middle'>".$arrNome[$i]."</td>";  
+                                if ($perm) {
+                                  echo "<td class='align-middle text-end'><button class='btn btn-sm btn-outline-danger' onclick='post(".$_GET['id'].",".$_SESSION['id'].",\"".$_GET['dataDMA']."\",$i,2)'>Reservado</button></td>
+                                        <td class='p-0 align-middle'><button class='btn btn-sm btn-outline-secondary me-2' onclick='post(".$_GET['id'].",".$_SESSION['id'].",\"".$_GET['dataDMA']."\",$i,4)'><i class='bi bi-calendar-x'></i></button></td>";
+                                } else {
+                                  if (!empty($arr) && in_array(array($i, $_SESSION['id']), $arrId)) {
+                                    echo "<td class='align-middle text-end'><button class='btn btn-sm btn-outline-danger' onclick='post(".$_GET['id'].",".$_SESSION['id'].",\"".$_GET['dataDMA']."\",$i,2)'>Reservado</button></td>";
+                                  } else {
+                                    echo "<td class='align-middle text-end'><button class='btn btn-sm btn-outline-danger' disabled>Reservado</button></td>
+                                    </tr>";
+                                  }
+                                }
+                      } else {
+                        echo "<tr>
+                                <td class='align-middle' scope='row'>".$h.":00 - ".($h+1).":00</td>
+                                <td class='tdw text-truncate align-middle'></td>
+                                <td class='align-middle text-end'><button class='btn btn-sm btn-outline-success' onclick='post(".$_GET['id'].",".$_SESSION['id'].",\"".$_GET['dataDMA']."\",$i,1)'>Agendar</button></td>";
+                              if ($perm) {
+                                echo "<td class='p-0 align-middle'><button class='btn btn-sm btn-outline-secondary me-2' onclick='post(".$_GET['id'].",".$_SESSION['id'].",\"".$_GET['dataDMA']."\",$i,3)'><i class='bi bi-calendar-x'></i></button></td>";
+                              }
+                              echo "</tr>";
+                      }
+                      if ($i==4) {
+                        $h+=3;
+                      } else {
+                        $h++;
+                      }
+                    }
+                  ?>
                 </tbody>
               </table>
             </div>
           </div>
         </div>
+        <?php
+          if($perm) {
+            echo  "<div class='d-flex justify-content-center'>
+                    <button class='btn btn-secondary me-2' onclick='disableAll(".$_GET['id'].','.$_SESSION['id'].',"'.$_GET['dataDMA'].'",3'.")'>Desabilitar Todos</button>
+                    <button class='btn btn-secondary' onclick='enableAll(".$_GET['id'].','.$_SESSION['id'].',"'.$_GET['dataDMA'].'",2'.")'>Habilitar Todos</button>
+                  </div>";
+          }
+        ?>
       </div>
     <?php include "../parts/footer.php"; ?>
   </body>

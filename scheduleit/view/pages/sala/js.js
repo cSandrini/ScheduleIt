@@ -9,3 +9,7 @@ $('document').ready(function () {
         }
     });
 });
+
+function redirectAgenda(idFuncionario) {
+    window.location.href = "../agenda/agenda.php?id="+idFuncionario;
+}

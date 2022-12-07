@@ -68,3 +68,17 @@ function PromoCode(){
   document.getElementById("PromoTXT").value="";
   Atualização();
 }
+
+function Subtotal(){
+  var plano = document.querySelector('input[name="plano"]:checked').value;
+if(plano == 1){
+  var subtotal = 20;
+}else if(plano == 2){
+  var subtotal = 55;
+}else if(plano == 3){
+  var subtotal = 100;
+}else if(plano == 4){
+  var subtotal = 190;
+}  
+document.getElementById('Total').innerHTML = subtotal;
+}

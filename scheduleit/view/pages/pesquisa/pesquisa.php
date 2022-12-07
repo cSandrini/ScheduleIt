@@ -21,7 +21,7 @@
                 require_once '../../../model/conexaobd.php';
                 $con = conectarBDPDO();?>
 
-        <div class="container pt-3">
+        <div class="container">
             <div class="row justify-content-center">
                 <?php
                     include "../../../controller/salaDisplay.php";

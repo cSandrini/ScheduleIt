@@ -13,9 +13,44 @@ include('../../../controller/protect.php');
   <script src="assets/js.js"></script>
 </head>
 
+<script type="text/javascript">
+            var valorDesconto;
+            var desconto = false;
+            function Subtotal(){
+                var plano = document.querySelector('input[name="plano"]:checked').value;
+              if(plano == 1){
+                var subtotal = 20
+              }else if(plano == 2){
+                var subtotal = 55.00
+              }else if(plano == 3){
+                var subtotal = 100.00
+              }else if(plano == 4){
+                var subtotal = 190
+              }  
+              desconto = false;
+              document.getElementById('Total').textContent  = Number(subtotal).toFixed(2);
+            }
+            function PromoCode(){
+              var txt = document.getElementById('PromoTXT').value;
+              var promoccode = txt.toLowerCase();
+              var subtotal = parseFloat(document.getElementById('Total').textContent);
+
+              if (promoccode == "scheduleit" && desconto == false){
+              valorDesconto = subtotal * 0.1;
+              var total = subtotal - valorDesconto;
+              document.getElementById('Total').textContent = Number(total).toFixed(2) + " (Desconto de R$ " + Number(valorDesconto).toFixed(2) + ")";
+              desconto = true;
+              } else {
+
+                document.getElementById('Total').textContent = Number(subtotal).toFixed(2) + " (Desconto de R$ " + Number(valorDesconto).toFixed(2) + ")";
+              }
+              document.getElementById('PromoTXT').value="";         
+            }
+</script>
+
 <body class="bg-light">
 <?php include "../parts/header.php"; ?>
-  <div class="mt-5 container border rounded bg-white">
+  <div class="container border rounded bg-white">
     <div>
       <h4 class="my-2 text-center pb-2 border-bottom">
         Publicar Sala
@@ -24,42 +59,37 @@ include('../../../controller/protect.php');
         <div class="col-7">
           <form class="needs-validation" method="post" name="formPublicar" action='../../../controller/editarSala/publicarSala.php?idSala=<?php echo $_GET['idSala']?>' enctype="multipart/form-data">
             <h4 class="label2">
-              Configurações
+              Plano
             </h4>
             <div>
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <label class="input-group-text" for="limiteSala">Limite de salas</label>
-                </div>
-                <select class="custom-select" id="limiteSalas">
-                  <option selectec value="1Sala">1</option>
-                  <option value="5Sala">até 5</option>
-                  <option value="ilimitadoSala">Ilimitado</option>
-                  </select>
-                </div>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <label class="input-group-text" for="limiteFuncionario">Limite de funcionários por sala</label>
-                  </div>
-                  <select class="custom-select" id="limiteFuncionarios">
-                    <option Selected value="1Funcionario">1</option>
-                    <option value="5Funcionario">até 5</option>
-                    <option value="ilimitadoFuncionario">Ilimitado</option>
-                  </select>
-                </div>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <label class="input-group-text" for="plano">Plano</label>
-                  </div>
-                  <select class="custom-select" id="plano" required="">
-                    <option selected>Selecione...</option>
-                    <option value="mensal">Mensal</option>
-                    <option value="trimestral">Trimestral</option>
-                    <option value="semestral">Semestral</option>
-                    <option value="anual">Anual</option>
-                  </select>
-                </div>
+            <div class="my-3">
+                <div class="form-check">
+                  <input id="mensal" name="plano" type="radio" class="form-check-input" checked="" required="" value="1" onclick="Subtotal()">
+                  <label class="label2" for="mensal">
+                    Mensal
+                  </label>
               </div>
+              <div class="form-check">
+                <input id="trimestral" name="plano" type="radio" class="form-check-input" value="2" onclick="Subtotal()">
+                <label class="label2" for="trimestral">
+                  Trimestral
+                </label>
+              </div>
+              <div class="form-check">
+                <input id="semestral" name="plano" type="radio" class="form-check-input" value="3" onclick="Subtotal()">
+                <label class="label2" for="semestral">
+                  Semestral
+                </label>
+              </div>
+              <div class="form-check">
+                <input id="anual" name="plano" type="radio" class="form-check-input" value="4" onclick="Subtotal()">
+                <label class="label2" for="anual">
+                  Anual
+                </label>
+              </div>
+
+            </div>
+            </div>
               <h4 class="label2">
                 Pagamento
               </h4>
@@ -113,89 +143,24 @@ include('../../../controller/protect.php');
         </div>
         
         <div class="col-5 px-3">
-          <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-primary">
-              Seu carrinho
-            </span>
-            <span class="badge bg-primary rounded-pill" id="Contador">0</span>
-          </h4>
+        
           <ul class="list-group mb-3">
-            <div id="MS" style="display:none">
-            <li class="list-group-item d-flex justify-content-between lh-sm">
-              <div>
-                <h6 class="my-0">
-                  Limite Funcionário  
-                </h6>
-                <small class="text-muted">
-                  Proprietário pode possuir mais de uma sala
-                </small>
-              </div>
-              <span class="text-muted">
-                $12
-              </span>
-            </li>
-          </div>
-          <div id="MF" style="display:none">
-            <li class="list-group-item d-flex justify-content-between lh-sm">
-              <div>
-                <h6 class="my-0">
-                  Multiplos funcionários
-                </h6>
-                <small class="text-muted">
-                  Proprietário pode possuir mais de um funcionário
-                </small>
-              </div>
-              <span class="text-muted">
-                $8
-              </span>
-            </li>
-            </div>
-            <div id="AF" style="display:none">
-            <li class="list-group-item d-flex justify-content-between lh-sm">
-              <div>
-                <h6 class="my-0">
-                  Agendamento fixo
-                </h6>
-                <small class="text-muted">
-                  Cliente pode criar uma rotina
-                </small>
-              </div>
-              <span class="text-muted">
-                $5
-              </span>
-            </li>
-            </div>
-            <div id="PC" style="display:none">
-            <li class="list-group-item d-flex justify-content-between bg-light">
-              <div class="text-success">
-                <h6 class="my-0">
-                  Promo code
-                </h6>
-                <small>
-                  ScheduleIt
-                </small>
-              </div>
-              <span class="text-success">
-                −$5
-              </span>
-            </li>
-          </div>
             <li class="list-group-item d-flex justify-content-between">
               <span>
-                Total (BRL)
+                Total R$
               </span>
-              <script type="text/javascript">
-                document.getElementById("Total").textContent=valor;
-              </script>
               <span id="Total">
-                R$ 0
+              <script type="text/javascript">
+                Subtotal()
+              </script>
               </span>
             </li>
           </ul>
+
           <form class="card p-2">
             <div class="input-group">
               <input type="text" id="PromoTXT" class="form-control" placeholder="Promo code">
-              <button type="radio" id="ButtonPC" class="btn btn-secondary" onclick="PromoCode()">
+              <button type="button" id="ButtonPC" class="btn btn-secondary" onclick="PromoCode()" >
                 Enviar
               </button>
             </div>
@@ -207,3 +172,4 @@ include('../../../controller/protect.php');
   <?php include "../parts/footer.php"; ?>  
 </body>
 </html>
+

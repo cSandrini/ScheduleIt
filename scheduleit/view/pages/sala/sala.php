@@ -3,7 +3,9 @@
         session_start();
     }
     require_once "../../../controller/sala/funcoesSala.php";
+    require_once "../../../controller/funcionario/funcoesFuncionario.php";
     require_once "../../../controller/mensagem.php";
+
 ?>
 
 <html lang="pt-BR"><head>
@@ -22,16 +24,17 @@
 <body class="bg-light">
   <?php
     require_once '../parts/header.php';
+    echo "<div>";
     echo "<div class='container p-0'>";
     mensagem('Editado com sucesso.');
     echo "</div>";
   ?>
-<div class="container border rounded bg-white p-0 mt-3 rounded">    
+<div class="container border rounded bg-white p-0 rounded">    
   <div>
     <div>
       <div  class="d-flex align-items-center p-3 text-white-50 bg-info rounded">
         <?php
-          editarSala($img, $idProprietario, $idSala);
+          interfaceEditarSala($img, $idProprietario, $idSala);
         ?>
       </div>  
       <div class="card-body p-0 pt-3">
@@ -41,7 +44,12 @@
           <div class="col-3 border rounded p-2 me-2 bg-light">
             <p class="card-text"> <?php echo $descricao ?> <br><br> <?php echo "CEP: $cep. $cidade - $estado. $rua, $bairro, $numero, $complemento."?> <br><br> Horário de atendimento <br><br> <?php echo "Email: $email" ?> <br> <?php echo "Telefone: $telefone" ?> </p> 
           </div>
-          <?php
+
+          <?php 
+          
+          $session = $_SESSION['id'];
+          carregarFuncionarios($idSala, $idProprietario, $session);
+          /*
             if (isset($_SESSION['id']) && $_SESSION['id']==$idProprietario) {
               $removerFuncionarioButton = "<button class='m-0 p-0 btn btn-link text-decoration-none cornerButton text-danger' onclick='removerFuncionario(this)'><i class='bi bi-x-circle-fill'></i></button>";
             } else {
@@ -66,13 +74,12 @@
                     }
                     $i++;
                     echo  "<div class='funcionarioDisplay border rounded bg-white me-3 mb-3 p-0'>
-                            <div class='m-0 p-2 d-flex align-items-center gallery_product' onclick='redirectAgenda()'>
+                            <div class='m-0 p-2 d-flex align-items-center gallery_product' onclick='redirectAgenda($row->id)'>
                                 <div class='d-inline'>"
                                   ,$imgTag,
                                 "</div>
                                 <div class='d-inline lh-1'>
                                     <span style='max-width: 220px;' class='d-inline-block text-truncate mb-1 fw-bold title-card'>$row->nome</span>
-                                    <p class='m-0'><small>Função</small></p>
                                 </div>
                             </div>",$removerFuncionarioButton,
                           "</div>";
@@ -85,10 +92,11 @@
             } catch(PDOException $e) {
               echo "Error: ". $e->getMessage();
             }
-          ?>
+          */?>
+          
           <div style="float: left">
             <?php
-              editarFuncionario($idProprietario);
+              editarFuncionario($idProprietario, $idSala);
             ?>
           </div>
         </div>  
@@ -96,6 +104,7 @@
       <hr class="my-4">
     </div>
   </div>
+</div>
 </div>
 <?php require_once "../parts/footer.php"; ?>
 </body>

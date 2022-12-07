@@ -26,6 +26,7 @@
           }
       });
     </script>
+    <link href="../../styles/css/cover.css" rel="stylesheet">
   </head>
 
   <body class="bg-light">
@@ -34,6 +35,26 @@
       include '../parts/header.php';
       require_once "../../../controller/mensagem.php";
     ?>
+
+    <div class="modal" id="cropperModal" tabindex="-1" role="dialog" aria-labelledby="cropperModal" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Ajustar Imagem</h5>
+            <button type="button" class="btn btn-light" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="text-center m-2">
+            <?php include "../parts/crop/cropper.php"; ?>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="saveCrop()">Salvar Alterações</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- PERFIL -->
     <?php
@@ -44,22 +65,21 @@
       $dados = carregarConfig($conexao, $_SESSION['id']);
     ?>
     <main role="main" class="container">
-      <form method="post" name="formAlterarUsuario" action="../../../controller/config/attUsuario.php" enctype="multipart/form-data">
+      <form method="post" name="formAlterarUsuario" action="../../../controller/config/attUsuario.php?id=<?php echo $_SESSION['id'];?>" enctype="multipart/form-data">
         <input style="display:none;" name="idUsuarioImagem" type="text" value="<?php echo $id;?>" required="">
         <?php
           mensagem('Alterações realizadas.')
         ?>
-        <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-primary rounded">
+        <div class="d-flex align-items-center p-3 mb-3 text-white-50 bg-primary rounded">
           <?php //CARREGAR IMAGEM DE PERFIL
             require_once '../../../controller/config/funcoesUsuario.php';
             carregarDadosUsuario($id)
           ?>
           <div class="lh-100 me-auto">
             <h6 class="mb-0 text-white lh-100"><?php echo $_SESSION['nome'];?></h6>
-            <small>Since 2022</small>
             <div class="mb-3">
               <label for="imgPerfil" class="form-label"><small>Editar Imagem de Perfil</small></label>
-              <input name="imgPerfil" class="form-control form-control-sm" id="imgPerfil" type="file" value=''>
+              <input name="imgPerfil" class="form-control form-control-sm" id="imgPerfil" type="file" value='' onchange="handleFileSelect()">
             </div>
           </div>
         </div>
@@ -68,9 +88,6 @@
           <h6 class="pb-2 mb-0">Configurações</h6>
             <table class="table border-bottom">
               <tbody>
-                <!--REVER ISSO-->
-                <input style="display:none;" name="idUsuario" type="text" value="<?php echo $_SESSION['id'];?>">
-
                 <tr>
                   <td>
                     Nome
@@ -122,14 +139,14 @@
               </tbody>
             </table>
           <div class="d-flex">
-            <button type="button" class="mx-auto btn btn-primary btn-sm w-25" data-bs-toggle="modal" data-bs-target="#inserirSenhaModal">Salvar</button>
+            <button type="button" class="mx-auto btn btn-primary w-25" data-bs-toggle="modal" data-bs-target="#inserirSenhaModal">Salvar</button>
           </div>
         </div>
         <div class="modal fade" id="inserirSenhaModal" tabindex="-1" role="dialog" aria-labelledby="inserirSenhaModal" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="inserirSenhaModal">Confirmar alterações</h5>
+                <h5 class="modal-title">Confirmar alterações</h5>
                 <button type="button" class="btn btn-light" data-bs-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -146,6 +163,7 @@
         </div>
       </form>
     </main>
+    <?php include '../parts/footer.php';?>
   </body>
 
     <!-- Bootstrap core JavaScript

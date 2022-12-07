@@ -1,12 +1,17 @@
-body {
-  justify-content: center;
-  min-height: 100vh;
+body{ 
+  min-height: 100vh; 
+  margin: 0; 
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .botaofunc {
   position: absolute;
   opacity: 0;
 }
+
 .label1 {
   position: relative;
   padding-left: 10px;
@@ -91,7 +96,7 @@ body {
 }
 
 .calendar-info {
-  width: 380px!important;
+  width: 400px!important;
   height: auto;
   border-radius: 4px;
 }
@@ -106,7 +111,7 @@ body {
 }
 
 .title-cards {
-  width: 764px;
+  width: 808px;
 }
 
 .salaDisplay {
@@ -119,7 +124,7 @@ body {
 
 .funcionarioDisplay {
   padding: 8px!important;
-  width: 320px!important;
+  width: 220px!important;
   height: 98px;
   cursor: pointer;
   position: relative;
@@ -130,4 +135,45 @@ body {
   top: 0.5rem;
   right: 0.5rem;
   font-size: 16px;
+}
+
+.bottomMsg {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 128px;
+  font-size: 16px;
+}
+
+.dropdownColor {
+  --bs-dropdown-link-active-bg: #dfdfdf;
+}
+
+.rodape {
+  position: relative;
+  right: 50%;
+  transform: translate(50%);
+}
+
+.rodape a {
+  text-decoration: none;
+  color: rgba(var(--bs-body-color-rgb),.75)!important;
+}
+
+.fsp {
+  font-size: 14px;
+}
+
+hr {
+  color: #d3d3d3!important;
+}
+
+.hoverIcon:hover {
+  color: #50b2c4;
+}
+
+.cornerIcon {
+  position: absolute;
+  top: 1.35rem;
+  right: 0.5rem;
+  font-size: 20px;
 }
