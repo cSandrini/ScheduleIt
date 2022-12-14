@@ -2,7 +2,9 @@
     require_once '../../../model/conexaobd.php';
     require_once '../../../model/salasDAO.php';
 
-    $session = $_SESSION['id'];
+    if(isset($_SESSION['id'])) {
+        $session = $_SESSION['id'];
+    }
 
     try {
         $con = conectarBDPDO();
@@ -42,21 +44,26 @@
             } elseif ($plano == 4){
                 $dataExpiracao = date("Y-m-d", strtotime($assinatura." +1 year"));
             } 
-            $dataAtual = ("Y/m/d");
-            if (isset($dataExpiracao) && $dataExpiracao == $dataAtual){
+
+            $dataAtual = date("Y-m-d");
+            if (isset($dataExpiracao) && $dataExpiracao <= $dataAtual){
                 $conexao = conectarBD();
                 expirarSala($conexao, $_GET["idSala"]);
             }
 
-            $sth = $con->prepare("SELECT * FROM usuario WHERE id=".$_SESSION["id"]);
-            $sth->setFetchMode(PDO:: FETCH_OBJ);
-            $sth->execute();
-            $row=$sth->fetch();
-            $permissao = $row->permissao;
-            }   else {
-                    header("Location:naoencontrada.php");
-            exit;
+            if (isset($_SESSION["id"])) {
+                $sth = $con->prepare("SELECT * FROM usuario WHERE id=".$_SESSION["id"]);
+                $sth->setFetchMode(PDO:: FETCH_OBJ);
+                $sth->execute();
+                $row=$sth->fetch();
+                $permissao = $row->permissao;
+            } else {
+                $permissao = 0;
             }
+        } else {
+                header("Location:naoencontrada.php");
+        exit;
+        }
         if (($permissao != 9 || $session != $idProprietario) && $visibilidade == 0 ) {
             header("Location:naoencontrada.php");
         exit;
@@ -156,11 +163,11 @@
                             </form>
                         </div>
                     </div>";
-                }elseif ($visibilidade == 0 && $plano != null){
+                } elseif ($visibilidade == 0 && $plano != null){
                     echo "<div class='lh-100 me-auto ms-2'>
                             <a href='../editarSala/editarSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-pen'></i> Editar</button></a>
                         <div class='d-flex'>
-                            <a href='../publicar/publicar.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-send'></i> Publicar</button></a>
+                            <a href='../../../controller/editarSala/publicarSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-send'></i> Publicar</button></a>
                             <p class='ms-2 rounded bg-light text-dark mb-2 px-2 py-1 fst-normal'>Assinado em: $assinaturaConv - Expira em: $expiracaoConv</p>
                         </div>
                             <form method='post' name='FormEditarImgLogo' action='../../../controller/editarSala/attImgLogo.php?idSala=$idSala' enctype='multipart/form-data'>
@@ -177,11 +184,11 @@
                         </div>
                     </div>";
 
-                }else {
+                } else {
                     echo "<div class='lh-100 me-auto ms-2'>
                             <a href='../editarSala/editarSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-pen'></i> Editar</button></a>
                         <div class='d-flex'>
-                            <a href='../publicar/publicar.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-send'></i> Publicar</button></a>
+                            <a href='../../../controller/editarSala/privarSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-send'></i> Privar</button></a>
                             <p class='ms-2 rounded bg-light text-dark mb-2 px-2 py-1 fst-normal'>Assinado em: $assinaturaConv - Expira em: $expiracaoConv</p>
                         </div>
                             <form method='post' name='FormEditarImgLogo' action='../../../controller/editarSala/attImgLogo.php?idSala=$idSala' enctype='multipart/form-data'>
@@ -217,7 +224,7 @@
             } catch(PDOException $e) {
                 echo "Error: ". $e->getMessage();
             }
-            if (isset($_SESSION["id"]) && $_SESSION["id"] == $idProprietario || isset($permissao) && $permissao == 9) {
+            if (isset($_SESSION["id"]) && $_SESSION["id"] == $idProprietario || isset($permissao) && $permissao == 9 || isset($_SESSION["id"]) && $_SESSION["id"] == 1) {
                 echo    "<div class='dropdown'>
                             <button class='btn btn-outline-secondary dropdown' id='buttonAddFuncionario' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>+ Adicionar funcionário</button>
                             <div class='dropdown-menu' aria-labelledby='buttonAddFuncionario'>

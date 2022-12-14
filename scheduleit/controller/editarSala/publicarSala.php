@@ -21,7 +21,6 @@
             republicarSala($con, $idSala);
             header("Location:../../view/pages/home/home.php");
         }else{
-
             $assinatura = date("Y/m/d");
             $plano = $_POST["plano"];
             publicarSala($con, $idSala, $assinatura, $plano);

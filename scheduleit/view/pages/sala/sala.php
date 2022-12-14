@@ -47,8 +47,12 @@
 
           <?php 
           
-          $session = $_SESSION['id'];
-          carregarFuncionarios($idSala, $idProprietario, $session);
+          if (isset($_SESSION['id'])) {
+            $session = $_SESSION['id'];
+          }
+          echo "<div style='height: 400px; width: 260px;' class='overflow-auto'>";
+            carregarFuncionarios($idSala);
+          echo "</div>";
           /*
             if (isset($_SESSION['id']) && $_SESSION['id']==$idProprietario) {
               $removerFuncionarioButton = "<button class='m-0 p-0 btn btn-link text-decoration-none cornerButton text-danger' onclick='removerFuncionario(this)'><i class='bi bi-x-circle-fill'></i></button>";

@@ -163,7 +163,7 @@
         $sth->setFetchMode(PDO:: FETCH_OBJ);
         $sth->execute();
     
-        if ($sth->rowCount() > 0) {
+        if ($sth->rowCount() > 0) { //torimba
             $msgErro = $msgErro . "Email já cadastrado <br>";
         }
 

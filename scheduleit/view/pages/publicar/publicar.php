@@ -157,14 +157,14 @@ include('../../../controller/protect.php');
             </li>
           </ul>
 
-          <form class="card p-2">
+          <div class="card p-2">
             <div class="input-group">
               <input type="text" id="PromoTXT" class="form-control" placeholder="Promo code">
               <button type="button" id="ButtonPC" class="btn btn-secondary" onclick="PromoCode()" >
                 Enviar
               </button>
             </div>
-          </form>
+          </div>
         </div>
       </div> 
     </div>

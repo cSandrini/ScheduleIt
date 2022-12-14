@@ -1,18 +1,20 @@
 <?php
 function carregarFuncionarios($idSala){
     require_once '../../../controller/funcionarioDisplay.php';
-    try {
-      $con = conectarBDPDO();
-      $sth = $con->prepare("SELECT * FROM usuario, sala WHERE id=".$_SESSION["id"]." AND idSala=".$_GET["idSala"]." AND idProprietario=".$_SESSION['id']." AND sala.idProprietario = usuario.id;");
-      $sth->setFetchMode(PDO:: FETCH_OBJ);
-      $sth->execute();
-      $row=$sth->fetch();
-      if ($sth->rowCount() > 0) {
-        $permissao = $row->permissao;
-        $idProprietario = $row->idProprietario;
+    if(isset($_SESSION["id"])) {
+      try {
+        $con = conectarBDPDO();
+        $sth = $con->prepare("SELECT * FROM usuario, sala WHERE id=".$_SESSION["id"]." AND idSala=".$_GET["idSala"]." AND idProprietario=".$_SESSION['id']." AND sala.idProprietario = usuario.id;");
+        $sth->setFetchMode(PDO:: FETCH_OBJ);
+        $sth->execute();
+        $row=$sth->fetch();
+        if ($sth->rowCount() > 0) {
+          $permissao = $row->permissao;
+          $idProprietario = $row->idProprietario;
+        }
+      } catch(PDOException $e) {
+          echo "Error: ". $e->getMessage();
       }
-    } catch(PDOException $e) {
-        echo "Error: ". $e->getMessage();
     }
 
     try {
