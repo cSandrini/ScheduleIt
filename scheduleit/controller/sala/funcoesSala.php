@@ -58,13 +58,17 @@
                 $row=$sth->fetch();
                 $permissao = $row->permissao;
             } else {
-                $permissao = 0;
+                if ($_SESSION["id"] != $idProprietario){
+                    $permissao = 9;
+                } else {
+                    $permissao = 0;
+                }
             }
         } else {
                 header("Location:naoencontrada.php");
         exit;
         }
-        if (($permissao != 9 || $session != $idProprietario) && $visibilidade == 0 ) {
+        if (($_SESSION["id"] != $idProprietario || $permissao == 9) && $visibilidade == 0) {
             header("Location:naoencontrada.php");
         exit;
         }
