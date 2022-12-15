@@ -40,64 +40,23 @@
       <div class="card-body p-0 pt-3">
         <h4 class="card-title text-center"><?php echo $nomeFantasia ?></h4> 
         <hr>
-        <div class="px-4 d-flex justify-content-between">
-          <div class="col-3 border rounded p-2 me-2 bg-light">
+        <div class="px-4 d-flex">
+          <div class="col-3 rounded p-2 me-2 bg-light">
             <p class="card-text"> <?php echo $descricao ?> <br><br> <?php echo "CEP: $cep. $cidade - $estado. $rua, $bairro, $numero, $complemento."?> <br><br> Horário de atendimento <br><br> <?php echo "Email: $email" ?> <br> <?php echo "Telefone: $telefone" ?> </p> 
           </div>
           <?php 
-          
-          if (isset($_SESSION['id'])) {
-            $session = $_SESSION['id'];
-          }
-          echo "<div style='height: 400px; width: 260px;' class='overflow-auto'>";
-            carregarFuncionarios($idSala);
-          echo "</div>";
-          /*
-            if (isset($_SESSION['id']) && $_SESSION['id']==$idProprietario) {
-              $removerFuncionarioButton = "<button class='m-0 p-0 btn btn-link text-decoration-none cornerButton text-danger' onclick='removerFuncionario(this)'><i class='bi bi-x-circle-fill'></i></button>";
-            } else {
-              $removerFuncionarioButton = "";
+            if (isset($_SESSION['id'])) {
+              $session = $_SESSION['id'];
             }
-            //Conexao no método PDO (?)
-            try {
-              $con = new PDO("mysql:host=localhost;dbname=scheduleit",'root','');
-              $sth = $con->prepare("SELECT * FROM usuario WHERE cpf = 13560366781;");
-              $sth->setFetchMode(PDO:: FETCH_OBJ);
-              $sth->execute();
-              if ($sth->rowCount() > 0) {
-                  $i=1;
-                  while($row=$sth->fetch()) {
-                    $foto = $row->foto;
-                    if(!$foto) {
-                      $foto = addslashes('../../styles/blank.png');
-                      $imgTag = "<img class='rounded imgsala me-2' style='padding: 0!important; width: 80px; height: 80px;'  src='$foto'>";
-                    } else {
-                      $foto = base64_encode($foto);
-                      $imgTag = "<img class='rounded imgsala me-2' style='padding: 0!important; width: 80px; height: 80px;'  src='data:image/png;base64,$foto'>";
-                    }
-                    $i++;
-                    echo  "<div class='funcionarioDisplay border rounded bg-white me-3 mb-3 p-0'>
-                            <div class='m-0 p-2 d-flex align-items-center gallery_product' onclick='redirectAgenda($row->id)'>
-                                <div class='d-inline'>"
-                                  ,$imgTag,
-                                "</div>
-                                <div class='d-inline lh-1'>
-                                    <span style='max-width: 220px;' class='d-inline-block text-truncate mb-1 fw-bold title-card'>$row->nome</span>
-                                </div>
-                            </div>",$removerFuncionarioButton,
-                          "</div>";
-                  }
-              } else {
-                  echo  "<br><div class='alert alert-danger col-md-2 text-center mx-auto' role='alert'>
-                            Nenhum resultado encontrado.
-                        </div>";
-              }
-            } catch(PDOException $e) {
-              echo "Error: ". $e->getMessage();
-            }
-          */?>
+            echo "<div class='bg-light rounded p-2 me-2' style='height: 400px; width: 260px;'>";
+              echo "<div class='text-center'><p class='text-card'>Funcionários</p></div>";
+              echo "<div class='overflow-auto' style='height: 330px;'>";
+                carregarFuncionarios($idSala);
+              echo "</div>";
+            echo "</div>";
+          ?>
           
-          <div style="float: left">
+          <div>
             <?php
               editarFuncionario($idProprietario, $idSala);
             ?>

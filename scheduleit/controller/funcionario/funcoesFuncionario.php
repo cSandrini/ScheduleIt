@@ -36,7 +36,7 @@ function carregarFuncionarios($idSala){
             } else {
               $removerFuncionarioButton = "";
             }
-              echo  "<div class='funcionarioDisplay border rounded bg-white me-3 mb-3 p-0'>
+              echo  "<div class='funcionarioDisplay border rounded bg-white mb-3 p-0 mx-auto'>
                       <div class='m-0 p-2 d-flex align-items-center gallery_product' onclick='redirectAgenda($row->idUsuario)'>
                           <div class='d-inline'>"
                             ,$imgTag,

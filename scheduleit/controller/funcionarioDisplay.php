@@ -7,7 +7,7 @@ if(!$foto) {
     $foto = base64_encode($foto);
     $imgTag = "<img class='rounded imgsala me-2' style='padding: 0!important; width: 80px; height: 80px;'  src='data:image/png;base64,$foto'>";
 }
-    return "<div class='funcionarioDisplay border rounded bg-white me-3 mb-3 p-0'>
+    return "<div class='funcionarioDisplay border rounded bg-white me-3 mb-3 p-0 mx-auto'>
                 <div class='m-0 p-2 d-flex align-items-center gallery_product' onclick='redirectAgenda($id)'>
                     <div class='d-inline'>
                     ,$imgTag,
