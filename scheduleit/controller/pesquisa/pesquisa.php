@@ -1,7 +1,7 @@
 <?php
     if(isset($_POST["submit"])) {
         try {
-            $con = new PDO("mysql:host=localhost;dbname=scheduleit",'root','');
+            $con = new PDO("mysql:host=scheduleit.ccncbadv3wa7.sa-east-1.rds.amazonaws.com:3306;dbname=scheduleit",'root','zhkZLfX77ryErzc');
             $str = $_POST["busca"];
 
             $search_string = "SELECT * FROM sala WHERE ";

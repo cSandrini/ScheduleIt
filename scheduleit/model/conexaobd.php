@@ -1,7 +1,7 @@
 <?php
 
 function conectarBD() {
-    $conexao = mysqli_connect("127.0.0.1:3306", "root", "", "scheduleit" ) 
+    $conexao = mysqli_connect("scheduleit.ccncbadv3wa7.sa-east-1.rds.amazonaws.com:3306", "root", "zhkZLfX77ryErzc", "scheduleit" ) 
                  or die ("Erro ao conectar no banco de dados");
 
 
@@ -16,7 +16,7 @@ function conectarBD() {
 }
 
 function conectarBDPDO() { 
-    $con = new PDO("mysql:host=127.0.0.1:3306;dbname=scheduleit",'root','');
+    $con = new PDO("mysql:host=scheduleit.ccncbadv3wa7.sa-east-1.rds.amazonaws.com:3306;dbname=scheduleit",'root','zhkZLfX77ryErzc');
     return $con;
 }
 
