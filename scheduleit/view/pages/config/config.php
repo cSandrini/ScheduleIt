@@ -147,7 +147,7 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title">Confirmar alterações</h5>
-                <button type="button" class="btn btn-light" data-bs-dismiss="modal" aria-label="Close">
+                <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>

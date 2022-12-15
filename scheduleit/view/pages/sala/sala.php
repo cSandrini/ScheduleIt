@@ -44,7 +44,6 @@
           <div class="col-3 border rounded p-2 me-2 bg-light">
             <p class="card-text"> <?php echo $descricao ?> <br><br> <?php echo "CEP: $cep. $cidade - $estado. $rua, $bairro, $numero, $complemento."?> <br><br> Horário de atendimento <br><br> <?php echo "Email: $email" ?> <br> <?php echo "Telefone: $telefone" ?> </p> 
           </div>
-
           <?php 
           
           if (isset($_SESSION['id'])) {

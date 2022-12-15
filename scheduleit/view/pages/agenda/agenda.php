@@ -122,6 +122,13 @@
                       $arrNome = $arrNome + array($row->idHorario => $row->nome) ;
                     }
 
+                    $sth = $con->prepare("SELECT * FROM horario WHERE idFuncionario=".$_GET['id']." AND dataDMA='".$_GET['dataDMA']."' ORDER BY idHorario;");
+                    $sth->setFetchMode(PDO:: FETCH_OBJ);
+                    $sth->execute();
+                    while($row=$sth->fetch()) {
+                      array_push($arr, array($row->idHorario, $row->desabilitado));
+                    }
+
                     $h=7;
                     for ($i=1; $i<=9; $i++) {
                       if (!empty($arr) && in_array(array($i, 'true'), $arr)) {

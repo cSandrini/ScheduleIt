@@ -57,20 +57,19 @@
                 $sth->execute();
                 $row=$sth->fetch();
                 $permissao = $row->permissao;
+            }
+            if ($_SESSION["id"] == $idProprietario || $permissao == 9){
+                $permissao = 9;
             } else {
-                if ($_SESSION["id"] != $idProprietario){
-                    $permissao = 9;
-                } else {
-                    $permissao = 0;
-                }
+                $permissao = 0;
+            }
+            if ($permissao != 9 && $visibilidade == 0) {
+                header("Location:naoencontrada.php");
+                exit;
             }
         } else {
-                header("Location:naoencontrada.php");
-        exit;
-        }
-        if (($_SESSION["id"] != $idProprietario || $permissao == 9) && $visibilidade == 0) {
             header("Location:naoencontrada.php");
-        exit;
+            exit;
         }
 
     } catch(PDOException $e) {
@@ -203,7 +202,7 @@
                                 </button>
                             </div>
                             <div class=''>
-                                <a href='../../../controller/editarSala/excluirSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light'><i class='bi bi-trash'></i> Excluir</button></a>
+                                <button type='button' class='btn btn-sm btn-light' data-bs-toggle='modal' data-bs-target='#deletar'><i class='bi bi-trash'></i> Excluir</button>
                             </div>
                             </form>
                         </div>

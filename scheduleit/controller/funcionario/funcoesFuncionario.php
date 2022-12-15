@@ -4,7 +4,7 @@ function carregarFuncionarios($idSala){
     if(isset($_SESSION["id"])) {
       try {
         $con = conectarBDPDO();
-        $sth = $con->prepare("SELECT * FROM usuario, sala WHERE id=".$_SESSION["id"]." AND idSala=".$_GET["idSala"]." AND idProprietario=".$_SESSION['id']." AND sala.idProprietario = usuario.id;");
+        $sth = $con->prepare("SELECT * FROM usuario, sala WHERE idSala=".$_GET["idSala"]." AND id=".$_SESSION['id'].";");
         $sth->setFetchMode(PDO:: FETCH_OBJ);
         $sth->execute();
         $row=$sth->fetch();
@@ -32,7 +32,7 @@ function carregarFuncionarios($idSala){
                 $imgTag = "<img class='rounded imgsala me-2' style='padding: 0!important; width: 80px; height: 80px;'  src='data:image/png;base64,$foto'>";
               }
             if (isset($_SESSION['id']) && isset($idProprietario) && $_SESSION['id']==$idProprietario || isset($permissao) && $permissao==9) {
-              $removerFuncionarioButton = "<a href='../../../controller/funcionario/removerFuncionario.php?idSala=$row->idSala&idUsuario=$row->idUsuario'><button class='m-0 p-0 btn btn-link text-decoration-none cornerButton text-danger' onclick='removerFuncionario(this)'><i class='bi bi-x-circle-fill'></i></button></a>";
+              $removerFuncionarioButton = "<a href='../../../controller/funcionario/removerFuncionario.php?idSala=$row->idSala&idUsuario=$row->idUsuario'><button class='m-0 p-0 btn btn-link text-decoration-none cornerButton text-danger'><i class='bi bi-x-circle-fill'></i></button></a>";
             } else {
               $removerFuncionarioButton = "";
             }
