@@ -183,39 +183,91 @@ hr {
   display: flex!important;
 }
 
+.widthspan {
+  max-width: 220px;
+}
+
 #sel1 {
   padding-right: 1rem!important;
+}
+
+.login {
+  width: 22rem; 
+}
+.cadastro {
+  width: 40rem;
+}
+.conteudosSala {
+  display: flex!important;
+}
+.descricao {
+  flex: 0 0 auto;
+  width: 25%;
+  padding: .5rem;
+  margin-right: .5rem;
+}
+.funcionarios {
+  width: 260px;
+  height: 400px;
+  padding: .5rem ;
+  margin-right: .5rem;
+}
+#calendar {
+  height: 400px;
+  margin-right: .5rem;
+}
+
+.horarios {
+  height: 400px;
+  width: 400px;
+  border-radius: 4px;
+}
+
+.divAgenda {
+  display: flex;
 }
 
 @media(max-width:850px) {
   header {
     display: block!important;
     position: relative;
-    height: 200px!important;
+    height: 180px!important;
     padding: 30px 12px!important;
+    text-align: center !important;
+  }
+  .hbutton {
+    margin-top: .25rem !important;
+  }
+  .cadastro {
+    width: 300px!important;
+  }
+  .fsp {
+    width: 300px;
+    margin: 0 auto!important;
   }
   .logo {
-    margin: 20px auto;
+  }
+  .divImg {
+    margin-left: 10px !important;
   }
   .pesquisa {
     min-width: 319px;
     margin: 0 auto;
   }
   .perfil {
-    position: absolute!important;
-    bottom: 30px;
-    left: 12px;
   }
   .selects {
-    width: 353px!important;
     padding-right: 0!important;
     margin: 0 auto;
   }
   .selectsdiv {
+    width: 320px!important;
     display: block!important;
+    margin: 0 auto!important;
   }
   .salaDisplay {
     margin-right: 0;
+    width: 320px!important;
   }
   #sel1 {
     padding-right: 0!important;
@@ -226,6 +278,50 @@ hr {
   }
   .translate {
     transform: translate(0)!important;
+  }
+  .widthspan {
+    max-width: 190px!important;
+  }
+  .login {
+    width: 300px!important; 
+  }
+  .sala {
+    width: 300px!important;
+  }
+  .conteudosSala {
+    display: block!important;
+  }
+  .descricao {
+    margin-bottom: 16px!important;
+    width: auto!important;
+  }
+  .funcionarios {
+    width: auto;
+    padding: 0 !important;
+    margin-right: 0 !important;
+  }
+  #imgShow {
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+  .title-cards{
+    width: auto!important;
+  }
+  #calendar {
+    height: 350px!important;
+    width: auto!important;
+    margin-right: 0!important;
+    margin-bottom: .5rem;
+  }
+  .divAgenda {
+    display: block!important;
+  }
+  .horarios {
+    height: 400px!important;
+    width: auto!important;
+  }
+  .cornerIcon {
+    top: 8px!important;
   }
 }
 

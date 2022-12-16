@@ -21,7 +21,7 @@
     ?>
 
     <div class="">
-      <div style="width: 40rem;" class="pb-3 bg-white rounded container border">
+      <div class="cadastro pb-3 bg-white rounded container border">
         <div class="py-2 text-center">
           <h2>Cadastro</h2>
           <p class="lead"> Bem vindo, siga os passos para se cadastrar.</p>

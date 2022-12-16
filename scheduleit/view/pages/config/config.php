@@ -75,7 +75,7 @@
             require_once '../../../controller/config/funcoesUsuario.php';
             carregarDadosUsuario($id)
           ?>
-          <div class="lh-100 me-auto">
+          <div class="lh-100 me-auto divImg">
             <h6 class="mb-0 text-white lh-100"><?php echo $_SESSION['nome'];?></h6>
             <div class="mb-3">
               <label for="imgPerfil" class="form-label"><small>Editar Imagem de Perfil</small></label>

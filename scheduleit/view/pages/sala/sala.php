@@ -29,7 +29,7 @@
     mensagem('Editado com sucesso.');
     echo "</div>";
   ?>
-<div class="container border rounded bg-white p-0 rounded">    
+<div class="container border rounded bg-white p-0 sala">    
   <div>
     <div>
       <div  class="d-flex align-items-center p-3 text-white-50 bg-info rounded">
@@ -40,15 +40,15 @@
       <div class="card-body p-0 pt-3">
         <h4 class="card-title text-center"><?php echo $nomeFantasia ?></h4> 
         <hr>
-        <div class="px-4 d-flex">
-          <div class="col-3 rounded p-2 me-2 bg-light">
+        <div class="px-4 conteudosSala">
+          <div class="descricao rounded bg-light">
             <p class="card-text"> <?php echo $descricao ?> <br><br> <?php echo "CEP: $cep. $cidade - $estado. $rua, $bairro, $numero, $complemento."?> <br><br> Horário de atendimento <br><br> <?php echo "Email: $email" ?> <br> <?php echo "Telefone: $telefone" ?> </p> 
           </div>
           <?php 
             if (isset($_SESSION['id'])) {
               $session = $_SESSION['id'];
             }
-            echo "<div class='bg-light rounded p-2 me-2' style='height: 400px; width: 260px;'>";
+            echo "<div class='bg-light rounded funcionarios'>";
               echo "<div class='text-center'><p class='text-card'>Funcionários</p></div>";
               echo "<div class='overflow-auto' style='height: 330px;'>";
                 carregarFuncionarios($idSala);

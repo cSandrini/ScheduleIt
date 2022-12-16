@@ -66,8 +66,8 @@
         <div class="bg-secondary rounded mb-2 text-center mx-auto title-cards">
           <p class="p-2 m-0 font-weight-bold text-white">Agenda - <?php echo $dados['nome']; ?></p>
         </div>
-        <div class="d-flex justify-content-center mb-2">
-          <div id="calendar" style="height: 400px;" class="border vanilla-calendar vanilla-calendar_default calendar-info me-2">
+        <div class="divAgenda justify-content-center mb-2">
+          <div id="calendar" class="border vanilla-calendar vanilla-calendar_default calendar-info me-2">
             <script>
               document.addEventListener('DOMContentLoaded', () => {
                 const calendar =  new VanillaCalendar('#calendar', {
@@ -92,7 +92,7 @@
               });
             </script>
           </div>
-          <div style="height: 400px;" class="overflow-auto calendar-info bg-white border lh-1">
+          <div class="overflow-auto bg-white border lh-1 horarios">
             <div class="">
               <table class="table table-hover m-0 p-0">
                 <thead class="">

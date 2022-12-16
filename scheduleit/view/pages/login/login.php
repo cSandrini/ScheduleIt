@@ -27,7 +27,7 @@
     <?php include '../parts/header.php';?>
 
     <div class="">
-      <div style="width: 22rem;" class="pb-2 bg-white rounded container border">
+      <div class="login pb-2 bg-white rounded container border">
         <div>
           <div class="py-2 text-center">
             <h2>Login</h2>
