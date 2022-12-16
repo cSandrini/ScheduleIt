@@ -192,10 +192,10 @@ hr {
 }
 
 .login {
-  width: 22rem; 
+  width: 22rem!important; 
 }
 .cadastro {
-  width: 40rem;
+  width: 40rem!important;
 }
 .conteudosSala {
   display: flex!important;
