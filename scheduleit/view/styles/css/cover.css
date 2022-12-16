@@ -120,6 +120,7 @@ body{
   height: 130px;
   cursor: pointer;
   position: relative;
+  margin-right: 1rem;
 }
 
 .funcionarioDisplay {
@@ -176,4 +177,69 @@ hr {
   top: 1.35rem;
   right: 0.5rem;
   font-size: 20px;
+}
+
+.selectsdiv {
+  display: flex!important;
+}
+
+#sel1 {
+  padding-right: 1rem!important;
+}
+
+@media(max-width:850px) {
+  header {
+    display: block!important;
+    position: relative;
+    height: 200px!important;
+    padding: 30px 12px!important;
+  }
+  .logo {
+    margin: 20px auto;
+  }
+  .pesquisa {
+    min-width: 319px;
+    margin: 0 auto;
+  }
+  .perfil {
+    position: absolute!important;
+    bottom: 30px;
+    left: 12px;
+  }
+  .selects {
+    width: 353px!important;
+    padding-right: 0!important;
+    margin: 0 auto;
+  }
+  .selectsdiv {
+    display: block!important;
+  }
+  .salaDisplay {
+    margin-right: 0;
+  }
+  #sel1 {
+    padding-right: 0!important;
+    margin-bottom: 0.5rem;
+  }
+  .container {
+    max-width: 516px!important;
+  }
+  .translate {
+    transform: translate(0)!important;
+  }
+}
+
+@media(max-width:1200px) {
+  #sel1 {
+    padding-right: 0!important;
+    margin-bottom: 0.5rem;
+  }
+  .selectsdiv {
+    display: block!important;
+  }
+  .selects {
+    width: 353px!important;
+    padding-right: 0!important;
+    margin: 0 auto;
+  }
 }

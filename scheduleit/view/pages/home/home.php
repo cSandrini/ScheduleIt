@@ -24,8 +24,8 @@
 
 
     <div class="container">
-        <div class="row d-flex justify-content-center"> 
-            <div class="col-2 p-0 pe-3">
+        <div class="selectsdiv row justify-content-center"> 
+            <div id="sel1" class="selects col-2 p-0">
                 <select class="form-select form-select-sm" aria-label=".form-select-sm example">
                     <option selected>Escolha um estado</option>
                     <option value="1">ES</option>
@@ -33,7 +33,7 @@
                     <option value="3">RR</option>
                 </select>
             </div>
-            <div class="col-2 p-0">
+            <div class="selects col-2 p-0">
                 <select class="form-select form-select-sm" aria-label=".form-select-sm example">
                     <option selected>Escolha uma cidade</option>
                     <option value="1">Colatina</option>

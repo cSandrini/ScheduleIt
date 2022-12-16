@@ -81,7 +81,8 @@
     }
 </style>
 <header class="border-bottom bg-white mb-4">
-    <span style="cursor:pointer;" onclick="paginaHome()" style="color: rgb(102, 0, 102);"><strong>SCHEDULE</strong><span style="color: rgb(187, 10, 187);"><strong>IT</strong></span></span>
+    <span class="logo" style="cursor:pointer;" onclick="paginaHome()" style="color: rgb(102, 0, 102);"><strong>SCHEDULE</strong><span style="color: rgb(187, 10, 187);"><strong>IT</strong></span></span>
+    <div class="pesquisa">
     <nav class="translate">
         <form class="form-inline my-2 my-lg-0" method="post" name="pesquisar" action="../pesquisa/pesquisa.php">
             <div class="input-group">
@@ -90,6 +91,7 @@
             </div>
         </form>
     </nav>
+    </div>
 
     <?php
         if(isset($_SESSION['id'])){
@@ -112,7 +114,7 @@
                 echo "Error: ". $e->getMessage();
             }
 
-            echo "<div class='dropdown'>
+            echo "<div class='dropdown perfil'>
                     <button style='padding: 0;' class='btn btn-default dropdown' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>";
                     if($imgPerfilHeader) {
                         echo "<img class='border rounded' src='data:foto/jpeg;base64,$imgPerfilHeader' width='50' height='50'>";

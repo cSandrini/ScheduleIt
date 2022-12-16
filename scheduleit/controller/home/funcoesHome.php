@@ -17,7 +17,7 @@
                                     <p class='title'>$row->nomeFantasia <small>$row->cidade - $row->estado</small></p>
                                 </div>";
                         */
-                        echo    "<div class='salaDisplay border rounded bg-white me-3 mb-3 p-0'>
+                        echo    "<div class='salaDisplay border rounded bg-white mb-3 p-0'>
                                     <div class='m-0 p-2 d-flex align-items-center gallery_product' onclick='redirectSala($row->idSala)'>
                                         <div class='d-inline'>
                                             <img class='rounded imgsala me-2' style='padding: 0!important; width: 7rem; height: 7rem;'  src='data:imgLogo/jpeg;base64,$img'>
