@@ -1,3 +1,3 @@
 function redirect(dataDMA, idFuncionario) {
-    window.location.href = "../agenda/agenda.php?id="+idFuncionario+"&dataDMA="+dataDMA;
+    window.location.href = "/agenda/"+idFuncionario+"/"+dataDMA;
 }
