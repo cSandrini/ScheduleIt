@@ -1,6 +1,6 @@
 <?php
-  include('../../../controller/protect.php');
-  include('../../../controller/notificacoes/funcoesNotificacoes.php');
+  include(__DIR__ . '/../../../controller/protect.php');
+  include(__DIR__ . '/../../../controller/notificacoes/funcoesNotificacoes.php');
 ?>
 <!doctype html>
 <html>
@@ -16,13 +16,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
     <!-- Custom styles for this template -->
-    <link href="../../styles/css/cover.css" rel="stylesheet">
-    <script src="script.js"></script>
+    <link href="/scheduleit/view/styles/css/cover.css" rel="stylesheet">
+    <script src="/scheduleit/view/pages/notificacoes/script.js"></script>
   </head>
 
   <body class="bg-light">
     <!-- HEADER -->
-    <?php include '../parts/header.php';?>
+    <?php include __DIR__ . '/../parts/header.php';?>
 
     <div class="container">
       <div class="p-3 bg-white rounded border">
@@ -62,6 +62,6 @@
     <!-- Bootstrap core JavaScript -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="offcanvas.js"></script>
-    <?php include '../parts/footer.php';?>
+    <?php include __DIR__ . '/../parts/footer.php';?>
   </body>
 </html>

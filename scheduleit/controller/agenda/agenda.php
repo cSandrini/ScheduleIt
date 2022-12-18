@@ -1,7 +1,7 @@
 <?php //CARREGAR AGENDA
-    require_once '../../../model/conexaobd.php';
-    require_once '../../../model/usuarioDAO.php';
-    $idFuncionario = $_GET['id'];
+    require_once __DIR__.'/../../model/conexaobd.php';
+    require_once __DIR__.'/../../model/usuarioDAO.php';
+    $idFuncionario = $id;
     $conexao = conectarBD();
     $dados = carregarConfig($conexao, $idFuncionario)
 ?>

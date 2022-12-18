@@ -1,6 +1,8 @@
 <?php
-    require_once '../../../model/conexaobd.php';
-    require_once '../../../model/salasDAO.php';
+    error_reporting(E_ALL); //REPORTAR ERROS
+    ini_set('display_errors', 1); //REPORTAR ERROS
+    require_once __DIR__ . '/../../model/conexaobd.php';
+    require_once __DIR__ .'/../../model/salasDAO.php';
 
     if(isset($_SESSION['id'])) {
         $session = $_SESSION['id'];
@@ -8,10 +10,11 @@
 
     try {
         $con = conectarBDPDO();
-        if (isset($_GET["idSala"])){
-            $sth = $con->prepare("SELECT * FROM sala WHERE idSala=".$_GET["idSala"].";");
+        if (isset($idSala)){
+            $sth = $con->prepare("SELECT * FROM sala WHERE idSala=".$idSala.";");
         } else {
-            header("Location:naoencontrada.php");
+            echo "1";
+            //header("Location:../naoencontrada");
         }
         $sth->setFetchMode(PDO:: FETCH_OBJ);
         $sth->execute();
@@ -48,7 +51,7 @@
             $dataAtual = date("Y-m-d");
             if (isset($dataExpiracao) && $dataExpiracao <= $dataAtual){
                 $conexao = conectarBD();
-                expirarSala($conexao, $_GET["idSala"]);
+                expirarSala($conexao, $idSala);
             }
 
             if (isset($_SESSION["id"])) {
@@ -58,17 +61,19 @@
                 $row=$sth->fetch();
                 $permissao = $row->permissao;
             }
-            if ($_SESSION["id"] == $idProprietario || $permissao == 9){
+            if (isset($_SESSION["id"]) && $_SESSION["id"] == $idProprietario || isset($permissao) && $permissao == 9){
                 $permissao = 9;
             } else {
                 $permissao = 0;
             }
-            if ($permissao != 9 && $visibilidade == 0) {
-                header("Location:naoencontrada.php");
+            if (isset($permissao) && $permissao != 9 && $visibilidade == 0) {
+                echo "2";
+                //header("Location:../naoencontrada");
                 exit;
             }
         } else {
-            header("Location:naoencontrada.php");
+            echo "3";
+            //header("Location:../naoencontrada");
             exit;
         }
 
@@ -79,8 +84,8 @@
     function interfaceEditarSala($img, $idProprietario, $idSala) {
         try {
             $con = conectarBDPDO();
-            if (isset($_GET["idSala"])){
-                $sth = $con->prepare("SELECT idProprietario FROM sala WHERE idSala=".$_GET["idSala"].";");
+            if (isset($idSala)){
+                $sth = $con->prepare("SELECT idProprietario FROM sala WHERE idSala=".$idSala.";");
             }
             $sth->setFetchMode(PDO:: FETCH_OBJ);
             $sth->execute();
@@ -89,7 +94,8 @@
                     $idProprietario = $row->idProprietario;
                 }
             } else {
-                header("Location:naoencontrada.php");
+                echo "4";
+                //header("Location:../naoencontrada");
                 exit;
             }
         } catch(PDOException $e) {
@@ -97,8 +103,8 @@
         }
         try {
             $con = conectarBDPDO();
-            if (isset($_GET["idSala"])){
-                $sth = $con->prepare("SELECT * FROM sala WHERE idSala=".$_GET["idSala"].";");
+            if (isset($idSala)){
+                $sth = $con->prepare("SELECT * FROM sala WHERE idSala=".$idSala.";");
             }
             $sth->setFetchMode(PDO:: FETCH_OBJ);
             $sth->execute();
@@ -123,16 +129,17 @@
                     $expiracaoConv = date("d/m/Y", strtotime($dataExpiracao));
                 } 
             } else {
-                header("Location:naoencontrada.php");
+                echo "5";
+                //header("Location:../naoencontrada");
                 exit;
             }
         } catch(PDOException $e) {
             echo "Error: ". $e->getMessage();
         }
         if($img) {
-            echo "<img id='imgShow' class='rounded' src='data:image/jpeg;base64,$img' alt='' width='160' height='160'>";
+            echo "<div class='imgRotulo'><img id='imgShow' class='rounded' src='data:image/jpeg;base64,$img' alt='' width='160' height='160'></div>";
         } else {
-            echo "<img id='imgShow' class='rounded' src='../../styles/blank.png' alt='' width='160' height='160'>";
+            echo "<div class='imgRotulo'><img id='imgShow' class='rounded' src='../../styles/blank.png' alt='' width='160' height='160'></div>";
         }
         if (isset($_SESSION["id"])) {
             try {
@@ -148,15 +155,15 @@
             }
             if ($_SESSION["id"] == $idProprietario || $permissao == 9) {
                 if ($visibilidade == 0 && $plano == null){
-                    echo "<div class='lh-100 me-auto ms-2'>
-                            <a href='../editarSala/editarSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-pen'></i> Editar</button></a>
+                    echo "<div class='lh-100 me-auto rotulo'>
+                            <a href='/editarSala/$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-pen'></i> Editar</button></a>
                         <div class=''>
-                            <a href='../publicar/publicar.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-send'></i> Publicar</button></a>
+                            <a href='/publicarSala/$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-send'></i> Publicar</button></a>
                         </div>
                             <form method='post' name='FormEditarImgLogo' action='../../../controller/editarSala/attImgLogo.php?idSala=$idSala' enctype='multipart/form-data'>
-                            <div class='d-flex'>
+                            <div class='flex-block'>
                                 <input name='imgLogo' class='form-control form-control-sm mb-2' id='imgLogo' type='file' required=''>
-                                <button type='submit' class='ms-2 btn btn-sm btn-light mb-2'>
+                                <button type='submit' class='ms-2 btn btn-sm btn-light mb-2 uploadb'>
                                 <i class='bi bi-file-earmark-arrow-up'></i>
                                 </button>
                             </div>
@@ -167,16 +174,16 @@
                         </div>
                     </div>";
                 } elseif ($visibilidade == 0 && $plano != null){
-                    echo "<div class='lh-100 me-auto ms-2'>
-                            <a href='../editarSala/editarSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-pen'></i> Editar</button></a>
-                        <div class='d-flex'>
-                            <a href='../../../controller/editarSala/publicarSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-send'></i> Publicar</button></a>
+                    echo "<div class='lh-100 me-auto rotulo'>
+                            <a href='/editarSala/$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-pen'></i> Editar</button></a>
+                        <div class='flex-block'>
+                            <a href='/publicarSala/$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-send'></i> Publicar</button></a>
                             <p class='ms-2 rounded bg-light text-dark mb-2 px-2 py-1 fst-normal'>Assinado em: $assinaturaConv - Expira em: $expiracaoConv</p>
                         </div>
                             <form method='post' name='FormEditarImgLogo' action='../../../controller/editarSala/attImgLogo.php?idSala=$idSala' enctype='multipart/form-data'>
                             <div class='d-inline-flex'>
                                 <input name='imgLogo' class='col form-control form-control-sm mb-2' id='imgLogo' type='file' required=''>
-                                <button type='submit' class='ms-2 btn btn-sm btn-light mb-2'>
+                                <button type='submit' class='ms-2 btn btn-sm btn-light mb-2 uploadb'>
                                 <i class='bi bi-file-earmark-arrow-up'></i>
                                 </button>
                             </div>
@@ -188,16 +195,16 @@
                     </div>";
 
                 } else {
-                    echo "<div class='lh-100 me-auto ms-2'>
-                            <a href='../editarSala/editarSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-pen'></i> Editar</button></a>
-                        <div class='d-flex'>
-                            <a href='../../../controller/editarSala/privarSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-send'></i> Privar</button></a>
+                    echo "<div class='lh-100 me-auto rotulo'>
+                            <a href='/editarSala/$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-pen'></i> Editar</button></a>
+                        <div class='flex-block'>
+                            <a href='/privar/$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-send'></i> Privar</button></a>
                             <p class='ms-2 rounded bg-light text-dark mb-2 px-2 py-1 fst-normal'>Assinado em: $assinaturaConv - Expira em: $expiracaoConv</p>
                         </div>
                             <form method='post' name='FormEditarImgLogo' action='../../../controller/editarSala/attImgLogo.php?idSala=$idSala' enctype='multipart/form-data'>
                             <div class='d-inline-flex'>
                                 <input name='imgLogo' class='col form-control form-control-sm mb-2' id='imgLogo' type='file' required=''>
-                                <button type='submit' class='ms-2 btn btn-sm btn-light mb-2'>
+                                <button type='submit' class='ms-2 btn btn-sm btn-light mb-2 uploadb'>
                                 <i class='bi bi-file-earmark-arrow-up'></i>
                                 </button>
                             </div>
@@ -216,7 +223,7 @@
         if (isset($_SESSION["id"])) {
             try {
                 $con = conectarBDPDO();
-                $sth = $con->prepare("SELECT * FROM usuario, sala WHERE id=".$_SESSION["id"]." AND idSala=".$_GET['idSala']." AND idProprietario=".$_SESSION['id']." AND sala.idProprietario = usuario.id;");
+                $sth = $con->prepare("SELECT * FROM usuario, sala WHERE id=".$_SESSION["id"]." AND idSala=".$idSala." AND idProprietario=".$_SESSION['id']." AND sala.idProprietario = usuario.id;");
                 $sth->setFetchMode(PDO:: FETCH_OBJ);
                 $sth->execute();
                 $row=$sth->fetch();

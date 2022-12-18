@@ -1,12 +1,12 @@
 <?php
-  include('../../../controller/login/loginController.php');
+  include(__DIR__ . '/../../../controller/login/loginController.php');
 
   if(!isset($_SESSION)) {
     session_start();
   }
 
   if(isset($_SESSION['id'])) {
-    header('Location: ../config/config.php');
+    header('Location:/configuracoes');
   }
 ?>
 <!doctype html>
@@ -19,12 +19,11 @@
 
     <title>ScheduleIt - Login</title>
 
-    <link href="../../styles/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../styles/css/cover.css" rel="stylesheet">
+    <link href="/scheduleit/view/styles/css/cover.css" rel="stylesheet">
   </head>
   <body class="text-center bg-light">
     <!-- HEADER -->
-    <?php include '../parts/header.php';?>
+    <?php include __DIR__ . '/../parts/header.php';?>
 
     <div class="">
       <div class="login pb-2 bg-white rounded container border">
@@ -53,12 +52,12 @@
             </div>
             <hr>
             <button type="submit" class="w-100 btn btn-primary btn-lg mb-1">Entrar</button>
-            <a class="text-decoration-none" href="../cadastro/cadastro.php">Cadastre-se</a>
+            <a class="text-decoration-none" href="/cadastro">Cadastre-se</a>
           </form>
         </div>
       </div>
     </div>
     <!-- FOOTER -->
-    <?php include '../parts/footer.php';?>
+    <?php include __DIR__ . '/../parts/footer.php';?>
   </body>
 </html>

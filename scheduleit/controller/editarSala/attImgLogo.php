@@ -1,10 +1,8 @@
 <?php
-    include('../../controller/protect.php');
-    require_once '../funcoesUteis.php';
-    require_once '../../model/conexaobd.php';
-    require_once '../../model/salasDAO.php';
-    
-    $idSala = $_GET["idSala"];
+    include(__DIR__.'/../../controller/protect.php');
+    require_once __DIR__.'/../funcoesUteis.php';
+    require_once __DIR__.'/../../model/conexaobd.php';
+    require_once __DIR__.'/../../model/salasDAO.php';
 
     if(isset($_FILES["imgLogo"])){
         $imgLogo = $_FILES["imgLogo"];
@@ -19,11 +17,11 @@
 
     if (empty($msgErro)) {            
         // CONECTAR
-        require_once '../../model/conexaobd.php';
+        require_once __DIR__.'/../../model/conexaobd.php';
         $conexao=conectarBD();
         editarImgLogo($conexao, $imgLogo);
-        header("Location:../../view/pages/sala/sala.php?idSala=$idSala&msg=0&msgType=1");
+        header("Location:/sala/$idSala?msg=0&msgType=1");
     } else {
-        header("Location:../../view/pages/sala/sala.php?idSala=$idSala&msg=$msgErro&msgType=3");
+        header("Location:/sala/$idSala?msg=$msgErro&msgType=3");
     }
 ?>

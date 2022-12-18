@@ -8,10 +8,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>
     function paginaLogin() {
-        window.location.href = "../login/login.php";
+        window.location.href = "/login";
     }
     function paginaHome() {
-        window.location.href = "../home/home.php";
+        window.location.href = "/";
     }
 </script>
 <style>
@@ -84,7 +84,7 @@
     <span class="logo" style="cursor:pointer;" onclick="paginaHome()" style="color: rgb(102, 0, 102);"><strong>SCHEDULE</strong><span style="color: rgb(187, 10, 187);"><strong>IT</strong></span></span>
     <div class="pesquisa">
     <nav class="translate">
-        <form class="form-inline my-2 my-lg-0" method="post" name="pesquisar" action="../pesquisa/pesquisa.php">
+        <form class="form-inline my-2 my-lg-0" method="post" name="pesquisar" action="/pesquisa">
             <div class="input-group">
                 <input class="form-control" type="text" placeholder="Pesquisar" required="" name="busca" >
                 <button class="btn btn-outline-info" type="submit" name="submit"><i class='bi bi-search'></i></button>
@@ -95,7 +95,7 @@
 
     <?php
         if(isset($_SESSION['id'])){
-            require_once '../../../model/conexaobd.php';
+            require_once __DIR__ . '/../../../model/conexaobd.php';
         
             try {
                 $con = conectarBDPDO();
@@ -125,12 +125,12 @@
                     <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
                         <p class='dropdown-header'>Logado como $nome</p>
                         <div class='dropdown-divider'></div>
-                        <a class='dropdown-item' href='../notificacoes/notificacoes.php'>Notificações</a>
-                        <a class='dropdown-item' href='../minhasSalas/minhasSalas.php'>Minhas Salas</a>
-                        <a class='dropdown-item' href='../agenda/agenda.php?id=".$_SESSION['id']."'>Agenda</a>
+                        <a class='dropdown-item' href='/notificacoes'>Notificações</a>
+                        <a class='dropdown-item' href='/minhasSalas'>Minhas Salas</a>
+                        <a class='dropdown-item' href='/agenda/".$_SESSION['id']."'>Agenda</a>
                         <div class='dropdown-divider'></div>
-                        <a class='dropdown-item' href='../config/config.php'>Configurações</a>
-                        <a style='color: red;' class='dropdown-item' href='../../../controller/logout.php'>Sair</a>
+                        <a class='dropdown-item' href='/configuracoes'>Configurações</a>
+                        <a style='color: red;' class='dropdown-item' href='/logout'>Sair</a>
                     </div>";
         } else {
             echo "<button class='hbutton' style='color: white;' onclick='paginaLogin()'>Login</button>";

@@ -11,25 +11,25 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>ScheduleIt - Home</title>
-        <link href="../../styles/css/cover.css" rel="stylesheet">
-        <script src="script.js"></script>
+        <title>ScheduleIt - Pesquisa</title>
+        <link href="/scheduleit/view/styles/css/cover.css" rel="stylesheet">
+        <script src="/scheduleit/view/pages/pesquisa/script.js"></script>
     </head>
     <body class="bg-light">
         <!-- HEADER -->
-        <?php   include '../parts/header.php';
-                require_once '../../../model/conexaobd.php';
+        <?php   include __DIR__.'/../parts/header.php';
+                require_once __DIR__.'/../../../model/conexaobd.php';
                 $con = conectarBDPDO();?>
 
         <div class="container">
             <div class="row justify-content-center">
                 <?php
-                    include "../../../controller/salaDisplay.php";
-                    require_once '../../../controller/pesquisa/pesquisa.php';       
+                    include __DIR__."/../../../controller/salaDisplay.php";
+                    require_once __DIR__.'/../../../controller/pesquisa/pesquisa.php';       
                 ?>
             </div>
         </div>
         <!-- FOOTER -->
-        <?php include '../parts/footer.php';?>
+        <?php include __DIR__.'/../parts/footer.php';?>
     </body>
 </html>

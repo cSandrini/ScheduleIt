@@ -5,7 +5,6 @@
     require_once '../../model/salasDAO.php';
     
     $conexao = conectarBD();
-    $idSala = $_GET["idSala"];
     $cpf = $_POST["cpf"];
     $msgErro = "";
 

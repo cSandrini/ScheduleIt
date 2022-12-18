@@ -1,6 +1,6 @@
 <?php
 
-include('../../../controller/protect.php');
+include(__DIR__ . '/../../../controller/protect.php');
 
 ?>
 
@@ -14,20 +14,19 @@ include('../../../controller/protect.php');
 
     <title>ScheduleIt - Editar Sala</title>
     
-    <script src="script.js"></script>
+    <script src="/scheduleit/view/pages/editarSala/script.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link href="../../styles/css/cover.css" rel="stylesheet">
+    <link href="/scheduleit/view/styles/css/cover.css" rel="stylesheet">
   </head>
   <body class="bg-light">
     <!-- HEADER -->
     <?php 
-      include '../parts/header.php';
-      require_once '../../../model/conexaobd.php';
-      require_once '../../../model/salasDAO.php';
-      //require_once '../../../model/editarSalaDAO.php';
+      include __DIR__ . '/../parts/header.php';
+      require_once __DIR__ . '/../../../model/conexaobd.php';
+      require_once __DIR__ . '/../../../model/salasDAO.php';
 
       $conexao = conectarBD();
-      $dados = carregarMinhasSalas($conexao, $_SESSION['id']);
+      $dados = carregarMinhasSalas($conexao, $_SESSION['id'], $idSala);
     ?>
     <div class="">
       <div style="width: 40rem;" class="text-center pb-3 bg-white rounded container border">
@@ -36,12 +35,10 @@ include('../../../controller/protect.php');
         </div>
         <div class="text-center">
           <?php
-              require_once "../../../controller/mensagem.php";
+              require_once __DIR__ . "/../../../controller/mensagem.php";
               mensagem('Editado com sucesso.');
-
-              $idSala = $_GET["idSala"];
           ?>
-          <form class="needs-validation" method="post" name="formEditarSala" action="../../../controller/editarSala/attSala.php?idSala=<?php echo $idSala;?>" enctype="multipart/form-data">
+          <form class="needs-validation" method="post" name="formEditarSala" action="/attSala/<?php echo $idSala;?>" enctype="multipart/form-data">
             
             <input style="display:none;" name="idProprietario" type="text" value="<?php echo $_SESSION['id'];?>"> 
 
@@ -112,7 +109,7 @@ include('../../../controller/protect.php');
             </div>
           <hr class="my-3">
             <div class="text-end">
-              <a href='../sala/sala.php?idSala=<?php echo $_GET["idSala"]?>'><button type='button' class='btn btn-outline-danger btn-sm'>Cancelar</button></a>
+              <a href='../sala/sala.php?idSala=<?php echo $idSala;?>'><button type='button' class='btn btn-outline-danger btn-sm'>Cancelar</button></a>
               <button type="button" class="btn btn-primary btn-sm w-25" data-bs-toggle="modal" data-bs-target="#inserirSenhaModal">Salvar</button>
             </div>
         </div>
@@ -140,7 +137,7 @@ include('../../../controller/protect.php');
       </div>
 
       <!-- FOOTER -->
-      <?php include '../parts/footer.php';?>
+      <?php include __DIR__ . '/../parts/footer.php';?>
     </div>         
   </body>
 

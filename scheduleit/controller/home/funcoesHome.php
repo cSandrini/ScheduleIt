@@ -1,6 +1,6 @@
 <?php
     function carregarSalas() {
-        require_once '../../../model/conexaobd.php';
+        require_once __DIR__ . '/../../model/conexaobd.php';
         try {
             $con = conectarBDPDO();
             $sth = $con->prepare("SELECT * FROM sala ORDER BY classificacao DESC;");

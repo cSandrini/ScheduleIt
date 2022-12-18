@@ -1,6 +1,6 @@
 <?php
-    require_once '../../../controller/salaDisplay.php';
-    require_once '../../../model/conexaobd.php';
+    require_once __DIR__.'/../../controller/salaDisplay.php';
+    require_once __DIR__.'/../../model/conexaobd.php';
     function carregarMinhasSalas() {
         try {
             $con = conectarBDPDO();

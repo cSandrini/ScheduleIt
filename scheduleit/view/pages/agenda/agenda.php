@@ -1,5 +1,5 @@
 <?php
-    include('../../../controller/protect.php');
+    include(__DIR__.'/../../../controller/protect.php');
 ?>
 
 <!DOCTYPE html>
@@ -8,22 +8,22 @@
   <meta charset="utf-8">
   <title>ScheduleIt - Agenda</title>
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-  <link href="../../styles/css/cover.css" rel="stylesheet">
+  <link href="/scheduleit/view/styles/css/cover.css" rel="stylesheet">
   <!-- Plugin CSS -->
-  <link href="../../../resources/libraries/vanilla-calendar-2.1.1/build/vanilla-calendar.min.css" rel="stylesheet">
+  <link href="/scheduleit/resources/libraries/vanilla-calendar-2.1.1/build/vanilla-calendar.min.css" rel="stylesheet">
   <!-- Plugin JS -->
-  <script src="../../../resources/libraries/vanilla-calendar-2.1.1/build/vanilla-calendar.min.js" defer></script>
-  <script src="js.js"></script>
+  <script src="/scheduleit//resources/libraries/vanilla-calendar-2.1.1/build/vanilla-calendar.min.js" defer></script>
+  <script src="/scheduleit/view/pages/agenda/js.js"></script>
 </head>
 <body class="bg-light">
     <?php 
-      if (!isset($_GET['dataDMA'])) {
+      if (!isset($dataDMA)) {
         $currentDate = new DateTime();
-        $_GET['dataDMA'] = $currentDate->format('Y-m-d');
+        $dataDMA = $currentDate->format('Y-m-d');
 
       }
-      include "../parts/header.php";
-      require_once "../../../controller/agenda/agenda.php";
+      include __DIR__."/../parts/header.php";
+      require_once __DIR__."/../../../controller/agenda/agenda.php";
 
       $perm = false;
       if (isset($_SESSION["id"])) {
@@ -38,7 +38,7 @@
             echo "Error: ". $e->getMessage();
         }
         $permissao = $row->permissao;
-        if ($_SESSION["id"] == $_GET["id"] || $permissao == 9) {
+        if ($_SESSION["id"] == $id || $permissao == 9) {
             $perm = true;
         }
       }
@@ -66,14 +66,14 @@
         <div class="bg-secondary rounded mb-2 text-center mx-auto title-cards">
           <p class="p-2 m-0 font-weight-bold text-white">Agenda - <?php echo $dados['nome']; ?></p>
         </div>
-        <div class="divAgenda justify-content-center mb-2">
+        <div class="flex-block justify-content-center mb-2">
           <div id="calendar" class="border vanilla-calendar vanilla-calendar_default calendar-info me-2">
             <script>
               document.addEventListener('DOMContentLoaded', () => {
                 const calendar =  new VanillaCalendar('#calendar', {
                   actions: {
                     clickDay(event, dates) {
-                      window.location.href = "agenda.php?id="+<?php echo $_GET['id'];?>+"&dataDMA="+dates;
+                      window.location.href = "/agenda/"+<?php echo $id;?>+"/"+dates;
                     },
                   },
                   settings: {
@@ -83,7 +83,7 @@
                     },
                     lang: 'pt-BR',
                     selected: {
-                      dates: ['<?php echo $_GET['dataDMA'];?>'],
+                      dates: ['<?php echo $dataDMA;?>'],
                     },
                   },
                   type: 'default',
@@ -109,7 +109,7 @@
                 </thead>
                 <tbody class=""> 
                   <?php
-                    $sth = $con->prepare("SELECT * FROM horario, usuario WHERE idFuncionario=".$_GET['id']." AND dataDMA='".$_GET['dataDMA']."' AND horario.idUsuario = usuario.id ORDER BY idHorario;");
+                    $sth = $con->prepare("SELECT * FROM horario, usuario WHERE idFuncionario=".$id." AND dataDMA='".$dataDMA."' AND horario.idUsuario = usuario.id ORDER BY idHorario;");
                     $sth->setFetchMode(PDO:: FETCH_OBJ);
                     $sth->execute();
 
@@ -122,7 +122,7 @@
                       $arrNome = $arrNome + array($row->idHorario => $row->nome) ;
                     }
 
-                    $sth = $con->prepare("SELECT * FROM horario WHERE idFuncionario=".$_GET['id']." AND dataDMA='".$_GET['dataDMA']."' ORDER BY idHorario;");
+                    $sth = $con->prepare("SELECT * FROM horario WHERE idFuncionario=".$id." AND dataDMA='".$dataDMA."' ORDER BY idHorario;");
                     $sth->setFetchMode(PDO:: FETCH_OBJ);
                     $sth->execute();
                     while($row=$sth->fetch()) {
@@ -137,7 +137,7 @@
                                   <td class='tdw align-middle'></td>
                                   <td class='align-middle text-end'><button class='btn btn-sm btn-outline-secondary' disabled>Desabilitado</button></td>";
                                 if ($perm) {
-                                  echo "<td class='p-0 align-middle'><button class='btn btn-sm btn-outline-secondary me-2' onclick='post(".$_GET['id'].",".$_SESSION['id'].",\"".$_GET['dataDMA']."\",$i,2)'><i class='bi bi-calendar-x'></i></button></td>";
+                                  echo "<td class='p-0 align-middle'><button class='btn btn-sm btn-outline-secondary me-2' onclick='post(".$id.",".$_SESSION['id'].",\"".$dataDMA."\",$i,2)'><i class='bi bi-calendar-x'></i></button></td>";
                                 }
                                 echo "</tr>";
                       } else if (!empty($arr) && in_array(array($i, 'false'), $arr)) {
@@ -145,11 +145,11 @@
                                 <td class='align-middle' scope='row'>".$h.":00 - ".($h+1).":00</td>
                                 <td class='tdw text-truncate align-middle'>".$arrNome[$i]."</td>";  
                                 if ($perm) {
-                                  echo "<td class='align-middle text-end'><button class='btn btn-sm btn-outline-danger' onclick='post(".$_GET['id'].",".$_SESSION['id'].",\"".$_GET['dataDMA']."\",$i,2)'>Reservado</button></td>
-                                        <td class='p-0 align-middle'><button class='btn btn-sm btn-outline-secondary me-2' onclick='post(".$_GET['id'].",".$_SESSION['id'].",\"".$_GET['dataDMA']."\",$i,4)'><i class='bi bi-calendar-x'></i></button></td>";
+                                  echo "<td class='align-middle text-end'><button class='btn btn-sm btn-outline-danger' onclick='post(".$id.",".$_SESSION['id'].",\"".$dataDMA."\",$i,2)'>Reservado</button></td>
+                                        <td class='p-0 align-middle'><button class='btn btn-sm btn-outline-secondary me-2' onclick='post(".$id.",".$_SESSION['id'].",\"".$dataDMA."\",$i,4)'><i class='bi bi-calendar-x'></i></button></td>";
                                 } else {
                                   if (!empty($arr) && in_array(array($i, $_SESSION['id']), $arrId)) {
-                                    echo "<td class='align-middle text-end'><button class='btn btn-sm btn-outline-danger' onclick='post(".$_GET['id'].",".$_SESSION['id'].",\"".$_GET['dataDMA']."\",$i,2)'>Reservado</button></td>";
+                                    echo "<td class='align-middle text-end'><button class='btn btn-sm btn-outline-danger' onclick='post(".$id.",".$_SESSION['id'].",\"".$dataDMA."\",$i,2)'>Reservado</button></td>";
                                   } else {
                                     echo "<td class='align-middle text-end'><button class='btn btn-sm btn-outline-danger' disabled>Reservado</button></td>
                                     </tr>";
@@ -159,9 +159,9 @@
                         echo "<tr>
                                 <td class='align-middle' scope='row'>".$h.":00 - ".($h+1).":00</td>
                                 <td class='tdw text-truncate align-middle'></td>
-                                <td class='align-middle text-end'><button class='btn btn-sm btn-outline-success' onclick='post(".$_GET['id'].",".$_SESSION['id'].",\"".$_GET['dataDMA']."\",$i,1)'>Agendar</button></td>";
+                                <td class='align-middle text-end'><button class='btn btn-sm btn-outline-success' onclick='post(".$id.",".$_SESSION['id'].",\"".$dataDMA."\",$i,1)'>Agendar</button></td>";
                               if ($perm) {
-                                echo "<td class='p-0 align-middle'><button class='btn btn-sm btn-outline-secondary me-2' onclick='post(".$_GET['id'].",".$_SESSION['id'].",\"".$_GET['dataDMA']."\",$i,3)'><i class='bi bi-calendar-x'></i></button></td>";
+                                echo "<td class='p-0 align-middle'><button class='btn btn-sm btn-outline-secondary me-2' onclick='post(".$id.",".$_SESSION['id'].",\"".$dataDMA."\",$i,3)'><i class='bi bi-calendar-x'></i></button></td>";
                               }
                               echo "</tr>";
                       }
@@ -180,12 +180,12 @@
         <?php
           if($perm) {
             echo  "<div class='d-flex justify-content-center'>
-                    <button class='btn btn-secondary me-2' onclick='disableAll(".$_GET['id'].','.$_SESSION['id'].',"'.$_GET['dataDMA'].'",3'.")'>Desabilitar Todos</button>
-                    <button class='btn btn-secondary' onclick='enableAll(".$_GET['id'].','.$_SESSION['id'].',"'.$_GET['dataDMA'].'",2'.")'>Habilitar Todos</button>
+                    <button class='btn btn-secondary me-2' onclick='disableAll(".$id.','.$_SESSION['id'].',"'.$dataDMA.'",3'.")'>Desabilitar Todos</button>
+                    <button class='btn btn-secondary' onclick='enableAll(".$id.','.$_SESSION['id'].',"'.$dataDMA.'",2'.")'>Habilitar Todos</button>
                   </div>";
           }
         ?>
       </div>
-    <?php include "../parts/footer.php"; ?>
+    <?php include __DIR__."/../parts/footer.php"; ?>
   </body>
 </html>

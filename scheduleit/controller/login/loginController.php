@@ -1,11 +1,12 @@
 <?php
-  include('../../../model/conexaobd.php');
-
+    error_reporting(E_ALL); //REPORTAR ERROS
+    ini_set('display_errors', 1); //REPORTAR ERROS
   if (isset($_GET['auth']) && $_GET['auth']==0) {
     $mensagem = "Você precisa estar logado.";
   }
 
   if(isset($_POST['email']) || isset($_POST['senha'])) {
+    require_once __DIR__ . '/../../model/conexaobd.php';
     $conexao = conectarBD();
 
     $email = mysqli_real_escape_string($conexao, $_POST['email']);
@@ -32,7 +33,7 @@
           $_SESSION['imagem'] = $usuario['imagem'];
         }
 
-        header("Location: ../notificacoes/notificacoes.php?");
+        header("Location:/notificacoes");
 
     } else {
       $mensagem = "Dados inválidos.";

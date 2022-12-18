@@ -1,5 +1,5 @@
 <?php
-  include('../../../controller/protect.php');
+  include(__DIR__ . '/../../../controller/protect.php');
 ?>
 <!doctype html>
 <html>
@@ -9,15 +9,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>EzBook - Configurações</title>
+    <title>ScheduleIt - Configurações</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
     <!-- Custom styles for this template -->
-    <link href="offcanvas.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="js.js"></script>
+    <script src="/scheduleit/view/pages/config/js.js"></script>
     <script>
       $(document).keypress(function(event){
           var keycode = (event.keyCode ? event.keyCode : event.which);
@@ -26,14 +25,14 @@
           }
       });
     </script>
-    <link href="../../styles/css/cover.css" rel="stylesheet">
+    <link href="/scheduleit/view/styles/css/cover.css" rel="stylesheet">
   </head>
 
   <body class="bg-light">
     <!-- HEADER -->
     <?php 
-      include '../parts/header.php';
-      require_once "../../../controller/mensagem.php";
+      include __DIR__ . '/../parts/header.php';
+      require_once __DIR__ . "/../../../controller/mensagem.php";
     ?>
 
     <div class="modal" id="cropperModal" tabindex="-1" role="dialog" aria-labelledby="cropperModal" aria-hidden="true">
@@ -46,7 +45,7 @@
             </button>
           </div>
           <div class="text-center m-2">
-            <?php include "../parts/crop/cropper.php"; ?>
+            <?php include __DIR__ . "/../parts/crop/cropper.php"; ?>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -58,21 +57,21 @@
 
     <!-- PERFIL -->
     <?php
-      require_once '../../../model/usuarioDAO.php';
+      require_once __DIR__ . '/../../../model/usuarioDAO.php';
       // Obtem os dados d o usuário que aparecem no formulário.
       $conexao = conectarBD();
       $id=$_SESSION['id'];
       $dados = carregarConfig($conexao, $_SESSION['id']);
     ?>
     <main role="main" class="container">
-      <form method="post" name="formAlterarUsuario" action="../../../controller/config/attUsuario.php?id=<?php echo $_SESSION['id'];?>" enctype="multipart/form-data">
+      <form method="post" name="formAlterarUsuario" action="/attUsuario?id=<?php echo $_SESSION['id'];?>" enctype="multipart/form-data">
         <input style="display:none;" name="idUsuarioImagem" type="text" value="<?php echo $id;?>" required="">
         <?php
           mensagem('Alterações realizadas.')
         ?>
         <div class="d-flex align-items-center p-3 mb-3 text-white-50 bg-primary rounded">
           <?php //CARREGAR IMAGEM DE PERFIL
-            require_once '../../../controller/config/funcoesUsuario.php';
+            require_once __DIR__ . '/../../../controller/config/funcoesUsuario.php';
             carregarDadosUsuario($id)
           ?>
           <div class="lh-100 me-auto divImg">
@@ -163,7 +162,7 @@
         </div>
       </form>
     </main>
-    <?php include '../parts/footer.php';?>
+    <?php include __DIR__ . '/../parts/footer.php';?>
   </body>
 
     <!-- Bootstrap core JavaScript

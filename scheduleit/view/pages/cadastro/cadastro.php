@@ -6,18 +6,18 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ScheduleIt - Cadastro</title>
+    <title>ScheduleIt - Cadastrar Usuario</title>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="script.js"></script>
+    <script src="/scheduleit/view/pages/cadastro/script.js"></script>
 
-    <link href="../../styles/css/cover.css" rel="stylesheet">
+    <link href="/scheduleit/view/styles/css/cover.css" rel="stylesheet">
   </head>
   <body class="text-center bg-light">
     <!-- HEADER -->
     <?php 
-      include '../parts/header.php';
-      require_once "../../../controller/mensagem.php";
+      include __DIR__ . '/../parts/header.php';
+      require_once __DIR__ . "/../../../controller/mensagem.php";
     ?>
 
     <div class="">
@@ -73,6 +73,6 @@
       <p class="fsp mt-2 text-muted">Ao criar uma conta você concorda com nossos <a class="text-reset" href="">Termos de Uso</a> e <a class="text-reset" href="">Políticas de Privacidades</a>.</p>
     </div>  
     <!-- FOOTER -->
-    <?php include '../parts/footer.php';?>       
+    <?php include __DIR__ . '/../parts/footer.php';?>       
   </body>
 </html>

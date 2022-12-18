@@ -1,10 +1,12 @@
 <?php
+    error_reporting(E_ALL); //REPORTAR ERROS
+    ini_set('display_errors', 1); //REPORTAR ERROS
     if(!isset($_SESSION)) {
         session_start();
     }
-    require_once "../../../controller/sala/funcoesSala.php";
-    require_once "../../../controller/funcionario/funcoesFuncionario.php";
-    require_once "../../../controller/mensagem.php";
+    require_once  __DIR__ . "/../../../controller/sala/funcoesSala.php";
+    require_once  __DIR__ . "/../../../controller/funcionario/funcoesFuncionario.php";
+    require_once  __DIR__ . "/../../../controller/mensagem.php";
 
 ?>
 
@@ -12,18 +14,18 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sala de agendamento</title>
+  <title>Scheduleit - <?php echo $nomeFantasia ?></title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-  <link href="../../styles/css/cover.css" rel="stylesheet">
+  <link href="/scheduleit/view/styles/css/cover.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="js.js"></script>
+  <script src="/scheduleit/view/pages/sala/js.js"></script>
 
 </head>
 
 <body class="bg-light">
   <?php
-    require_once '../parts/header.php';
+    require_once __DIR__ . '/../parts/header.php';
     echo "<div>";
     echo "<div class='container p-0'>";
     mensagem('Editado com sucesso.');
@@ -32,7 +34,7 @@
 <div class="container border rounded bg-white p-0 sala">    
   <div>
     <div>
-      <div  class="d-flex align-items-center p-3 text-white-50 bg-info rounded">
+      <div  class="flex-block align-items-center p-3 text-white-50 bg-info rounded">
         <?php
           interfaceEditarSala($img, $idProprietario, $idSala);
         ?>
@@ -56,7 +58,7 @@
             echo "</div>";
           ?>
           
-          <div>
+          <div class="adcfuncionario">
             <?php
               editarFuncionario($idProprietario, $idSala);
             ?>
@@ -68,7 +70,7 @@
   </div>
 </div>
 </div>
-<?php require_once "../parts/footer.php"; ?>
+<?php require_once __DIR__."/../parts/footer.php"; ?>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" 
   integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" 

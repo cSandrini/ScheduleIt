@@ -57,7 +57,7 @@ include('../../../controller/protect.php');
       </h4>
       <div class="mt-5 row mx-3 mb-4">
         <div class="col-7">
-          <form class="needs-validation" method="post" name="formPublicar" action='../../../controller/editarSala/publicarSala.php?idSala=<?php echo $_GET['idSala']?>' enctype="multipart/form-data">
+          <form class="needs-validation" method="post" name="formPublicar" action='../../../controller/editarSala/publicarSala.php?idSala=<?php echo $idSala;?>' enctype="multipart/form-data">
             <h4 class="label2">
               Plano
             </h4>

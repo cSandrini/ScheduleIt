@@ -1,6 +1,6 @@
 <?php //CARREGAR IMAGEM DE PERFIL
     function carregarDadosUsuario($id) {
-        require_once '../../../model/conexaobd.php';
+        require_once __DIR__ . '/../../model/conexaobd.php';
         try {
             $con = conectarBDPDO();
             $sth = $con->prepare("SELECT * FROM usuario WHERE id=".$id.";");

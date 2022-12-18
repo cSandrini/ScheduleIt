@@ -11,15 +11,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ScheduleIt - Home</title>
-    <script src="script.js"></script>
-    <link href="../../styles/css/cover.css" rel="stylesheet">
+    <script src="/scheduleit/view/pages/home/script.js"></script>
+    <link href="/scheduleit/view/styles/css/cover.css" rel="stylesheet">
 </head>
 
 <body class="bg-light">
     <!-- HEADER -->
     <?php
-        include '../parts/header.php';
-        include '../../../controller/home/funcoesHome.php';
+        include __DIR__ . '/../parts/header.php';
+        include __DIR__ . '/../../../controller/home/funcoesHome.php';
     ?>
 
 
@@ -51,6 +51,6 @@
     </div>
 
     <!-- FOOTER -->
-    <?php include '../parts/footer.php';?>
+    <?php include __DIR__ . '/../parts/footer.php';?>
 </body>
 </html>

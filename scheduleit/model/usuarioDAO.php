@@ -22,7 +22,7 @@ function cadastrarUsuario($conexao, $nome, $sobrenome, $cpf, $telefone, $email, 
 }
 
 function editarUsuario($conexao, $id, $nome, $sobrenome, $cpf, $telefone, $email, $senha) {
-    require_once "../funcoesUteis.php";
+    require_once __DIR__ . "/../controller/funcoesUteis.php";
     $sql = "UPDATE scheduleit.usuario SET nome='$nome', sobrenome='$sobrenome', cpf='$cpf', telefone=$telefone, email='$email', senha='$senha' WHERE id=$id;";
     $resultado = mysqli_query( $conexao, $sql ) or die( mysqli_error($conexao) );
 }

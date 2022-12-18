@@ -1,10 +1,10 @@
 <?php
 function carregarFuncionarios($idSala){
-    require_once '../../../controller/funcionarioDisplay.php';
+    require_once  __DIR__ . '/../../controller/funcionarioDisplay.php';
     if(isset($_SESSION["id"])) {
       try {
         $con = conectarBDPDO();
-        $sth = $con->prepare("SELECT * FROM usuario, sala WHERE idSala=".$_GET["idSala"]." AND id=".$_SESSION['id'].";");
+        $sth = $con->prepare("SELECT * FROM usuario, sala WHERE idSala=".$idSala." AND id=".$_SESSION['id'].";");
         $sth->setFetchMode(PDO:: FETCH_OBJ);
         $sth->execute();
         $row=$sth->fetch();
@@ -19,7 +19,7 @@ function carregarFuncionarios($idSala){
 
     try {
         $con = conectarBDPDO();
-        $sth = $con->prepare("SELECT * FROM funcionario, usuario WHERE idSala=".$_GET["idSala"]." AND funcionario.idUsuario = usuario.id;");
+        $sth = $con->prepare("SELECT * FROM funcionario, usuario WHERE idSala=".$idSala." AND funcionario.idUsuario = usuario.id;");
         $sth->setFetchMode(PDO:: FETCH_OBJ);
         $sth->execute();
         if ($sth->rowCount() > 0) {

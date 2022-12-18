@@ -1,5 +1,5 @@
 <?php
-    include('../../../controller/protect.php');
+    include(__DIR__ . '/../../../controller/protect.php');
 ?>
 
 <!DOCTYPE html>
@@ -9,8 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ScheduleIt - Minhas Salas</title>
-    <script src="script.js"></script>
-    <link href="../../styles/css/cover.css" rel="stylesheet">
+    <script src="/scheduleit/view/pages/minhasSalas/script.js"></script>
+    <link href="/scheduleit/view/styles/css/cover.css" rel="stylesheet">
 </head>
 <body class="bg-light">
         <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -22,14 +22,14 @@
 
     <!-- HEADER -->
     <?php 
-        include '../parts/header.php';
-        require_once "../../../controller/minhasSalas/funcoesMinhasSalas.php";
-        require_once "../../../controller/mensagem.php";
+        include __DIR__ . '/../parts/header.php';
+        require_once __DIR__ . "/../../../controller/minhasSalas/funcoesMinhasSalas.php";
+        require_once __DIR__ . "/../../../controller/mensagem.php";
         echo "<div>";
         mensagem(null); // Exibir a mensagem de ERRO caso OCORRA
     ?>
     <div class='col-md-2 text-center mx-auto' role='alert'>
-        <a href='../cadastroSala/cadastroSala.php'>
+        <a href='/cadastroSala'>
             <button type='button' class='btn btn-primary'>
                 + Adicionar sala
             </button>
@@ -44,6 +44,6 @@
     </div>
     </div>
     <!-- FOOTER -->
-    <?php include '../parts/footer.php';?>
+    <?php include __DIR__ . '/../parts/footer.php';?>
 </body>
 </html>

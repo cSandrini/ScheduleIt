@@ -63,6 +63,9 @@ body{
   border: 0;
   opacity: .5;
 }
+.erro {
+  margin: 20px auto!important;
+}
 
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@500&display=swap');
 
@@ -223,8 +226,11 @@ hr {
   border-radius: 4px;
 }
 
-.divAgenda {
+.flex-block {
   display: flex;
+}
+.rotulo {
+  margin-left: .5rem;
 }
 
 @media(max-width:850px) {
@@ -234,6 +240,26 @@ hr {
     height: 180px!important;
     padding: 30px 12px!important;
     text-align: center !important;
+  }
+  .imgRotulo {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .rotulo {
+    margin-left: 0!important;
+  }
+  .rotulo button {
+    width: 100%;
+  }
+  .rotulo p {
+    margin-left: 0!important;
+  }
+  .uploadb {
+    width: auto!important;
+  }
+  .adcfuncionario {
+    margin: 16px auto;
+    text-align: center;
   }
   .hbutton {
     margin-top: .25rem !important;
@@ -313,7 +339,7 @@ hr {
     margin-right: 0!important;
     margin-bottom: .5rem;
   }
-  .divAgenda {
+  .flex-block {
     display: block!important;
   }
   .horarios {

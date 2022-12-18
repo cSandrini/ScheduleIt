@@ -1,13 +1,11 @@
 <?php
-    include('../../controller/protect.php');
-    require_once '../funcoesUteis.php';
-    require_once '../../model/conexaobd.php';
-    require_once '../../model/salasDAO.php';
-
-    $idSala = $_GET["idSala"];
+    include(__DIR__ . '/../../controller/protect.php');
+    require_once __DIR__ . '/../funcoesUteis.php';
+    require_once __DIR__ . '/../../model/conexaobd.php';
+    require_once __DIR__ . '/../../model/salasDAO.php';
 
     $conexao = conectarBD();
-    $dados = carregarMinhasSalas($conexao, $_SESSION['id']);
+    $dados = carregarMinhasSalas($conexao, $_SESSION['id'], $idSala);
 
 
     // PASSO 1 - RECEBER OS DADOS DO FORMULARIO
@@ -81,14 +79,14 @@
 
     if (empty($msgErro)) {            
         // CONECTAR
-        require_once '../../model/conexaobd.php';
-        require_once '../../model/salasDAO.php';
+        require_once __DIR__ . '/../../model/conexaobd.php';
+        require_once __DIR__ . '/../../model/salasDAO.php';
         
         $conexao=conectarBD();
         editarSala($conexao, $email, $cnpj, $nomeFantasia, $cep, $estado, $cidade, $bairro, $rua, $numero, $complemento, $telefone, $descricao, $idSala);
-        header("Location:../../view/pages/editarSala/editarSala.php?idSala=$idSala&msg=0&msgType=1");
+        header("Location:/editarSala/$idSala?msg=0&msgType=1");
     } else {
-        header("Location:../../view/pages/editarSala/editarSala.php?idSala=$idSala&msg=$msgErro&msgType=3");
+        header("Location:/editarSala/$idSala?msg=$msgErro&msgType=3");
     }
 
 ?>

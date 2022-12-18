@@ -12,9 +12,9 @@
     $idHorario = $data[0]->idHorario;
     $type = $data[0]->type;
 
-    require_once '../../../model/agendaDAO.php';
-    require_once '../../../model/notificacaoDAO.php';
-    require_once '../../../model/conexaobd.php';
+    require_once __DIR__.'/../../../model/agendaDAO.php';
+    require_once __DIR__.'/../../../model/notificacaoDAO.php';
+    require_once __DIR__.'/../../../model/conexaobd.php';
     $con = conectarBD();
     if ($type==1) {
         agendar($con, $idFuncionario, $idUsuario, $dataDMA, $idHorario);

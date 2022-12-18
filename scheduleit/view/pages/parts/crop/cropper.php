@@ -1,4 +1,4 @@
-<script type="text/javascript" src="../parts/crop/cropper_jsmin.js"></script>
+<script type="text/javascript" src="/scheduleit/view/pages/parts/crop/cropper_jsmin.js"></script>
 <!-- A canvas which cropper will draw on -->
 
 <canvas class="border rounded bg-light" id="canvasCropper" width="324" height="324" style="border: 1px solid black;" >Your browser does not support canvas.</canvas>

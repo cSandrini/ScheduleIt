@@ -1,6 +1,6 @@
 <?php
-    require_once '../../model/conexaobd.php';
-    require_once '../../model/usuarioDAO.php';
+    require_once __DIR__ . '/../model/conexaobd.php';
+    require_once __DIR__ . '/../model/usuarioDAO.php';
     function validarDados($nome, $sobrenome, $cpf, $telefone, $email, $senha, $senha2) {
 
         $msgErro = ""; 
@@ -180,4 +180,3 @@
         return $msgErro;
     }
 ?>
-
