@@ -5,7 +5,7 @@
     }
 
     if(!isset($_SESSION['id'])) {
-        header('Location: ../../../view/pages/login/login.php?auth=0');
+        header('Location:/login?auth=0');
     }
 
 ?>
