@@ -19,6 +19,7 @@
     <?php include __DIR__.'/../parts/header.php'; ?>
 
     <!-- CONTEÚDO -->
+    
 
     <!-- FOOTER -->
     <?php include __DIR__.'/../parts/footer.php'; ?>

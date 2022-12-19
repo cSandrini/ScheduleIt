@@ -29,7 +29,7 @@ include(__DIR__ . '/../../../controller/protect.php');
       $dados = carregarMinhasSalas($conexao, $_SESSION['id'], $idSala);
     ?>
     <div class="">
-      <div style="width: 40rem;" class="text-center pb-3 bg-white rounded container border">
+      <div class="cadastro text-center pb-3 bg-white rounded container border">
         <div class="py-2">
           <h2>Ediçao de Sala</h2>
         </div>

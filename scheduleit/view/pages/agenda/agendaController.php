@@ -1,7 +1,8 @@
 <?php
     error_reporting(E_ALL); //REPORTAR ERROS
     ini_set('display_errors', 1); //REPORTAR ERROS
- 
+    header("Access-Control-Allow-Origin: *");
+
     $json = file_get_contents('php://input');
     // Converts it into a PHP object
     $data = json_decode($json);

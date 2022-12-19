@@ -1,8 +1,8 @@
 <?php
-    include('../../controller/protect.php');
-    require_once '../funcoesUteis.php';
-    require_once '../../model/conexaobd.php';
-    require_once '../../model/salasDAO.php';
+    include(__DIR__.'/../../controller/protect.php');
+    require_once __DIR__.'/../funcoesUteis.php';
+    require_once __DIR__.'/../../model/conexaobd.php';
+    require_once __DIR__.'/../../model/salasDAO.php';
     
     $conexao = conectarBD();
     $cpf = $_POST["cpf"];
@@ -28,11 +28,11 @@
     } catch(PDOException $e) {
         echo "Error: ". $e->getMessage();
     }
-    require_once '../../model/funcionarioDAO.php';
+    require_once __DIR__.'/../../model/funcionarioDAO.php';
     if (empty($msgErro)) {
         adicionarFuncionario($conexao, $idSala, $idUsuario);
-        header("Location:../../view/pages/sala/sala.php?idSala=$idSala");
+        header("Location:/sala/$idSala");
     } else {
-        header("Location:../../view/pages/sala/sala.php?idSala=$idSala&msg=$msgErro&msgType=");
+        header("Location:/sala/$idSala?msg=$msgErro&msgType=");
     }
 ?>

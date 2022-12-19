@@ -13,8 +13,7 @@
         if (isset($idSala)){
             $sth = $con->prepare("SELECT * FROM sala WHERE idSala=".$idSala.";");
         } else {
-            echo "1";
-            //header("Location:../naoencontrada");
+            header("Location:../naoencontrada");
         }
         $sth->setFetchMode(PDO:: FETCH_OBJ);
         $sth->execute();
@@ -38,21 +37,6 @@
                 $assinatura = $row->assinatura;
                 $plano = $row->plano;
             }
-            if ($plano == 1){
-                $dataExpiracao = date("Y-m-d", strtotime($assinatura." +1 month"));
-            } elseif ($plano == 2){
-                $dataExpiracao = date("Y-m-d", strtotime($assinatura." +3 month"));
-            } elseif ($plano == 3){
-                $dataExpiracao = date("Y-m-d", strtotime($assinatura." +6 month"));
-            } elseif ($plano == 4){
-                $dataExpiracao = date("Y-m-d", strtotime($assinatura." +1 year"));
-            } 
-
-            $dataAtual = date("Y-m-d");
-            if (isset($dataExpiracao) && $dataExpiracao <= $dataAtual){
-                $conexao = conectarBD();
-                expirarSala($conexao, $idSala);
-            }
 
             if (isset($_SESSION["id"])) {
                 $sth = $con->prepare("SELECT * FROM usuario WHERE id=".$_SESSION["id"]);
@@ -67,13 +51,11 @@
                 $permissao = 0;
             }
             if (isset($permissao) && $permissao != 9 && $visibilidade == 0) {
-                echo "2";
-                //header("Location:../naoencontrada");
+                header("Location:../naoencontrada");
                 exit;
             }
         } else {
-            echo "3";
-            //header("Location:../naoencontrada");
+            header("Location:../naoencontrada");
             exit;
         }
 
@@ -94,8 +76,7 @@
                     $idProprietario = $row->idProprietario;
                 }
             } else {
-                echo "4";
-                //header("Location:../naoencontrada");
+                header("Location:../naoencontrada");
                 exit;
             }
         } catch(PDOException $e) {
@@ -129,8 +110,7 @@
                     $expiracaoConv = date("d/m/Y", strtotime($dataExpiracao));
                 } 
             } else {
-                echo "5";
-                //header("Location:../naoencontrada");
+                header("Location:../naoencontrada");
                 exit;
             }
         } catch(PDOException $e) {
@@ -236,9 +216,9 @@
             }
             if (isset($_SESSION["id"]) && $_SESSION["id"] == $idProprietario || isset($permissao) && $permissao == 9 || isset($_SESSION["id"]) && $_SESSION["id"] == 1) {
                 echo    "<div class='dropdown'>
-                            <button class='btn btn-outline-secondary dropdown' id='buttonAddFuncionario' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>+ Adicionar funcionário</button>
+                            <button class='btn btn-outline-secondary dropdown' id='buttonAddFuncionario' type='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>+ Adicionar funcionário</button>
                             <div class='dropdown-menu' aria-labelledby='buttonAddFuncionario'>
-                                <form class='needs-validation' method='post' name='formEditarSala' action='../../../controller/funcionario/adicionarFuncionario.php?idSala=$idSala' enctype='multipart/form-data'>
+                                <form class='needs-validation' method='post' name='formEditarSala' action='/adicionarFuncionario/$idSala' enctype='multipart/form-data'>
                                     <input type='text' name='cpf' class='dropdown-item dropdownColor' placeholder='CPF' required=''>
                                     <button type='submit' class='dropdown-item dropdownColor'>Adicionar</button>
                                 </form> 

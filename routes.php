@@ -20,6 +20,7 @@ any('/editarSala/$idSala', 'scheduleit/view/pages/editarSala/editarSala.php');
 any('/cadastroSala', 'scheduleit/view/pages/cadastroSala/cadastroSala.php');
 any('/agenda/$id', 'scheduleit/view/pages/agenda/agenda.php');
 any('/agenda/$id/$dataDMA', 'scheduleit/view/pages/agenda/agenda.php');
+any('/agenda-configuracoes', 'scheduleit/view/pages/agenda/configuracoes.php');
 any('/pesquisa', 'scheduleit/view/pages/pesquisa/pesquisa.php');
 
 //CONTROLLER
@@ -30,6 +31,9 @@ any('/attSala/$idSala', 'scheduleit/controller/editarSala/attSala.php');
 any('/privar/$idSala', 'scheduleit/controller/editarSala/privarSala.php');
 any('/publicarSala/$idSala', 'scheduleit/controller/editarSala/publicarSala.php');
 any('/excluirSala/$idSala', 'scheduleit/controller/editarSala/excluirSala.php');
+any('/adicionarFuncionario/$idSala', 'scheduleit/controller/funcionario/adicionarFuncionario.php');
+any('/removerFuncionario/$idSala/$idUsuario', 'scheduleit/controller/funcionario/removerFuncionario.php');
+
 
 // ##################################################
 

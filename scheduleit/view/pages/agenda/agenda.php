@@ -1,5 +1,6 @@
 <?php
     include(__DIR__.'/../../../controller/protect.php');
+    header("Access-Control-Allow-Origin: *");
 ?>
 
 <!DOCTYPE html>
@@ -181,7 +182,8 @@
           if($perm) {
             echo  "<div class='d-flex justify-content-center'>
                     <button class='btn btn-secondary me-2' onclick='disableAll(".$id.','.$_SESSION['id'].',"'.$dataDMA.'",3'.")'>Desabilitar Todos</button>
-                    <button class='btn btn-secondary' onclick='enableAll(".$id.','.$_SESSION['id'].',"'.$dataDMA.'",2'.")'>Habilitar Todos</button>
+                    <button class='btn btn-secondary me-2' onclick='enableAll(".$id.','.$_SESSION['id'].',"'.$dataDMA.'",2'.")'>Habilitar Todos</button>
+                    <button class='btn btn-secondary' onclick='redirectHorarios()'>Configurar Horarios</button>
                   </div>";
           }
         ?>

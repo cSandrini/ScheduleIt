@@ -32,7 +32,7 @@ function carregarFuncionarios($idSala){
                 $imgTag = "<img class='rounded imgsala me-2' style='padding: 0!important; width: 80px; height: 80px;'  src='data:image/png;base64,$foto'>";
               }
             if (isset($_SESSION['id']) && isset($idProprietario) && $_SESSION['id']==$idProprietario || isset($permissao) && $permissao==9) {
-              $removerFuncionarioButton = "<a href='../../../controller/funcionario/removerFuncionario.php?idSala=$row->idSala&idUsuario=$row->idUsuario'><button class='m-0 p-0 btn btn-link text-decoration-none cornerButton text-danger'><i class='bi bi-x-circle-fill'></i></button></a>";
+              $removerFuncionarioButton = "<a href='/removerFuncionario/$row->idSala/$row->idUsuario'><button class='m-0 p-0 btn btn-link text-decoration-none cornerButton text-danger'><i class='bi bi-x-circle-fill'></i></button></a>";
             } else {
               $removerFuncionarioButton = "";
             }

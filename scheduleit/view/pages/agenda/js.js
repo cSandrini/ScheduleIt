@@ -21,3 +21,7 @@ function enableAll(idFuncionario, idUsuario, dataDMA, type) {
         post(idFuncionario, idUsuario, dataDMA, i, type);
     }
 }
+
+function redirectHorarios() {
+    window.location.href = "/agenda-configuracoes";
+}
