@@ -19,7 +19,7 @@
 
   <link href="/scheduleit/view/styles/css/cover.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="/scheduleit/view/pages/sala/js.js"></script>
+  <script src="/scheduleit/view/pages/sala/script.js"></script>
 
 </head>
 

@@ -1,6 +1,6 @@
 <?php
 
-include('../../../controller/protect.php');
+include(__DIR__.'/../../../controller/protect.php');
 
 ?>
 
@@ -9,8 +9,6 @@ include('../../../controller/protect.php');
 
 <head>
   <title>ScheduleIt - Comprar Sala</title>
-  <link href="assets/style.css" rel="stylesheet">
-  <script src="assets/js.js"></script>
 </head>
 
 <script type="text/javascript">
@@ -49,7 +47,7 @@ include('../../../controller/protect.php');
 </script>
 
 <body class="bg-light">
-<?php include "../parts/header.php"; ?>
+<?php include __DIR__."/../parts/header.php"; ?>
   <div class="container border rounded bg-white">
     <div>
       <h4 class="my-2 text-center pb-2 border-bottom">
@@ -57,7 +55,7 @@ include('../../../controller/protect.php');
       </h4>
       <div class="mt-5 row mx-3 mb-4">
         <div class="col-7">
-          <form class="needs-validation" method="post" name="formPublicar" action='../../../controller/editarSala/publicarSala.php?idSala=<?php echo $idSala;?>' enctype="multipart/form-data">
+          <form class="needs-validation" method="post" name="formPublicar" action='/publicarSala/<?php echo $idSala;?>' enctype="multipart/form-data">
             <h4 class="label2">
               Plano
             </h4>
@@ -169,7 +167,7 @@ include('../../../controller/protect.php');
       </div> 
     </div>
   </div>
-  <?php include "../parts/footer.php"; ?>  
+  <?php include __DIR__."/../parts/footer.php"; ?>  
 </body>
 </html>
 

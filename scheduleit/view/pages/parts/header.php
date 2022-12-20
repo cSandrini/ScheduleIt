@@ -115,7 +115,7 @@
                 echo "Error: ". $e->getMessage();
             }
 
-            echo "<div class='dropdown perfil'>
+            echo "<div id='perfil' class='dropdown perfil'>
                     <button style='padding: 0;' class='btn btn-default dropdown-toggle' type='button' id='dropdownMenuButton' data-bs-toggle='dropdown' aria-expanded='false'>";
                     if($imgPerfilHeader) {
                         echo "<img class='border rounded' src='data:foto/jpeg;base64,$imgPerfilHeader' width='50' height='50'>";
@@ -137,4 +137,5 @@
             echo "<button class='hbutton' style='color: white;' onclick='paginaLogin()'>Login</button>";
         }
     ?>
+<script src="/scheduleit/view/pages/parts/script.js"></script>
 </header>

@@ -232,6 +232,9 @@ hr {
 .rotulo {
   margin-left: .5rem;
 }
+.perfil {
+  display: none;
+}
 
 @media(max-width:850px) {
   header {

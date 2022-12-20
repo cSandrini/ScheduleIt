@@ -78,8 +78,6 @@
         return $msgErro;
     }
     
-
-
     function validarImg($imagem){
         $msgErro = "";
         if ($imagem["error"]!=0) {

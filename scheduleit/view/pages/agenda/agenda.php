@@ -14,7 +14,7 @@
   <link href="/scheduleit/resources/libraries/vanilla-calendar-2.1.1/build/vanilla-calendar.min.css" rel="stylesheet">
   <!-- Plugin JS -->
   <script src="/scheduleit//resources/libraries/vanilla-calendar-2.1.1/build/vanilla-calendar.min.js" defer></script>
-  <script src="/scheduleit/view/pages/agenda/js.js"></script>
+  <script src="/scheduleit/view/pages/agenda/script.js"></script>
 </head>
 <body class="bg-light">
     <?php 
