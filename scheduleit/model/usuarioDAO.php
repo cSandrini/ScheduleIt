@@ -11,10 +11,11 @@ function carregarConfig($conexao, $id) {
     $dados['telefone'] = $registro["telefone"];
     $dados['email'] = $registro["email"];
     $dados['senha'] = $registro["senha"];
-    $dados['imagem'] = base64_encode($registro["foto"]);
+    if(isset($registro["foto"])){
+        $dados['imagem'] = base64_encode($registro["foto"]);
+    }
     return $dados;
 }
-
 
 function cadastrarUsuario($conexao, $nome, $sobrenome, $cpf, $telefone, $email, $senha) {
     $sql = "INSERT INTO scheduleit.usuario (nome, sobrenome, cpf, telefone, email, senha, permissao) VALUES ('$nome', '$sobrenome', '$cpf', '$telefone', '$email', '$senha', 0);";

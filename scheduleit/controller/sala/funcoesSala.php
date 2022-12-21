@@ -1,4 +1,5 @@
 <?php
+    $img=null;
     error_reporting(E_ALL); //REPORTAR ERROS
     ini_set('display_errors', 1); //REPORTAR ERROS
     require_once __DIR__ . '/../../model/conexaobd.php';
@@ -19,7 +20,9 @@
         $sth->execute();
         if ($sth->rowCount() > 0) {
             while($row=$sth->fetch()) {
-                $img = base64_encode($row->imgLogo);
+                if (isset($row->imgLogo)) { 
+                    $img = base64_encode($row->imgLogo);
+                }
                 $nomeFantasia = $row->nomeFantasia;
                 $idSala = $row->idSala;
                 $descricao = $row->descricao;
@@ -90,25 +93,26 @@
             $sth->setFetchMode(PDO:: FETCH_OBJ);
             $sth->execute();
             if ($sth->rowCount() > 0) {
-                while($row=$sth->fetch()) {
-                    $visibilidade = $row->visibilidade;
+                $row=$sth->fetch();
+                $visibilidade = $row->visibilidade;
+                if(isset($row->assinatura)) {
                     $assinatura = $row->assinatura;
                     $assinaturaConv = date("d/m/Y", strtotime($assinatura));
                     $plano = $row->plano;
+                    if ($plano == 1){
+                        $dataExpiracao = date("Y-m-d", strtotime($assinatura." +1 month"));
+                        $expiracaoConv = date("d/m/Y", strtotime($dataExpiracao));
+                    } elseif ($plano == 2){
+                        $dataExpiracao = date("Y-m-d", strtotime($assinatura." +3 month"));
+                        $expiracaoConv = date("d/m/Y", strtotime($dataExpiracao));
+                    } elseif ($plano == 3){
+                        $dataExpiracao = date("Y-m-d", strtotime($assinatura." +6 month"));
+                        $expiracaoConv = date("d/m/Y", strtotime($dataExpiracao));
+                    } elseif ($plano == 4){
+                        $dataExpiracao = date("Y-m-d", strtotime($assinatura." +1 year"));
+                        $expiracaoConv = date("d/m/Y", strtotime($dataExpiracao));
+                    } 
                 }
-                if ($plano == 1){
-                    $dataExpiracao = date("Y-m-d", strtotime($assinatura." +1 month"));
-                    $expiracaoConv = date("d/m/Y", strtotime($dataExpiracao));
-                } elseif ($plano == 2){
-                    $dataExpiracao = date("Y-m-d", strtotime($assinatura." +3 month"));
-                    $expiracaoConv = date("d/m/Y", strtotime($dataExpiracao));
-                } elseif ($plano == 3){
-                    $dataExpiracao = date("Y-m-d", strtotime($assinatura." +6 month"));
-                    $expiracaoConv = date("d/m/Y", strtotime($dataExpiracao));
-                } elseif ($plano == 4){
-                    $dataExpiracao = date("Y-m-d", strtotime($assinatura." +1 year"));
-                    $expiracaoConv = date("d/m/Y", strtotime($dataExpiracao));
-                } 
             } else {
                 header("Location:../naoencontrada");
                 exit;
@@ -116,10 +120,10 @@
         } catch(PDOException $e) {
             echo "Error: ". $e->getMessage();
         }
-        if($img) {
+        if($img!=null) {
             echo "<div class='imgRotulo'><img id='imgShow' class='rounded' src='data:image/jpeg;base64,$img' alt='' width='160' height='160'></div>";
         } else {
-            echo "<div class='imgRotulo'><img id='imgShow' class='rounded' src='../../styles/blank.png' alt='' width='160' height='160'></div>";
+            echo "<div class='imgRotulo'><img id='imgShow' class='rounded' src='/scheduleit/view/styles/blank.png' alt='' width='160' height='160'></div>";
         }
         if (isset($_SESSION["id"])) {
             try {
@@ -134,7 +138,7 @@
                 echo "Error: ". $e->getMessage();
             }
             if ($_SESSION["id"] == $idProprietario || $permissao == 9) {
-                if ($visibilidade == 0 && $plano == null){
+                if ($visibilidade == 0 && !isset($plano)){
                     echo "<div class='lh-100 me-auto rotulo'>
                             <a href='/editarSala/$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-pen'></i> Editar</button></a>
                         <div class=''>
@@ -148,12 +152,12 @@
                                 </button>
                             </div>
                             <div class=''>
-                                <a href='../../../controller/editarSala/excluirSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light'><i class='bi bi-trash'></i> Excluir</button></a>
+                                <a href='/excluirSala/$idSala'><button type='button' class='btn btn-sm btn-light'><i class='bi bi-trash'></i> Excluir</button></a>
                             </div>
                             </form>
                         </div>
                     </div>";
-                } elseif ($visibilidade == 0 && $plano != null){
+                } else if ($visibilidade == 0 && $plano != null){
                     echo "<div class='lh-100 me-auto rotulo'>
                             <a href='/editarSala/$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-pen'></i> Editar</button></a>
                         <div class='flex-block'>
@@ -168,12 +172,11 @@
                                 </button>
                             </div>
                             <div class=''>
-                                <a href='../../../controller/editarSala/excluirSala.php?idSala=$idSala'><button type='button' class='btn btn-sm btn-light'><i class='bi bi-trash'></i> Excluir</button></a>
+                                <a href='/excluirSala/$idSala'><button type='button' class='btn btn-sm btn-light'><i class='bi bi-trash'></i> Excluir</button></a>
                             </div>
                             </form>
                         </div>
                     </div>";
-
                 } else {
                     echo "<div class='lh-100 me-auto rotulo'>
                             <a href='/editarSala/$idSala'><button type='button' class='btn btn-sm btn-light mb-2'><i class='bi bi-pen'></i> Editar</button></a>
@@ -189,7 +192,7 @@
                                 </button>
                             </div>
                             <div class=''>
-                                <button type='button' class='btn btn-sm btn-light' data-bs-toggle='modal' data-bs-target='#deletar'><i class='bi bi-trash'></i> Excluir</button>
+                                <a href='/excluirSala/$idSala'><button type='button' class='btn btn-sm btn-light'><i class='bi bi-trash'></i> Excluir</button></a>
                             </div>
                             </form>
                         </div>

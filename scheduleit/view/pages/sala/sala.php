@@ -10,7 +10,7 @@
     require_once  __DIR__ . "/../../../controller/mensagem.php";
 
 ?>
-
+<!doctype html>
 <html lang="pt-BR"><head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">

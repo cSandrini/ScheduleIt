@@ -6,7 +6,7 @@
   }
 
   if(isset($_SESSION['id'])) {
-    header('Location:/configuracoes');
+    header('Location:/perfil');
   }
 ?>
 <!doctype html>

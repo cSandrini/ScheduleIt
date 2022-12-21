@@ -1,5 +1,5 @@
 <?php
-  include('../../../controller/protect.php');
+  include(__DIR__.'/../../../controller/protect.php');
 ?>
 
 <!doctype html>
@@ -12,18 +12,18 @@
 
     <title>ScheduleIt - Cadastrar Sala</title>
     
-    <script src="script.js"></script>
-    <link href="../../styles/css/cover.css" rel="stylesheet">
+    <script src="scheduleit/view/pages/cadastroSala/script.js"></script>
+    <link href="scheduleit/view/styles/css/cover.css" rel="stylesheet">
   </head>
   <body class="bg-light">
     <!-- HEADER -->
     <?php 
-      include '../parts/header.php';
-      require_once "../../../controller/mensagem.php";
+      include __DIR__.'/../parts/header.php';
+      require_once __DIR__."/../../../controller/mensagem.php";
     ?>
 
     <div class="">
-      <div style="width: 40rem;" class="pb-3 bg-white rounded container border">
+      <div class="cadastro pb-3 bg-white rounded container border">
         <div class="py-2 text-center">
           <h2>Cadastro de Sala</h2>
           <p class="lead"> Preencha os campos para cadastrar seu estabelecimento.</p>
@@ -32,7 +32,7 @@
           <?php
             mensagem('Cadastrado com sucesso'); // Exibir a mensagem de ERRO caso OCORRA
           ?>
-          <form class="needs-validation" method="post" name="formCadastro" action="../../../controller/cadastro/cadSala.php" enctype="multipart/form-data">
+          <form class="needs-validation" method="post" name="formCadastro" action="/cadastrarSala" enctype="multipart/form-data">
             
             <input style="display:none;" name="idProprietario" type="text" value="<?php echo $_SESSION['id'];?>"> 
 
@@ -111,7 +111,7 @@
       </div>
 
       <!-- FOOTER -->
-      <?php include '../parts/footer.php';?>
+      <?php include __DIR__.'/../parts/footer.php';?>
     </div>         
   </body>
 </html>

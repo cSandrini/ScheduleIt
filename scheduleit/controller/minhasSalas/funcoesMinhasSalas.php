@@ -13,7 +13,11 @@
                 $i=1;
                 while($row=$sth->fetch()) {
                     $visibilidade = '';
-                    $img = base64_encode($row->imgLogo);
+                    if(isset($row->imgLogo)) {
+                        $img = 'data:imgLogo/jpeg;base64,'.base64_encode($row->imgLogo);
+                    } else {
+                        $img = '/scheduleit/view/styles/blank.png';
+                    }
                     if ($row->visibilidade==0) {
                         $visibilidade = "<p class='bottomMsg text-danger m-0 p-0'><i class='bi bi-eye-slash text-danger'></i> Página não publicada</p>";
                     }

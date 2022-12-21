@@ -3,7 +3,7 @@
         return  "<div class='salaDisplay border rounded bg-white mb-3 p-0'>
                     <div class='m-0 p-2 d-flex align-items-center gallery_product' onclick='redirectSala($idSala)'>
                         <div class='d-inline'>
-                            <img class='rounded imgsala me-2' style='padding: 0!important; width: 7rem; height: 7rem;'  src='data:imgLogo/jpeg;base64,$img'>
+                            <img class='rounded imgsala me-2' style='padding: 0!important; width: 7rem; height: 7rem;'  src='$img'>
                         </div>
                         <div class='d-inline lh-1'>
                             <span class='widthspan d-inline-block text-truncate mb-1 fw-bold title-card'>$nomeFantasia</span>

@@ -55,7 +55,7 @@ include(__DIR__.'/../../../controller/protect.php');
       </h4>
       <div class="mt-5 row mx-3 mb-4">
         <div class="col-7">
-          <form class="needs-validation" method="post" name="formPublicar" action='/publicarSala/<?php echo $idSala;?>' enctype="multipart/form-data">
+          <form class="needs-validation" method="post" name="formPublicar" action='/publicarSalaController/<?php echo $idSala;?>' enctype="multipart/form-data">
             <h4 class="label2">
               Plano
             </h4>

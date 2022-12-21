@@ -19,16 +19,24 @@
 
   <body class="bg-light">
     <!-- HEADER -->
-    <?php include __DIR__ . '/../parts/header.php';?>
+    <?php
+      include __DIR__ . '/../parts/header.php';
+      require_once  __DIR__ . "/../../../controller/mensagem.php";
+    ?>
 
     <div class="container">
+      <?php       
+        echo "<div> <div class='container p-0'>";
+          mensagem('O convite expirou');
+        echo "</div>"; 
+      ?>
       <div class="p-3 bg-white rounded border">
         <h6 class="border-bottom border-gray pb-2 mb-0">Notificações</h6>
         <?php
-          $arrHorarios = array(1 => '07:00', 2 => '08:00', 3 => '09:00', 4 => '10:00', 5 => '13:00', 6 => '14:00', 7 => '16:00', 8 => '16:00', 9 => '17:00');
+          $arrHorarios = array(1 => '07:00', 2 => '08:00', 3 => '09:00', 4 => '10:00', 5 => '13:00', 6 => '14:00', 7 => '15:00', 8 => '16:00', 9 => '17:00');
           try {
             $con = conectarBDPDO();
-            $sth = $con->prepare("SELECT * FROM notificacao, usuario WHERE idUsuario=".$_SESSION["id"]." AND notificacao.idFuncionario = usuario.id ORDER BY dataDMA, idHorario;");
+            $sth = $con->prepare("SELECT * FROM notificacao WHERE idUsuario=".$_SESSION["id"]." ORDER BY idHorario=0 DESC, dataDMA DESC;");
             $sth->setFetchMode(PDO:: FETCH_OBJ);
             $sth->execute();
           } catch(PDOException $e) {
@@ -37,13 +45,41 @@
           if ($sth->rowCount() > 0) {
             while($row=$sth->fetch()) {
               $dataDMA = addslashes($row->dataDMA);
-              echo "<div class='position-relative media text-muted pt-3'>
-                      <p class='media-body pb-3 mb-0 small lh-125 border-bottom border-gray'>
-                        <strong class='d-block text-gray-dark'>$nome</strong>
-                        Você tem um atendimento marcado com <strong class='text-gray-dark'>".$row->nome."</strong> para o dia <strong class='text-gray-dark'>".date("d/m/Y", strtotime($row->dataDMA))."</strong> às <strong class='text-gray-dark'>".$arrHorarios[$row->idHorario]."</strong> horas.
-                      </p>
-                      <span class='cornerIcon' onclick='redirect(\"$dataDMA\", $row->idFuncionario)'><i class='hoverIcon bi bi-eye'></i></span>
-                    </div>";
+              if($row->tipo==1) {
+                try {
+                  $sth2 = $con->prepare("SELECT nome FROM usuario WHERE id=".$row->idFuncionario.";");
+                  $sth2->setFetchMode(PDO:: FETCH_OBJ);
+                  $sth2->execute();
+                  $row2=$sth2->fetch();
+                } catch(PDOException $e) {
+                  echo "Error: ". $e->getMessage();
+                }
+                echo "<div class='notificacao position-relative text-muted pt-3 border-bottom'>
+                        <p class='pb-3 mb-0 small lh-125 border-gray'>
+                          <strong class='d-block text-gray-dark'>$nome</strong>
+                          Você tem um atendimento marcado com <strong class='text-gray-dark'>".$row2->nome."</strong> para o dia <strong class='text-gray-dark'>".date("d/m/Y", strtotime($row->dataDMA))."</strong> às <strong class='text-gray-dark'>".$arrHorarios[$row->idHorario]."</strong> horas.
+                        </p>
+                        <span class='btn btn-sm btn-primary cornerIcon' onclick='redirect(\"$dataDMA\", $row->idFuncionario)'><i class='fa-solid fa-eye'></i></span>
+                      </div>";
+              } 
+              if ($row->tipo==2) {
+                try {
+                  $sth2 = $con->prepare("SELECT nomeFantasia FROM sala WHERE idSala=".$row->idSala.";");
+                  $sth2->setFetchMode(PDO:: FETCH_OBJ);
+                  $sth2->execute();
+                  $row2=$sth2->fetch();
+                } catch(PDOException $e) {
+                  echo "Error: ". $e->getMessage();
+                }
+                echo "<div class='notificacao position-relative text-muted pt-3 border-bottom'>
+                        <p class='pb-3 mb-0 small lh-125 border-gray'>
+                          <strong class='d-block text-gray-dark'>$nome</strong>
+                          Você foi convidado para ser um funcionário da sala: <strong class='text-gray-dark'>$row2->nomeFantasia</strong>.
+                        </p>
+                        <span class='btn btn-sm btn-danger btn-ignorar' onclick='ignorar(".$_SESSION['id'].", $row->idSala)'>Ignorar</span>
+                        <span class='btn btn-sm btn-success btn-aceitar' onclick='aceitar(".$_SESSION['id'].",$row->idSala)'>Aceitar</span>
+                      </div>";
+              }
             }
           } else {
             echo  "<br>

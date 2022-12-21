@@ -57,8 +57,8 @@
             $senhaNova = $dados['senha'];
         }
         editarUsuario($conexao, $id, $nome, $sobrenome, $cpf, $telefone, $email, $senhaNova);
-        header("Location:/configuracoes?msg=0&msgType=1&img=");
+        header("Location:/perfil?msg=0&msgType=1&img=");
     } else {
-        header("Location:/configuracoes?msg=$msgErro&msgType=3");
+        header("Location:/perfil?msg=$msgErro&msgType=3");
     }
 ?>

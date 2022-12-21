@@ -7,5 +7,6 @@ require_once __DIR__.'/../../model/salasDAO.php';
 $conexao=conectarBD();
 
 excluirSala($conexao, $idSala);
-    header("Location:/minhasSalas?msg=0&msgType=2");
+    $msgErro = "Sala excluida com sucesso!";
+    header("Location:/minhasSalas?msg=$msgErro&msgType=3");
 ?>

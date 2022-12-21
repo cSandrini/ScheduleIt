@@ -10,17 +10,19 @@
             if ($sth->rowCount() > 0) {
                 $i=1;
                 while($row=$sth->fetch()) {
-                    $img = base64_encode($row->foto);
+                    if (isset($row->foto)) {
+                        $img = base64_encode($row->foto);
+                    }
                 }
             }
         } catch(PDOException $e) {
             echo "Error: ". $e->getMessage();
         }
 
-        if($img) {
+        if(isset($img)) {
             echo "<img id='imgShow' class='me-3 border rounded' src='data:image/jpeg;base64,$img' alt='' width='120' height='120'>";
         } else {
-            echo "<img id='imgShow' class='me-3 border rounded' src='../../styles/blank.png' alt='' width='120' height='120'>";
+            echo "<img id='imgShow' class='me-3 border rounded' src='scheduleit/view/styles/blank.png' alt='' width='120' height='120'>";
         }
     }
 ?>

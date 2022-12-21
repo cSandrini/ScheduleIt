@@ -8,7 +8,6 @@
 <head>
   <meta charset="utf-8">
   <title>ScheduleIt - Agenda</title>
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <link href="/scheduleit/view/styles/css/cover.css" rel="stylesheet">
   <!-- Plugin CSS -->
   <link href="/scheduleit/resources/libraries/vanilla-calendar-2.1.1/build/vanilla-calendar.min.css" rel="stylesheet">

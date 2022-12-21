@@ -1,7 +1,7 @@
 <?php
 function funcionarioDisplay($id, $nome, $foto, $removerFuncionarioButton){
 if(!$foto) {
-    $foto = addslashes('../../styles/blank.png');
+    $foto = addslashes('scheduleit/view/styles/blank.png');
     $imgTag = "<img class='rounded imgsala me-2' style='padding: 0!important; width: 80px; height: 80px;'  src='$foto'>";
 } else {
     $foto = base64_encode($foto);

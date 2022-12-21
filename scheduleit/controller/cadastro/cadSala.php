@@ -1,7 +1,7 @@
 <?php
     error_reporting(E_ALL); //REPORTAR ERROS
     ini_set('display_errors', 1); //REPORTAR ERROS
-    require_once '../funcoesUteis.php';
+    require_once __DIR__.'/../funcoesUteis.php';
 
     // PASSO 1 - RECEBER OS DADOS DO FORMULARIO
     $nomeFantasia = addslashes($_POST["txtNome"]);
@@ -36,20 +36,19 @@
     }
 
     if ( empty($msgErro) ) {            
-        
         // CONECTAR
-        require_once '../../model/conexaobd.php';
-        require_once '../../model/usuarioDAO.php';
-        require_once '../../model/salasDAO.php'; //toreba
+        require_once __DIR__.'/../../model/conexaobd.php';
+        require_once __DIR__.'/../../model/usuarioDAO.php';
+        require_once __DIR__.'/../../model/salasDAO.php'; //toreba
         $tamanhoImg = $imagem["size"];
         $arqAberto = fopen($imagem["tmp_name"], "r");
         $imagem = addslashes(fread($arqAberto,$tamanhoImg));
 
         $conexao = conectarBD();
         cadastrarSala($conexao, $idProprietario, $email, $cnpj, $nomeFantasia, $cep, $estado, $cidade, $bairro, $rua, $numero, $complemento, $telefone, $descricao, $imagem);
-        header("Location:../../view/pages/cadastroSala/cadastroSala.php?msg=0&msgType=1");
+        header("Location:/minhasSalas?msg=0&msgType=1");
     } else {
-        header("Location:../../view/pages/cadastroSala/cadastroSala.php?msg=$msgErro&msgType=3");
+        header("Location:/cadastroSala?msg=$msgErro&msgType=3");
     }
 
 ?>

@@ -26,22 +26,25 @@
         require_once __DIR__ . "/../../../controller/minhasSalas/funcoesMinhasSalas.php";
         require_once __DIR__ . "/../../../controller/mensagem.php";
         echo "<div>";
-        mensagem(null); // Exibir a mensagem de ERRO caso OCORRA
+        echo "<div> <div class='container col-md-2 p-0'>";
+            mensagem('Sala cadastrada com sucesso!'); // Exibir a mensagem de ERRO caso OCORRA
+        echo "</div>"; 
     ?>
-    <div class='col-md-2 text-center mx-auto' role='alert'>
-        <a href='/cadastroSala'>
-            <button type='button' class='btn btn-primary'>
-                + Adicionar sala
-            </button>
-        </a>        
-    </div>
-    <div class="container mt-3">
-        <div class="row justify-content-center">
-            <?php
-                carregarMinhasSalas();
-            ?>
+        <div class='col-md-2 text-center mx-auto' role='alert'>
+            <a href='/cadastroSala'>
+                <button type='button' class='btn btn-primary'>
+                    + Adicionar sala
+                </button>
+            </a>        
         </div>
-    </div>
+        <div class="container mt-3">
+            <div class="row justify-content-center">
+                <?php
+                    carregarMinhasSalas();
+                ?>
+            </div>
+        </div>
+        </div>
     </div>
     <!-- FOOTER -->
     <?php include __DIR__ . '/../parts/footer.php';?>

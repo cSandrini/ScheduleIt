@@ -28,9 +28,10 @@
     } catch(PDOException $e) {
         echo "Error: ". $e->getMessage();
     }
-    require_once __DIR__.'/../../model/funcionarioDAO.php';
+    require_once __DIR__.'/../../model/notificacaoDAO.php';
     if (empty($msgErro)) {
-        adicionarFuncionario($conexao, $idSala, $idUsuario);
+        $dataAtual = date("Y-m-d");
+        convidarFuncionario($conexao, $idSala, $idUsuario, $dataAtual);
         header("Location:/sala/$idSala");
     } else {
         header("Location:/sala/$idSala?msg=$msgErro&msgType=");

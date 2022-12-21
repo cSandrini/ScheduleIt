@@ -1,8 +1,11 @@
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<script src="/scheduleit/resources/libraries/jquery-3.6.3/jquery-3.6.3.min.js"></script>
+<script src="/scheduleit/resources/libraries/popperjs-2.11.6/popper.min.js"></script>
+<link rel="stylesheet" href="/scheduleit/resources/libraries/bootstrap-5.2.3/css/bootstrap.min.css">
+<script src="/scheduleit/resources/libraries/bootstrap-5.2.3/js/bootstrap.bundle.min.js"></script>
+<link href="/scheduleit/resources/libraries/bootstrap-icons-1.10.2/bootstrap-icons.css" rel="stylesheet">
+<link href="/scheduleit/resources/libraries/fontawesome-6.2.1/css/fontawesome.css" rel="stylesheet">
+<link href="/scheduleit/resources/libraries/fontawesome-6.2.1/css/brands.css" rel="stylesheet">
+<link href="/scheduleit/resources/libraries/fontawesome-6.2.1/css/solid.css" rel="stylesheet">
 
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -83,7 +86,6 @@
 </style>
 <header class="border-bottom bg-white mb-4">
     <span class="logo" style="cursor:pointer;" onclick="paginaHome()" style="color: rgb(102, 0, 102);"><strong>SCHEDULE</strong><span style="color: rgb(187, 10, 187);"><strong>IT</strong></span></span>
-    <div class="pesquisa">
     <nav class="translate">
         <form class="form-inline my-2 my-lg-0" method="post" name="pesquisar" action="/pesquisa">
             <div class="input-group">
@@ -92,12 +94,10 @@
             </div>
         </form>
     </nav>
-    </div>
-
+    
     <?php
         if(isset($_SESSION['id'])){
             require_once __DIR__ . '/../../../model/conexaobd.php';
-        
             try {
                 $con = conectarBDPDO();
                 $sth = $con->prepare("SELECT * FROM usuario WHERE id=".$_SESSION['id'].";");
@@ -108,7 +108,9 @@
                     $i=1;
                     while($row=$sth->fetch()) {
                         $nome = $row->nome;
-                        $imgPerfilHeader = base64_encode($row->foto);
+                        if(isset($row->foto)) {
+                            $imgPerfilHeader = base64_encode($row->foto);
+                        }
                     }
                 }
             } catch(PDOException $e) {
@@ -117,10 +119,10 @@
 
             echo "<div id='perfil' class='dropdown perfil'>
                     <button style='padding: 0;' class='btn btn-default dropdown-toggle' type='button' id='dropdownMenuButton' data-bs-toggle='dropdown' aria-expanded='false'>";
-                    if($imgPerfilHeader) {
+                    if(isset($imgPerfilHeader)) {
                         echo "<img class='border rounded' src='data:foto/jpeg;base64,$imgPerfilHeader' width='50' height='50'>";
                     } else {
-                        echo "<img class='border rounded' src='../../styles/blank.png' width='50' height='50'>";
+                        echo "<img class='border rounded' src='/scheduleit/view/styles/blank.png' width='50' height='50'>";
                     }
             echo "</button>
                     <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
@@ -128,9 +130,10 @@
                         <div class='dropdown-divider'></div>
                         <a class='dropdown-item' href='/notificacoes'>Notificações</a>
                         <a class='dropdown-item' href='/minhasSalas'>Minhas Salas</a>
+                        <a class='dropdown-item' href='/meusServicos'>Meus Serviços</a>
                         <a class='dropdown-item' href='/agenda/".$_SESSION['id']."'>Agenda</a>
                         <div class='dropdown-divider'></div>
-                        <a class='dropdown-item' href='/configuracoes'>Configurações</a>
+                        <a class='dropdown-item' href='/perfil'>Perfil</a>
                         <a style='color: red;' class='dropdown-item' href='/logout'>Sair</a>
                     </div>";
         } else {
