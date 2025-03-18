@@ -64,7 +64,7 @@
                 header("Location:naoencontrada.php");
         exit;
         }
-        if (($permissao != 9 || $session != $idProprietario) && $visibilidade == 0 ) {
+        if (($permissao < 8 || $session != $idProprietario) && $visibilidade == 0 ) {
             header("Location:naoencontrada.php");
         exit;
         }
