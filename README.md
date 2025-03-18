@@ -41,13 +41,13 @@ A página de pagamento contém:
 Se estiver tendo problemas, utilize a conta de administrador:
 - **Usuário:** admin
 - **Senha:** 123  
+Essa conta possui uma sala cadastrada ainda não publicada.  
   
 Outras contas cadastradas:  
 - **Usuário:** walter@gmail.com
 - **Usuário:** jesse@gmail.com
 - **Senha:** 123  
 
-Essa conta possui uma sala cadastrada ainda não publicada.
 
 ## Estrutura do Projeto
 O código está organizado da seguinte forma:
