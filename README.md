@@ -41,9 +41,9 @@ A página de pagamento contém:
 Se estiver tendo problemas, utilize a conta de administrador:
 - **Usuário:** admin
 - **Senha:** 123  
+  
 Outras contas cadastradas:  
 - **Usuário:** walter@gmail.com
-- **Senha:** 123  
 - **Usuário:** jesse@gmail.com
 - **Senha:** 123  
 
