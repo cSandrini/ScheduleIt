@@ -1,19 +1,61 @@
-Como utilizar o site em sua prórpia máquina:  
--Instale e inicie o XAMPP com o Apache o MySQL ativados
--Adicione o banco de dados em 127.0.0.1/phpmyadmin  
--O banco de dados está em "scheduleit/resources/scheduleit.sql"  
--A página inicial do site está em "scheduleit/view/pages/home"  
-O site é dividido principalmente entre Usuários e Salas Virtuais(essas podendo ser estabelecimentos, consultórios, pequenos negócios, etc).  
-Usuários podem ser funcionários em salas criadas ou podem possuir suas próprias salas, além de possuirem uma agenda que pode ser editada para bloquear certos horários e desmarcar horários marcados caso desejado.  
-Para cadastrar uma sala clique na imagem do seu perfil no canto superior direito e vá em "Minhas Salas", após isso adicione uma sala no botão "+ Adicionar sala", após cadastrar a sala, ela não estará publicada para outros usuários poderem ver, é necessário voltar na página "Minas salas", para adicionar funcionários clique em "+ Adicionar funcionários" e digite o cpf do usuário cadastrado que será o funcionário, após isso selecione "Publicar" ao lado da imagem do estabelecimento, a página de pagamento é composta por "Plano", "Forma de Pagamento" e um campo para cupons(Pagamento não foi implementado). após o pagamento a sala estará visivel para todos os usuários.  
-Caso esteja tendo problemas a conta "admin" de senha "123" possui uma sala criada que ainda não foi publicada  
-Usuários podem acessar salas e a agenda dos funcionários cadastrados, ao realizar um agendamento o funcionário recebe uma notificação que pode ser vista ao clicar na imagem do perfil e ie em "Notificações", além de poder acessar a agenda diretamentente no botao "Agenda" ao clicar em perfil.
+# ScheduleIt - Guia de Instalação e Uso
 
-# View 
-  Diretório onde ficam os arquivos que formam as páginas (HTML, CSS, JS)
+## Requisitos
+Para executar o ScheduleIt em sua própria máquina, siga os passos abaixo:
 
-# Model
-  Diretório onde ficam os arquivos que interagem com o banco de dados (DAO)
+1. Instale o [XAMPP](https://www.apachefriends.org/index.html).
+2. Inicie o XAMPP e ative os serviços **Apache** e **MySQL**.
+3. Acesse o phpMyAdmin em [127.0.0.1/phpmyadmin](http://127.0.0.1/phpmyadmin).
+4. Importe o banco de dados localizado em `scheduleit/scheduleit/resources/scheduleit.sql`.
+5. A página inicial do site está em `scheduleit/scheduleit/view/pages/home`.
 
-# Controller
-  Diretório onde ficam os arquivos que interagem com as páginas (POST, GET)
+## Sobre o ScheduleIt
+O ScheduleIt é um sistema de agendamentos voltado para estabelecimentos, consultórios e pequenos negócios. Ele permite a gestão de usuários e salas virtuais, onde funcionários podem ser cadastrados e agendas podem ser gerenciadas.
+
+### Funcionalidades
+- **Usuários** podem ser:
+  - Funcionários de salas criadas.
+  - Donos de suas próprias salas.
+  - Gerenciar sua agenda bloqueando e desmarcando horários.
+- **Salas Virtuais** podem ser cadastradas e gerenciadas pelos usuários.
+- **Notificações** são enviadas para os funcionários ao receberem agendamentos.
+- **Agenda** acessível diretamente pelo perfil do usuário.
+
+## Como Cadastrar uma Sala
+1. Clique na imagem do seu perfil no canto superior direito e selecione **"Minhas Salas"**.
+2. Clique no botão **"+ Adicionar Sala"** para cadastrar uma nova sala.
+3. A sala cadastrada **não será publicada automaticamente**.
+4. Para gerenciá-la, acesse novamente **"Minhas Salas"**.
+5. Para adicionar funcionários:
+   - Clique em **"+ Adicionar Funcionário"**.
+   - Insira o **CPF** do usuário que será funcionário.
+6. Para publicar a sala e torná-la visível para outros usuários, clique em **"Publicar"** ao lado da imagem do estabelecimento.
+
+## Pagamento (Ainda não implementado)
+A página de pagamento contém:
+- **Plano**
+- **Forma de Pagamento**
+- **Campo para Cupons**
+
+## Contas de Teste
+Se estiver tendo problemas, utilize a conta de administrador:
+- **Usuário:** admin
+- **Senha:** 123  
+Outras contas cadastradas:  
+- **Usuário:** walter@gmail.com
+- **Senha:** 123  
+- **Usuário:** jesse@gmail.com
+- **Senha:** 123  
+
+Essa conta possui uma sala cadastrada ainda não publicada.
+
+## Estrutura do Projeto
+O código está organizado da seguinte forma:
+
+- **View** - Contém os arquivos responsáveis pela interface do usuário (HTML, CSS, JS).
+- **Model** - Responsável pela interação com o banco de dados (DAO).
+- **Controller** - Manipula as requisições HTTP (POST, GET) e interage com a View e o Model.
+
+---
+Este README tem como objetivo facilitar a instalação e o uso do ScheduleIt. Caso tenha dúvidas ou precise de suporte, entre em contato com o desenvolvedor.
+
