@@ -12,6 +12,9 @@ Para executar o ScheduleIt em sua própria máquina, siga os passos abaixo:
 ## Sobre o ScheduleIt
 O ScheduleIt é um sistema de agendamentos voltado para estabelecimentos, consultórios e pequenos negócios. Ele permite a gestão de usuários e salas virtuais, onde funcionários podem ser cadastrados e agendas podem ser gerenciadas.
 
+![agenda](https://github.com/user-attachments/assets/841f2eae-e802-453a-8573-6cae72283dbb)
+
+
 ### Funcionalidades
 - **Usuários** podem ser:
   - Funcionários de salas criadas.
