@@ -58,8 +58,12 @@
                 exit;
             }
         } else {
-            header("Location:../naoencontrada");
-            exit;
+                header("Location:naoencontrada.php");
+        exit;
+        }
+        if (($permissao < 8 || $session != $idProprietario) && $visibilidade == 0 ) {
+            header("Location:naoencontrada.php");
+        exit;
         }
 
     } catch(PDOException $e) {
